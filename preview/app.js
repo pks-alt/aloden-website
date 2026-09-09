@@ -27,7 +27,15 @@ if (menuBtn && navLinks) {
 }
 
 if (document.querySelector('.agenticHero')) {
-  const script = document.createElement('script');
-  script.src = 'agentic-section3.js?v=' + Date.now();
-  document.body.appendChild(script);
+  (async () => {
+    for (const src of ['agentic-section3.js', 'agentic-section4.js']) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + Date.now();
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    }
+  })().catch(err => console.error('Agentic systems review layer failed', err));
 }
