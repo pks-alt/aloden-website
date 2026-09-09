@@ -25,17 +25,3 @@ if (menuBtn && navLinks) {
     }
   });
 }
-
-if (document.querySelector('.voiceEngHero')) {
-  (async () => {
-    for (const src of ['voice-section3.js', 'voice-section4.js', 'voice-section5.js', 'voice-section6.js']) {
-      await new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src + '?v=' + Date.now();
-        script.onload = resolve;
-        script.onerror = reject;
-        document.body.appendChild(script);
-      });
-    }
-  })().catch(err => console.error('Voice AI Engineering review layer failed', err));
-}
