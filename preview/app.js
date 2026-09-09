@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.capPageHero')) {
+  const script = document.createElement('script');
+  script.src = 'capabilities-section4.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
