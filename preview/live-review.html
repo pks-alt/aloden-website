@@ -115,6 +115,23 @@ html,body{margin:0;min-height:100%;background:#fff}
       });
     }
 
+    const audience=content.audience||{};
+    const whoGrid=doc.querySelector('.whoGrid');
+    if(whoGrid){
+      const section=whoGrid.closest('section');
+      if(section){
+        const eyebrow=section.querySelector('.eyebrow'); if(eyebrow&&audience.eyebrow) eyebrow.textContent=audience.eyebrow;
+        const h2=section.querySelector('.h2'); if(h2&&audience.headline) h2.textContent=audience.headline;
+        const lead=section.querySelector('.lead'); if(lead&&audience.intro) lead.textContent=audience.intro;
+        const items=[...section.querySelectorAll('.whoItem')];
+        if(Array.isArray(audience.items)) audience.items.forEach((item,i)=>{
+          const row=items[i]; if(!row) return;
+          const title=row.querySelector('b'); if(title&&item.title) title.textContent=item.title;
+          const text=row.querySelector('span'); if(text&&item.text) text.textContent=item.text;
+        });
+      }
+    }
+
     const marker=doc.createElement('meta');
     marker.name='aloden-content-review'; marker.content='live';
     doc.head.appendChild(marker);
