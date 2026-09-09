@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "eyebrow": "AI PRODUCT ENGINEERING · DIGITAL MODERNIZATION",
+    "headline": "We build and modernize intelligent digital products.",
+    "subheadline": "Built around your vision. Engineered for real-world impact.",
+    "description": "Aloden brings together AI, product strategy, experience design, engineering, and modernization to turn ideas and existing software into production-ready digital products.",
+    "proof": [
+      {
+        "title": "AI Product Engineering",
+        "text": "From product strategy and AI architecture to design, engineering, and production."
+      },
+      {
+        "title": "Modernization at Scale",
+        "text": "Modernize products, platforms, and workflows without losing what already works."
+      },
+      {
+        "title": "Built for Real Use",
+        "text": "Intelligent products engineered around users, systems, operations, and measurable outcomes."
+      }
+    ]
+  }
+}
