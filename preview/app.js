@@ -25,17 +25,3 @@ if (menuBtn && navLinks) {
     }
   });
 }
-
-// Keep approved Built by Aloden review sections modular while content is finalized.
-(async () => {
-  const sections = ['built-section2.js', 'built-section3.js', 'built-section4.js', 'built-section5.js', 'built-section6.js', 'built-section7.js'];
-  for (const src of sections) {
-    await new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = src + '?v=' + Date.now();
-      script.onload = resolve;
-      script.onerror = reject;
-      document.body.appendChild(script);
-    });
-  }
-})().catch(err => console.error('Built by Aloden review layer failed', err));
