@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.modernizationHero')) {
+  const script = document.createElement('script');
+  script.src = 'modernization-section3.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
