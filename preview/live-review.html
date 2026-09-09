@@ -132,6 +132,53 @@ html,body{margin:0;min-height:100%;background:#fff}
       }
     }
 
+    const capabilities=content.capabilities||{};
+    const capSection=doc.querySelector('#capabilities');
+    if(capSection){
+      const eyebrow=capSection.querySelector('.eyebrow'); if(eyebrow&&capabilities.eyebrow) eyebrow.textContent=capabilities.eyebrow;
+      const h2=capSection.querySelector('.h2'); if(h2&&capabilities.headline) h2.textContent=capabilities.headline;
+      const lead=capSection.querySelector('.lead'); if(lead&&capabilities.intro) lead.textContent=capabilities.intro;
+      const items=[...capSection.querySelectorAll('.capItem')];
+      if(Array.isArray(capabilities.items)) capabilities.items.forEach((item,i)=>{
+        const card=items[i]; if(!card) return;
+        const title=card.querySelector('h3'); if(title&&item.title) title.textContent=item.title;
+        const para=card.querySelector('p'); if(para&&item.text) para.textContent=item.text;
+        let detail=card.querySelector('.contentReviewCapDetail');
+        if(!detail){
+          detail=doc.createElement('div');
+          detail.className='contentReviewCapDetail';
+          detail.style.marginTop='12px';
+          detail.style.display='grid';
+          detail.style.gap='7px';
+          card.appendChild(detail);
+        }
+        detail.innerHTML='';
+        if(item.tagline){
+          const strong=doc.createElement('strong'); strong.textContent=item.tagline;
+          strong.style.fontSize='12px'; strong.style.color='#fff'; strong.style.lineHeight='1.35';
+          detail.appendChild(strong);
+        }
+        if(item.areas){
+          const span=doc.createElement('span'); span.textContent=item.areas;
+          span.style.fontFamily='IBM Plex Mono,monospace'; span.style.fontSize='8.5px'; span.style.lineHeight='1.55'; span.style.color='#a58aff';
+          detail.appendChild(span);
+        }
+      });
+      let support=capSection.querySelector('.contentReviewCapSupport');
+      if(!support){
+        support=doc.createElement('div');
+        support.className='contentReviewCapSupport';
+        support.style.marginTop='24px';
+        support.style.paddingTop='18px';
+        support.style.borderTop='1px solid #242730';
+        capSection.querySelector('.container').appendChild(support);
+      }
+      support.innerHTML='';
+      const txt=doc.createElement('span'); txt.textContent=capabilities.support||''; txt.style.color='#c9cdd6'; txt.style.fontSize='13px';
+      const a=doc.createElement('a'); a.textContent=capabilities.cta||''; a.href='#'; a.style.marginLeft='14px'; a.style.color='#a58aff'; a.style.fontSize='13px'; a.style.fontWeight='600';
+      support.append(txt,a);
+    }
+
     const marker=doc.createElement('meta');
     marker.name='aloden-content-review'; marker.content='live';
     doc.head.appendChild(marker);
