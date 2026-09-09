@@ -18,5 +18,35 @@
         "text": "Intelligent products engineered around users, systems, operations, and measurable outcomes."
       }
     ]
+  },
+  "built": {
+    "eyebrow": "BUILT BY ALODEN",
+    "headline": "Real products. Built for real use.",
+    "intro": "Aloden turns complex ideas and workflows into intelligent products that operate in the real world—from healthcare workforce technology to innovation platforms and conversational AI.",
+    "products": [
+      {
+        "name": "Medlivo",
+        "description": "Intelligent technology for complex healthcare workforce operations.",
+        "body": "A connected healthcare workforce platform bringing intelligence, matching, credentialing, scheduling, and operational workflows into one product experience.",
+        "workflow": "Need → Intelligence → Matching → Credentialing → Scheduling → Operations",
+        "cta": "Explore Medlivo →"
+      },
+      {
+        "name": "StartupFair",
+        "description": "Where real challenges connect with builders and opportunity.",
+        "body": "An innovation and talent-discovery platform that brings organizations and builders together around practical problems, working solutions, and measurable evaluation.",
+        "workflow": "Challenge → Builders → Solutions → Evaluation → Opportunity",
+        "cta": "Explore StartupFair →"
+      },
+      {
+        "name": "Aloden Voice AI",
+        "description": "Conversations that connect to real business action.",
+        "body": "Voice AI experiences that understand intent, work with connected systems, complete permitted actions, confirm outcomes, and involve people when human judgment is needed.",
+        "workflow": "Conversation → Intent → Action → Confirmation → Human Escalation",
+        "cta": "Explore Voice AI →"
+      }
+    ],
+    "closing": "Different products. Different domains. One engineering discipline.",
+    "discipline": "Problem → Product Definition → Design → Engineering → AI & Automation → Production"
   }
 }
