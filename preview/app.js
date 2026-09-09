@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.agenticHero')) {
+  const script = document.createElement('script');
+  script.src = 'agentic-section3.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
