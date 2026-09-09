@@ -48,5 +48,32 @@
     ],
     "closing": "Different products. Different domains. One engineering discipline.",
     "discipline": "Problem → Product Definition → Design → Engineering → AI & Automation → Production"
+  },
+  "engagement": {
+    "eyebrow": "BUILD NEW · MODERNIZE EXISTING",
+    "headline": "Two paths. One goal: a better product.",
+    "intro": "Whether you’re starting with an idea or improving software already in use, Aloden brings product thinking, AI, design, and engineering together to move from opportunity to production.",
+    "paths": [
+      {
+        "title": "Build something new.",
+        "description": "Turn an idea, business problem, or market opportunity into a production-ready digital product.",
+        "steps": [
+          {"number":"01","title":"Define the opportunity","description":"Clarify the problem, users, business goals, and product vision."},
+          {"number":"02","title":"Shape the product","description":"Define the experience, architecture, AI opportunities, and delivery roadmap."},
+          {"number":"03","title":"Design & engineer","description":"Build, integrate, test, and validate the product around real-world use."},
+          {"number":"04","title":"Launch & evolve","description":"Move into production, learn from usage, and continuously improve."}
+        ]
+      },
+      {
+        "title": "Make what already works significantly better.",
+        "description": "Modernize existing products, platforms, and workflows without unnecessarily rebuilding everything from scratch.",
+        "steps": [
+          {"number":"01","title":"Understand the current product","description":"Evaluate architecture, user experience, workflows, data, and technical constraints."},
+          {"number":"02","title":"Define the modernization path","description":"Identify where modern architecture, AI, automation, and experience improvements create the most value."},
+          {"number":"03","title":"Modernize intelligently","description":"Upgrade the right components while protecting critical business functionality."},
+          {"number":"04","title":"Improve & scale","description":"Deliver a faster, more intelligent, maintainable product ready for what comes next."}
+        ]
+      }
+    ]
   }
 }
