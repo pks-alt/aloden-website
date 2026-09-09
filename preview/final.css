@@ -55,6 +55,31 @@
 .footerLegal span,.footerLegal a{font-size:11px;margin:0;color:#6f7785}
 .footerTagline{font-size:11.5px!important;font-weight:600;color:var(--ink-2)!important;white-space:nowrap;margin:0!important}
 
+/* ===== OFFICIAL ALODEN BRAND LOCKUP — supplied artwork =====
+   Header + footer use the exact official logo asset rather than a CSS recreation.
+   Product-proof lockups remain independent so dark product UI treatments are preserved. */
+.brand .alodenLockup,
+.footer .alodenLockup,
+.contentReviewFooterBrand .alodenLockup,
+.footerFinalBrand .alodenLockup{
+  display:block;
+  width:142px;
+  height:30px;
+  background:url("assets/aloden-logo-official.svg") no-repeat left center/contain;
+  flex:none;
+}
+.brand .alodenLockup>.alodenMark,
+.brand .alodenLockup>.alodenWord,
+.footer .alodenLockup>.alodenMark,
+.footer .alodenLockup>.alodenWord,
+.contentReviewFooterBrand .alodenLockup>.alodenMark,
+.contentReviewFooterBrand .alodenLockup>.alodenWord,
+.footerFinalBrand .alodenLockup>.alodenMark,
+.footerFinalBrand .alodenLockup>.alodenWord{display:none}
+.footer .alodenLockup,
+.contentReviewFooterBrand .alodenLockup,
+.footerFinalBrand .alodenLockup{width:136px;height:29px}
+
 @media(max-width:980px){
   .footerFinalGrid{grid-template-columns:1.3fr 1fr;gap:30px 40px}
 }
@@ -67,6 +92,8 @@
   .footerFinalBottom{align-items:flex-start;flex-direction:column;gap:12px}
   .footerTagline{white-space:normal}
   .trustGrid{grid-template-columns:1fr}
+  .brand .alodenLockup{width:132px;height:28px}
+  .footer .alodenLockup,.contentReviewFooterBrand .alodenLockup,.footerFinalBrand .alodenLockup{width:130px;height:28px}
 }
 .trustContainer{display:block}
 @media(max-width:640px){#engagement .pathSteps{grid-template-columns:repeat(2,1fr)}}
