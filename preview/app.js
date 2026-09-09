@@ -156,3 +156,80 @@ if (menuBtn && navLinks) {
     document.head.appendChild(style);
   }
 })();
+
+// Built by Aloden content-review layer — Section 4 / StartupFair product proof.
+(() => {
+  if (!document.querySelector('.builtHeroGrid') || document.querySelector('#startupfair')) return;
+  const supportingGrid = document.querySelector('.supportingGrid');
+  const originalSection = supportingGrid?.closest('section.section');
+  if (!originalSection) return;
+
+  const startupCard = supportingGrid.querySelector('.supportCard:not(.dark)');
+  if (startupCard) startupCard.remove();
+
+  const section = document.createElement('section');
+  section.className = 'section startupfairSection';
+  section.id = 'startupfair';
+  section.innerHTML = `
+    <div class="container">
+      <div class="startupfairHead">
+        <div>
+          <div class="eyebrow">PRODUCT PROOF</div>
+          <img class="startupfairOfficialLogo" src="assets/startupfair-logo.webp" alt="StartupFair">
+          <h2 class="h2">Turn real challenges into visible opportunity.</h2>
+          <p class="startupfairSupport">An innovation platform connecting organizations, builders, solutions, and evaluation.</p>
+        </div>
+        <a class="textLink" href="#">Explore StartupFair →</a>
+      </div>
+      <div class="startupfairIntroGrid">
+        <div>
+          <p class="startupfairBody">StartupFair brings real-world challenges, people with the skills to solve them, working solutions, and structured evaluation into one connected product experience—making capability easier to discover through what people actually build.</p>
+          <div class="startupfairWorkflow">Challenge → Builders → Solutions → Evaluation → Opportunity</div>
+        </div>
+        <div class="startupfairUi" aria-label="Conceptual StartupFair challenge-to-opportunity workflow">
+          <div class="startupfairUiTop"><span class="sfSquare"></span><b>Innovation Platform</b><span class="mono">CHALLENGE → OPPORTUNITY</span></div>
+          <div class="startupfairUiBody">
+            <div class="startupfairBrief"><small>Challenge brief</small><b>Define a real problem worth solving</b><span>Problem · context · outcome</span></div>
+            <div class="startupfairJourney">
+              <div><span>01</span><b>Challenge</b></div><div><span>02</span><b>Builders</b></div><div><span>03</span><b>Solutions</b></div><div><span>04</span><b>Evaluation</b></div><div><span>05</span><b>Opportunity</b></div>
+            </div>
+            <div class="startupfairArtifacts"><div>Builder workspace</div><div>Solution submitted</div><div>Evaluation ready</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="startupfairProofGrid">
+        <article class="startupfairProof"><span class="num">01</span><h3>Multi-Sided Product Experience</h3><strong>Design for different users without fragmenting the product.</strong><p>Create connected experiences for organizations defining challenges, builders creating solutions, evaluators reviewing work, and opportunities emerging from the results.</p></article>
+        <article class="startupfairProof"><span class="num">02</span><h3>Evidence Over Claims</h3><strong>Make capability visible through real work.</strong><p>Structure the product around challenges, submissions, work artifacts, and evaluation so talent and ideas can be assessed through demonstrated outcomes.</p></article>
+        <article class="startupfairProof"><span class="num">03</span><h3>Workflow to Opportunity</h3><strong>Turn activity into a meaningful next step.</strong><p>Connect challenge creation, participation, solution development, evaluation, recognition, and opportunity into one continuous experience.</p></article>
+      </div>
+      <div class="startupfairCapabilitiesLine">Product Strategy · Marketplace UX · Workflow Design · Evaluation Systems · Community Experience · Product Engineering</div>
+    </div>`;
+  originalSection.parentNode.insertBefore(section, originalSection);
+
+  if (!document.querySelector('#built-section4-review-style')) {
+    const style = document.createElement('style');
+    style.id = 'built-section4-review-style';
+    style.textContent = `
+      .startupfairSection{background:#fff}
+      .startupfairHead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:24px}
+      .startupfairOfficialLogo{width:112px;height:auto;max-height:28px;object-fit:contain;object-position:left center;margin:13px 0 12px}
+      .startupfairHead .h2{max-width:780px;margin-bottom:0}
+      .startupfairHead .textLink{margin-bottom:4px}
+      .startupfairSupport{font-size:18px;line-height:1.38;font-weight:600;letter-spacing:-.022em;color:#20242d;margin:11px 0 0;max-width:670px}
+      .startupfairIntroGrid{display:grid;grid-template-columns:.86fr 1.14fr;gap:34px;align-items:start}
+      .startupfairBody{font-size:15px;line-height:1.66;color:var(--body);margin:0;max-width:575px}
+      .startupfairWorkflow{margin-top:20px;padding:14px 15px;border:1px solid #dce7f4;border-radius:11px;background:#fbfdff;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.6;color:#287eb2}
+      .startupfairUi{border:1px solid #dfe5ec;border-radius:17px;background:#fff;box-shadow:0 14px 36px rgba(21,28,45,.05);overflow:hidden}
+      .startupfairUiTop{height:42px;border-bottom:1px solid var(--line);background:#fbfcfd;display:flex;align-items:center;gap:9px;padding:0 13px}.startupfairUiTop .sfSquare{width:15px;height:15px;border-radius:4px;background:#35aee4;flex:none}.startupfairUiTop b{font-size:11px}.startupfairUiTop .mono{margin-left:auto;font-size:8.5px;color:#6e8292}
+      .startupfairUiBody{padding:18px}.startupfairBrief{border-radius:11px;background:linear-gradient(135deg,#0b0d12,#202633 68%,#287eb2 160%);color:#fff;padding:14px}.startupfairBrief small{display:block;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#7ed2ff;text-transform:uppercase;letter-spacing:.08em}.startupfairBrief b{display:block;font-size:13px;margin-top:5px}.startupfairBrief span{display:block;font-size:9.5px;color:#bac5cf;margin-top:3px}
+      .startupfairJourney{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}.startupfairJourney div{border:1px solid var(--line);border-radius:9px;padding:9px 7px;background:#fff}.startupfairJourney span{display:block;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#35aee4}.startupfairJourney b{display:block;font-size:9.5px;margin-top:4px}
+      .startupfairArtifacts{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.startupfairArtifacts div{border:1px dashed #ced8e1;border-radius:8px;padding:10px;text-align:center;font-size:9px;color:#667586;background:#fbfdff}
+      .startupfairProofGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.startupfairProof{border-top:1px solid var(--line);padding-top:17px}.startupfairProof .num{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#35aee4}.startupfairProof h3{font-size:17px;line-height:1.2;margin:10px 0 5px}.startupfairProof strong{display:block;font-size:12.5px;line-height:1.45;color:#20242d;margin-bottom:6px}.startupfairProof p{font-size:12px;line-height:1.55;color:var(--muted);margin:0}
+      .startupfairCapabilitiesLine{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:1.6;color:#287eb2}
+      .supportingGrid:has(.supportCard.dark){grid-template-columns:1fr}.supportingGrid:has(.supportCard.dark) .supportCard.dark{max-width:none}
+      @media(max-width:980px){.startupfairIntroGrid{grid-template-columns:1fr}.startupfairUi{max-width:760px}.startupfairProofGrid{grid-template-columns:1fr}}
+      @media(max-width:640px){.startupfairHead{align-items:flex-start;flex-direction:column}.startupfairJourney{grid-template-columns:1fr 1fr}.startupfairArtifacts{grid-template-columns:1fr}}
+    `;
+    document.head.appendChild(style);
+  }
+})();
