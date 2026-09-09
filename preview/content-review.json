@@ -5,18 +5,9 @@
     "subheadline": "Built around your vision. Engineered for real-world impact.",
     "description": "Aloden brings together AI, product strategy, experience design, engineering, and modernization to turn ideas and existing software into production-ready digital products.",
     "proof": [
-      {
-        "title": "AI Product Engineering",
-        "text": "From product strategy and AI architecture to design, engineering, and production."
-      },
-      {
-        "title": "Modernization at Scale",
-        "text": "Modernize products, platforms, and workflows without losing what already works."
-      },
-      {
-        "title": "Built for Real Use",
-        "text": "Intelligent products engineered around users, systems, operations, and measurable outcomes."
-      }
+      {"title":"AI Product Engineering","text":"From product strategy and AI architecture to design, engineering, and production."},
+      {"title":"Modernization at Scale","text":"Modernize products, platforms, and workflows without losing what already works."},
+      {"title":"Built for Real Use","text":"Intelligent products engineered around users, systems, operations, and measurable outcomes."}
     ]
   },
   "built": {
@@ -24,27 +15,9 @@
     "headline": "Real products. Built for real use.",
     "intro": "Aloden turns complex ideas and workflows into intelligent products that operate in the real world—from healthcare workforce technology to innovation platforms and conversational AI.",
     "products": [
-      {
-        "name": "Medlivo",
-        "description": "Intelligent technology for complex healthcare workforce operations.",
-        "body": "A connected healthcare workforce platform bringing intelligence, matching, credentialing, scheduling, and operational workflows into one product experience.",
-        "workflow": "Need → Intelligence → Matching → Credentialing → Scheduling → Operations",
-        "cta": "Explore Medlivo →"
-      },
-      {
-        "name": "StartupFair",
-        "description": "Where real challenges connect with builders and opportunity.",
-        "body": "An innovation and talent-discovery platform that brings organizations and builders together around practical problems, working solutions, and measurable evaluation.",
-        "workflow": "Challenge → Builders → Solutions → Evaluation → Opportunity",
-        "cta": "Explore StartupFair →"
-      },
-      {
-        "name": "Aloden Voice AI",
-        "description": "Conversations that connect to real business action.",
-        "body": "Voice AI experiences that understand intent, work with connected systems, complete permitted actions, confirm outcomes, and involve people when human judgment is needed.",
-        "workflow": "Conversation → Intent → Action → Confirmation → Human Escalation",
-        "cta": "Explore Voice AI →"
-      }
+      {"name":"Medlivo","description":"Intelligent technology for complex healthcare workforce operations.","body":"A connected healthcare workforce platform bringing intelligence, matching, credentialing, scheduling, and operational workflows into one product experience.","workflow":"Need → Intelligence → Matching → Credentialing → Scheduling → Operations","cta":"Explore Medlivo →"},
+      {"name":"StartupFair","description":"Where real challenges connect with builders and opportunity.","body":"An innovation and talent-discovery platform that brings organizations and builders together around practical problems, working solutions, and measurable evaluation.","workflow":"Challenge → Builders → Solutions → Evaluation → Opportunity","cta":"Explore StartupFair →"},
+      {"name":"Aloden Voice AI","description":"Conversations that connect to real business action.","body":"Voice AI experiences that understand intent, work with connected systems, complete permitted actions, confirm outcomes, and involve people when human judgment is needed.","workflow":"Conversation → Intent → Action → Confirmation → Human Escalation","cta":"Explore Voice AI →"}
     ],
     "closing": "Different products. Different domains. One engineering discipline.",
     "discipline": "Problem → Product Definition → Design → Engineering → AI & Automation → Production"
@@ -54,58 +27,8 @@
     "headline": "Two paths. One goal: a better product.",
     "intro": "Whether you’re starting with an idea or improving software already in use, Aloden brings product thinking, AI, design, and engineering together to move from opportunity to production.",
     "paths": [
-      {
-        "title": "Build something new.",
-        "description": "Turn an idea, business problem, or market opportunity into a production-ready digital product.",
-        "steps": [
-          {
-            "number": "01",
-            "title": "Define the opportunity",
-            "description": "Clarify the problem, users, business goals, and product vision."
-          },
-          {
-            "number": "02",
-            "title": "Shape the product",
-            "description": "Define the experience, architecture, AI opportunities, and delivery roadmap."
-          },
-          {
-            "number": "03",
-            "title": "Design & engineer",
-            "description": "Build, integrate, test, and validate the product around real-world use."
-          },
-          {
-            "number": "04",
-            "title": "Launch & evolve",
-            "description": "Move into production, learn from usage, and continuously improve."
-          }
-        ]
-      },
-      {
-        "title": "Make what already works significantly better.",
-        "description": "Modernize existing products, platforms, and workflows without unnecessarily rebuilding everything from scratch.",
-        "steps": [
-          {
-            "number": "01",
-            "title": "Understand the current product",
-            "description": "Evaluate architecture, user experience, workflows, data, and technical constraints."
-          },
-          {
-            "number": "02",
-            "title": "Define the modernization path",
-            "description": "Identify where modern architecture, AI, automation, and experience improvements create the most value."
-          },
-          {
-            "number": "03",
-            "title": "Modernize intelligently",
-            "description": "Upgrade the right components while protecting critical business functionality."
-          },
-          {
-            "number": "04",
-            "title": "Improve & scale",
-            "description": "Deliver a faster, more intelligent, maintainable product ready for what comes next."
-          }
-        ]
-      }
+      {"title":"Build something new.","description":"Turn an idea, business problem, or market opportunity into a production-ready digital product.","steps":[{"number":"01","title":"Define the opportunity","description":"Clarify the problem, users, business goals, and product vision."},{"number":"02","title":"Shape the product","description":"Define the experience, architecture, AI opportunities, and delivery roadmap."},{"number":"03","title":"Design & engineer","description":"Build, integrate, test, and validate the product around real-world use."},{"number":"04","title":"Launch & evolve","description":"Move into production, learn from usage, and continuously improve."}]},
+      {"title":"Make what already works significantly better.","description":"Modernize existing products, platforms, and workflows without unnecessarily rebuilding everything from scratch.","steps":[{"number":"01","title":"Understand the current product","description":"Evaluate architecture, user experience, workflows, data, and technical constraints."},{"number":"02","title":"Define the modernization path","description":"Identify where modern architecture, AI, automation, and experience improvements create the most value."},{"number":"03","title":"Modernize intelligently","description":"Upgrade the right components while protecting critical business functionality."},{"number":"04","title":"Improve & scale","description":"Deliver a faster, more intelligent, maintainable product ready for what comes next."}]}
     ]
   },
   "audience": {
@@ -113,22 +36,10 @@
     "headline": "Different challenges. Same standard of execution.",
     "intro": "Aloden works with teams that need more than development capacity—teams looking for product thinking, AI expertise, and engineering depth to build, modernize, or scale something important.",
     "items": [
-      {
-        "title": "Founders",
-        "text": "Turn a bold idea into a credible, production-ready product—from definition and validation through launch."
-      },
-      {
-        "title": "Product Teams",
-        "text": "Add specialized AI and engineering depth to accelerate roadmaps, solve complex product challenges, and move faster."
-      },
-      {
-        "title": "Mid-Market Companies",
-        "text": "Modernize products and operations with AI, automation, better experiences, and more scalable technology."
-      },
-      {
-        "title": "Enterprise Teams",
-        "text": "Evolve complex platforms and workflows with disciplined architecture, integration, governance, and controlled delivery."
-      }
+      {"title":"Founders","text":"Turn a bold idea into a credible, production-ready product—from definition and validation through launch."},
+      {"title":"Product Teams","text":"Add specialized AI and engineering depth to accelerate roadmaps, solve complex product challenges, and move faster."},
+      {"title":"Mid-Market Companies","text":"Modernize products and operations with AI, automation, better experiences, and more scalable technology."},
+      {"title":"Enterprise Teams","text":"Evolve complex platforms and workflows with disciplined architecture, integration, governance, and controlled delivery."}
     ]
   },
   "capabilities": {
@@ -136,30 +47,10 @@
     "headline": "Engineering intelligence into products that work.",
     "intro": "Aloden combines product strategy, AI, design, architecture, and engineering to create intelligent digital products—and modernize the ones businesses already depend on.",
     "items": [
-      {
-        "title": "AI Product Engineering",
-        "tagline": "Build AI into the product, not around it.",
-        "text": "From product definition and experience design to AI architecture and full-stack engineering, we build intelligent products designed for production from the beginning.",
-        "areas": "Product Strategy · AI Architecture · Experience Design · Full-Stack Engineering · Integration · Evaluation"
-      },
-      {
-        "title": "Voice AI Engineering",
-        "tagline": "Turn natural conversation into useful action.",
-        "text": "We design voice experiences that understand intent, interact with business systems, complete permitted workflows, confirm outcomes, and involve people when judgment is needed.",
-        "areas": "Conversational UX · Speech & Intent · System Integration · Workflow Action · Human Escalation"
-      },
-      {
-        "title": "Intelligent Workflow & Agentic Systems",
-        "tagline": "Connect intelligence to the work that needs to happen.",
-        "text": "We build AI-enabled workflows and agentic systems that use tools, coordinate across systems, automate repeatable work, and preserve the controls and approvals businesses need.",
-        "areas": "Agentic Workflows · Tool Use · Automation · Orchestration · Human-in-the-Loop · Guardrails"
-      },
-      {
-        "title": "Product Modernization",
-        "tagline": "Make existing software ready for what comes next.",
-        "text": "We modernize architecture, experiences, integrations, data flows, and workflows—adding AI where it creates real value without unnecessarily rebuilding everything.",
-        "areas": "Architecture Modernization · UX Modernization · APIs & Integration · Cloud · Automation · AI Enablement"
-      }
+      {"title":"AI Product Engineering","tagline":"Build AI into the product, not around it.","text":"From product definition and experience design to AI architecture and full-stack engineering, we build intelligent products designed for production from the beginning.","areas":"Product Strategy · AI Architecture · Experience Design · Full-Stack Engineering · Integration · Evaluation"},
+      {"title":"Voice AI Engineering","tagline":"Turn natural conversation into useful action.","text":"We design voice experiences that understand intent, interact with business systems, complete permitted workflows, confirm outcomes, and involve people when judgment is needed.","areas":"Conversational UX · Speech & Intent · System Integration · Workflow Action · Human Escalation"},
+      {"title":"Intelligent Workflow & Agentic Systems","tagline":"Connect intelligence to the work that needs to happen.","text":"We build AI-enabled workflows and agentic systems that use tools, coordinate across systems, automate repeatable work, and preserve the controls and approvals businesses need.","areas":"Agentic Workflows · Tool Use · Automation · Orchestration · Human-in-the-Loop · Guardrails"},
+      {"title":"Product Modernization","tagline":"Make existing software ready for what comes next.","text":"We modernize architecture, experiences, integrations, data flows, and workflows—adding AI where it creates real value without unnecessarily rebuilding everything.","areas":"Architecture Modernization · UX Modernization · APIs & Integration · Cloud · Automation · AI Enablement"}
     ],
     "support": "Deep domain experience in healthcare AI and complex workforce operations.",
     "cta": "Explore Healthcare AI →"
@@ -169,37 +60,24 @@
     "headline": "From business problem to production.",
     "intro": "Aloden works collaboratively from early discovery through launch and continuous improvement—combining product thinking, engineering discipline, and practical AI execution at every stage.",
     "items": [
-      {
-        "number": "01",
-        "title": "Discover",
-        "tagline": "Understand what is worth solving.",
-        "text": "Clarify the business problem, users, workflows, constraints, existing systems, and the outcomes that matter."
-      },
-      {
-        "number": "02",
-        "title": "Design",
-        "tagline": "Shape the right product before overbuilding it.",
-        "text": "Translate the opportunity into product flows, experience design, architecture, AI behavior, integrations, and a clear delivery plan."
-      },
-      {
-        "number": "03",
-        "title": "Build",
-        "tagline": "Engineer for real-world use.",
-        "text": "Develop the product, connect systems, integrate AI, test workflows, evaluate behavior, and build the controls needed for production."
-      },
-      {
-        "number": "04",
-        "title": "Deploy",
-        "tagline": "Move into production with confidence.",
-        "text": "Prepare environments, integrations, security, monitoring, adoption paths, and operational readiness for a controlled launch."
-      },
-      {
-        "number": "05",
-        "title": "Evolve",
-        "tagline": "Improve with evidence.",
-        "text": "Learn from users and production behavior, measure what matters, refine the experience, improve AI performance, and expand capabilities over time."
-      }
+      {"number":"01","title":"Discover","tagline":"Understand what is worth solving.","text":"Clarify the business problem, users, workflows, constraints, existing systems, and the outcomes that matter."},
+      {"number":"02","title":"Design","tagline":"Shape the right product before overbuilding it.","text":"Translate the opportunity into product flows, experience design, architecture, AI behavior, integrations, and a clear delivery plan."},
+      {"number":"03","title":"Build","tagline":"Engineer for real-world use.","text":"Develop the product, connect systems, integrate AI, test workflows, evaluate behavior, and build the controls needed for production."},
+      {"number":"04","title":"Deploy","tagline":"Move into production with confidence.","text":"Prepare environments, integrations, security, monitoring, adoption paths, and operational readiness for a controlled launch."},
+      {"number":"05","title":"Evolve","tagline":"Improve with evidence.","text":"Learn from users and production behavior, measure what matters, refine the experience, improve AI performance, and expand capabilities over time."}
     ],
     "closing": "Strategy informs design. Design informs engineering. Production informs what comes next."
+  },
+  "philosophy": {
+    "eyebrow": "HOW WE THINK",
+    "headline": "Good technology starts with better decisions.",
+    "intro": "AI changes quickly. The fundamentals of building useful products do not: understand the right problem, validate assumptions early, engineer for real-world use, and improve with evidence.",
+    "items": [
+      {"number":"01","title":"Start with the problem.","tagline":"Solve what matters before choosing the technology.","text":"We begin with the business problem, user need, workflow, and desired outcome. AI is valuable when it creates a meaningfully better product—not simply because it can be added."},
+      {"number":"02","title":"Validate early.","tagline":"Turn assumptions into evidence quickly.","text":"Test product flows, technical choices, integrations, and AI behavior before investing heavily in the wrong direction."},
+      {"number":"03","title":"Engineer for real use.","tagline":"Build beyond the demo.","text":"Production products must work across people, systems, data, security, edge cases, operations, and changing real-world conditions."},
+      {"number":"04","title":"Evolve with evidence.","tagline":"Let production teach us what comes next.","text":"Measure usage, outcomes, reliability, and AI quality. Use that evidence to improve the experience and expand the product intelligently."}
+    ],
+    "closing": "The goal is not more AI. The goal is a better product."
   }
 }
