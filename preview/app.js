@@ -27,7 +27,15 @@ if (menuBtn && navLinks) {
 }
 
 if (document.querySelector('.aipeHero')) {
-  const script = document.createElement('script');
-  script.src = 'aipe-section3.js?v=' + Date.now();
-  document.body.appendChild(script);
+  (async () => {
+    for (const src of ['aipe-section3.js', 'aipe-section4.js']) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + Date.now();
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    }
+  })().catch(err => console.error('AI Product Engineering review layer failed', err));
 }
