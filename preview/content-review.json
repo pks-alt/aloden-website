@@ -75,5 +75,28 @@
         ]
       }
     ]
+  },
+  "audience": {
+    "eyebrow": "WHO WE BUILD FOR",
+    "headline": "Different challenges. Same standard of execution.",
+    "intro": "Aloden works with teams that need more than development capacity—teams looking for product thinking, AI expertise, and engineering depth to build, modernize, or scale something important.",
+    "items": [
+      {
+        "title": "Founders",
+        "text": "Turn a bold idea into a credible, production-ready product—from definition and validation through launch."
+      },
+      {
+        "title": "Product Teams",
+        "text": "Add specialized AI and engineering depth to accelerate roadmaps, solve complex product challenges, and move faster."
+      },
+      {
+        "title": "Mid-Market Companies",
+        "text": "Modernize products and operations with AI, automation, better experiences, and more scalable technology."
+      },
+      {
+        "title": "Enterprise Teams",
+        "text": "Evolve complex platforms and workflows with disciplined architecture, integration, governance, and controlled delivery."
+      }
+    ]
   }
 }
