@@ -15,173 +15,18 @@ html,body{margin:0;min-height:100%;background:#fff}
 (async()=>{
   try{
     const bust='?v='+Date.now();
-    const [html,content]=await Promise.all([
-      fetch('index.html'+bust,{cache:'no-store'}).then(r=>{if(!r.ok) throw new Error('Base page '+r.status); return r.text();}),
-      fetch('content-review.json'+bust,{cache:'no-store'}).then(r=>{if(!r.ok) throw new Error('Content '+r.status); return r.json();})
-    ]);
+    const html=await fetch('index.html'+bust,{cache:'no-store'}).then(r=>{
+      if(!r.ok) throw new Error('Base page '+r.status);
+      return r.text();
+    });
     const doc=new DOMParser().parseFromString(html,'text/html');
-    const set=(sel,val)=>{const el=doc.querySelector(sel); if(el&&val!==undefined) el.textContent=val;};
-
-    const hero=content.hero||{};
-    set('.hero .eyebrow',hero.eyebrow);
-    set('.hero h1',hero.headline);
-    set('.heroSub',hero.subheadline);
-    set('.heroDesc',hero.description);
-    if(Array.isArray(hero.proof)) hero.proof.forEach((item,i)=>{
-      set(`.proofStrip > div:nth-child(${i+1}) b`,item.title);
-      set(`.proofStrip > div:nth-child(${i+1}) span`,item.text);
-    });
-
-    const built=content.built||{};
-    const builtSection=doc.querySelector('#built');
-    if(builtSection){
-      set('#built .eyebrow',built.eyebrow);
-      set('#built .h2',built.headline);
-      set('#built .lead',built.intro);
-      const cards=[...builtSection.querySelectorAll('.productCard')];
-      if(Array.isArray(built.products)) built.products.forEach((p,i)=>{
-        const card=cards[i]; if(!card) return;
-        const para=card.querySelector('p'); if(para) para.textContent=p.body || p.description;
-        const link=card.querySelector('.textLink'); if(link&&p.cta) link.textContent=p.cta;
-        let detail=card.querySelector('.contentReviewDetail');
-        if(!detail){
-          detail=doc.createElement('div');
-          detail.className='contentReviewDetail';
-          detail.style.margin='10px 0 0';
-          detail.style.display='grid';
-          detail.style.gap='5px';
-          const screen=card.querySelector('.productScreen');
-          if(screen) card.insertBefore(detail,screen); else card.appendChild(detail);
-        }
-        detail.innerHTML='';
-        if(p.description){
-          const strong=doc.createElement('strong'); strong.textContent=p.description;
-          strong.style.fontSize='14px'; strong.style.lineHeight='1.35'; strong.style.letterSpacing='-.015em';
-          detail.appendChild(strong);
-        }
-        if(p.workflow){
-          const flow=doc.createElement('span'); flow.textContent=p.workflow;
-          flow.style.fontFamily='IBM Plex Mono,monospace'; flow.style.fontSize='9px'; flow.style.lineHeight='1.5'; flow.style.color='#7c4dff';
-          detail.appendChild(flow);
-        }
-      });
-      let closing=builtSection.querySelector('.contentReviewClosing');
-      if(!closing){
-        closing=doc.createElement('div');
-        closing.className='contentReviewClosing';
-        closing.style.marginTop='26px';
-        closing.style.paddingTop='20px';
-        closing.style.borderTop='1px solid #e6e8ed';
-        builtSection.querySelector('.container').appendChild(closing);
-      }
-      closing.innerHTML='';
-      const b=doc.createElement('b'); b.textContent=built.closing||''; b.style.display='block'; b.style.fontSize='18px'; b.style.letterSpacing='-.02em';
-      const s=doc.createElement('span'); s.textContent=built.discipline||''; s.style.display='block'; s.style.marginTop='7px'; s.style.fontFamily='IBM Plex Mono,monospace'; s.style.fontSize='10px'; s.style.color='#727b8b'; s.style.letterSpacing='.04em';
-      closing.append(b,s);
-    }
-
-    const engagement=content.engagement||{};
-    const engagementSection=[...doc.querySelectorAll('section.section')].find(sec=>{
-      const e=sec.querySelector('.eyebrow');
-      return e && /Build New/i.test(e.textContent||'');
-    });
-    if(engagementSection){
-      const eyebrow=engagementSection.querySelector('.eyebrow'); if(eyebrow&&engagement.eyebrow) eyebrow.textContent=engagement.eyebrow;
-      const h2=engagementSection.querySelector('.h2'); if(h2&&engagement.headline) h2.textContent=engagement.headline;
-      const lead=engagementSection.querySelector('.lead'); if(lead&&engagement.intro) lead.textContent=engagement.intro;
-      const cards=[...engagementSection.querySelectorAll('.pathCard')];
-      if(Array.isArray(engagement.paths)) engagement.paths.forEach((path,i)=>{
-        const card=cards[i]; if(!card) return;
-        const title=card.querySelector('.pathTitle h3'); if(title&&path.title) title.textContent=path.title;
-        const desc=card.querySelector(':scope > p'); if(desc&&path.description) desc.textContent=path.description;
-        const steps=[...card.querySelectorAll('.pathSteps > div')];
-        if(Array.isArray(path.steps)) path.steps.forEach((step,j)=>{
-          const cell=steps[j]; if(!cell) return;
-          const num=cell.querySelector('span'); if(num&&step.number) num.textContent=step.number;
-          const label=cell.querySelector('b'); if(label&&step.title) label.textContent=step.title;
-          let detail=cell.querySelector('.contentReviewStepDesc');
-          if(!detail){
-            detail=doc.createElement('small');
-            detail.className='contentReviewStepDesc';
-            detail.style.display='block';
-            detail.style.marginTop='5px';
-            detail.style.fontSize='9px';
-            detail.style.lineHeight='1.35';
-            detail.style.color='#727b8b';
-            cell.appendChild(detail);
-          }
-          detail.textContent=step.description||'';
-        });
-      });
-    }
-
-    const audience=content.audience||{};
-    const whoGrid=doc.querySelector('.whoGrid');
-    if(whoGrid){
-      const section=whoGrid.closest('section');
-      if(section){
-        const eyebrow=section.querySelector('.eyebrow'); if(eyebrow&&audience.eyebrow) eyebrow.textContent=audience.eyebrow;
-        const h2=section.querySelector('.h2'); if(h2&&audience.headline) h2.textContent=audience.headline;
-        const lead=section.querySelector('.lead'); if(lead&&audience.intro) lead.textContent=audience.intro;
-        const items=[...section.querySelectorAll('.whoItem')];
-        if(Array.isArray(audience.items)) audience.items.forEach((item,i)=>{
-          const row=items[i]; if(!row) return;
-          const title=row.querySelector('b'); if(title&&item.title) title.textContent=item.title;
-          const text=row.querySelector('span'); if(text&&item.text) text.textContent=item.text;
-        });
-      }
-    }
-
-    const capabilities=content.capabilities||{};
-    const capSection=doc.querySelector('#capabilities');
-    if(capSection){
-      const eyebrow=capSection.querySelector('.eyebrow'); if(eyebrow&&capabilities.eyebrow) eyebrow.textContent=capabilities.eyebrow;
-      const h2=capSection.querySelector('.h2'); if(h2&&capabilities.headline) h2.textContent=capabilities.headline;
-      const lead=capSection.querySelector('.lead'); if(lead&&capabilities.intro) lead.textContent=capabilities.intro;
-      const items=[...capSection.querySelectorAll('.capItem')];
-      if(Array.isArray(capabilities.items)) capabilities.items.forEach((item,i)=>{
-        const card=items[i]; if(!card) return;
-        const title=card.querySelector('h3'); if(title&&item.title) title.textContent=item.title;
-        const para=card.querySelector('p'); if(para&&item.text) para.textContent=item.text;
-        let detail=card.querySelector('.contentReviewCapDetail');
-        if(!detail){
-          detail=doc.createElement('div');
-          detail.className='contentReviewCapDetail';
-          detail.style.marginTop='12px';
-          detail.style.display='grid';
-          detail.style.gap='7px';
-          card.appendChild(detail);
-        }
-        detail.innerHTML='';
-        if(item.tagline){
-          const strong=doc.createElement('strong'); strong.textContent=item.tagline;
-          strong.style.fontSize='12px'; strong.style.color='#fff'; strong.style.lineHeight='1.35';
-          detail.appendChild(strong);
-        }
-        if(item.areas){
-          const span=doc.createElement('span'); span.textContent=item.areas;
-          span.style.fontFamily='IBM Plex Mono,monospace'; span.style.fontSize='8.5px'; span.style.lineHeight='1.55'; span.style.color='#a58aff';
-          detail.appendChild(span);
-        }
-      });
-      let support=capSection.querySelector('.contentReviewCapSupport');
-      if(!support){
-        support=doc.createElement('div');
-        support.className='contentReviewCapSupport';
-        support.style.marginTop='24px';
-        support.style.paddingTop='18px';
-        support.style.borderTop='1px solid #242730';
-        capSection.querySelector('.container').appendChild(support);
-      }
-      support.innerHTML='';
-      const txt=doc.createElement('span'); txt.textContent=capabilities.support||''; txt.style.color='#c9cdd6'; txt.style.fontSize='13px';
-      const a=doc.createElement('a'); a.textContent=capabilities.cta||''; a.href='#'; a.style.marginLeft='14px'; a.style.color='#a58aff'; a.style.fontSize='13px'; a.style.fontWeight='600';
-      support.append(txt,a);
-    }
-
     const marker=doc.createElement('meta');
-    marker.name='aloden-content-review'; marker.content='live';
+    marker.name='aloden-content-review';
+    marker.content='live';
     doc.head.appendChild(marker);
+    const patch=doc.createElement('script');
+    patch.src='review-patch.js'+bust;
+    doc.body.appendChild(patch);
     document.open();
     document.write('<!doctype html>'+doc.documentElement.outerHTML);
     document.close();
