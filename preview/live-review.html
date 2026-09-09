@@ -80,6 +80,41 @@ html,body{margin:0;min-height:100%;background:#fff}
       closing.append(b,s);
     }
 
+    const engagement=content.engagement||{};
+    const engagementSection=[...doc.querySelectorAll('section.section')].find(sec=>{
+      const e=sec.querySelector('.eyebrow');
+      return e && /Build New/i.test(e.textContent||'');
+    });
+    if(engagementSection){
+      const eyebrow=engagementSection.querySelector('.eyebrow'); if(eyebrow&&engagement.eyebrow) eyebrow.textContent=engagement.eyebrow;
+      const h2=engagementSection.querySelector('.h2'); if(h2&&engagement.headline) h2.textContent=engagement.headline;
+      const lead=engagementSection.querySelector('.lead'); if(lead&&engagement.intro) lead.textContent=engagement.intro;
+      const cards=[...engagementSection.querySelectorAll('.pathCard')];
+      if(Array.isArray(engagement.paths)) engagement.paths.forEach((path,i)=>{
+        const card=cards[i]; if(!card) return;
+        const title=card.querySelector('.pathTitle h3'); if(title&&path.title) title.textContent=path.title;
+        const desc=card.querySelector(':scope > p'); if(desc&&path.description) desc.textContent=path.description;
+        const steps=[...card.querySelectorAll('.pathSteps > div')];
+        if(Array.isArray(path.steps)) path.steps.forEach((step,j)=>{
+          const cell=steps[j]; if(!cell) return;
+          const num=cell.querySelector('span'); if(num&&step.number) num.textContent=step.number;
+          const label=cell.querySelector('b'); if(label&&step.title) label.textContent=step.title;
+          let detail=cell.querySelector('.contentReviewStepDesc');
+          if(!detail){
+            detail=doc.createElement('small');
+            detail.className='contentReviewStepDesc';
+            detail.style.display='block';
+            detail.style.marginTop='5px';
+            detail.style.fontSize='9px';
+            detail.style.lineHeight='1.35';
+            detail.style.color='#727b8b';
+            cell.appendChild(detail);
+          }
+          detail.textContent=step.description||'';
+        });
+      });
+    }
+
     const marker=doc.createElement('meta');
     marker.name='aloden-content-review'; marker.content='live';
     doc.head.appendChild(marker);
