@@ -30,6 +30,9 @@ html,body{margin:0;min-height:100%;background:#fff}
     const philosophyPatch=doc.createElement('script');
     philosophyPatch.src='review-philosophy.js'+bust;
     doc.body.appendChild(philosophyPatch);
+    const insightPatch=doc.createElement('script');
+    insightPatch.src='review-insight.js'+bust;
+    doc.body.appendChild(insightPatch);
     document.open();
     document.write('<!doctype html>'+doc.documentElement.outerHTML);
     document.close();
