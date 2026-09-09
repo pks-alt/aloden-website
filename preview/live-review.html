@@ -20,8 +20,9 @@ html,body{margin:0;min-height:100%;background:#fff}
       fetch('content-review.json'+bust,{cache:'no-store'}).then(r=>{if(!r.ok) throw new Error('Content '+r.status); return r.json();})
     ]);
     const doc=new DOMParser().parseFromString(html,'text/html');
-    const hero=content.hero||{};
     const set=(sel,val)=>{const el=doc.querySelector(sel); if(el&&val!==undefined) el.textContent=val;};
+
+    const hero=content.hero||{};
     set('.hero .eyebrow',hero.eyebrow);
     set('.hero h1',hero.headline);
     set('.heroSub',hero.subheadline);
@@ -30,6 +31,55 @@ html,body{margin:0;min-height:100%;background:#fff}
       set(`.proofStrip > div:nth-child(${i+1}) b`,item.title);
       set(`.proofStrip > div:nth-child(${i+1}) span`,item.text);
     });
+
+    const built=content.built||{};
+    const builtSection=doc.querySelector('#built');
+    if(builtSection){
+      set('#built .eyebrow',built.eyebrow);
+      set('#built .h2',built.headline);
+      set('#built .lead',built.intro);
+      const cards=[...builtSection.querySelectorAll('.productCard')];
+      if(Array.isArray(built.products)) built.products.forEach((p,i)=>{
+        const card=cards[i]; if(!card) return;
+        const para=card.querySelector('p'); if(para) para.textContent=p.body || p.description;
+        const link=card.querySelector('.textLink'); if(link&&p.cta) link.textContent=p.cta;
+        let detail=card.querySelector('.contentReviewDetail');
+        if(!detail){
+          detail=doc.createElement('div');
+          detail.className='contentReviewDetail';
+          detail.style.margin='10px 0 0';
+          detail.style.display='grid';
+          detail.style.gap='5px';
+          const screen=card.querySelector('.productScreen');
+          if(screen) card.insertBefore(detail,screen); else card.appendChild(detail);
+        }
+        detail.innerHTML='';
+        if(p.description){
+          const strong=doc.createElement('strong'); strong.textContent=p.description;
+          strong.style.fontSize='14px'; strong.style.lineHeight='1.35'; strong.style.letterSpacing='-.015em';
+          detail.appendChild(strong);
+        }
+        if(p.workflow){
+          const flow=doc.createElement('span'); flow.textContent=p.workflow;
+          flow.style.fontFamily='IBM Plex Mono,monospace'; flow.style.fontSize='9px'; flow.style.lineHeight='1.5'; flow.style.color='#7c4dff';
+          detail.appendChild(flow);
+        }
+      });
+      let closing=builtSection.querySelector('.contentReviewClosing');
+      if(!closing){
+        closing=doc.createElement('div');
+        closing.className='contentReviewClosing';
+        closing.style.marginTop='26px';
+        closing.style.paddingTop='20px';
+        closing.style.borderTop='1px solid #e6e8ed';
+        builtSection.querySelector('.container').appendChild(closing);
+      }
+      closing.innerHTML='';
+      const b=doc.createElement('b'); b.textContent=built.closing||''; b.style.display='block'; b.style.fontSize='18px'; b.style.letterSpacing='-.02em';
+      const s=doc.createElement('span'); s.textContent=built.discipline||''; s.style.display='block'; s.style.marginTop='7px'; s.style.fontFamily='IBM Plex Mono,monospace'; s.style.fontSize='10px'; s.style.color='#727b8b'; s.style.letterSpacing='.04em';
+      closing.append(b,s);
+    }
+
     const marker=doc.createElement('meta');
     marker.name='aloden-content-review'; marker.content='live';
     doc.head.appendChild(marker);
