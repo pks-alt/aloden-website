@@ -27,6 +27,9 @@ html,body{margin:0;min-height:100%;background:#fff}
     const patch=doc.createElement('script');
     patch.src='review-patch.js'+bust;
     doc.body.appendChild(patch);
+    const philosophyPatch=doc.createElement('script');
+    philosophyPatch.src='review-philosophy.js'+bust;
+    doc.body.appendChild(philosophyPatch);
     document.open();
     document.write('<!doctype html>'+doc.documentElement.outerHTML);
     document.close();
