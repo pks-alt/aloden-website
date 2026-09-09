@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.aipeHero')) {
+  const script = document.createElement('script');
+  script.src = 'aipe-section3.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
