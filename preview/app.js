@@ -27,7 +27,15 @@ if (menuBtn && navLinks) {
 }
 
 if (document.querySelector('.modernizationHero')) {
-  const script = document.createElement('script');
-  script.src = 'modernization-section3.js?v=' + Date.now();
-  document.body.appendChild(script);
+  (async () => {
+    for (const src of ['modernization-section3.js', 'modernization-section4.js']) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + Date.now();
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    }
+  })().catch(err => console.error('Product Modernization review layer failed', err));
 }
