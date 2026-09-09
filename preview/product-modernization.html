@@ -84,8 +84,110 @@
   </div>
 </section>
 
+<section class="modernizationWhat section" id="what-gets-modernized">
+  <div class="container">
+    <div class="modernizationWhatHead">
+      <div class="eyebrow">WHAT GETS MODERNIZED</div>
+      <h2 class="h2">Change the constraints. Preserve the value.</h2>
+      <p class="lead">Modernization should begin by understanding why the existing product still matters. Users, workflows, business rules, data, integrations, and operating knowledge may represent years of accumulated value. The goal is to identify which parts should remain, which should evolve, and which are preventing the product from moving forward.</p>
+    </div>
+
+    <div class="modernizationDecisionFramework" aria-label="Decision framework for preserving, refactoring, wrapping, replacing, or retiring an existing product component">
+      <div class="modernizationDecisionTop"><span>MODERNIZATION DECISION FRAMEWORK</span><b>MAKE THE SMALLEST CHANGE THAT REMOVES THE CONSTRAINT</b></div>
+      <div class="modernizationDecisionBody">
+        <div class="modernizationComponentStart"><span>START</span><b>Existing Product Component</b><small>Does it still create meaningful product or business value?</small></div>
+        <div class="modernizationDecisionOptions">
+          <article><span>PRESERVE</span><b>Keep it.</b><p>It works, remains supportable, and does not materially constrain the product.</p></article>
+          <article class="modernizationRefactorChoice"><span>REFACTOR</span><b>Improve the implementation.</b><p>The capability is valuable, but its implementation creates complexity, reliability, scalability, or delivery problems.</p></article>
+          <article><span>WRAP / DECOUPLE</span><b>Reduce dependency.</b><p>The system must remain for now, but APIs, adapters, or service boundaries can isolate it.</p></article>
+          <article class="modernizationReplaceChoice"><span>REPLACE</span><b>Swap the implementation.</b><p>The capability is needed, but the existing implementation no longer makes technical or economic sense.</p></article>
+          <article><span>RETIRE</span><b>Remove it.</b><p>The capability no longer serves a meaningful user, workflow, or business need.</p></article>
+        </div>
+      </div>
+      <div class="modernizationDecisionClosing">The objective is not to modernize everything. It is to remove the constraints that matter.</div>
+    </div>
+
+    <div class="modernizationLayerComparison" aria-label="Current-state to future-state modernization across product layers">
+      <div class="modernizationLayerTop"><span>CURRENT STATE → FUTURE STATE</span><b>PRODUCT EVOLUTION, LAYER BY LAYER</b></div>
+      <div class="modernizationLayerRows">
+        <div><span>EXPERIENCE</span><b>Current friction</b><i>→</i><strong>Modern product experience</strong></div>
+        <div><span>APPLICATION</span><b>Coupled implementation</b><i>→</i><strong>Evolvable architecture</strong></div>
+        <div><span>INTEGRATIONS</span><b>Point-to-point dependency</b><i>→</i><strong>Defined interfaces</strong></div>
+        <div><span>DATA</span><b>Fragmented context</b><i>→</i><strong>Reliable product data</strong></div>
+        <div><span>PLATFORM</span><b>Difficult delivery</b><i>→</i><strong>Observable, repeatable delivery</strong></div>
+        <div class="modernizationIntelligenceRow"><span>INTELLIGENCE</span><b>Where useful</b><i>→</i><strong>AI / agentic / voice capability</strong></div>
+      </div>
+      <div class="modernizationLayerRails"><span>Security</span><span>Reliability</span><span>Compatibility</span><span>Business Continuity</span></div>
+    </div>
+
+    <div class="modernizationDisciplineGrid">
+      <article class="modernizationDisciplineCard">
+        <div class="modernizationDisciplineTop"><span>01</span><small>PRODUCT VALUE &amp; WORKFLOW</small></div>
+        <h3>Understand what the product must continue doing well.</h3>
+        <p>Before touching architecture, identify the users, critical workflows, business rules, operational dependencies, high-value capabilities, known pain points, and adoption patterns that define why the product still matters.</p>
+        <div class="modernizationQuestion">Not “What technology is old?” but “What prevents this product from becoming meaningfully better?”</div>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>Product assessment</span><span>Workflow mapping</span><span>Business rules</span><span>User needs</span><span>Operational dependencies</span><span>Modernization priorities</span></div>
+      </article>
+
+      <article class="modernizationDisciplineCard">
+        <div class="modernizationDisciplineTop"><span>02</span><small>EXPERIENCE &amp; INTERACTION</small></div>
+        <h3>Modernize the experience without disconnecting it from the workflow underneath.</h3>
+        <p>Existing products often accumulate navigation complexity, inconsistent interaction patterns, duplicate steps, manual workarounds, poor mobile behavior, accessibility debt, and interfaces shaped around system limitations instead of user needs.</p>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>Information architecture</span><span>Workflow UX</span><span>Design system</span><span>Accessibility</span><span>Responsive experience</span><span>AI interaction patterns</span></div>
+      </article>
+
+      <article class="modernizationDisciplineCard modernizationArchitectureCard">
+        <div class="modernizationDisciplineTop"><span>03</span><small>APPLICATION ARCHITECTURE</small></div>
+        <h3>Create boundaries that make the product easier to change.</h3>
+        <p>The objective is not automatically to replace a monolith with dozens of services. The right path may modularize parts of the application, separate high-change capabilities, introduce service boundaries, improve state management, refactor critical code, or replace only selected components.</p>
+        <div class="modernizationPrinciple">Modern architecture is architecture that improves the product’s ability to evolve.</div>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>Architecture assessment</span><span>Modularization</span><span>Service boundaries</span><span>Application state</span><span>Performance</span><span>Technical debt</span></div>
+      </article>
+
+      <article class="modernizationDisciplineCard">
+        <div class="modernizationDisciplineTop"><span>04</span><small>APIs &amp; INTEGRATIONS</small></div>
+        <h3>Reduce the cost of being connected to everything else.</h3>
+        <p>Mature products often depend on partner systems, SaaS platforms, internal services, file exchanges, point-to-point integrations, legacy protocols, and manual synchronization. Modernization should create clearer contracts rather than simply rewriting every connection.</p>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>APIs</span><span>Integration layer</span><span>Events</span><span>Service contracts</span><span>Adapters</span><span>Identity</span><span>External systems</span></div>
+      </article>
+
+      <article class="modernizationDisciplineCard modernizationDataCard">
+        <div class="modernizationDisciplineTop"><span>05</span><small>DATA FOUNDATION</small></div>
+        <h3>Modernize how the product understands and uses its data.</h3>
+        <p>AI and modern workflows cannot compensate for unreliable product data. Evaluate data ownership, schemas, duplication, synchronization, freshness, access patterns, retrieval, privacy boundaries, and analytics readiness.</p>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>Data models</span><span>Contracts</span><span>Migration</span><span>Quality</span><span>Retrieval</span><span>Analytics</span><span>Governance</span><span>AI-ready context</span></div>
+      </article>
+
+      <article class="modernizationDisciplineCard">
+        <div class="modernizationDisciplineTop"><span>06</span><small>PLATFORM, DELIVERY &amp; RELIABILITY</small></div>
+        <h3>Make shipping improvements easier than maintaining the old process.</h3>
+        <p>Sometimes the biggest product constraint is not the application itself—it is how difficult the application is to test, deploy, observe, scale, or recover. Modernization should improve delivery capability rather than pursue cloud migration for its own sake.</p>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>Cloud / runtime</span><span>CI/CD</span><span>Environments</span><span>Automated testing</span><span>Observability</span><span>Performance</span><span>Resilience</span><span>Release strategy</span></div>
+      </article>
+
+      <article class="modernizationDisciplineCard modernizationAiCard">
+        <div class="modernizationDisciplineTop"><span>07</span><small>AI ENABLEMENT</small></div>
+        <h3>Add intelligence after the product has the context and controls to support it.</h3>
+        <p>Modernization can create the foundation for AI-assisted workflows, search and retrieval, recommendations, decision support, agentic workflows, voice interfaces, and automation—but AI should not simply be attached to an unstable workflow or inaccessible data.</p>
+        <div class="modernizationAiFlow"><span>Modern product foundation</span><span>Usable context</span><span>Clear decision point</span><span>AI capability</span><span>Controls</span><span>Measurable outcome</span></div>
+        <div class="modernizationPrinciple">AI enablement is often a result of good modernization—not a substitute for it.</div>
+      </article>
+
+      <article class="modernizationDisciplineCard modernizationMigrationCard">
+        <div class="modernizationDisciplineTop"><span>08</span><small>MIGRATION, ADOPTION &amp; MEASUREMENT</small></div>
+        <h3>Change the product without forcing the business through unnecessary disruption.</h3>
+        <p>Modernization needs a transition strategy. Depending on the product, that may include parallel operation, feature flags, incremental rollout, compatibility layers, data migration, user cohorts, fallback or rollback, training, and adoption measurement.</p>
+        <div class="modernizationMigrationFlow"><span>Controlled slice</span><span>Release</span><span>Measure</span><span>Learn</span><span>Expand / adjust</span></div>
+        <div class="modernizationAreas"><b>Modernization areas</b><span>Parallel operation</span><span>Feature flags</span><span>Incremental rollout</span><span>Compatibility layers</span><span>Data migration</span><span>User cohorts</span><span>Fallback / rollback</span><span>Training</span><span>Adoption measurement</span></div>
+      </article>
+    </div>
+
+    <div class="modernizationWhatClosing">Modernization succeeds when the product becomes easier to use, easier to change, and better able to support what comes next.</div>
+  </div>
+</section>
+
 <section class="modernizationReviewNext" id="modernization-next">
-  <div class="container"><div class="modernizationReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: What gets modernized—and what should stay</h2><p>Next we’ll go deeper into product value, architecture, experience, integrations, data, delivery constraints, AI enablement, and the decision framework for preserving, refactoring, replacing, wrapping, or retiring parts of an existing system.</p></div></div>
+  <div class="container"><div class="modernizationReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: How to modernize without a big-bang rewrite</h2><p>Next we’ll turn these modernization decisions into a controlled delivery path—assessment, dependency mapping, slice selection, compatibility, migration, rollout, verification, and evidence-driven expansion.</p></div></div>
 </section>
 </main>
 
