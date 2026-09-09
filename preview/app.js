@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.voiceEngHero')) {
+  const script = document.createElement('script');
+  script.src = 'voice-section3.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
