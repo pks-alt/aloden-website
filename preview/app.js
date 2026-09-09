@@ -28,7 +28,7 @@ if (menuBtn && navLinks) {
 
 if (document.querySelector('.aipeHero')) {
   (async () => {
-    for (const src of ['aipe-section3.js', 'aipe-section4.js']) {
+    for (const src of ['aipe-section3.js', 'aipe-section4.js', 'aipe-section5.js']) {
       await new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src + '?v=' + Date.now();
