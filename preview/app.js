@@ -28,7 +28,7 @@ if (menuBtn && navLinks) {
 
 if (document.querySelector('.modernizationHero')) {
   (async () => {
-    for (const src of ['modernization-section3.js', 'modernization-section4.js', 'modernization-section5.js']) {
+    for (const src of ['modernization-section3.js', 'modernization-section4.js', 'modernization-section5.js', 'modernization-section6.js']) {
       await new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src + '?v=' + Date.now();
