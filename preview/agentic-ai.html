@@ -84,8 +84,105 @@
   </div>
 </section>
 
+<section class="agenticWhat section" id="what-gets-engineered">
+  <div class="container">
+    <div class="agenticWhatHead">
+      <div class="eyebrow">WHAT GETS ENGINEERED</div>
+      <h2 class="h2">An agentic system is more than a model with access to tools.</h2>
+      <p class="lead">A production agentic workflow has to understand what started the work, assemble the right context, maintain state across multiple steps, decide what can happen next, interact with external systems safely, recover when something fails, involve people when required, and leave enough evidence to understand what actually happened.</p>
+    </div>
+
+    <div class="agenticArchitecture" aria-label="Five-layer architecture for intelligent workflow and agentic systems">
+      <div class="agenticArchitectureTop"><span>CONTROLLED AGENTIC PRODUCT ARCHITECTURE</span><b>FIVE SYSTEM LAYERS</b></div>
+      <div class="agenticArchitectureBody">
+        <div class="agenticArchitectureStack">
+          <article><span>01</span><div><small>TRIGGER &amp; EXPERIENCE LAYER</small><b>User request · system event · schedule · API · queue</b></div></article>
+          <article class="agenticDecisionLayer"><span>02</span><div><small>DECISION &amp; INTELLIGENCE LAYER</small><b>Context · reasoning · planning · model strategy · next-step selection</b></div></article>
+          <article><span>03</span><div><small>WORKFLOW &amp; STATE LAYER</small><b>State · transitions · checkpoints · queues · retries · long-running work</b></div></article>
+          <article><span>04</span><div><small>TOOLS &amp; SYSTEMS LAYER</small><b>APIs · databases · SaaS platforms · enterprise systems · internal services</b></div></article>
+          <article><span>05</span><div><small>CONTROL &amp; ASSURANCE LAYER</small><b>Identity · permissions · approvals · verification · exceptions · audit</b></div></article>
+        </div>
+        <div class="agenticArchitectureRails">
+          <span>Security &amp; Governance</span>
+          <span>Evaluation &amp; Observability</span>
+          <span>Human Control</span>
+        </div>
+      </div>
+      <div class="agenticArchitectureClosing">The agent is not the workflow. It is one decision-making component inside a controlled product system.</div>
+    </div>
+
+    <div class="agenticEngineeringGrid">
+      <article class="agenticEngineeringCard">
+        <div class="agenticEngineeringTop"><span>01</span><small>GOALS, TRIGGERS &amp; COMPLETION CRITERIA</small></div>
+        <h3>Define what starts the workflow—and what “done” actually means.</h3>
+        <p>Agentic behavior should begin from a clear event or objective rather than an open-ended instruction. Define the trigger, objective, constraints, and completion criteria so the system knows both why the work started and when the work is actually finished.</p>
+        <div class="agenticDefinitionGrid"><div><span>Trigger</span><b>What starts the work</b></div><div><span>Objective</span><b>What outcome is being pursued</b></div><div><span>Constraints</span><b>What the system must respect</b></div><div><span>Completion</span><b>How the product knows the work is finished</b></div></div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Events</span><span>Goals</span><span>Success criteria</span><span>Constraints</span><span>Time limits</span><span>Termination conditions</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard agenticStateCard">
+        <div class="agenticEngineeringTop"><span>02</span><small>CONTEXT &amp; DURABLE STATE</small></div>
+        <h3>Give every decision the right history.</h3>
+        <p>Real workflows rarely complete in one turn. The system needs to know what has already happened, which data was gathered, which actions were attempted, what remains unresolved, and what changed since the previous step.</p>
+        <div class="agenticPrinciple"><b>Context</b><span>What do we know?</span><i>+</i><b>State</b><span>Where are we in the work?</span></div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Session context</span><span>Durable state</span><span>Workflow history</span><span>Memory</span><span>Checkpoints</span><span>Data freshness</span><span>State reconciliation</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard agenticReasoningCard">
+        <div class="agenticEngineeringTop"><span>03</span><small>REASONING, PLANNING &amp; DECISION LOGIC</small></div>
+        <h3>Use intelligence to choose the next useful step—not to invent the entire process.</h3>
+        <p>Some workflows benefit from dynamic reasoning. Others should follow explicit business logic. The architecture deliberately separates deterministic rules, model-supported decisions, agent planning, and human judgment rather than forcing every decision through an LLM.</p>
+        <div class="agenticDecisionModes"><span>Deterministic Rules</span><span>Model-Supported Decisions</span><span>Agent Planning</span><span>Human Judgment</span></div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Planning</span><span>Routing</span><span>Decision policies</span><span>Model selection</span><span>Structured outputs</span><span>Deterministic logic</span><span>Confidence</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard agenticToolContractCard">
+        <div class="agenticEngineeringTop"><span>04</span><small>TOOL CONTRACTS &amp; SYSTEM INTEGRATION</small></div>
+        <h3>An agent is only as dependable as the actions it is allowed to call.</h3>
+        <p>Tools need explicit contracts defining what the tool does, what inputs it accepts, what permissions it requires, what success and failure look like, and whether the action is reversible.</p>
+        <div class="agenticToolContract"><span>Function</span><span>Inputs</span><span>Permissions</span><span>Success</span><span>Failure</span><span>Reversibility</span></div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Tool schemas</span><span>APIs</span><span>Authentication</span><span>Validation</span><span>Read/write boundaries</span><span>Idempotency</span><span>Service contracts</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard">
+        <div class="agenticEngineeringTop"><span>05</span><small>ORCHESTRATION &amp; WORKFLOW CONTROL</small></div>
+        <h3>Coordinate the work around the intelligence.</h3>
+        <p>Agentic systems often involve multiple tools, multiple decisions, parallel activity, waits on external systems, approvals, long-running processes, retries, and resumptions. The workflow layer coordinates what happens next even when the model is not actively running.</p>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Orchestration</span><span>Queues</span><span>Workflow engines</span><span>Transitions</span><span>Parallelism</span><span>Scheduling</span><span>Resumability</span><span>Timeout handling</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard agenticControlCard">
+        <div class="agenticEngineeringTop"><span>06</span><small>PERMISSIONS, APPROVALS &amp; HUMAN CONTROL</small></div>
+        <h3>Capability does not equal authority.</h3>
+        <p>Before the system takes consequential action, it should understand who initiated the work, what that identity can access, what the agent may decide itself, what requires confirmation or formal approval, and what must remain human-owned.</p>
+        <div class="agenticApprovalFlow"><span>Low risk + permitted → continue</span><span>Consequence requires approval → pause &amp; request approval</span><span>Restricted / uncertain → escalate</span></div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>RBAC / permissions</span><span>Approval gates</span><span>Identity</span><span>Policy checks</span><span>Confirmation</span><span>Escalation</span><span>Audit context</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard agenticVerificationCard">
+        <div class="agenticEngineeringTop"><span>07</span><small>VERIFICATION, EXCEPTIONS &amp; RECOVERY</small></div>
+        <h3>Do not confuse an attempted action with a successful outcome.</h3>
+        <p>After using a tool, the system should inspect what actually happened. If something fails, it should retry safely, choose an alternate path, request clarification, compensate or reverse where possible, or escalate.</p>
+        <div class="agenticVerifyFlow"><span>Requested action</span><span>Tool call</span><span>System response</span><span>Verify resulting state</span></div>
+        <div class="agenticVerificationPrinciple">An action is complete only when the resulting state is verified.</div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Verification</span><span>Retries</span><span>Idempotency</span><span>Compensation</span><span>Exception routing</span><span>Partial failure</span><span>Recovery</span></div>
+      </article>
+
+      <article class="agenticEngineeringCard agenticObservabilityCard">
+        <div class="agenticEngineeringTop"><span>08</span><small>EVALUATION, OBSERVABILITY &amp; AUDITABILITY</small></div>
+        <h3>You should be able to reconstruct why the system did what it did.</h3>
+        <p>Production teams need visibility into the trigger, context used, decision made, tool selected, approval received, action attempted, result returned, and final state—along with quality, latency, cost, failures, retries, and escalation.</p>
+        <div class="agenticTrace"><span>Trigger</span><span>Context</span><span>Decision</span><span>Tool</span><span>Approval</span><span>Action</span><span>Result</span><span>Final State</span></div>
+        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Traces</span><span>Structured logs</span><span>Decision records</span><span>Evaluations</span><span>Workflow metrics</span><span>Cost</span><span>Latency</span><span>Audit trails</span><span>Product analytics</span></div>
+      </article>
+    </div>
+
+    <div class="agenticWhatClosing">The agent is not the workflow. It is one decision-making component inside a controlled product system.</div>
+  </div>
+</section>
+
 <section class="agenticReviewNext" id="agentic-next">
-  <div class="container"><div class="agenticReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: What gets engineered in an agentic workflow</h2><p>Next we’ll go deeper into context, planning, tool contracts, workflow state, orchestration, permissions, approval gates, exceptions, verification, and production observability.</p></div></div>
+  <div class="container"><div class="agenticReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: How an agentic workflow executes across multiple steps</h2><p>Next we’ll show a concrete runtime path from trigger and context through decision logic, tool calls, durable state, approval gates, verified action, exception recovery, and completion.</p></div></div>
 </section>
 </main>
 
