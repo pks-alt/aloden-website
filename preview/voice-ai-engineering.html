@@ -83,8 +83,88 @@
   </div>
 </section>
 
+<section class="voiceWhat section" id="what-gets-engineered">
+  <div class="container">
+    <div class="voiceWhatHead">
+      <div class="eyebrow">WHAT GETS ENGINEERED</div>
+      <h2 class="h2">Voice AI is a real-time product system, not a talking model.</h2>
+      <p class="lead">A production voice product has to manage speech, timing, context, workflow state, system access, permissions, failures, and human handoff while the conversation is happening. Each layer affects whether the experience feels natural—and whether the system can be trusted to act.</p>
+    </div>
+
+    <div class="voiceArchitectureSystem" aria-label="Voice AI product architecture from channels through controls and escalation">
+      <div class="voiceArchitectureTop"><span>CONNECTED VOICE PRODUCT ARCHITECTURE</span><b>REAL-TIME SYSTEM</b></div>
+      <div class="voiceArchitectureBody">
+        <div class="voiceArchitectureStack">
+          <article><span>01</span><div><small>CHANNEL LAYER</small><b>Phone · Web · App</b></div></article>
+          <article><span>02</span><div><small>REAL-TIME VOICE LAYER</small><b>Speech · Turn Detection · Streaming · Response</b></div></article>
+          <article class="voiceIntelligenceLayer"><span>03</span><div><small>CONVERSATION INTELLIGENCE LAYER</small><b>Intent · Context · State · Reasoning</b></div></article>
+          <article><span>04</span><div><small>ACTION LAYER</small><b>Tools · APIs · Workflows · Systems</b></div></article>
+          <article><span>05</span><div><small>CONTROL LAYER</small><b>Permissions · Confirmation · Guardrails · Human Escalation</b></div></article>
+        </div>
+        <div class="voiceArchitectureRails">
+          <span>Evaluation</span>
+          <span>Observability</span>
+          <span>Security</span>
+        </div>
+      </div>
+      <div class="voiceArchitectureClosing">The conversation is the interface. The product system behind it determines whether anything useful actually happens.</div>
+    </div>
+
+    <div class="voiceEngineeringGrid">
+      <article class="voiceEngineeringCard">
+        <div class="voiceEngineeringTop"><span>01</span><small>CONVERSATION &amp; TURN BEHAVIOR</small></div>
+        <h3>Make the interaction feel natural before making it intelligent.</h3>
+        <p>Design how the system opens, listens, pauses, interrupts, handles silence, repairs misunderstandings, asks clarifying questions, and knows when the user has finished speaking.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Turn detection</span><span>Barge-in</span><span>Silence handling</span><span>Interruptions</span><span>Repair loops</span><span>Conversational pacing</span></div>
+      </article>
+
+      <article class="voiceEngineeringCard">
+        <div class="voiceEngineeringTop"><span>02</span><small>REAL-TIME SPEECH &amp; VOICE INFRASTRUCTURE</small></div>
+        <h3>Keep the conversation responsive under real conditions.</h3>
+        <p>Engineer the real-time speech path across phone, web, or application channels—including recognition or speech-to-speech processing, synthesis, streaming, audio quality, connection state, and latency.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Streaming audio</span><span>Speech recognition</span><span>Synthesis</span><span>Realtime models</span><span>Telephony / web channels</span><span>Latency</span><span>Noise handling</span></div>
+      </article>
+
+      <article class="voiceEngineeringCard voiceStateCard">
+        <div class="voiceEngineeringTop"><span>03</span><small>INTENT, CONTEXT &amp; CONVERSATION STATE</small></div>
+        <h3>Understand more than the last sentence.</h3>
+        <p>Maintain the user’s intent, entities, prior turns, workflow state, relevant business context, and what has already been confirmed so the system can reason across the full conversation.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Intent</span><span>Entities</span><span>Session state</span><span>Context retrieval</span><span>Memory</span><span>Workflow state</span><span>Clarification</span></div>
+      </article>
+
+      <article class="voiceEngineeringCard voiceActionCard">
+        <div class="voiceEngineeringTop"><span>04</span><small>TOOLS, SYSTEMS &amp; WORKFLOW ACTION</small></div>
+        <h3>Connect conversation to real work.</h3>
+        <p>Define how the voice system reads information, calls APIs, searches systems, updates records, schedules activity, triggers workflows, and coordinates multiple tools safely.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Tool schemas</span><span>APIs</span><span>CRM / scheduling / business systems</span><span>Orchestration</span><span>Retries</span><span>Action state</span></div>
+      </article>
+
+      <article class="voiceEngineeringCard">
+        <div class="voiceEngineeringTop"><span>05</span><small>PERMISSIONS, CONFIRMATION &amp; GUARDRAILS</small></div>
+        <h3>The ability to act does not mean permission to act.</h3>
+        <p>Determine who the user is, what the system may access, what actions require explicit confirmation, what is restricted, and what must be escalated to a person.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Authentication</span><span>Authorization</span><span>Permission checks</span><span>Confirmations</span><span>Restricted actions</span><span>Audit context</span></div>
+      </article>
+
+      <article class="voiceEngineeringCard">
+        <div class="voiceEngineeringTop"><span>06</span><small>RECOVERY, ESCALATION &amp; HUMAN HANDOFF</small></div>
+        <h3>Design failure as part of the product.</h3>
+        <p>When intent is unclear, a system is unavailable, an action fails, confidence is insufficient, or human judgment is required, the voice experience should recover gracefully and transfer useful context rather than simply stopping.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Fallbacks</span><span>Retry strategy</span><span>Exception handling</span><span>Confidence thresholds</span><span>Escalation</span><span>Context-rich handoff</span></div>
+      </article>
+
+      <article class="voiceEngineeringCard voiceEvaluationCard">
+        <div class="voiceEngineeringTop"><span>07</span><small>EVALUATION &amp; PRODUCTION OBSERVABILITY</small></div>
+        <h3>Know what is happening inside every conversation.</h3>
+        <p>Measure both conversational quality and operational outcomes: interruptions, latency, misunderstood intent, tool failures, abandoned tasks, escalation quality, completion, and user correction.</p>
+        <div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Conversation evaluation</span><span>Latency</span><span>Tool success</span><span>Task completion</span><span>Failure analysis</span><span>Transcripts / traces</span><span>Product analytics</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="voiceReviewNext" id="voice-next">
-  <div class="container"><div class="voiceReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: What gets engineered in a production voice system</h2><p>Next we’ll go deeper into conversation design, speech and turn handling, context, tool use, system integration, permissions, recovery, evaluation, and human escalation.</p></div></div>
+  <div class="container"><div class="voiceReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: How a voice conversation becomes a completed action</h2><p>Next we’ll show the end-to-end execution path—from live speech and context through permission checks, tool use, confirmation, recovery, and human handoff.</p></div></div>
 </section>
 </main>
 
