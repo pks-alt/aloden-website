@@ -1,0 +1,5 @@
+/* Aloden V1 — non-visual QA/accessibility hardening */
+.siteSkipLink{position:fixed;z-index:9999;left:14px;top:12px;transform:translateY(-150%);padding:10px 14px;border-radius:9px;background:#111318;color:#fff;font:600 12px/1.2 'Instrument Sans',sans-serif;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.16)}
+.siteSkipLink:focus{transform:translateY(0);outline:3px solid rgba(124,77,255,.28);outline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid rgba(124,77,255,.22);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.siteSkipLink{transition:none!important}}
