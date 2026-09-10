@@ -78,12 +78,14 @@ No API keys, email credentials, rate-limit credentials, or bot-verification secr
 
 ## Testing completed
 
-The server core was syntax-checked and tested locally with Node's built-in test runner. Six tests passed covering:
+The server core was syntax-checked and tested locally with Node's built-in test runner. Eight tests passed covering:
 
 - Unsupported methods
 - Invalid field payloads
 - Honeypot behavior
 - Fail-closed configuration
+- Unapproved-origin rejection
+- Bot-verification failure
 - Rate limiting
 - Successful secure delivery flow and safe summary response
 
