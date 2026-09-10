@@ -55,6 +55,26 @@ test('fails closed when security services are missing', async () => {
   assert.equal(response.status, 503);
 });
 
+test('rejects requests from an unapproved browser origin', async () => {
+  const request = new Request('https://aloden.com/api/project-brief', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Origin: 'https://example.net' },
+    body: JSON.stringify(valid)
+  });
+  const response = await createProjectBriefHandler(services())(request);
+  assert.equal(response.status, 403);
+});
+
+test('requires bot verification before delivery', async () => {
+  let delivered = false;
+  const secure = services();
+  secure.verifyBot = async () => false;
+  secure.deliver = async () => { delivered = true; };
+  const response = await createProjectBriefHandler(secure)(makeRequest());
+  assert.equal(response.status, 400);
+  assert.equal(delivered, false);
+});
+
 test('rate limiting is enforced', async () => {
   const secure = services();
   secure.rateLimit = async () => ({ allowed: false, retryAfter: 90 });
