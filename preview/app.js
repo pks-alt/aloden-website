@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.healthcareAiHero')) {
+  const script = document.createElement('script');
+  script.src = 'healthcare-section6-review.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
