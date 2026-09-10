@@ -27,7 +27,12 @@ if (menuBtn && navLinks) {
 }
 
 if (document.querySelector('.startProjectHero')) {
-  const script = document.createElement('script');
-  script.src = 'start-project-section2.js?v=' + Date.now();
-  document.body.appendChild(script);
+  const step2 = document.createElement('script');
+  step2.src = 'start-project-section2.js?v=' + Date.now();
+  step2.onload = () => {
+    const step3 = document.createElement('script');
+    step3.src = 'start-project-section3.js?v=' + Date.now();
+    document.body.appendChild(step3);
+  };
+  document.body.appendChild(step2);
 }
