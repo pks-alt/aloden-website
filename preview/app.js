@@ -25,17 +25,3 @@ if (menuBtn && navLinks) {
     }
   });
 }
-
-if (document.querySelector('.healthcareAiHero')) {
-  (async () => {
-    for (const src of ['healthcare-section2.js', 'healthcare-section3.js', 'healthcare-section4.js', 'healthcare-section5.js', 'healthcare-section6.js']) {
-      await new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src + '?v=' + Date.now();
-        script.onload = resolve;
-        script.onerror = reject;
-        document.body.appendChild(script);
-      });
-    }
-  })().catch(err => console.error('Healthcare AI review layer failed', err));
-}
