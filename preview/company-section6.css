@@ -1,0 +1,42 @@
+/* Company — Section 6 / Trust & Responsible Delivery */
+.companyTrust{background:linear-gradient(180deg,#fafbfc 0%,#f7f8fb 100%)}
+.companyTrustHead .lead{max-width:900px}
+.companyTrustGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px}
+.companyTrustCard{border:1px solid #dfe3e8;border-radius:16px;background:#fff;padding:20px;min-width:0}
+.companyTrustCard.dark{background:#111318;border-color:#292d35;color:#fff}
+.companyTrustCard.aiTint{background:linear-gradient(145deg,#fff,#faf8ff);border-color:#ddd6f3}
+.companyTrustCardTop{display:flex;justify-content:space-between;gap:14px;align-items:center}
+.companyTrustCardTop>span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--violet)}
+.companyTrustCardTop small{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;color:#7f8792;text-align:right}
+.companyTrustCard.dark .companyTrustCardTop>span{color:#aa92ff}.companyTrustCard.dark .companyTrustCardTop small{color:#979eaa}
+.companyTrustCard h3{font-size:24px;line-height:1.08;letter-spacing:-.032em;margin:14px 0 8px}
+.companyTrustCard>p{font-size:12px;line-height:1.62;color:var(--body);margin:0}
+.companyTrustCard.dark>p{color:#aeb5c0}
+.companyTrustDetails{display:flex;gap:6px;flex-wrap:wrap;margin-top:15px;padding-top:13px;border-top:1px solid #e4e7eb}
+.companyTrustDetails span{border:1px solid #e1e4e8;border-radius:999px;background:#fbfcfd;padding:6px 8px;font-size:8.8px;line-height:1.2;color:#68727d}
+.companyTrustCard.dark .companyTrustDetails{border-color:#30343d}.companyTrustCard.dark .companyTrustDetails span{background:#171a20;border-color:#30343d;color:#b7bec8}
+.companyTrustRail{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding:12px;border:1px solid #dfe3e8;border-radius:12px;background:#fff}
+.companyTrustRail:before{content:'ENGINEERING RAIL';font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.08em;color:#7d8490;width:100%;margin-bottom:2px}
+.companyTrustRail span{font-size:9.5px;font-weight:600;border-radius:999px;background:#f5f6f8;padding:6px 9px;color:#3c434d}
+.companyAccountability{margin-top:28px;border:1px solid #292d35;border-radius:17px;background:#111318;color:#fff;overflow:hidden}
+.companyAccountabilityTop{display:flex;justify-content:space-between;gap:14px;padding:12px 14px;border-bottom:1px solid #2f333c;background:#16191f}
+.companyAccountabilityTop span,.companyAccountabilityTop b{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.08em}
+.companyAccountabilityTop span{color:#aa92ff}.companyAccountabilityTop b{color:#969daa;font-weight:500;text-align:right}
+.companyAccountabilityBody{padding:20px}
+.companyAccountabilityFlow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.companyAccountabilityFlow span{position:relative;border:1px solid #30343d;border-radius:10px;background:#171a20;padding:12px 9px;text-align:center;font-size:9.5px;font-weight:600;line-height:1.3;color:#d9dde3}
+.companyAccountabilityFlow span:not(:last-child):after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:#7d6ab5;z-index:2}
+.companyAccountabilityPrinciple{margin-top:14px;border-left:2px solid #9b7cff;background:#1a1625;border-radius:0 9px 9px 0;padding:11px 13px;font-size:11.2px;font-weight:700;line-height:1.45;color:#dfd7fa}
+.companyExpectations{margin-top:28px}
+.companyExpectationsHead{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:end}
+.companyExpectationsHead span{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.08em;color:var(--violet)}
+.companyExpectationsHead h3{font-size:28px;line-height:1.08;letter-spacing:-.035em;margin:8px 0 0}
+.companyExpectationsHead p{font-size:12.5px;line-height:1.62;color:var(--body);margin:0}
+.companyExpectationGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:18px}
+.companyExpectationGrid article{border:1px solid #e1e4e8;border-radius:12px;background:#fff;padding:13px}
+.companyExpectationGrid span{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--violet)}
+.companyExpectationGrid b{display:block;font-size:11.2px;margin-top:7px;color:#252a31}
+.companyExpectationGrid p{font-size:9.8px;line-height:1.48;color:#737c87;margin:5px 0 0}
+.companyTrustClosing{margin-top:26px;padding-top:18px;border-top:1px solid #dfe2e7;font-size:16px;font-weight:700;letter-spacing:-.018em;color:#20242d}
+@media(max-width:960px){.companyExpectationGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.companyAccountabilityFlow{grid-template-columns:repeat(2,minmax(0,1fr))}.companyAccountabilityFlow span:after{display:none}}
+@media(max-width:760px){.companyTrustGrid,.companyExpectationsHead{grid-template-columns:1fr}.companyExpectationGrid{grid-template-columns:1fr}.companyAccountabilityTop{flex-direction:column;align-items:flex-start}.companyAccountabilityTop b{text-align:left}.companyAccountabilityFlow{grid-template-columns:1fr}}
