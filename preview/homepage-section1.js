@@ -88,29 +88,31 @@
     });
   });
 
-  const menuBtn = document.querySelector('.menuBtn');
-  const navLinks = document.querySelector('.navLinks');
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      const open = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', String(!open));
-      if (open) {
-        navLinks.removeAttribute('style');
-      } else {
-        navLinks.style.display = 'flex';
-        navLinks.style.position = 'absolute';
-        navLinks.style.left = '16px';
-        navLinks.style.right = '16px';
-        navLinks.style.top = `${document.querySelector('.nav')?.offsetHeight || 74}px`;
-        navLinks.style.background = '#fff';
-        navLinks.style.border = '1px solid #e6e8ed';
-        navLinks.style.borderRadius = '12px';
-        navLinks.style.padding = '14px 16px';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.alignItems = 'stretch';
-        navLinks.style.gap = '2px';
-        navLinks.style.boxShadow = '0 16px 38px rgba(21,28,45,.10)';
-      }
-    });
+  if (document.body.classList.contains('heroOneStandalone')) {
+    const menuBtn = document.querySelector('.menuBtn');
+    const navLinks = document.querySelector('.navLinks');
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const open = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!open));
+        if (open) {
+          navLinks.removeAttribute('style');
+        } else {
+          navLinks.style.display = 'flex';
+          navLinks.style.position = 'absolute';
+          navLinks.style.left = '16px';
+          navLinks.style.right = '16px';
+          navLinks.style.top = `${document.querySelector('.nav')?.offsetHeight || 74}px`;
+          navLinks.style.background = '#fff';
+          navLinks.style.border = '1px solid #e6e8ed';
+          navLinks.style.borderRadius = '12px';
+          navLinks.style.padding = '14px 16px';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.alignItems = 'stretch';
+          navLinks.style.gap = '2px';
+          navLinks.style.boxShadow = '0 16px 38px rgba(21,28,45,.10)';
+        }
+      });
+    }
   }
 })();
