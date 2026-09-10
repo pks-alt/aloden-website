@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.startProjectHero')) {
+  const script = document.createElement('script');
+  script.src = 'start-project-section2.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
