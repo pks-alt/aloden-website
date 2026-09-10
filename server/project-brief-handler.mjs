@@ -44,6 +44,7 @@ const LABELS = Object.freeze({
 
 const MAX_BODY_BYTES = 32_000;
 const text = (value, max) => typeof value === 'string' ? value.trim().slice(0, max + 1) : '';
+const singleLine = (value, max) => text(value, max).replace(/[\u0000-\u001f\u007f]+/g, ' ').replace(/\s+/g, ' ').trim();
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {
   status,
   headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...headers }
@@ -75,15 +76,15 @@ function validate(input) {
     timing: text(input?.timing, 80),
     systems: text(input?.systems, 500),
     contact: {
-      name: text(contact.name, 120),
-      email: text(contact.email, 254).toLowerCase(),
-      company: text(contact.company, 160),
-      role: text(contact.role, 120)
+      name: singleLine(contact.name, 120),
+      email: singleLine(contact.email, 254).toLowerCase(),
+      company: singleLine(contact.company, 160),
+      role: singleLine(contact.role, 120)
     },
-    website: text(input?.website, 200),
-    turnstileToken: text(input?.turnstileToken, 4096),
-    pagePath: text(input?.pagePath, 200),
-    submittedAtClient: text(input?.submittedAtClient, 80)
+    website: singleLine(input?.website, 200),
+    turnstileToken: singleLine(input?.turnstileToken, 4096),
+    pagePath: singleLine(input?.pagePath, 200),
+    submittedAtClient: singleLine(input?.submittedAtClient, 80)
   };
 
   const add = (field, message) => errors.push({ field, message });
