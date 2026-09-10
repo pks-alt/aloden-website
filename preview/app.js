@@ -27,7 +27,12 @@ if (menuBtn && navLinks) {
 }
 
 if (document.querySelector('.insightsHero')) {
-  const script = document.createElement('script');
-  script.src = 'insights-section3.js?v=' + Date.now();
-  document.body.appendChild(script);
+  const section3 = document.createElement('script');
+  section3.src = 'insights-section3.js?v=' + Date.now();
+  section3.onload = () => {
+    const section4 = document.createElement('script');
+    section4.src = 'insights-section4.js?v=' + Date.now();
+    document.body.appendChild(section4);
+  };
+  document.body.appendChild(section3);
 }
