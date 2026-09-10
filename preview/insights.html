@@ -10,8 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="insights.css?v=1">
-<link rel="stylesheet" href="insights-section2.css?v=1">
+<link rel="stylesheet" href="insights.css?v=final">
+<link rel="stylesheet" href="insights-section2.css?v=final">
+<link rel="stylesheet" href="insights-section3.css?v=final">
+<link rel="stylesheet" href="insights-section4.css?v=final">
+<link rel="stylesheet" href="insights-final.css?v=final">
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
@@ -139,13 +142,117 @@
   </div>
 </section>
 
-<section class="insightsReviewNext">
+<section class="insightsEditorialLens section" id="editorial-lens">
   <div class="container">
-    <div class="insightsReviewNextInner">
-      <span>NEXT REVIEW SECTION</span>
-      <h2>Editorial Lens</h2>
-      <p>Section 3 will show how Aloden evaluates emerging technology through product value, system fit, production risk, and evidence—giving the Insights page a distinctive point of view without becoming another long capability page.</p>
+    <div class="insightsEditorialLensHead">
+      <div>
+        <div class="eyebrow">HOW WE EVALUATE TECHNOLOGY</div>
+        <h2>New technology matters when it improves the product system.</h2>
+      </div>
+      <p>Aloden evaluates emerging technology through the product decision it enables—not the novelty of the technology itself. The question is whether it improves the outcome, fits the system, survives production reality, and produces evidence that the product became better.</p>
     </div>
+
+    <div class="insightsLensFrame" aria-label="Aloden technology evaluation lens">
+      <div class="insightsLensTop"><span>EDITORIAL DECISION LENS</span><b>PRODUCT VALUE → SYSTEM FIT → PRODUCTION REALITY → EVIDENCE</b></div>
+      <div class="insightsLensGrid">
+        <article class="insightsLensCard">
+          <span>01 · PRODUCT VALUE</span>
+          <h3>What becomes meaningfully better?</h3>
+          <p>Start with the user, workflow, operation, or business outcome. A capability earns attention when it improves something people can actually experience or the product can actually measure.</p>
+          <div class="insightsLensQuestion">Question: What problem or decision improves enough to justify the technology?</div>
+        </article>
+        <article class="insightsLensCard">
+          <span>02 · SYSTEM FIT</span>
+          <h3>Where does the capability belong?</h3>
+          <p>Technology has to fit the architecture, data model, workflow state, integrations, permissions, and existing product boundaries. The right capability in the wrong system location still creates a weak product.</p>
+          <div class="insightsLensQuestion">Question: What context, state, interfaces, and controls must surround it?</div>
+        </article>
+        <article class="insightsLensCard">
+          <span>03 · PRODUCTION REALITY</span>
+          <h3>What changes when the product is real?</h3>
+          <p>Latency, reliability, security, privacy, cost, failure modes, exceptions, human control, observability, and support are not implementation details. They shape the product decision itself.</p>
+          <div class="insightsLensQuestion">Question: What must remain dependable when ideal conditions disappear?</div>
+        </article>
+        <article class="insightsLensCard">
+          <span>04 · EVIDENCE</span>
+          <h3>How will we know it actually improved?</h3>
+          <p>Evaluation should connect model or system behavior to product outcomes. The strongest evidence shows whether the workflow became faster, clearer, safer, more reliable, or more useful after deployment.</p>
+          <div class="insightsLensQuestion">Question: What evidence would justify keeping, changing, or removing the capability?</div>
+        </article>
+      </div>
+      <div class="insightsLensFlow"><span>Product Value</span><span>System Fit</span><span>Production Reality</span><span>Evidence</span></div>
+    </div>
+
+    <aside class="insightsNoveltyBand">
+      <div class="insightsNoveltyLead"><span>NOVELTY IS NOT THE OUTCOME</span><h3>Technology has to earn its place.</h3></div>
+      <div class="insightsNoveltyQuote"><p>We do not ask, “How do we add this technology?” We ask, “What problem earns its place in the product?”</p><small>That keeps AI, agents, voice, modernization, and conventional software in the same decision framework.</small></div>
+    </aside>
+
+    <div class="insightsLensClosing">The strongest technology decision is often knowing where AI should be used, where conventional software is better, and where people should remain in control.</div>
+  </div>
+</section>
+
+<section class="insightsFromInsight section" id="from-insight-to-product">
+  <div class="container">
+    <div class="insightsFromInsightHead">
+      <div>
+        <div class="eyebrow">FROM INSIGHT TO PRODUCT</div>
+        <h2>Good thinking should change what gets built.</h2>
+      </div>
+      <p>An insight becomes useful when it changes a product decision. Aloden turns questions about AI, autonomy, modernization, and healthcare into hypotheses that can be tested, implemented, measured, and revised with evidence.</p>
+    </div>
+
+    <div class="insightsTranslationFrame" aria-label="From insight to product decision flow">
+      <div class="insightsTranslationTop"><span>DECISION TO DELIVERY</span><b>SIGNAL / QUESTION → HYPOTHESIS → PRODUCT DECISION → CONTROLLED TEST → PRODUCTION CHANGE → EVIDENCE → NEXT ITERATION</b></div>
+      <div class="insightsTranslationFlow"><span>Signal / Question</span><span>Hypothesis</span><span>Product Decision</span><span>Controlled Test</span><span>Production Change</span><span>Evidence</span><span>Next Iteration</span></div>
+    </div>
+
+    <div class="insightsTranslationGrid">
+      <article class="insightsTranslationCard dark">
+        <span>01 · AI PRODUCT ENGINEERING</span>
+        <h3>Move from model capability to product dependability.</h3>
+        <p>The important question is not whether a model can produce the right answer once. It is whether the product can provide the right context, controls, evaluation, fallback, and workflow state to depend on the capability repeatedly.</p>
+        <div class="insightsTranslationQuestion"><div><small>INITIAL QUESTION</small><b>Can the model do it?</b></div><div><small>PRODUCT QUESTION</small><b>Can the product system depend on it?</b></div></div>
+      </article>
+
+      <article class="insightsTranslationCard aiTint">
+        <span>02 · AGENTIC SYSTEMS</span>
+        <h3>Move from action capability to governed autonomy.</h3>
+        <p>An agent taking an action is only one part of the system. Authority, tool access, workflow state, verification, recovery, and escalation determine whether the action belongs in a dependable product.</p>
+        <div class="insightsTranslationQuestion"><div><small>INITIAL QUESTION</small><b>Can the agent take action?</b></div><div><small>PRODUCT QUESTION</small><b>What may it act on, how is the result verified, and when should a person take over?</b></div></div>
+      </article>
+
+      <article class="insightsTranslationCard">
+        <span>03 · PRODUCT MODERNIZATION</span>
+        <h3>Move from replacement thinking to constraint removal.</h3>
+        <p>Modernization decisions should begin with the product constraint, not the age of the technology. The goal is to preserve what already creates value while changing what materially limits the next stage of the product.</p>
+        <div class="insightsTranslationQuestion"><div><small>INITIAL QUESTION</small><b>Can we replace the old system?</b></div><div><small>PRODUCT QUESTION</small><b>Which constraint is actually worth changing—and what value should be preserved?</b></div></div>
+      </article>
+
+      <article class="insightsTranslationCard dark">
+        <span>04 · HEALTHCARE AI</span>
+        <h3>Move from AI possibility to accountable healthcare workflow.</h3>
+        <p>Healthcare intelligence has to operate inside evidence, permissions, workflow state, connected systems, clinical boundaries, verification, and human accountability. Model capability alone does not define the decision boundary.</p>
+        <div class="insightsTranslationQuestion"><div><small>INITIAL QUESTION</small><b>Can AI make this decision?</b></div><div><small>PRODUCT QUESTION</small><b>What context, evidence, permissions, and human accountability must remain around it?</b></div></div>
+      </article>
+    </div>
+
+    <div class="insightsFromInsightClosing">Insights become valuable when they reduce uncertainty around the next product decision.</div>
+  </div>
+</section>
+
+<section class="insightsFinalCta" id="insights-cta">
+  <div class="container">
+    <div class="insightsFinalCtaInner">
+      <div>
+        <div class="eyebrow">START WITH THE DECISION</div>
+        <h2>Have a product question worth thinking through?</h2>
+        <p>Bring us the product idea, AI opportunity, workflow problem, or modernization decision. Aloden can help determine what should be built, what should stay conventional, where intelligence belongs, and how to move the right idea toward production.</p>
+        <div class="insightsFinalCapabilities"><span>AI Product Engineering</span><span>Agentic Systems</span><span>Voice AI</span><span>Product Modernization</span><span>Healthcare AI</span></div>
+      </div>
+      <a class="btn" href="start-project.html">Start a Project →</a>
+    </div>
+    <div class="insightsFinalClosing">Better products begin with better decisions.</div>
   </div>
 </section>
 </main>
