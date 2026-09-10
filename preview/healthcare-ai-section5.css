@@ -1,4 +1,5 @@
 /* Healthcare AI — Section 5 / Medlivo product proof */
+/* REVIEW STATUS: APPROVED / LOCKED — preserve unless explicitly reopened. */
 .medlivoHealthcareProof{background:linear-gradient(180deg,#fafbfc 0%,#f7f8fb 100%)}
 .medlivoHealthcareProofHead{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:end}
 .medlivoHealthcareProofHead .lead{max-width:930px}
