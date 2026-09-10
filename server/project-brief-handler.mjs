@@ -50,8 +50,8 @@ const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(b
 });
 
 function clientKey(request) {
-  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
   const platformIp = request.headers.get('cf-connecting-ip') || request.headers.get('x-nf-client-connection-ip');
+  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
   return platformIp || forwarded || 'unknown';
 }
 
@@ -173,7 +173,7 @@ export function createProjectBriefHandler(services = {}) {
     }
 
     const origin = request.headers.get('origin');
-    if (origin && !services.allowedOrigins.includes(origin)) return json({ ok: false, error: 'origin_not_allowed' }, 403);
+    if (!origin || !services.allowedOrigins.includes(origin)) return json({ ok: false, error: 'origin_not_allowed' }, 403);
 
     const rate = await services.rateLimit({ key: clientKey(request), request });
     if (!rate?.allowed) {
