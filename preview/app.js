@@ -200,6 +200,13 @@ normalizeSiteLinks();
 installAccessibilityBaseline();
 installMetadataBaseline();
 
+if (document.querySelector('.hero#home')) {
+  const homepageSection1Script = document.createElement('script');
+  homepageSection1Script.src = 'homepage-section1-review.js?v=1';
+  homepageSection1Script.defer = true;
+  document.body.appendChild(homepageSection1Script);
+}
+
 if (document.querySelector('.startProjectHero')) {
   const projectFormScript = document.createElement('script');
   projectFormScript.src = 'start-project-form.js?v=1';
