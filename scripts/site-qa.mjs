@@ -110,6 +110,16 @@ for (const file of publicHtmlFiles) {
   if (!/<footer\b/i.test(html)) errors.push(`${file}: missing footer landmark`);
   if (!/<script\b[^>]*src=["']app\.js["']/i.test(html)) errors.push(`${file}: shared app.js is not loaded`);
 
+  const h1Count = [...html.matchAll(/<h1\b/gi)].length;
+  if (h1Count !== 1) errors.push(`${file}: expected exactly one H1, found ${h1Count}`);
+
+  const ids = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map((match) => match[1]);
+  const seenIds = new Set();
+  for (const id of ids) {
+    if (seenIds.has(id)) errors.push(`${file}: duplicate id #${id}`);
+    seenIds.add(id);
+  }
+
   for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
     if (!/\balt=["'][^"']*["']/i.test(match[0])) errors.push(`${file}: image is missing an alt attribute: ${match[0].slice(0, 120)}`);
   }
@@ -152,6 +162,17 @@ for (const file of publicHtmlFiles) {
   }
 }
 
+const cssFiles = fs.readdirSync(preview).filter((name) => name.endsWith('.css'));
+for (const cssFile of cssFiles) {
+  const css = read(cssFile);
+  for (const match of css.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) {
+    const raw = match[1].trim();
+    if (!raw || /^(data:|https?:\/\/|#)/i.test(raw)) continue;
+    const target = cleanUrl(raw.split('#')[0]);
+    if (!fs.existsSync(path.resolve(preview, path.dirname(cssFile), target))) errors.push(`${cssFile}: missing CSS asset ${target}`);
+  }
+}
+
 if (fileExists('404.html') && !/name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(read('404.html'))) errors.push('404.html: must be noindex');
 if (fileExists('live-review.html') && !/name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(read('live-review.html'))) errors.push('live-review.html: review redirect must be noindex');
 
@@ -182,11 +203,11 @@ if (fileExists('sitemap.xml')) {
 if (!fs.existsSync(path.join(root, 'server', 'project-brief-handler.mjs'))) errors.push('server/project-brief-handler.mjs: missing secure form handler core');
 if (!fs.existsSync(path.join(root, 'server', 'project-brief-handler.test.mjs'))) errors.push('server/project-brief-handler.test.mjs: missing form-handler tests');
 
-console.log(`Aloden V1 QA audited ${publicHtmlFiles.length} public/support HTML pages.`);
+console.log(`Aloden V1 QA audited ${publicHtmlFiles.length} public/support HTML pages and ${cssFiles.length} CSS files.`);
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 if (errors.length) {
   for (const error of errors) console.error(`ERROR: ${error}`);
   console.error(`QA failed with ${errors.length} error(s).`);
   process.exit(1);
 }
-console.log('QA passed: local page/resource targets, effective links, baseline metadata, image alt coverage, support pages, and project-form structure are intact.');
+console.log('QA passed: page structure, headings, unique anchors, effective links, local resources, CSS assets, metadata, image alt coverage, support pages, and project-form structure are intact.');
