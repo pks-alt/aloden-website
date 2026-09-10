@@ -1,0 +1,25 @@
+name: Aloden V1 Site QA
+
+on:
+  push:
+    branches:
+      - feature/start-project-content-review
+      - develop
+      - main
+  pull_request:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit pages, links, resources, metadata, and form structure
+        run: node scripts/site-qa.mjs
+      - name: Test secure project-brief handler
+        run: node --test server/project-brief-handler.test.mjs
