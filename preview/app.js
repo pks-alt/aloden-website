@@ -210,6 +210,13 @@ if (document.querySelector('.hero#home')) {
     document.head.appendChild(homepageCss);
   }
 
+  if (!document.querySelector('link[href^="homepage-polish.css"]')) {
+    const homepagePolishCss = document.createElement('link');
+    homepagePolishCss.rel = 'stylesheet';
+    homepagePolishCss.href = 'homepage-polish.css?v=1';
+    document.head.appendChild(homepagePolishCss);
+  }
+
   const homepageSection1Script = document.createElement('script');
   homepageSection1Script.src = 'homepage-section1-review.js?v=2';
   homepageSection1Script.defer = true;
