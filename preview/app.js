@@ -8,7 +8,7 @@ function openMobileMenu() {
   navLinks.style.position = 'absolute';
   navLinks.style.left = '16px';
   navLinks.style.right = '16px';
-  navLinks.style.top = '68px';
+  navLinks.style.top = `${document.querySelector('.nav')?.offsetHeight || 74}px`;
   navLinks.style.background = '#fff';
   navLinks.style.border = '1px solid #e6e8ed';
   navLinks.style.borderRadius = '12px';
@@ -42,7 +42,7 @@ if (menuBtn && navLinks) {
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 820 && menuBtn.getAttribute('aria-expanded') === 'true') closeMobileMenu();
+    if (window.innerWidth > 1020 && menuBtn.getAttribute('aria-expanded') === 'true') closeMobileMenu();
   });
 }
 
