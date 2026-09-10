@@ -36,6 +36,34 @@
   submitButton.type = 'submit';
   submitButton.removeAttribute('aria-disabled');
 
+  const reviewNote = document.querySelector('.projectSubmissionReview');
+  if (reviewNote) reviewNote.textContent = 'FUNCTIONALITY PREVIEW · SECURE DELIVERY ACTIVATES AFTER DEPLOYMENT CONFIGURATION.';
+
+  const turnstileSiteKey = document.querySelector('meta[name="aloden-turnstile-site-key"]')?.content?.trim();
+  if (turnstileSiteKey) {
+    const consent = document.querySelector('.projectConsent');
+    const mount = document.createElement('div');
+    mount.className = 'projectBotCheck';
+    mount.setAttribute('aria-label', 'Bot protection check');
+    consent?.before(mount);
+
+    const renderTurnstile = () => {
+      if (!window.turnstile || mount.dataset.rendered) return;
+      window.turnstile.render(mount, { sitekey: turnstileSiteKey, theme: 'light' });
+      mount.dataset.rendered = 'true';
+    };
+
+    if (window.turnstile) renderTurnstile();
+    else {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.defer = true;
+      script.onload = renderTurnstile;
+      document.head.appendChild(script);
+    }
+  }
+
   const honeypot = document.createElement('div');
   honeypot.className = 'projectHoneypot';
   honeypot.setAttribute('aria-hidden', 'true');
