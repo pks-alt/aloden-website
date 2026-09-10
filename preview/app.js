@@ -201,8 +201,17 @@ installAccessibilityBaseline();
 installMetadataBaseline();
 
 if (document.querySelector('.hero#home')) {
+  document.body.classList.add('homepageRework');
+
+  if (!document.querySelector('link[href^="homepage-all-sections.css"]')) {
+    const homepageCss = document.createElement('link');
+    homepageCss.rel = 'stylesheet';
+    homepageCss.href = 'homepage-all-sections.css?v=1';
+    document.head.appendChild(homepageCss);
+  }
+
   const homepageSection1Script = document.createElement('script');
-  homepageSection1Script.src = 'homepage-section1-review.js?v=1';
+  homepageSection1Script.src = 'homepage-section1-review.js?v=2';
   homepageSection1Script.defer = true;
   document.body.appendChild(homepageSection1Script);
 }
