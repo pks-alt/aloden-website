@@ -32,6 +32,11 @@ if (document.querySelector('.startProjectHero')) {
   step2.onload = () => {
     const step3 = document.createElement('script');
     step3.src = 'start-project-section3.js?v=' + Date.now();
+    step3.onload = () => {
+      const step4 = document.createElement('script');
+      step4.src = 'start-project-section4.js?v=' + Date.now();
+      document.body.appendChild(step4);
+    };
     document.body.appendChild(step3);
   };
   document.body.appendChild(step2);
