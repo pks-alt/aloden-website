@@ -65,6 +65,18 @@ test('rejects requests from an unapproved browser origin', async () => {
   assert.equal(response.status, 403);
 });
 
+test('rejects requests without a browser origin', async () => {
+  const request = new Request('https://aloden.com/api/project-brief', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(valid)
+  });
+  const response = await createProjectBriefHandler(services())(request);
+  const data = await response.json();
+  assert.equal(response.status, 403);
+  assert.equal(data.error, 'origin_not_allowed');
+});
+
 test('requires bot verification before delivery', async () => {
   let delivered = false;
   const secure = services();
