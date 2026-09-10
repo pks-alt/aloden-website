@@ -1,0 +1,18 @@
+/* Company — final CTA and page-level polish */
+.companyFinalCta{background:#111318;color:#fff;padding:86px 0 46px}
+.companyFinalCtaInner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:end;padding:34px;border:1px solid #2b3038;border-radius:20px;background:linear-gradient(145deg,#151820 0%,#111318 68%,#191429 100%);box-shadow:0 22px 50px rgba(13,16,25,.12)}
+.companyFinalCta .eyebrow{color:#a78bfa}
+.companyFinalCta h2{max-width:880px;margin:12px 0 14px;font-size:clamp(34px,5vw,58px);line-height:.98;letter-spacing:-.052em}
+.companyFinalCta p{max-width:820px;margin:0;color:#b9c0ca;font-size:15px;line-height:1.68}
+.companyFinalCapabilityLine{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.companyFinalCapabilityLine span{border:1px solid #343944;border-radius:999px;background:#171a20;padding:7px 10px;font-size:9.5px;color:#c8ced6}
+.companyFinalActions{display:flex;flex-direction:column;gap:10px;align-items:stretch;min-width:190px}
+.companyFinalActions .btn{justify-content:center;white-space:nowrap}
+.companyFinalActions .btn.primary{background:#fff;color:#111318;border-color:#fff}
+.companyFinalActions .btn.secondary{background:transparent;color:#fff;border-color:#3a404b}
+.companyFinalClosing{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:20px 4px 0;color:#aeb5c0;font-size:12px}
+.companyFinalClosing strong{color:#fff;font-size:14px;letter-spacing:-.015em}
+.companyWhy,.companyHow,.companyDifference,.companyProof,.companyTrust{scroll-margin-top:84px}
+#company-cta{scroll-margin-top:84px}
+@media(max-width:850px){.companyFinalCtaInner{grid-template-columns:1fr}.companyFinalActions{flex-direction:row;flex-wrap:wrap;min-width:0}.companyFinalClosing{align-items:flex-start;flex-direction:column}}
+@media(max-width:620px){.companyFinalCta{padding-top:66px}.companyFinalCtaInner{padding:24px}.companyFinalActions{flex-direction:column}.companyFinalClosing{font-size:11px}}
