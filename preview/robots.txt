@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /live-review.html
+
+Sitemap: https://www.aloden.com/sitemap.xml
