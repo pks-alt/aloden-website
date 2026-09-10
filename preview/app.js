@@ -25,3 +25,10 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.startProjectHero')) {
+  const projectFormScript = document.createElement('script');
+  projectFormScript.src = 'start-project-form.js?v=1';
+  projectFormScript.defer = true;
+  document.body.appendChild(projectFormScript);
+}
