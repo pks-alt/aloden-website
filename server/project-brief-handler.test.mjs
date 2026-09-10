@@ -95,6 +95,20 @@ test('rate limiting is enforced', async () => {
   assert.equal(response.headers.get('retry-after'), '90');
 });
 
+test('single-line contact metadata is sanitized before delivery', async () => {
+  let delivered;
+  const secure = services();
+  secure.deliver = async (payload) => { delivered = payload; };
+  const input = {
+    ...valid,
+    contact: { ...valid.contact, company: 'Example Co\r\nBcc: unwanted@example.com' }
+  };
+  const response = await createProjectBriefHandler(secure)(makeRequest(input));
+  assert.equal(response.status, 201);
+  assert.equal(delivered.brief.contact.company, 'Example Co Bcc: unwanted@example.com');
+  assert.doesNotMatch(delivered.subject, /[\r\n]/);
+});
+
 test('successful submissions call delivery and return a safe summary', async () => {
   let delivered;
   const secure = services();
