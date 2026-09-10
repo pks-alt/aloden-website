@@ -10,7 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="start-project.css?v=1">
+<link rel="stylesheet" href="start-project.css?v=final">
+<link rel="stylesheet" href="start-project-section2.css?v=final">
+<link rel="stylesheet" href="start-project-section3.css?v=final">
+<link rel="stylesheet" href="start-project-section4.css?v=final">
+<link rel="stylesheet" href="start-project-section5.css?v=final">
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
@@ -20,7 +24,7 @@
       <a href="index.html">Home</a>
       <a href="built-by-aloden.html">Built by Aloden</a>
       <a href="capabilities.html">Capabilities</a>
-      <a href="index.html#insights">Insights</a>
+      <a href="insights.html">Insights</a>
       <a href="company.html">Company</a>
     </nav>
     <a class="btn primary navCta" href="#project-start" aria-current="page">Start a Project →</a>
@@ -68,9 +72,8 @@
 
         <div class="projectQualifierFooter">
           <p>No long RFP required. We are trying to understand the product problem before discussing a solution.</p>
-          <a class="btn primary" href="#start-project-next">Continue →</a>
+          <a class="btn primary" href="#project-stage">Continue →</a>
         </div>
-        <div class="projectQualifierFootnote">CONTENT REVIEW · STEP 1 ONLY — NEXT QUESTIONS WILL COVER CURRENT STATE, NEEDED HELP, PROJECT CONTEXT, AND CONTACT DETAILS.</div>
       </div>
     </div>
   </div>
@@ -84,12 +87,167 @@
   </div>
 </section>
 
-<section class="startProjectReviewNext" id="start-project-next">
-  <div class="container"><div class="startProjectReviewNextInner"><span>CONTENT REVIEW IN PROGRESS</span><h2>Next: Where is the product today?</h2><p>Next we’ll define Step 2 so Aloden can distinguish an early idea, a validated concept, an existing product, an active modernization effort, or a production system that needs a specific AI or engineering capability.</p></div></div>
+<section class="projectStageSection" id="project-stage">
+  <div class="container">
+    <div class="projectStageHead">
+      <div class="eyebrow">STEP 02 · CURRENT STATE</div>
+      <h2 class="h2">Where is the product today?</h2>
+      <p class="lead">The right next step depends on what already exists. Tell us whether this is still an idea, a validated concept, an operating product, or an initiative already in motion.</p>
+    </div>
+
+    <div class="projectStagePanel">
+      <div class="projectStagePanelTop"><span>PROJECT BRIEF</span><b>CURRENT STATE → BETTER NEXT STEP</b></div>
+      <div class="projectStageMeta"><div><span>STEP 02 · WHERE</span><div class="projectStageProgress" aria-hidden="true"><i></i></div></div><b>2 OF 5</b></div>
+      <fieldset class="projectStageField">
+        <legend>Where are you now?</legend>
+        <p class="projectStageHelp">Choose the closest description. This helps us understand whether the work is primarily definition, productization, modernization, integration, or production engineering.</p>
+        <div class="projectStageGrid">
+          <label class="projectStageChoice"><input type="radio" name="project-stage" value="early-idea"><span><strong>Early idea</strong><small>We understand the problem or opportunity, but the product is not yet defined.</small></span></label>
+          <label class="projectStageChoice"><input type="radio" name="project-stage" value="validated-concept"><span><strong>Validated concept / prototype</strong><small>We have tested the idea or built an initial prototype and now need to turn it into a real product.</small></span></label>
+          <label class="projectStageChoice"><input type="radio" name="project-stage" value="production-product"><span><strong>Existing product in production</strong><small>The product works today and needs new capability, AI, UX, integrations, scale, or architecture improvements.</small></span></label>
+          <label class="projectStageChoice"><input type="radio" name="project-stage" value="active-modernization"><span><strong>Active modernization</strong><small>We already know parts of the product need to change and need help defining or executing the modernization path.</small></span></label>
+          <label class="projectStageChoice"><input type="radio" name="project-stage" value="ai-underway"><span><strong>AI initiative already underway</strong><small>We have models, prompts, agents, or experiments but need stronger product architecture, workflow integration, controls, or production readiness.</small></span></label>
+          <label class="projectStageChoice"><input type="radio" name="project-stage" value="diagnose"><span><strong>Need help diagnosing the problem</strong><small>We know something is limiting the product, but we need help determining the right starting point.</small></span></label>
+        </div>
+      </fieldset>
+      <div class="projectStageNote"><b>Why we ask:</b> the same business goal can require very different work depending on whether we are defining a product, productizing a prototype, changing a live platform, or making an AI initiative production-ready.</div>
+      <div class="projectStageFooter"><p>We are not using this step to force you into a fixed delivery package. It helps us understand what kind of product decision should come next.</p><a class="btn primary" href="#project-help">Continue →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="projectHelpSection" id="project-help">
+  <div class="container">
+    <div class="projectHelpHead">
+      <div class="eyebrow">STEP 03 · NEEDED HELP</div>
+      <h2 class="h2">What do you need help with?</h2>
+      <p class="lead">Choose all that apply. You do not need to know the technical solution—we are trying to understand the outcomes, product changes, or operating problems that matter most.</p>
+    </div>
+
+    <div class="projectHelpPanel">
+      <div class="projectHelpPanelTop"><span>PROJECT BRIEF</span><b>OUTCOMES FIRST → SOLUTION SECOND</b></div>
+      <div class="projectHelpMeta"><div><span>STEP 03 · HELP</span><div class="projectHelpProgress" aria-hidden="true"><i></i></div></div><b>3 OF 5</b></div>
+      <fieldset class="projectHelpField">
+        <legend>What should become better?</legend>
+        <p class="projectHelpIntro">Select one or several. The right engagement may combine product strategy, design, AI, engineering, modernization, and integration rather than fit a single service label.</p>
+        <div class="projectHelpGrid">
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="define-product"><span><strong>Define or productize the idea</strong><small>Clarify the product, workflow, users, priorities, architecture, and path from concept or prototype to a production-ready system.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="ai-capability"><span><strong>Add AI where it creates real value</strong><small>Identify the decisions, interactions, or workflows where intelligence can materially improve the product—and engineer the system around it.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="agentic-workflow"><span><strong>Automate a complex workflow</strong><small>Coordinate multi-step work across context, tools, approvals, workflow state, verification, exceptions, and human escalation.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="voice-experience"><span><strong>Create a voice or conversational experience</strong><small>Connect natural conversation to product context, permissions, tools, system actions, confirmation, and human handoff.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="modernize-product"><span><strong>Modernize an existing product</strong><small>Improve architecture, experience, data, integrations, delivery, or AI readiness while preserving what already creates value.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="systems-data"><span><strong>Connect systems, data, and workflows</strong><small>Reduce fragmented experiences by improving APIs, interoperability, data flow, workflow state, and system boundaries.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="production"><span><strong>Make the product more production-ready</strong><small>Strengthen reliability, security, evaluation, observability, performance, accessibility, controls, and operating readiness.</small></span></label>
+          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="healthcare"><span><strong>Apply healthcare workflow expertise</strong><small>Work across workforce, referrals, credentialing, scheduling, care operations, documentation, financial workflows, or connected healthcare systems.</small></span></label>
+          <label class="projectHelpChoice wide"><input type="checkbox" name="project-help" value="not-sure"><span><strong>Not sure which path fits</strong><small>Describe the problem in your own words. We can help diagnose whether the next step is product definition, modernization, AI, workflow engineering, integration, or a combination.</small></span></label>
+        </div>
+      </fieldset>
+      <div class="projectHelpNote"><b>Why we ask:</b> strong product work often crosses disciplines. Knowing the outcome you need is more useful than forcing you to choose a technical solution before we understand the system.</div>
+      <div class="projectHelpFooter"><p>This step helps Aloden understand where the product needs to move—not prescribe how it must be built.</p><a class="btn primary" href="#project-context">Continue →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="projectContextSection" id="project-context">
+  <div class="container">
+    <div class="projectContextHead">
+      <div class="eyebrow">STEP 04 · PROJECT CONTEXT</div>
+      <h2 class="h2">What should we know about the project?</h2>
+      <p class="lead">A little context helps us understand the right next conversation. Keep it high level—what outcome matters, what constraints are real, when timing matters, and which systems or product environment already exist.</p>
+    </div>
+
+    <div class="projectContextPanel">
+      <div class="projectContextPanelTop"><span>PROJECT BRIEF</span><b>ENOUGH CONTEXT TO DEFINE THE NEXT STEP</b></div>
+      <div class="projectContextMeta"><div><span>STEP 04 · CONTEXT</span><div class="projectContextProgress" aria-hidden="true"><i></i></div></div><b>4 OF 5</b></div>
+
+      <div class="projectContextBody">
+        <h3>Give us the useful context—not a full RFP.</h3>
+        <p class="projectContextIntro">Short answers are fine. We are looking for the product reality that will shape the next decision, not a complete specification.</p>
+
+        <div class="projectContextGrid">
+          <div class="projectContextField wide">
+            <label for="project-outcome">What outcome are you trying to achieve?</label>
+            <small>Describe what should become better for the user, workflow, operation, or business.</small>
+            <textarea id="project-outcome" name="project-outcome" rows="4" placeholder="Example: Reduce manual work in a multi-step workflow, make an existing product AI-ready, or turn a validated prototype into a dependable production product."></textarea>
+          </div>
+
+          <div class="projectContextField">
+            <label for="project-constraints">What constraints should we know about?</label>
+            <small>Optional. Existing architecture, security, compliance, integration, team, migration, or operating constraints.</small>
+            <textarea id="project-constraints" name="project-constraints" rows="4" placeholder="Example: Must integrate with existing systems, preserve a live workflow, meet healthcare privacy requirements, or avoid a full rewrite."></textarea>
+          </div>
+
+          <fieldset class="projectContextField">
+            <legend>When does timing matter?</legend>
+            <small>Choose the closest answer. We can discuss milestones and delivery approach later.</small>
+            <div class="projectTimingGrid">
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="exploring"><span>Exploring / no fixed date</span></label>
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="quarter"><span>Within the next quarter</span></label>
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="six-months"><span>Within 3–6 months</span></label>
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="urgent"><span>Active / time-sensitive initiative</span></label>
+            </div>
+          </fieldset>
+
+          <div class="projectContextField wide">
+            <label for="project-systems">What product, systems, or data environment already exists?</label>
+            <small>Optional. Name the current product, platforms, APIs, data sources, vendors, or systems that materially shape the work.</small>
+            <input id="project-systems" name="project-systems" type="text" placeholder="Example: Existing SaaS platform, EHR / VMS / CRM, internal APIs, cloud environment, data warehouse, or current AI prototype">
+          </div>
+        </div>
+      </div>
+
+      <div class="projectContextNote"><b>Keep sensitive information out of this first brief.</b> We only need enough context to determine the right next conversation; confidential technical or business details can be handled later through the appropriate process.</div>
+      <div class="projectContextFooter"><p>This step should help Aloden understand the operating context without making the visitor complete a long procurement questionnaire.</p><a class="btn primary" href="#project-contact">Continue →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="projectContactSection" id="project-contact">
+  <div class="container">
+    <div class="projectContactHead">
+      <div class="eyebrow">STEP 05 · CONTACT &amp; SUBMIT</div>
+      <h2 class="h2">Who should we contact about the project?</h2>
+      <p class="lead">Finish the brief with the essentials. We only need enough information to connect the project context to the right follow-up conversation.</p>
+    </div>
+
+    <div class="projectContactPanel">
+      <div class="projectContactPanelTop"><span>PROJECT BRIEF</span><b>5 OF 5 · READY FOR REVIEW</b></div>
+      <div class="projectContactMeta"><div><span>STEP 05 · CONTACT</span><div class="projectContactProgress" aria-hidden="true"><i></i></div></div><b>5 OF 5</b></div>
+
+      <div class="projectContactBody">
+        <div class="projectContactForm">
+          <h3>Tell us who to follow up with.</h3>
+          <p class="projectContactIntro">No phone number is required for the first conversation. We’ll start with your work email and the context already captured in the brief.</p>
+          <div class="projectContactGrid">
+            <div class="projectContactField"><label for="project-name">Your name</label><input id="project-name" name="project-name" type="text" autocomplete="name" placeholder="Full name"></div>
+            <div class="projectContactField"><label for="project-email">Work email</label><input id="project-email" name="project-email" type="email" autocomplete="email" placeholder="name@company.com"></div>
+            <div class="projectContactField"><label for="project-company">Company / organization</label><input id="project-company" name="project-company" type="text" autocomplete="organization" placeholder="Company or organization"></div>
+            <div class="projectContactField"><label for="project-role">Role / title <small>optional</small></label><input id="project-role" name="project-role" type="text" autocomplete="organization-title" placeholder="Your role"></div>
+          </div>
+        </div>
+
+        <aside class="projectContactNext">
+          <span>WHAT HAPPENS NEXT</span>
+          <h3>A useful follow-up, not another form.</h3>
+          <p>The brief gives Aloden enough context to understand the product problem before the first conversation.</p>
+          <div class="projectContactSteps">
+            <article><span>01</span><div><b>We review the product context</b><small>What you are building, where it stands, what needs help, and the operating constraints.</small></div></article>
+            <article><span>02</span><div><b>We connect with you</b><small>The first follow-up can clarify the product decision, unknowns, and the most useful next step.</small></div></article>
+            <article><span>03</span><div><b>We define the right path</b><small>Discovery, productization, modernization, AI engineering, integration, or a combination—based on the actual problem.</small></div></article>
+          </div>
+        </aside>
+      </div>
+
+      <div class="projectConsent"><b>By submitting this brief, you are asking Aloden to contact you about this project.</b> Please do not include confidential, sensitive, regulated, or proprietary information in this initial inquiry.</div>
+      <div class="projectSubmitFooter"><div><p>Submit the brief when the information is ready. Detailed technical or commercial information can be handled later through the appropriate process.</p><div class="projectSubmissionReview">FORM CONTENT FINAL · SUBMISSION FUNCTIONALITY REVIEW NEXT.</div></div><button class="btn primary" id="submit-project-brief" type="button">Submit Project Brief →</button></div>
+    </div>
+
+    <div class="projectDirectContact">Prefer email? <a href="mailto:hello@aloden.com?subject=Start%20a%20Project">hello@aloden.com →</a></div>
+  </div>
 </section>
 </main>
 
-<footer class="footer startProjectFooter"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="capabilities.html">Capabilities</a><a href="index.html#insights">Insights</a><a href="company.html">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="voice-ai-engineering.html">Voice AI Engineering</a><a href="agentic-ai.html">Intelligent Workflow &amp; Agentic Systems</a><a href="product-modernization.html">Product Modernization</a><a href="healthcare-ai.html">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#project-start">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
+<footer class="footer startProjectFooter"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="capabilities.html">Capabilities</a><a href="insights.html">Insights</a><a href="company.html">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="voice-ai-engineering.html">Voice AI Engineering</a><a href="agentic-ai.html">Intelligent Workflow &amp; Agentic Systems</a><a href="product-modernization.html">Product Modernization</a><a href="healthcare-ai.html">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#project-start">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
 <script defer src="app.js"></script>
 </body>
 </html>
