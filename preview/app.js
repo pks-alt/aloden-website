@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.companyHero')) {
+  const script = document.createElement('script');
+  script.src = 'company-section2.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
