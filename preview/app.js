@@ -28,7 +28,7 @@ if (menuBtn && navLinks) {
 
 if (document.querySelector('.companyHero')) {
   (async () => {
-    for (const src of ['company-section2.js', 'company-section3.js', 'company-section4.js']) {
+    for (const src of ['company-section2.js', 'company-section3.js', 'company-section4.js', 'company-section5.js']) {
       await new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src + '?v=' + Date.now();
