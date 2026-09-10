@@ -27,7 +27,15 @@ if (menuBtn && navLinks) {
 }
 
 if (document.querySelector('.companyHero')) {
-  const script = document.createElement('script');
-  script.src = 'company-section2.js?v=' + Date.now();
-  document.body.appendChild(script);
+  (async () => {
+    for (const src of ['company-section2.js', 'company-section3.js']) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + Date.now();
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    }
+  })().catch(err => console.error('Company review layer failed', err));
 }
