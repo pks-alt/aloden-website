@@ -7,6 +7,7 @@ on:
       - develop
       - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   qa:
@@ -19,6 +20,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check preview/app.js
+          node --check preview/start-project-form.js
+          node --check server/project-brief-handler.mjs
       - name: Audit pages, links, resources, metadata, and form structure
         run: node scripts/site-qa.mjs
       - name: Test secure project-brief handler
