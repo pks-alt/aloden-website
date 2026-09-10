@@ -27,6 +27,9 @@ function closeMobileMenu({ returnFocus = false } = {}) {
 }
 
 if (menuBtn && navLinks) {
+  if (!navLinks.id) navLinks.id = 'primary-navigation';
+  menuBtn.setAttribute('aria-controls', navLinks.id);
+
   menuBtn.addEventListener('click', () => {
     const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
     if (isOpen) closeMobileMenu();
@@ -118,6 +121,10 @@ function installAccessibilityBaseline() {
     skip.className = 'siteSkipLink';
     skip.href = '#main-content';
     skip.textContent = 'Skip to main content';
+    skip.addEventListener('click', () => {
+      if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+      window.setTimeout(() => main.focus({ preventScroll: true }), 0);
+    });
     document.body.insertBefore(skip, document.body.firstChild);
   }
 
@@ -146,6 +153,14 @@ function installMetadataBaseline() {
     document.head.appendChild(canonical);
   }
 
+  if (!document.querySelector('link[rel="icon"]')) {
+    const icon = document.createElement('link');
+    icon.rel = 'icon';
+    icon.href = 'assets/aloden-logo-official.svg';
+    icon.type = 'image/svg+xml';
+    document.head.appendChild(icon);
+  }
+
   const ensureMeta = (selector, attrs) => {
     let node = document.head.querySelector(selector);
     if (!node) {
@@ -156,6 +171,7 @@ function installMetadataBaseline() {
     return node;
   };
 
+  ensureMeta('meta[name="theme-color"]', { name: 'theme-color', content: '#ffffff' });
   ensureMeta('meta[property="og:title"]', { property: 'og:title', content: title });
   ensureMeta('meta[property="og:description"]', { property: 'og:description', content: description });
   ensureMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
@@ -188,5 +204,9 @@ if (document.querySelector('.startProjectHero')) {
   const projectFormScript = document.createElement('script');
   projectFormScript.src = 'start-project-form.js?v=1';
   projectFormScript.defer = true;
+  projectFormScript.addEventListener('load', () => {
+    const note = document.querySelector('.projectSubmissionReview');
+    if (note) note.textContent = 'INITIAL PROJECT BRIEF · HIGH-LEVEL CONTEXT ONLY.';
+  });
   document.body.appendChild(projectFormScript);
 }
