@@ -25,3 +25,9 @@ if (menuBtn && navLinks) {
     }
   });
 }
+
+if (document.querySelector('.insightsHero')) {
+  const script = document.createElement('script');
+  script.src = 'insights-section3.js?v=' + Date.now();
+  document.body.appendChild(script);
+}
