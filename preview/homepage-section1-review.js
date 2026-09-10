@@ -2,8 +2,8 @@
   const hero = document.querySelector('.hero#home');
   if (!hero || hero.dataset.section1Review === 'true') return;
 
-  const cssHref = 'homepage-section1-review.css?v=1';
-  if (!document.querySelector(`link[href^="homepage-section1-review.css"]`)) {
+  const cssHref = 'homepage-section1.css?v=2';
+  if (!document.querySelector(`link[href^="homepage-section1.css"]`)) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = cssHref;
@@ -11,77 +11,112 @@
   }
 
   hero.dataset.section1Review = 'true';
-  hero.classList.add('homeHeroRework');
-
-  const proofStrip = hero.querySelector('.proofStrip');
-  if (proofStrip) {
-    proofStrip.setAttribute('aria-label', 'Aloden product engineering strengths');
-    proofStrip.innerHTML = `
-      <article class="heroProofCard">
-        <span class="heroProofIndex">01 · BUILD</span>
-        <b>AI Product Engineering</b>
-        <p>From product strategy and AI architecture to design, engineering, and production.</p>
-      </article>
-      <article class="heroProofCard">
-        <span class="heroProofIndex">02 · EVOLVE</span>
-        <b>Modernization at Scale</b>
-        <p>Modernize products, platforms, and workflows without losing what already works.</p>
-      </article>
-      <article class="heroProofCard">
-        <span class="heroProofIndex">03 · OPERATE</span>
-        <b>Built for Real Use</b>
-        <p>Intelligent products engineered around users, systems, operations, and measurable outcomes.</p>
-      </article>`;
-  }
-
-  const canvas = hero.querySelector('.productCanvas');
-  if (canvas) {
-    canvas.setAttribute('aria-label', 'Aloden product engineering system from product problem to production');
-    canvas.innerHTML = `
-      <div class="heroSystemFrame">
-        <div class="heroSystemTop">
-          <div class="heroSystemIdentity"><i aria-hidden="true"></i><b>Aloden product system</b></div>
-          <span>PROBLEM → PRODUCTION</span>
+  hero.className = 'heroOne';
+  hero.innerHTML = `
+    <div class="heroOneBackdrop" aria-hidden="true"></div>
+    <div class="container heroOneGrid">
+      <div class="heroOneCopy">
+        <div class="eyebrow heroOneEyebrow">AI PRODUCT ENGINEERING · DIGITAL MODERNIZATION</div>
+        <h1>We build and modernize intelligent digital products.</h1>
+        <p class="heroOneSub">Built around your vision. Engineered for real-world impact.</p>
+        <p class="heroOneDesc">Aloden brings together AI, product strategy, experience design, engineering, and modernization to turn ideas and existing software into production-ready digital products.</p>
+        <div class="heroOneActions">
+          <a class="btn heroOnePrimary" href="start-project.html">Start a Project →</a>
+          <a class="btn heroOneSecondary" href="built-by-aloden.html">See What We’ve Built</a>
         </div>
-
-        <div class="heroSystemInputs" aria-label="Common product starting points">
-          <div class="heroSystemInput"><span>START 01</span><b>New product</b><small>Idea · market opportunity</small></div>
-          <div class="heroSystemInput"><span>START 02</span><b>Existing product</b><small>Modernize · add intelligence</small></div>
-          <div class="heroSystemInput"><span>START 03</span><b>Complex workflow</b><small>Connect · automate · improve</small></div>
+        <div class="heroOneDiscipline" aria-label="Aloden disciplines">
+          <span>Product Strategy</span><i></i><span>Experience</span><i></i><span>AI</span><i></i><span>Engineering</span><i></i><span>Production</span>
         </div>
+      </div>
 
-        <section class="heroSystemCore" aria-label="Connected Aloden product engineering disciplines">
-          <div class="heroSystemCoreHead">
-            <span class="heroSystemBadge">ALODEN</span>
-            <div><b>One connected product discipline</b><small>Strategy · Experience · AI · Engineering · Modernization</small></div>
+      <div class="heroOneDemo" data-mode="medlivo" aria-label="Interactive Aloden product system demonstration">
+        <div class="heroOneDemoTop">
+          <div class="heroOneTabs" role="tablist" aria-label="Product examples">
+            <button class="heroOneTab isActive" type="button" role="tab" aria-selected="true" data-demo="medlivo">
+              <span class="tabGlyph">M</span><span><b>Medlivo</b><small>Healthcare</small></span>
+            </button>
+            <button class="heroOneTab" type="button" role="tab" aria-selected="false" data-demo="startupfair">
+              <span class="tabGlyph">S</span><span><b>StartupFair</b><small>Innovation</small></span>
+            </button>
+            <button class="heroOneTab" type="button" role="tab" aria-selected="false" data-demo="voice">
+              <span class="tabGlyph">V</span><span><b>Voice AI</b><small>Conversation</small></span>
+            </button>
           </div>
-          <div class="heroSystemCoreGrid">
-            <article><span>PRODUCT</span><b>Strategy + Experience</b><small>Outcome · workflow · users</small></article>
-            <article class="accent"><span>INTELLIGENCE</span><b>AI + Agentic Systems</b><small>Context · decisions · tools</small></article>
-            <article><span>ENGINEERING</span><b>Software + Integration</b><small>Architecture · data · APIs</small></article>
-            <article><span>EVOLUTION</span><b>Modernization</b><small>Preserve value · remove constraints</small></article>
-          </div>
-        </section>
-
-        <div class="heroSystemFlow" aria-label="Product engineering flow">
-          <div><span>01</span><b>Understand</b></div>
-          <div><span>02</span><b>Design</b></div>
-          <div><span>03</span><b>Build</b></div>
-          <div><span>04</span><b>Integrate</b></div>
-          <div><span>05</span><b>Deploy</b></div>
+          <div class="heroOneDemoPrinciple">DIFFERENT DOMAINS. ONE ENGINEERING DISCIPLINE.</div>
         </div>
 
-        <div class="heroSystemOutcome">
-          <div><span>OUTPUT</span><b>Production-ready digital product</b></div>
-          <div class="heroSystemReady"><i aria-hidden="true"></i>Designed for real-world use</div>
+        <div class="heroOneSystemRow">
+          <article class="heroOneSignal">
+            <div class="heroOneCardLabel">REAL-WORLD NEED</div>
+            <div class="heroOneSignalIcon" aria-hidden="true">↗</div>
+            <h2 data-bind="signalTitle">New healthcare workforce need</h2>
+            <dl>
+              <div><dt data-bind="signalKey1">Requirement</dt><dd data-bind="signalValue1">Clinical coverage</dd></div>
+              <div><dt data-bind="signalKey2">Timing</dt><dd data-bind="signalValue2">Defined window</dd></div>
+              <div><dt data-bind="signalKey3">Context</dt><dd data-bind="signalValue3">Facility / care setting</dd></div>
+            </dl>
+          </article>
+
+          <div class="heroOneConnector" aria-hidden="true"><span></span><b>→</b></div>
+
+          <article class="heroOneCore">
+            <div class="heroOneCoreHead">
+              <span class="heroOneCoreMark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <div><small>ALODEN PRODUCT SYSTEM</small><h2>From context to production.</h2></div>
+            </div>
+            <div class="heroOneStages" aria-label="Aloden product engineering stages">
+              <div class="heroOneStage"><span>01</span><b>Understand</b><small>Context &amp; goals</small></div>
+              <div class="heroOneStage"><span>02</span><b>Design</b><small>Experience &amp; workflow</small></div>
+              <div class="heroOneStage isIntelligence"><span>03</span><b>Build</b><small>AI &amp; engineering</small></div>
+              <div class="heroOneStage"><span>04</span><b>Integrate</b><small>Systems &amp; data</small></div>
+              <div class="heroOneStage isReady"><span>05</span><b>Deploy</b><small>Secure outcomes</small></div>
+            </div>
+            <div class="heroOneControlRail" aria-label="Persistent product controls">
+              <span>Security</span><span>Human Control</span><span>Evaluation</span><span>Observability</span>
+            </div>
+          </article>
+
+          <div class="heroOneConnector" aria-hidden="true"><span></span><b>→</b></div>
+
+          <article class="heroOneOutcome">
+            <div class="heroOneOutcomeStatus"><i aria-hidden="true">✓</i><span>PRODUCTION READY</span></div>
+            <h2 data-bind="outcomeTitle">Operationally ready match</h2>
+            <p data-bind="outcomeText">Context, readiness, and workflow state are connected before action.</p>
+            <div class="heroOneMiniProduct">
+              <div class="heroOneMiniTop"><span data-bind="productName">Medlivo</span><i>•••</i></div>
+              <div class="heroOneMiniBadge" data-bind="miniBadge">WORKFLOW READY</div>
+              <strong data-bind="miniTitle">Best-fit path identified</strong>
+              <div class="heroOneMiniLines"><span></span><span></span><span></span></div>
+              <div class="heroOneMiniAction" data-bind="miniAction">Review next step →</div>
+            </div>
+          </article>
         </div>
 
-        <div class="heroSystemProof" aria-label="Aloden product proof">
-          <span>PROOF IN PRACTICE</span>
-          <div><b>Medlivo</b><small>Healthcare intelligence</small></div>
-          <div><b>StartupFair</b><small>Innovation platform</small></div>
-          <div><b>Voice AI</b><small>Conversation → action</small></div>
+        <div class="heroOneJourney" aria-label="Aloden transformation path">
+          <span>From real-world complexity</span><i></i><span>To connected, intelligent products</span><i></i><span>Built for people, systems, and what’s next</span>
         </div>
-      </div>`;
-  }
+      </div>
+    </div>
+
+    <div class="heroOneProofBand">
+      <div class="container heroOneProofGrid">
+        <article class="heroOneProof">
+          <div class="heroOneProofIcon" aria-hidden="true">AI</div>
+          <div><span>01 · BUILD</span><h2>AI Product Engineering</h2><p>From product strategy and AI architecture to design, engineering, and production.</p></div>
+        </article>
+        <article class="heroOneProof">
+          <div class="heroOneProofIcon modernize" aria-hidden="true">↻</div>
+          <div><span>02 · EVOLVE</span><h2>Modernization at Scale</h2><p>Modernize products, platforms, and workflows without losing what already works.</p></div>
+        </article>
+        <article class="heroOneProof">
+          <div class="heroOneProofIcon realUse" aria-hidden="true">✓</div>
+          <div><span>03 · OPERATE</span><h2>Built for Real Use</h2><p>Intelligent products engineered around users, systems, operations, and measurable outcomes.</p></div>
+        </article>
+      </div>
+    </div>`;
+
+  const demoScript = document.createElement('script');
+  demoScript.src = 'homepage-section1.js?v=2';
+  demoScript.defer = true;
+  document.body.appendChild(demoScript);
 })();
