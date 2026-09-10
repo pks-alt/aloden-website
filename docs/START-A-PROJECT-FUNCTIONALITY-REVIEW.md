@@ -53,6 +53,7 @@ It implements:
 - 32 KB request-body limit
 - Server-side allow-list validation for all option fields
 - Server-side length validation for free-text/contact fields
+- Single-line sanitization for contact/delivery metadata
 - Honeypot handling that silently acknowledges bot-like submissions without delivery
 - Required allowed-origin enforcement; missing or unapproved browser origins are rejected
 - Durable rate-limiter service contract
@@ -78,7 +79,7 @@ No API keys, email credentials, rate-limit credentials, or bot-verification secr
 
 ## Testing completed
 
-The server core is syntax-checked and tested with Node's built-in test runner. **Nine tests pass** covering:
+The server core is syntax-checked and tested with Node's built-in test runner. **Ten tests pass** covering:
 
 - Unsupported methods
 - Invalid field payloads
@@ -88,6 +89,7 @@ The server core is syntax-checked and tested with Node's built-in test runner. *
 - Missing-origin rejection
 - Bot-verification failure
 - Rate limiting
+- Single-line contact/delivery metadata sanitization
 - Successful secure delivery flow and safe summary response
 
 The full-site GitHub Actions QA workflow also checks the shared navigation controller and client form JavaScript for syntax before running the structural site audit and these server tests.
