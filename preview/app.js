@@ -28,7 +28,7 @@ if (menuBtn && navLinks) {
 
 if (document.querySelector('.healthcareAiHero')) {
   (async () => {
-    for (const src of ['healthcare-section2.js', 'healthcare-section3.js']) {
+    for (const src of ['healthcare-section2.js', 'healthcare-section3.js', 'healthcare-section4.js']) {
       await new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src + '?v=' + Date.now();
