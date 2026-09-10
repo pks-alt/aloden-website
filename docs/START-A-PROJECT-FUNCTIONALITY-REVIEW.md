@@ -54,7 +54,7 @@ It implements:
 - Server-side allow-list validation for all option fields
 - Server-side length validation for free-text/contact fields
 - Honeypot handling that silently acknowledges bot-like submissions without delivery
-- Allowed-origin enforcement
+- Required allowed-origin enforcement; missing or unapproved browser origins are rejected
 - Durable rate-limiter service contract
 - Bot-verification service contract
 - Delivery service contract
@@ -78,16 +78,19 @@ No API keys, email credentials, rate-limit credentials, or bot-verification secr
 
 ## Testing completed
 
-The server core was syntax-checked and tested locally with Node's built-in test runner. Eight tests passed covering:
+The server core is syntax-checked and tested with Node's built-in test runner. **Nine tests pass** covering:
 
 - Unsupported methods
 - Invalid field payloads
 - Honeypot behavior
 - Fail-closed configuration
 - Unapproved-origin rejection
+- Missing-origin rejection
 - Bot-verification failure
 - Rate limiting
 - Successful secure delivery flow and safe summary response
+
+The full-site GitHub Actions QA workflow also checks the shared navigation controller and client form JavaScript for syntax before running the structural site audit and these server tests.
 
 ## Deployment still required
 
@@ -101,6 +104,6 @@ Before production activation, choose the final hosting/runtime adapter and confi
 - Secure email or CRM delivery service
 - Sender/domain verification if email delivery is used
 - Production monitoring for endpoint errors and delivery failures
-- Final Privacy/Terms links and any required retention language
+- Final legal review of Privacy/Terms and any required retention language
 
 The content/design lock remains in force while these deployment details are completed.
