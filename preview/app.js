@@ -101,8 +101,8 @@ function normalizeSiteLinks() {
     }
 
     const href = anchor.getAttribute('href') || '';
-    if (/^https?:\/\//i.test(href) && !href.includes(location.hostname)) {
-      if (anchor.getAttribute('target') === '_blank') anchor.setAttribute('rel', 'noopener noreferrer');
+    if (/^https?:\/\//i.test(href) && !href.includes(location.hostname) && anchor.getAttribute('target') === '_blank') {
+      anchor.setAttribute('rel', 'noopener noreferrer');
     }
   });
 
@@ -129,8 +129,60 @@ function installAccessibilityBaseline() {
   }
 }
 
+function installMetadataBaseline() {
+  const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  if (currentFile === '404.html' || currentFile === 'live-review.html') return;
+
+  const siteOrigin = 'https://www.aloden.com';
+  const canonicalPath = currentFile === 'index.html' || !currentFile ? '/' : `/${currentFile}`;
+  const canonicalUrl = `${siteOrigin}${canonicalPath}`;
+  const title = document.title || 'Aloden';
+  const description = document.querySelector('meta[name="description"]')?.content?.trim() || 'AI product engineering and digital modernization for intelligent products built for real-world use.';
+
+  if (!document.querySelector('link[rel="canonical"]')) {
+    const canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    canonical.href = canonicalUrl;
+    document.head.appendChild(canonical);
+  }
+
+  const ensureMeta = (selector, attrs) => {
+    let node = document.head.querySelector(selector);
+    if (!node) {
+      node = document.createElement('meta');
+      Object.entries(attrs).forEach(([name, value]) => node.setAttribute(name, value));
+      document.head.appendChild(node);
+    }
+    return node;
+  };
+
+  ensureMeta('meta[property="og:title"]', { property: 'og:title', content: title });
+  ensureMeta('meta[property="og:description"]', { property: 'og:description', content: description });
+  ensureMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
+  ensureMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
+  ensureMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: 'Aloden' });
+  ensureMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary' });
+
+  if (!document.querySelector('script[data-aloden-organization-schema]')) {
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.dataset.alodenOrganizationSchema = 'true';
+    schema.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Aloden LLC',
+      url: `${siteOrigin}/`,
+      logo: `${siteOrigin}/assets/aloden-logo-official.svg`,
+      email: 'hello@aloden.com',
+      sameAs: ['https://www.linkedin.com/company/alodenllc']
+    });
+    document.head.appendChild(schema);
+  }
+}
+
 normalizeSiteLinks();
 installAccessibilityBaseline();
+installMetadataBaseline();
 
 if (document.querySelector('.startProjectHero')) {
   const projectFormScript = document.createElement('script');
