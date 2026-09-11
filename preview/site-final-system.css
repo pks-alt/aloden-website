@@ -1,174 +1,20 @@
-/* Aloden V1 — unified final site design system.
-   Loaded last by app.js so approved page-specific designs inherit one consistent
-   brand, spacing, typography, navigation, CTA, footer, accessibility and
-   responsive standard without rewriting locked page content. */
-
-body.siteFinalSystem{
-  --site-ink:#0b0d12;
-  --site-ink-2:#171a21;
-  --site-body:#4f5965;
-  --site-muted:#737d89;
-  --site-line:#dde1e6;
-  --site-paper:#fbfaf8;
-  --site-soft:#f6f4fa;
-  --site-lav:#eee9ff;
-  --site-violet:#704de7;
-  --site-violet-2:#987cff;
-  --site-violet-deep:#5134bd;
-  --site-dark:#0b0d12;
-  --site-max:1260px;
-  --site-section:80px;
-  /* Override legacy page tokens so all V1 pages share the homepage palette. */
-  --ink:#0b0d12;
-  --ink-2:#171a21;
-  --body:#4f5965;
-  --muted:#737d89;
-  --line:#dde1e6;
-  --soft:#f7f6f9;
-  --soft-violet:#f4f1fb;
-  --violet:#704de7;
-  --violet-2:#987cff;
-  --blue:#7659df;
-  --teal:#8069df;
-  background:var(--site-paper);
-  color:var(--site-ink);
-}
-
-body.siteFinalSystem .container{width:min(var(--site-max),calc(100% - 48px));margin-inline:auto}
-body.siteFinalSystem .section{padding:var(--site-section) 0;border-bottom:1px solid var(--site-line)}
-body.siteFinalSystem .section.soft{background:var(--site-soft)}
-body.siteFinalSystem .eyebrow{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--site-violet)}
-body.siteFinalSystem .h2{font-size:clamp(38px,3.9vw,53px);line-height:1.02;letter-spacing:-.05em;color:var(--site-ink);text-wrap:balance}
-body.siteFinalSystem .lead{font-size:16px;line-height:1.66;color:var(--site-body);max-width:760px;text-wrap:pretty}
-body.siteFinalSystem .textLink{font-size:13.5px;font-weight:650;color:var(--site-violet-deep)}
-body.siteFinalSystem .textLink:hover{color:#3f259f}
-
-body.siteFinalSystem .btn{min-height:48px;padding:0 20px;border-radius:10px;font-size:14px;font-weight:650;box-shadow:none}
-body.siteFinalSystem .btn.primary{background:var(--site-ink);color:#fff;box-shadow:none}
-body.siteFinalSystem .btn.primary:hover{background:#1a1d24;box-shadow:none;transform:translateY(-1px)}
-body.siteFinalSystem .btn.secondary{border:1px solid #d1d6dc;background:#fff;color:var(--site-ink)}
-body.siteFinalSystem .btn.secondary:hover{border-color:#aeb5bf;background:#fafafa}
-body.siteFinalSystem a:focus-visible,
-body.siteFinalSystem button:focus-visible,
-body.siteFinalSystem input:focus-visible,
-body.siteFinalSystem textarea:focus-visible,
-body.siteFinalSystem select:focus-visible{outline:3px solid rgba(112,77,231,.38);outline-offset:3px}
-
-/* Shared site chrome — homepage may override its own integrated hero treatment. */
-body.siteFinalSystem:not(.homepageRework) .siteHeader{
-  position:sticky;top:0;z-index:80;
-  background:rgba(255,255,255,.975);
-  backdrop-filter:blur(16px) saturate(150%);
-  border-bottom:1px solid #e4e7eb;
-  box-shadow:0 8px 28px rgba(11,13,18,.03)
-}
-body.siteFinalSystem:not(.homepageRework) .nav{height:84px;gap:32px}
-body.siteFinalSystem .siteBrandLogo{display:block;width:188px;height:auto}
-body.siteFinalSystem:not(.homepageRework) .navLinks{gap:29px}
-body.siteFinalSystem:not(.homepageRework) .navLinks a{font-size:14px;font-weight:550;color:#3b434e;padding:31px 0 28px}
-body.siteFinalSystem:not(.homepageRework) .navLinks a:hover,
-body.siteFinalSystem:not(.homepageRework) .navLinks a.active{color:var(--site-ink)}
-body.siteFinalSystem:not(.homepageRework) .navLinks a.active:after{bottom:19px;height:2px;background:var(--site-violet)}
-body.siteFinalSystem:not(.homepageRework) .navCta{margin-left:4px;background:var(--site-ink);color:#fff}
-body.siteFinalSystem:not(.homepageRework) .menuBtn{border-color:var(--site-line);background:#fff;color:var(--site-ink)}
-
-/* Secondary-page hero standardization. Preserve page-specific system visuals while
-   making title, copy width, whitespace and CTA rhythm consistent site-wide. */
-body.siteFinalSystem:not(.homepageRework) :is(
-  .pageHero,.capPageHero,.aipeHero,.voiceEngHero,.agenticHero,.modernizationHero,
-  .healthcareAiHero,.insightsHero,.companyHero,.startProjectHero
-){border-bottom:1px solid var(--site-line)}
-body.siteFinalSystem:not(.homepageRework) :is(
-  .builtHeroGrid,.capHeroGrid,.aipeHeroGrid,.voiceEngHeroGrid,.agenticHeroGrid,
-  .modernizationHeroGrid,.healthcareAiHeroGrid,.insightsHeroGrid,.companyHeroGrid,
-  .startProjectHeroGrid
-){padding-top:72px!important;padding-bottom:72px!important;gap:56px!important}
-body.siteFinalSystem:not(.homepageRework) :is(
-  .builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,
-  .modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,
-  .startProjectHeroCopy
-){max-width:650px}
-body.siteFinalSystem:not(.homepageRework) :is(
-  .builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,
-  .modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,
-  .startProjectHeroCopy
-) h1{font-size:clamp(46px,4.8vw,66px)!important;line-height:1!important;letter-spacing:-.055em!important;text-wrap:balance}
-body.siteFinalSystem:not(.homepageRework) :is(
-  .builtHeroSupport,.capHeroSupport,.aipeHeroSupport,.voiceEngHeroSupport,
-  .agenticHeroSupport,.modernizationHeroSupport,.healthcareAiHeroSupport,
-  .insightsHeroSupport,.companyHeroSupport,.startProjectHeroSupport
-){font-size:19px!important;line-height:1.3!important;letter-spacing:-.02em!important}
-body.siteFinalSystem:not(.homepageRework) :is(
-  .builtHeroDesc,.capHeroDesc,.aipeHeroDesc,.voiceEngHeroDesc,.agenticHeroDesc,
-  .modernizationHeroDesc,.healthcareAiHeroDesc,.insightsHeroDesc,.companyHeroDesc,
-  .startProjectHeroDesc
-){font-size:16px!important;line-height:1.65!important;color:var(--site-body)!important;max-width:640px!important}
-
-/* Keep technical product-system canvases premium and consistent without erasing
-   the individual page identity. */
-body.siteFinalSystem:not(.homepageRework) :is(
-  .productProofStage,.capSystemStage,.aipeSystemStage,.voiceSystemStage,
-  .agenticSystemStage,.modernizationSystemStage,.healthcarePlatformStage,
-  .insightsEditorialSystem,.companySystem,.projectQualifier
-){border-radius:20px!important;box-shadow:0 24px 64px rgba(11,13,18,.07)!important}
-
-/* Reduce legacy excess vertical space and normalize heading/copy rhythm. */
-body.siteFinalSystem:not(.homepageRework) main .section > .container > :is(
-  [class$="Head"],[class$="Header"],[class$="Intro"],[class$="Heading"]
-){margin-bottom:min(36px,4vw)}
-body.siteFinalSystem:not(.homepageRework) main .section p{color:var(--site-body)}
-body.siteFinalSystem:not(.homepageRework) main .section :is(h2,h3,strong){color:var(--site-ink)}
-
-/* Final conversion bands share one visual language. */
-body.siteFinalSystem .finalCta{padding:50px 0!important;background:var(--site-dark)!important;border-bottom:0!important}
-body.siteFinalSystem .ctaBand{border-radius:20px!important;border:1px solid #39334f!important;background:radial-gradient(circle at 86% 16%,rgba(152,124,255,.22),transparent 33%),linear-gradient(135deg,#15121f,#251944 58%,#15111f)!important;box-shadow:none!important}
-body.siteFinalSystem .ctaBand h2{color:#fff!important}
-body.siteFinalSystem .ctaBand p{color:#c4c2cb!important}
-body.siteFinalSystem .ctaBand .btn{background:linear-gradient(135deg,#704de7,#987cff)!important;color:#fff!important}
-
-/* Unified footer. */
-body.siteFinalSystem .footer{background:#090b10!important;border-top:1px solid #252933!important;color:#fff!important;padding:48px 0 22px!important}
-body.siteFinalSystem .siteFooterLogo{display:block;width:176px;height:auto;margin-bottom:16px}
-body.siteFinalSystem :is(.contentReviewFooterGrid,.footerFinalGrid){gap:48px!important}
-body.siteFinalSystem :is(.contentReviewFooterBrand,.footerFinalBrand) p{color:#9099a6!important;max-width:380px;font-size:13px!important;line-height:1.65!important}
-body.siteFinalSystem :is(.contentReviewFooterCol,.footerFinalCol) h4{color:#727c88!important;font:500 9px/1.2 "IBM Plex Mono",monospace!important;letter-spacing:.13em!important;text-transform:uppercase!important}
-body.siteFinalSystem :is(.contentReviewFooterCol,.footerFinalCol) a{color:#adb5c0!important;font-size:13px!important}
-body.siteFinalSystem :is(.contentReviewFooterCol,.footerFinalCol) a:hover{color:#fff!important}
-body.siteFinalSystem :is(.contentReviewFooterPrimary,.footerPrimary){color:#b8a7ff!important}
-body.siteFinalSystem :is(.contentReviewFooterBottom,.footerFinalBottom){border-top:1px solid #252a34!important;color:#707985!important}
-body.siteFinalSystem :is(.contentReviewFooterBottom,.footerFinalBottom) a,
-body.siteFinalSystem :is(.contentReviewFooterBottom,.footerFinalBottom) span{color:#707985!important}
-body.siteFinalSystem :is(.contentReviewFooterTagline,.footerTagline){color:#9488bd!important}
-
-/* Legal/support pages inherit the same readable measure. */
-body.siteFinalSystem .legalPage main{max-width:var(--site-max);margin-inline:auto}
-
-@media(max-width:1020px){
-  body.siteFinalSystem{--site-section:68px}
-  body.siteFinalSystem .container{width:min(var(--site-max),calc(100% - 34px))}
-  body.siteFinalSystem:not(.homepageRework) .nav{height:76px}
-  body.siteFinalSystem .siteBrandLogo{width:168px}
-  body.siteFinalSystem:not(.homepageRework) :is(
-    .builtHeroGrid,.capHeroGrid,.aipeHeroGrid,.voiceEngHeroGrid,.agenticHeroGrid,
-    .modernizationHeroGrid,.healthcareAiHeroGrid,.insightsHeroGrid,.companyHeroGrid,
-    .startProjectHeroGrid
-  ){padding-top:56px!important;padding-bottom:56px!important;gap:38px!important}
-}
-
-@media(max-width:680px){
-  body.siteFinalSystem{--site-section:56px}
-  body.siteFinalSystem .container{width:min(var(--site-max),calc(100% - 30px))}
-  body.siteFinalSystem .siteBrandLogo{width:150px}
-  body.siteFinalSystem:not(.homepageRework) :is(
-    .builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,
-    .modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,
-    .startProjectHeroCopy
-  ) h1{font-size:42px!important}
-  body.siteFinalSystem .h2{font-size:36px}
-  body.siteFinalSystem .finalCta{padding:36px 0!important}
-  body.siteFinalSystem :is(.contentReviewFooterGrid,.footerFinalGrid){gap:30px!important}
-}
-
-@media(prefers-reduced-motion:reduce){
-  body.siteFinalSystem *,body.siteFinalSystem *:before,body.siteFinalSystem *:after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-}
+/* Aloden V2 — shared secondary-page design system */
+body.siteFinalSystem{--site-ink:#0b0d12;--site-ink2:#171a21;--site-body:#4f5965;--site-muted:#727c88;--site-line:#dde1e6;--site-paper:#fbfaf8;--site-soft:#f6f4fa;--site-lav:#eee9ff;--site-violet:#704de7;--site-violet2:#987cff;--site-violetdeep:#5134bd;--site-dark:#0b0d12;--site-max:1260px;--site-section:70px;background:var(--site-paper);color:var(--site-ink)}
+body.siteFinalSystem .container{width:min(var(--site-max),calc(100% - 48px));margin-inline:auto}body.siteFinalSystem .section{padding:var(--site-section) 0;border-bottom:1px solid var(--site-line)}body.siteFinalSystem .section.soft{background:var(--site-soft)}body.siteFinalSystem .eyebrow{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--site-violet)}body.siteFinalSystem .h2{font-size:clamp(38px,3.7vw,49px);line-height:1.015;letter-spacing:-.05em;color:#111319;text-wrap:balance;margin-top:12px}body.siteFinalSystem .lead{font-size:15.5px;line-height:1.62;color:var(--site-body);max-width:760px}body.siteFinalSystem .textLink{font-size:13px;font-weight:650;color:var(--site-violetdeep)}body.siteFinalSystem .textLink:hover{color:#3f259f}body.siteFinalSystem .btn{min-height:48px;padding:0 20px;border-radius:10px;font-size:14px;font-weight:650;box-shadow:none}body.siteFinalSystem .btn.primary{background:var(--site-ink);color:#fff;box-shadow:none}body.siteFinalSystem .btn.primary:hover{background:#1a1d24;transform:translateY(-1px)}body.siteFinalSystem .btn.secondary{border:1px solid #d1d6dc;background:#fff;color:var(--site-ink)}body.siteFinalSystem .btn.secondary:hover{border-color:#aeb5bf;background:#fafafa}body.siteFinalSystem a:focus-visible,body.siteFinalSystem button:focus-visible,body.siteFinalSystem input:focus-visible,body.siteFinalSystem textarea:focus-visible,body.siteFinalSystem select:focus-visible{outline:3px solid rgba(112,77,231,.38);outline-offset:3px}
+/* header */
+body.siteFinalSystem:not(.homepageRework) .siteHeader{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.98);backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid #e4e7eb;box-shadow:0 8px 28px rgba(11,13,18,.03)}body.siteFinalSystem:not(.homepageRework) .nav{height:88px;gap:34px}body.siteFinalSystem .siteBrandLogo{display:block;width:205px;height:auto}body.siteFinalSystem:not(.homepageRework) .navLinks{gap:31px}body.siteFinalSystem:not(.homepageRework) .navLinks a{font-size:14px;font-weight:550;color:#343b45;padding:33px 0 29px}body.siteFinalSystem:not(.homepageRework) .navLinks a:hover,body.siteFinalSystem:not(.homepageRework) .navLinks a.active{color:var(--site-ink)}body.siteFinalSystem:not(.homepageRework) .navLinks a.active:after{bottom:20px;height:2px;background:var(--site-violet)}body.siteFinalSystem:not(.homepageRework) .navCta{margin-left:4px;background:var(--site-ink);color:#fff}body.siteFinalSystem:not(.homepageRework) .menuBtn{border-color:var(--site-line);background:#fff;color:var(--site-ink)}
+/* secondary hero language */
+body.siteFinalSystem:not(.homepageRework) :is(.pageHero,.capPageHero,.aipeHero,.voiceEngHero,.agenticHero,.modernizationHero,.healthcareAiHero,.insightsHero,.companyHero,.startProjectHero){position:relative;overflow:hidden;border-bottom:1px solid var(--site-line);background:linear-gradient(180deg,#fff 0%,#fbfaf8 100%)}body.siteFinalSystem:not(.homepageRework) :is(.pageHero,.capPageHero,.aipeHero,.voiceEngHero,.agenticHero,.modernizationHero,.healthcareAiHero,.insightsHero,.companyHero,.startProjectHero):before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 10%,rgba(112,77,231,.11),transparent 27%),radial-gradient(circle at 96% 58%,rgba(152,124,255,.06),transparent 30%);pointer-events:none}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroGrid,.capHeroGrid,.aipeHeroGrid,.voiceEngHeroGrid,.agenticHeroGrid,.modernizationHeroGrid,.healthcareAiHeroGrid,.insightsHeroGrid,.companyHeroGrid,.startProjectHeroGrid){position:relative;padding-top:70px!important;padding-bottom:70px!important;gap:60px!important;align-items:center!important}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,.modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,.startProjectHeroCopy){max-width:650px}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,.modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,.startProjectHeroCopy) h1{font-size:clamp(46px,4.8vw,66px)!important;line-height:1!important;letter-spacing:-.055em!important;text-wrap:balance;color:#101217!important}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroSupport,.capHeroSupport,.aipeHeroSupport,.voiceEngHeroSupport,.agenticHeroSupport,.modernizationHeroSupport,.healthcareAiHeroSupport,.insightsHeroSupport,.companyHeroSupport,.startProjectHeroSupport){font-size:19px!important;line-height:1.3!important;letter-spacing:-.02em!important;color:#262b34!important;font-weight:600!important}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroDesc,.capHeroDesc,.aipeHeroDesc,.voiceEngHeroDesc,.agenticHeroDesc,.modernizationHeroDesc,.healthcareAiHeroDesc,.insightsHeroDesc,.companyHeroDesc,.startProjectHeroDesc){font-size:15.5px!important;line-height:1.65!important;color:var(--site-body)!important;max-width:640px!important}
+/* hero system canvases */
+body.siteFinalSystem:not(.homepageRework) :is(.productProofStage,.capSystemStage,.aipeSystemStage,.voiceSystemStage,.agenticSystemStage,.modernizationSystemStage,.healthcarePlatformStage,.insightsEditorialSystem,.companySystem,.projectQualifier){border:1px solid #dedfe5!important;border-radius:22px!important;box-shadow:0 24px 64px rgba(11,13,18,.07)!important;background-color:#fff!important}
+/* flatten old card-grid look */
+body.siteFinalSystem:not(.homepageRework) main .section :is(.disciplineDetailed,.coreCapabilityGrid,.healthcareDepthGrid,.capabilityPathStack){gap:14px!important}body.siteFinalSystem:not(.homepageRework) main .section :is(.disciplineCard,.coreCapabilityCard,.healthcareDepthCard){border-color:#dde1e6!important;border-radius:16px!important;box-shadow:none!important}body.siteFinalSystem:not(.homepageRework) main .section :is(.disciplineCard,.coreCapabilityCard,.healthcareDepthCard) p{color:#56606b!important}body.siteFinalSystem:not(.homepageRework) main .section :is(h2,h3,strong){color:#16191f}body.siteFinalSystem:not(.homepageRework) main .section p{color:var(--site-body)}
+/* page-specific premium accents */
+body.siteFinalSystem[data-page="built-by-aloden"] #products,body.siteFinalSystem[data-page="capabilities"] .healthcareDepth,body.siteFinalSystem[data-page="insights"] .section.soft,body.siteFinalSystem[data-page="company"] .section.soft{background:linear-gradient(180deg,#f7f5fa 0%,#f5f3f8 100%)!important}body.siteFinalSystem[data-page="built-by-aloden"] .productProofStage{background:radial-gradient(circle at 88% 14%,rgba(112,77,231,.10),transparent 32%),#fff!important}body.siteFinalSystem[data-page="insights"] .insightsEditorialSystem{background:radial-gradient(circle at 85% 16%,rgba(112,77,231,.10),transparent 30%),#fff!important}body.siteFinalSystem[data-page="company"] .companySystem{background:radial-gradient(circle at 85% 18%,rgba(112,77,231,.09),transparent 30%),#fff!important}
+/* final CTA */
+body.siteFinalSystem .finalCta{padding:52px 0!important;background:var(--site-dark)!important;border-bottom:0!important}body.siteFinalSystem .ctaBand{padding:42px 44px!important;border-radius:22px!important;border:1px solid #39334f!important;background:radial-gradient(circle at 86% 16%,rgba(152,124,255,.22),transparent 33%),linear-gradient(135deg,#15121f,#251944 58%,#15111f)!important;box-shadow:none!important}body.siteFinalSystem .ctaBand h2{color:#fff!important;font-size:clamp(36px,3.8vw,52px)!important;letter-spacing:-.05em!important}body.siteFinalSystem .ctaBand p{color:#c4c2cb!important}body.siteFinalSystem .ctaBand .btn{background:linear-gradient(135deg,#704de7,#987cff)!important;color:#fff!important}
+/* footer */
+body.siteFinalSystem .footer{background:#090b10!important;border-top:1px solid #252933!important;color:#fff!important;padding:50px 0 24px!important}body.siteFinalSystem .siteFooterLogo{display:block;width:185px;height:auto;margin-bottom:18px}body.siteFinalSystem :is(.contentReviewFooterGrid,.footerFinalGrid){gap:52px!important}body.siteFinalSystem :is(.contentReviewFooterBrand,.footerFinalBrand) p{color:#929ba8!important;max-width:360px;font-size:13px!important;line-height:1.65!important}body.siteFinalSystem :is(.contentReviewFooterCol,.footerFinalCol) h4{color:#737d8a!important;font:500 9px/1.2 "IBM Plex Mono",monospace!important;letter-spacing:.13em!important;text-transform:uppercase!important}body.siteFinalSystem :is(.contentReviewFooterCol,.footerFinalCol) a{color:#aeb6c1!important;font-size:13px!important}body.siteFinalSystem :is(.contentReviewFooterCol,.footerFinalCol) a:hover{color:#fff!important}body.siteFinalSystem :is(.contentReviewFooterPrimary,.footerPrimary){color:#b8a7ff!important}body.siteFinalSystem :is(.contentReviewFooterBottom,.footerFinalBottom){border-top:1px solid #252a34!important;color:#707985!important}body.siteFinalSystem :is(.contentReviewFooterBottom,.footerFinalBottom) a,body.siteFinalSystem :is(.contentReviewFooterBottom,.footerFinalBottom) span{color:#707985!important}
+@media(max-width:1020px){body.siteFinalSystem{--site-section:64px}body.siteFinalSystem .container{width:min(var(--site-max),calc(100% - 34px))}body.siteFinalSystem:not(.homepageRework) .nav{height:78px}body.siteFinalSystem .siteBrandLogo{width:170px}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroGrid,.capHeroGrid,.aipeHeroGrid,.voiceEngHeroGrid,.agenticHeroGrid,.modernizationHeroGrid,.healthcareAiHeroGrid,.insightsHeroGrid,.companyHeroGrid,.startProjectHeroGrid){padding-top:54px!important;padding-bottom:54px!important;gap:38px!important}}
+@media(max-width:680px){body.siteFinalSystem{--site-section:56px}body.siteFinalSystem .container{width:min(var(--site-max),calc(100% - 30px))}body.siteFinalSystem .siteBrandLogo{width:150px}body.siteFinalSystem:not(.homepageRework) :is(.builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,.modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,.startProjectHeroCopy) h1{font-size:42px!important}body.siteFinalSystem .h2{font-size:36px}body.siteFinalSystem .finalCta{padding:38px 0!important}body.siteFinalSystem :is(.contentReviewFooterGrid,.footerFinalGrid){gap:30px!important}}
+@media(prefers-reduced-motion:reduce){body.siteFinalSystem *,body.siteFinalSystem *:before,body.siteFinalSystem *:after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
