@@ -96,7 +96,8 @@ for (const file of ['start-project-form.js', 'start-project-form.css']) {
 }
 
 const htmlFiles = fs.readdirSync(preview).filter((name) => name.endsWith('.html'));
-const publicHtmlFiles = htmlFiles.filter((name) => name !== 'live-review.html');
+const internalReviewPages = new Set(['live-review.html', 'homepage-section1.html']);
+const publicHtmlFiles = htmlFiles.filter((name) => !internalReviewPages.has(name));
 
 for (const file of publicHtmlFiles) {
   const html = read(file);
