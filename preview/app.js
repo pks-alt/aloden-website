@@ -10,7 +10,7 @@ function openMobileMenu() {
   navLinks.style.right = '16px';
   navLinks.style.top = `${document.querySelector('.nav')?.offsetHeight || 74}px`;
   navLinks.style.background = '#fff';
-  navLinks.style.border = '1px solid #e6e8ed';
+  navLinks.style.border = '1px solid #e3e6eb';
   navLinks.style.borderRadius = '12px';
   navLinks.style.padding = '14px 16px';
   navLinks.style.flexDirection = 'column';
@@ -48,11 +48,20 @@ function normalizedText(anchor) {
   return (anchor.textContent || '').replace(/\s+/g, ' ').trim();
 }
 
+function ensureStylesheet(href) {
+  if (document.querySelector(`link[href^="${href}"]`)) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
+}
+
 function normalizeSiteLinks() {
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const onStartProject = currentFile === 'start-project.html';
   const routes = new Map([
     ['Home', 'index.html'],
+    ['Our Work', 'built-by-aloden.html'],
     ['Built by Aloden', 'built-by-aloden.html'],
     ['Capabilities', 'capabilities.html'],
     ['Insights', 'insights.html'],
@@ -85,6 +94,14 @@ function normalizeSiteLinks() {
     ['Explore Aloden Insights →', 'insights.html']
   ]);
 
+  // Familiar navigation wording; the destination page itself remains branded “Built by Aloden.”
+  document.querySelectorAll('.navLinks a').forEach(anchor => {
+    if (normalizedText(anchor) === 'Built by Aloden') anchor.textContent = 'Our Work';
+  });
+  document.querySelectorAll('.contentReviewFooterCol a, .footerFinalCol a').forEach(anchor => {
+    if (normalizedText(anchor) === 'Built by Aloden') anchor.textContent = 'Our Work';
+  });
+
   document.querySelectorAll('a').forEach(anchor => {
     const text = normalizedText(anchor);
     if (text === 'Start a Project →' || text === 'Start a Project') {
@@ -103,12 +120,23 @@ function normalizeSiteLinks() {
   document.querySelectorAll('.navLinks a.active').forEach(anchor => anchor.setAttribute('aria-current', 'page'));
 }
 
-function ensureStylesheet(href) {
-  if (document.querySelector(`link[href^="${href}"]`)) return;
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = href;
-  document.head.appendChild(link);
+function standardizeSiteChrome() {
+  const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.body.classList.add('siteFinalSystem');
+  document.body.dataset.page = currentFile.replace(/\.html$/i, '') || 'home';
+  ensureStylesheet('site-final-system.css?v=1');
+
+  // One official cube + wordmark proportion across every header.
+  document.querySelectorAll('.siteHeader .brand').forEach(brand => {
+    brand.href = 'index.html';
+    brand.setAttribute('aria-label', 'Aloden home');
+    brand.innerHTML = '<img class="siteBrandLogo" src="assets/aloden-cube-logo.svg" alt="Aloden" decoding="async">';
+  });
+
+  // One official dark-background lockup across every footer.
+  document.querySelectorAll('footer .alodenLockup').forEach(lockup => {
+    lockup.outerHTML = '<img class="siteFooterLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden" loading="lazy" decoding="async">';
+  });
 }
 
 function installAccessibilityBaseline() {
@@ -163,7 +191,7 @@ function installMetadataBaseline() {
     return node;
   };
 
-  ensureMeta('meta[name="theme-color"]', { name: 'theme-color', content: '#ffffff' });
+  ensureMeta('meta[name="theme-color"]', { name: 'theme-color', content: '#fbfaf8' });
   ensureMeta('meta[property="og:title"]', { property: 'og:title', content: title });
   ensureMeta('meta[property="og:description"]', { property: 'og:description', content: description });
   ensureMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
@@ -188,6 +216,7 @@ function installMetadataBaseline() {
   }
 }
 
+standardizeSiteChrome();
 normalizeSiteLinks();
 installAccessibilityBaseline();
 installMetadataBaseline();
