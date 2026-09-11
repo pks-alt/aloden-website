@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Built by Aloden — Logo-Corrected Our Work Review</title>
+<style>
+html,body{margin:0;min-height:100%;font-family:Inter,"Segoe UI",Arial,sans-serif;background:#f7fafb;color:#0b1118}.loading{min-height:100vh;display:grid;place-items:center}.loading div{padding:28px 32px;border:1px solid #dce5ea;border-radius:16px;background:#fff;box-shadow:0 20px 56px rgba(18,40,58,.08);text-align:center}.loading b{display:block;font-size:18px}.loading span{display:block;margin-top:7px;color:#667681;font-size:13px}
+</style>
+</head>
+<body>
+<div class="loading" id="loading"><div><b>Loading Built by Aloden review…</b><span>Official Aloden, Medlivo, and StartupFair brand assets</span></div></div>
+<script>
+(async()=>{
+const source='https://cdn.jsdelivr.net/gh/pks-alt/aloden-website@f5c5f53d9377695e1c408addce23ce45e2d12251/preview/reviews/our-work-final-review.html';
+const aloden='https://cdn.jsdelivr.net/gh/pks-alt/aloden-website@f5c5f53d9377695e1c408addce23ce45e2d12251/preview/assets/aloden-logo-official.svg';
+const medlivo='https://cdn.jsdelivr.net/gh/pks-alt/aloden-website@f5c5f53d9377695e1c408addce23ce45e2d12251/preview/assets/medlivo-logo.webp';
+const startupfair='https://cdn.jsdelivr.net/gh/pks-alt/aloden-website@f5c5f53d9377695e1c408addce23ce45e2d12251/preview/assets/startupfair-logo.webp';
+try{
+ const r=await fetch(source,{cache:'no-store'}); if(!r.ok) throw new Error('Unable to load review source');
+ const text=await r.text();
+ const doc=new DOMParser().parseFromString(text,'text/html');
+ doc.querySelectorAll('base').forEach(x=>x.remove());
+ const brands=[...doc.querySelectorAll('a.brand')];
+ brands.forEach((a,i)=>{a.innerHTML=`<img class="officialAlodenLogo${i?` footerLogo`:``}" src="${aloden}" alt="Aloden">`;a.setAttribute('aria-label','Aloden home');a.setAttribute('href','#top')});
+ const med=doc.querySelector('.medlivoLogo'); if(med) med.src=medlivo;
+ const sf=doc.querySelector('.startupfairLogo'); if(sf) sf.src=startupfair;
+ const voice=doc.querySelector('.voiceLogo');
+ if(voice){voice.className='alodenVoiceBrand';voice.innerHTML=`<img class="officialAlodenProductLogo" src="${aloden}" alt="Aloden"><span class="alodenVoiceDescriptor">VOICE AI ENGINEERING</span>`;}
+ doc.querySelectorAll('.medSideLogo').forEach(x=>x.remove());
+ doc.querySelectorAll('.navLinks a').forEach(a=>{if(!a.classList.contains('active'))a.setAttribute('href','#')});
+ const style=doc.createElement('style');
+ style.textContent=`
+ .brand{display:flex;align-items:center;flex:none}.officialAlodenLogo{display:block;width:146px;height:auto}.footerLogo{width:132px}.officialAlodenProductLogo{display:block;width:158px;height:auto}.alodenVoiceBrand{display:flex;align-items:center;gap:16px}.alodenVoiceDescriptor{display:inline-flex;align-items:center;min-height:30px;padding-left:16px;border-left:1px solid #d9e0e5;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:8px;line-height:1.35;letter-spacing:.12em;color:#776aaf}.brandMark,.voiceLogo{display:none!important}.work2Brand{overflow:visible}.medSide{padding-top:22px}@media(max-width:760px){.officialAlodenLogo{width:128px}.footerLogo{width:120px}.officialAlodenProductLogo{width:138px}.alodenVoiceBrand{gap:12px}.alodenVoiceDescriptor{padding-left:12px;font-size:7px}}
+ `;
+ doc.head.appendChild(style);
+ document.open(); document.write('<!doctype html>'+doc.documentElement.outerHTML); document.close();
+}catch(e){document.getElementById('loading').innerHTML=`<div><b>Preview could not load.</b><span>${e.message}</span></div>`}
+})();
+</script>
+</body>
+</html>
