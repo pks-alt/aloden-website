@@ -1,0 +1,215 @@
+/* World-class homepage refinement — research-led clarity pass. */
+.homepageFinal{
+  --wc-ink:#0b0d12;
+  --wc-ink-2:#171a22;
+  --wc-body:#56616f;
+  --wc-muted:#7b8491;
+  --wc-line:#e3e7ec;
+  --wc-soft:#f7f8fa;
+  --wc-soft-purple:#f6f3ff;
+  --wc-purple:#724cf4;
+  --wc-purple-2:#9b7dff;
+  --wc-purple-deep:#4b2dbb;
+  --wc-graphite:#0b0d12;
+  --wc-panel:#11141b;
+}
+
+/* BRAND PRESENCE */
+.homepageFinal .siteHeader{background:rgba(255,255,255,.98);border-bottom:1px solid #e6e9ed;box-shadow:0 8px 28px rgba(11,13,18,.035)}
+.homepageFinal .nav{height:88px;gap:34px}
+.homepageFinal .siteLogo{width:194px;height:auto;display:block}
+.homepageFinal .navLinks{gap:31px}
+.homepageFinal .navLinks a{font-size:14px;color:#343b45;font-weight:550;padding-top:33px;padding-bottom:29px}
+.homepageFinal .navLinks a.active:after{bottom:20px;background:var(--wc-purple)}
+.homepageFinal .navCta{min-height:48px;padding:0 21px;border-radius:10px;background:var(--wc-graphite);color:#fff;box-shadow:none}
+.homepageFinal .navCta:hover{background:#1a1d24;box-shadow:none}
+
+/* HERO — keep approved composition, simplify the color language */
+.homepageFinal .heroOne{background:#0b0d12}
+.homepageFinal .heroOneBackdrop{background:radial-gradient(circle at 72% 16%,rgba(114,76,244,.24),transparent 31%),radial-gradient(circle at 92% 50%,rgba(155,125,255,.10),transparent 30%),linear-gradient(145deg,#090b10 0%,#11141d 54%,#090b10 100%)}
+.homepageFinal .heroOneBackdrop:after{background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);background-size:42px 42px}
+.homepageFinal .heroOneGrid{padding-top:66px;padding-bottom:52px}
+.homepageFinal .heroOneCopy{max-width:610px}
+.homepageFinal .heroOneEyebrow{font-size:10.5px;color:#b7a8ff}
+.homepageFinal .heroOne h1{font-size:clamp(50px,5vw,70px);line-height:.995;max-width:670px}
+.homepageFinal .heroOneSub{color:#f0f1f4}
+.homepageFinal .heroOneDesc{font-size:17px;line-height:1.7;color:#c5cad2;max-width:580px}
+.homepageFinal .heroOne .heroOnePrimary{background:linear-gradient(135deg,#6841e8,#8f6cff);box-shadow:0 12px 30px rgba(104,65,232,.24)}
+.homepageFinal .heroOne .heroOneSecondary{border-color:#3d414b;background:rgba(255,255,255,.025);color:#f2f3f5}
+.homepageFinal .heroOneDiscipline{font-size:9.5px;color:#9da5b0}
+.homepageFinal .heroOneDiscipline i{background:#8e6cff}
+.homepageFinal .heroOneTabs{border-color:#36394a;background:rgba(13,15,22,.9)}
+.homepageFinal .heroOneTab{border-color:#2b2e3b}
+.homepageFinal .heroOneTab.isActive{background:linear-gradient(180deg,rgba(114,76,244,.22),rgba(70,47,147,.16));box-shadow:inset 0 0 0 1px #8667f4}
+.homepageFinal .heroOneTab .tabGlyph{border-color:#4a446e;color:#c0b5ff;background:#181625}
+.homepageFinal .heroOneDemoPrinciple{color:#969eaa}
+.homepageFinal .heroOneSignal,.homepageFinal .heroOneCore,.homepageFinal .heroOneOutcome{background:linear-gradient(155deg,#12151d,#0d1016);border-color:#353848}
+.homepageFinal .heroOneSignalIcon{border-color:#4b3f78;background:#19162b;color:#b7a8ff}
+.homepageFinal .heroOneCore{border-color:#514673;background:radial-gradient(circle at 78% 25%,rgba(114,76,244,.11),transparent 35%),linear-gradient(145deg,#141620,#101219)}
+.homepageFinal .heroOneCoreHead{border-color:#343647}
+.homepageFinal .heroOneCoreHead small{color:#ae9cf8}
+.homepageFinal .heroOneStages:before{background:linear-gradient(90deg,#564b92,#8667f4,#9f8cff)}
+.homepageFinal .heroOneStage>span{border-color:#6559a7;background:#10121a;color:#b9adff;box-shadow:0 0 0 5px #11131b}
+.homepageFinal .heroOneStage.isIntelligence>span,.homepageFinal .heroOneStage.isReady>span{border-color:#7b68d0;color:#c5b9ff}
+.homepageFinal .heroOneControlRail{border-color:#34364a;background:#151723}
+.homepageFinal .heroOneControlRail span{border-color:#34364a;color:#c7cad2}
+.homepageFinal .heroOneOutcomeStatus i{background:#7b5cf1;color:#fff}
+.homepageFinal .heroOneOutcomeStatus span{color:#b9abff}
+.homepageFinal .heroOneMiniBadge{background:#efeaff;color:#6844d8}
+.homepageFinal .heroOneMiniAction{background:#724cf4}
+.homepageFinal .heroOneConnector{color:#8e71ff}
+.homepageFinal .heroOneConnector span{background:linear-gradient(90deg,#4d4379,#8e71ff)}
+.homepageFinal .heroOneJourney{color:#9f90ef}
+.homepageFinal .heroOneJourney i{background:linear-gradient(90deg,#6e53dc,#a993ff)}
+.homepageFinal .heroOneJourney span:last-child{color:#c0b5ff}
+.homepageFinal .heroOneProofBand{background:#fff}
+.homepageFinal .heroOneProofGrid{padding-top:27px;padding-bottom:29px}
+.homepageFinal .heroOneProof{border:0;border-right:1px solid #e5e8ec;border-radius:0;background:transparent;box-shadow:none;padding:14px 30px 14px 0}
+.homepageFinal .heroOneProof:last-child{border-right:0}
+.homepageFinal .heroOneProofIcon,.homepageFinal .heroOneProofIcon.modernize,.homepageFinal .heroOneProofIcon.realUse{background:#f0ecff;color:#6848d9}
+.homepageFinal .heroOneProof h2{font-size:19px;color:#171a20}
+.homepageFinal .heroOneProof p{font-size:14.5px;color:#5b6673}
+
+/* REMOVE PRODUCT PORTFOLIO DETAIL FROM HOME — dedicated Built by Aloden page owns it */
+.homepageFinal #built{display:none!important}
+
+/* GLOBAL TEXT CLARITY */
+.homepageFinal .section{padding:92px 0}
+.homepageFinal .eyebrow{font-size:10.5px;color:#6f4ee7}
+.homepageFinal .h2{font-size:clamp(40px,4.15vw,57px);line-height:1.015;color:var(--wc-ink);letter-spacing:-.05em}
+.homepageFinal .lead{font-size:17px;line-height:1.72;color:var(--wc-body)}
+.homepageFinal .textLink{font-size:14px;color:#6545d7}
+
+/* BUILD NEW / MODERNIZE EXISTING — light, editorial, extremely readable */
+.homepageFinal #engagement{padding:96px 0;background:linear-gradient(180deg,#fff 0%,#f7f5ff 100%);color:var(--wc-ink);border-bottom:1px solid var(--wc-line)}
+.homepageFinal #engagement:after{display:none}
+.homepageFinal #engagement .eyebrow{color:#6f4ee7}
+.homepageFinal #engagement .h2{color:var(--wc-ink);max-width:820px}
+.homepageFinal #engagement>.container>.lead{color:var(--wc-body);max-width:850px}
+.homepageFinal #engagement .paths{margin-top:42px!important;border-top:1px solid #dfe3e8;border-bottom:1px solid #dfe3e8}
+.homepageFinal #engagement .pathCard,.homepageFinal #engagement .pathCard.alt{background:transparent;color:var(--wc-ink)}
+.homepageFinal #engagement .pathCard:first-child{border-right:1px solid #dfe3e8}
+.homepageFinal #engagement .pathTitle h3{color:var(--wc-ink);font-size:30px}
+.homepageFinal #engagement .pathIcon,.homepageFinal #engagement .pathCard.alt .pathIcon{background:#724cf4;color:#fff}
+.homepageFinal #engagement .pathCard>p{color:#606b78;font-size:14.5px}
+.homepageFinal #engagement .pathSteps{border-top:1px solid #e2e5e9}
+.homepageFinal #engagement .pathSteps div+div{border-left:1px solid #e2e5e9}
+.homepageFinal #engagement .pathSteps span,.homepageFinal #engagement .pathCard.alt .pathSteps span{color:#7454e5;font-size:8.5px}
+.homepageFinal #engagement .pathSteps b{color:#29323c;font-size:12px}
+
+/* WHO WE BUILD FOR */
+.homepageFinal #audience{padding:92px 0;background:#fff}
+.homepageFinal #audience .whoGrid{gap:92px}
+.homepageFinal #audience .whoItem{min-height:170px}
+.homepageFinal #audience .whoItem:before,.homepageFinal #audience .whoItem:nth-child(2):before,.homepageFinal #audience .whoItem:nth-child(3):before,.homepageFinal #audience .whoItem:nth-child(4):before{background:#f0ecff;color:#6848d9}
+.homepageFinal #audience .whoItem b{font-size:19px;color:#171b22}
+.homepageFinal #audience .whoItem span{font-size:14px;line-height:1.65;color:#5d6875}
+
+/* CAPABILITIES — light technical grid instead of a heavy dark block */
+.homepageFinal #capabilities{padding:96px 0;background:linear-gradient(180deg,#f8f9fb 0%,#f5f2ff 100%);color:var(--wc-ink);border-bottom:1px solid var(--wc-line)}
+.homepageFinal #capabilities .eyebrow{color:#6f4ee7}
+.homepageFinal #capabilities .h2{color:var(--wc-ink);max-width:900px}
+.homepageFinal #capabilities>.container>.lead{color:var(--wc-body);max-width:860px}
+.homepageFinal #capabilities .capGrid{border-top:1px solid #dcdfe6;border-bottom:1px solid #dcdfe6}
+.homepageFinal #capabilities .capItem,.homepageFinal #capabilities .capItem:nth-child(2),.homepageFinal #capabilities .capItem:nth-child(3),.homepageFinal #capabilities .capItem:nth-child(4){background:transparent;color:var(--wc-ink);border-color:#dcdfe6!important;box-shadow:none;min-height:300px}
+.homepageFinal #capabilities .capItem:nth-child(odd){border-right:1px solid #dcdfe6!important}
+.homepageFinal #capabilities .capItem:nth-child(-n+2){border-bottom:1px solid #dcdfe6!important}
+.homepageFinal #capabilities .capItem .num,.homepageFinal #capabilities .capItem:nth-child(2) .num,.homepageFinal #capabilities .capItem:nth-child(3) .num,.homepageFinal #capabilities .capItem:nth-child(4) .num{background:#eee9ff;border-color:#d7ccff;color:#6748d6}
+.homepageFinal #capabilities .capItem h3{color:#171a21;font-size:26px}
+.homepageFinal #capabilities .capTagline{color:#303843;font-size:14.5px}
+.homepageFinal #capabilities .capItem p{color:#606b78;font-size:14px}
+.homepageFinal #capabilities .capAreas,.homepageFinal #capabilities .capItem:nth-child(2) .capAreas,.homepageFinal #capabilities .capItem:nth-child(4) .capAreas{color:#6d50d9;font-size:11px}
+.homepageFinal #capabilities .capSupport{border-bottom:1px solid #dcdfe6}
+.homepageFinal #capabilities .capSupport>span{color:#4f5b68}
+.homepageFinal #capabilities .capSupport .textLink{color:#6545d7}
+
+/* PROCESS */
+.homepageFinal #process{padding:94px 0;background:#fff}
+.homepageFinal #process .processNum,.homepageFinal #process .processItem:nth-child(3) .processNum,.homepageFinal #process .processItem:nth-child(5) .processNum{border-color:#d2c7fb;background:#faf8ff;color:#6748d6!important}
+.homepageFinal #process .processGrid:before{background:linear-gradient(90deg,#d3c9fb,#a78cf8,#744ff2)}
+.homepageFinal #process .processItem>b{color:#171b22}
+.homepageFinal #process .processTagline{color:#303943}
+.homepageFinal #process .processBody{font-size:13.2px!important;color:#66717d!important}
+.homepageFinal #process .processClosing{background:#f7f8fa;border-color:#e1e5ea;color:#303943}
+
+/* HOW WE THINK — light, calmer, less card-heavy */
+.homepageFinal #philosophy{padding:92px 0;background:#f8f7fb;border-bottom:1px solid var(--wc-line)}
+.homepageFinal #philosophy .principles{gap:0;border-top:1px solid #dfe2e7;border-bottom:1px solid #dfe2e7}
+.homepageFinal #philosophy .principle{min-height:250px;border:0;border-radius:0;background:transparent;box-shadow:none;padding:26px 26px}
+.homepageFinal #philosophy .principle:first-child{padding-left:0}
+.homepageFinal #philosophy .principle:last-child{padding-right:0}
+.homepageFinal #philosophy .principle+ .principle{border-left:1px solid #dfe2e7}
+.homepageFinal #philosophy .principle>span,.homepageFinal #philosophy .principle:nth-child(2)>span,.homepageFinal #philosophy .principle:nth-child(3)>span,.homepageFinal #philosophy .principle:nth-child(4)>span{background:#eee9ff;color:#6848d9}
+.homepageFinal #philosophy .principle>b{font-size:21px;color:#181c23}
+.homepageFinal #philosophy .principleTagline{font-size:13.5px;color:#3a444f}
+.homepageFinal #philosophy .principle p{font-size:13.5px;color:#69737e}
+.homepageFinal #philosophy .philosophyClosing{margin-top:22px;border-radius:13px;background:#0d0f14;color:#fff;font-size:21px}
+
+/* FEATURED INSIGHT */
+.homepageFinal #insights{padding:94px 0;background:#fff}
+.homepageFinal #insights .insightCard{border-color:#ded9f3;background:linear-gradient(145deg,#11131a,#171426);box-shadow:0 22px 54px rgba(24,20,48,.10)}
+.homepageFinal #insights .insightVisual{background:radial-gradient(circle at 27% 32%,rgba(155,125,255,.38),transparent 28%),linear-gradient(145deg,#24183f,#0e1118)}
+.homepageFinal #insights .insightVisual:before,.homepageFinal #insights .insightVisual:after{background:linear-gradient(90deg,transparent,#9f83ff,#7658ee,transparent)}
+.homepageFinal #insights .insightText p{font-size:13.8px;color:#c4c8d0}
+
+/* TRUST — clear light matrix */
+.homepageFinal #trust{padding:88px 0!important;background:#f7f8fa}
+.homepageFinal #trust .trustGrid>div:before,.homepageFinal #trust .trustGrid>div:nth-child(2):before,.homepageFinal #trust .trustGrid>div:nth-child(3):before,.homepageFinal #trust .trustGrid>div:nth-child(4):before{background:#eee9ff;color:#6848d9}
+.homepageFinal #trust .trustGrid b{font-size:19px;color:#171b22}
+.homepageFinal #trust .trustTagline{font-size:13.5px;color:#37414b}
+.homepageFinal #trust .trustBody{font-size:13.5px!important;color:#66717c!important}
+
+/* CLOSE STRONG */
+.homepageFinal .finalCta{padding:58px 0;background:#0b0d12}
+.homepageFinal .finalCta .ctaBand{border-color:#363146;background:radial-gradient(circle at 84% 18%,rgba(114,76,244,.20),transparent 33%),linear-gradient(135deg,#11131a,#181524 58%,#101118);box-shadow:none}
+.homepageFinal .finalCta h2{font-size:clamp(36px,4vw,52px)}
+.homepageFinal .finalCta p{font-size:15.5px;color:#c4c8cf}
+.homepageFinal .finalCta .btn{background:#724cf4;box-shadow:none}
+.homepageFinal .footer{background:#090b10;border-top:1px solid #20232a}
+.homepageFinal .footerLogo{width:178px;margin-bottom:20px}
+.homepageFinal .footerFinalBrand p{font-size:13px;color:#9ba3ae}
+.homepageFinal .footerFinalCol h4{color:#767e89}
+.homepageFinal .footerFinalCol a{font-size:13px;color:#b9c0c9}
+.homepageFinal .footerFinalCol .footerPrimary{color:#b9a9ff}
+.homepageFinal .footerTagline{color:#9988e2!important}
+
+@media(max-width:1020px){
+  .homepageFinal .siteLogo{width:178px}
+  .homepageFinal .nav{height:82px}
+  .homepageFinal #engagement .pathCard:first-child{border-right:0}
+  .homepageFinal #philosophy .principle{padding:24px 20px}
+}
+@media(max-width:820px){
+  .homepageFinal .siteLogo{width:164px}
+  .homepageFinal .nav{height:76px}
+  .homepageFinal .section{padding:72px 0}
+  .homepageFinal #engagement,.homepageFinal #audience,.homepageFinal #capabilities,.homepageFinal #process,.homepageFinal #philosophy,.homepageFinal #insights{padding:72px 0}
+  .homepageFinal #trust{padding:70px 0!important}
+  .homepageFinal #capabilities .capItem,.homepageFinal #capabilities .capItem:nth-child(odd),.homepageFinal #capabilities .capItem:nth-child(even){border-right:0!important;border-bottom:1px solid #dcdfe6!important}
+  .homepageFinal #philosophy .principles{grid-template-columns:1fr 1fr}
+  .homepageFinal #philosophy .principle:first-child{padding-left:20px}
+  .homepageFinal #philosophy .principle:last-child{padding-right:20px}
+  .homepageFinal #philosophy .principle:nth-child(3){border-left:0;border-top:1px solid #dfe2e7}
+  .homepageFinal #philosophy .principle:nth-child(4){border-top:1px solid #dfe2e7}
+}
+@media(max-width:620px){
+  .homepageFinal .siteLogo{width:150px}
+  .homepageFinal .heroOneGrid{padding-top:46px;padding-bottom:36px}
+  .homepageFinal .heroOne h1{font-size:45px}
+  .homepageFinal .heroOneDesc{font-size:15.5px}
+  .homepageFinal .heroOneProof{border-right:0;border-bottom:1px solid #e5e8ec;padding:18px 0}
+  .homepageFinal .heroOneProof:last-child{border-bottom:0}
+  .homepageFinal .section{padding:58px 0}
+  .homepageFinal #engagement,.homepageFinal #audience,.homepageFinal #capabilities,.homepageFinal #process,.homepageFinal #philosophy,.homepageFinal #insights{padding:58px 0}
+  .homepageFinal #trust{padding:56px 0!important}
+  .homepageFinal .h2{font-size:39px}
+  .homepageFinal .lead{font-size:15.5px}
+  .homepageFinal #philosophy .principles{grid-template-columns:1fr}
+  .homepageFinal #philosophy .principle,.homepageFinal #philosophy .principle:first-child,.homepageFinal #philosophy .principle:last-child{padding:22px 0;border-left:0!important;border-top:1px solid #dfe2e7}
+  .homepageFinal #philosophy .principle:first-child{border-top:0}
+  .homepageFinal .footerLogo{width:160px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .homepageFinal *{scroll-behavior:auto!important}
+}
