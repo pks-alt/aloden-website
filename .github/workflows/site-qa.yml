@@ -1,10 +1,9 @@
-name: Aloden V1 Site QA
+name: Aloden V2 Site QA
 
 on:
   push:
     branches:
-      - feature/start-project-content-review
-      - feature/homepage-design-rework
+      - feature/final-site-redesign
       - develop
       - main
   pull_request:
@@ -12,13 +11,13 @@ on:
 
 jobs:
   qa:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
       - name: Check JavaScript syntax
