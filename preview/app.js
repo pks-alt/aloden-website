@@ -29,21 +29,16 @@ function closeMobileMenu({ returnFocus = false } = {}) {
 if (menuBtn && navLinks) {
   if (!navLinks.id) navLinks.id = 'primary-navigation';
   menuBtn.setAttribute('aria-controls', navLinks.id);
-
   menuBtn.addEventListener('click', () => {
     const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
-    if (isOpen) closeMobileMenu();
-    else openMobileMenu();
+    if (isOpen) closeMobileMenu(); else openMobileMenu();
   });
-
-  navLinks.addEventListener('click', (event) => {
+  navLinks.addEventListener('click', event => {
     if (event.target.closest('a') && menuBtn.getAttribute('aria-expanded') === 'true') closeMobileMenu();
   });
-
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') closeMobileMenu({ returnFocus: true });
   });
-
   window.addEventListener('resize', () => {
     if (window.innerWidth > 1020 && menuBtn.getAttribute('aria-expanded') === 'true') closeMobileMenu();
   });
@@ -56,8 +51,7 @@ function normalizedText(anchor) {
 function normalizeSiteLinks() {
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const onStartProject = currentFile === 'start-project.html';
-
-  const exactRoutes = new Map([
+  const routes = new Map([
     ['Home', 'index.html'],
     ['Built by Aloden', 'built-by-aloden.html'],
     ['Capabilities', 'capabilities.html'],
@@ -91,31 +85,35 @@ function normalizeSiteLinks() {
     ['Explore Aloden Insights →', 'insights.html']
   ]);
 
-  document.querySelectorAll('a').forEach((anchor) => {
+  document.querySelectorAll('a').forEach(anchor => {
     const text = normalizedText(anchor);
     if (text === 'Start a Project →' || text === 'Start a Project') {
-      anchor.setAttribute('href', onStartProject ? '#project-start' : 'start-project.html');
+      anchor.href = onStartProject ? '#project-start' : 'start-project.html';
     } else if (text === 'LinkedIn →' || text === 'LinkedIn') {
-      anchor.setAttribute('href', 'https://www.linkedin.com/company/alodenllc');
-      anchor.setAttribute('target', '_blank');
-      anchor.setAttribute('rel', 'noopener noreferrer');
-    } else if (exactRoutes.has(text)) {
-      anchor.setAttribute('href', exactRoutes.get(text));
+      anchor.href = 'https://www.linkedin.com/company/alodenllc';
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+    } else if (routes.has(text)) {
+      anchor.href = routes.get(text);
     }
-
     const href = anchor.getAttribute('href') || '';
-    if (/^https?:\/\//i.test(href) && !href.includes(location.hostname) && anchor.getAttribute('target') === '_blank') {
-      anchor.setAttribute('rel', 'noopener noreferrer');
-    }
+    if (/^https?:\/\//i.test(href) && !href.includes(location.hostname) && anchor.target === '_blank') anchor.rel = 'noopener noreferrer';
   });
 
-  document.querySelectorAll('.navLinks a.active').forEach((anchor) => anchor.setAttribute('aria-current', 'page'));
+  document.querySelectorAll('.navLinks a.active').forEach(anchor => anchor.setAttribute('aria-current', 'page'));
+}
+
+function ensureStylesheet(href) {
+  if (document.querySelector(`link[href^="${href}"]`)) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
 }
 
 function installAccessibilityBaseline() {
   const main = document.querySelector('main');
   if (main && !main.id) main.id = 'main-content';
-
   if (main && !document.querySelector('.siteSkipLink')) {
     const skip = document.createElement('a');
     skip.className = 'siteSkipLink';
@@ -127,19 +125,12 @@ function installAccessibilityBaseline() {
     });
     document.body.insertBefore(skip, document.body.firstChild);
   }
-
-  if (!document.querySelector('link[href^="site-qa.css"]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'site-qa.css?v=1';
-    document.head.appendChild(link);
-  }
+  ensureStylesheet('site-qa.css?v=1');
 }
 
 function installMetadataBaseline() {
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   if (currentFile === '404.html' || currentFile === 'live-review.html') return;
-
   const siteOrigin = 'https://www.aloden.com';
   const canonicalPath = currentFile === 'index.html' || !currentFile ? '/' : `/${currentFile}`;
   const canonicalUrl = `${siteOrigin}${canonicalPath}`;
@@ -153,13 +144,14 @@ function installMetadataBaseline() {
     document.head.appendChild(canonical);
   }
 
-  if (!document.querySelector('link[rel="icon"]')) {
-    const icon = document.createElement('link');
+  let icon = document.querySelector('link[rel="icon"]');
+  if (!icon) {
+    icon = document.createElement('link');
     icon.rel = 'icon';
-    icon.href = 'assets/aloden-logo-official.svg';
     icon.type = 'image/svg+xml';
     document.head.appendChild(icon);
   }
+  icon.href = 'assets/aloden-cube-symbol.svg';
 
   const ensureMeta = (selector, attrs) => {
     let node = document.head.querySelector(selector);
@@ -188,7 +180,7 @@ function installMetadataBaseline() {
       '@type': 'Organization',
       name: 'Aloden LLC',
       url: `${siteOrigin}/`,
-      logo: `${siteOrigin}/assets/aloden-logo-official.svg`,
+      logo: `${siteOrigin}/assets/aloden-cube-logo.svg`,
       email: 'hello@aloden.com',
       sameAs: ['https://www.linkedin.com/company/alodenllc']
     });
@@ -202,31 +194,24 @@ installMetadataBaseline();
 
 if (document.querySelector('.hero#home')) {
   document.body.classList.add('homepageRework');
+  ensureStylesheet('homepage-all-sections.css?v=2');
+  ensureStylesheet('homepage-final.css?v=1');
 
-  if (!document.querySelector('link[href^="homepage-all-sections.css"]')) {
-    const homepageCss = document.createElement('link');
-    homepageCss.rel = 'stylesheet';
-    homepageCss.href = 'homepage-all-sections.css?v=1';
-    document.head.appendChild(homepageCss);
-  }
+  const heroScript = document.createElement('script');
+  heroScript.src = 'homepage-section1-review.js?v=2';
+  heroScript.async = false;
+  document.body.appendChild(heroScript);
 
-  if (!document.querySelector('link[href^="homepage-polish.css"]')) {
-    const homepagePolishCss = document.createElement('link');
-    homepagePolishCss.rel = 'stylesheet';
-    homepagePolishCss.href = 'homepage-polish.css?v=1';
-    document.head.appendChild(homepagePolishCss);
-  }
-
-  const homepageSection1Script = document.createElement('script');
-  homepageSection1Script.src = 'homepage-section1-review.js?v=2';
-  homepageSection1Script.defer = true;
-  document.body.appendChild(homepageSection1Script);
+  const finalScript = document.createElement('script');
+  finalScript.src = 'homepage-final.js?v=1';
+  finalScript.async = false;
+  document.body.appendChild(finalScript);
 }
 
 if (document.querySelector('.startProjectHero')) {
   const projectFormScript = document.createElement('script');
   projectFormScript.src = 'start-project-form.js?v=1';
-  projectFormScript.defer = true;
+  projectFormScript.async = false;
   projectFormScript.addEventListener('load', () => {
     const note = document.querySelector('.projectSubmissionReview');
     if (note) note.textContent = 'INITIAL PROJECT BRIEF · HIGH-LEVEL CONTEXT ONLY.';
