@@ -3,21 +3,24 @@
 
   document.body.classList.add('homepageFinal');
 
-  if (!document.querySelector('link[href^="homepage-worldclass.css"]')) {
-    const worldclass = document.createElement('link');
-    worldclass.rel = 'stylesheet';
-    worldclass.href = 'homepage-worldclass.css?v=1';
-    document.head.appendChild(worldclass);
-  }
+  const ensure = href => {
+    if (document.querySelector(`link[href^="${href}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  ensure('homepage-worldclass.css?v=1');
+  ensure('homepage-header-final.css?v=1');
 
   const brand = document.querySelector('.siteHeader .brand');
   if (brand) {
     brand.href = 'index.html';
-    brand.innerHTML = '<img class="siteLogo" src="assets/aloden-cube-logo.svg" alt="Aloden" decoding="async">';
+    brand.innerHTML = '<img class="siteLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden" decoding="async">';
   }
 
-  // Product proof belongs on the dedicated Built by Aloden page.
-  // Home moves directly from the hero into the buyer-oriented build/modernize story.
+  // Detailed product proof belongs on the dedicated Our Work / Built by Aloden page.
   const built = document.querySelector('#built');
   if (built) built.remove();
 
