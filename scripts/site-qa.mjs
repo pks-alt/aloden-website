@@ -26,6 +26,7 @@ const requiredPublicPages = [
 
 const effectiveRoutes = new Map([
   ['Home', 'index.html'],
+  ['Our Work', 'built-by-aloden.html'],
   ['Built by Aloden', 'built-by-aloden.html'],
   ['Capabilities', 'capabilities.html'],
   ['Insights', 'insights.html'],
