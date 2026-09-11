@@ -3,55 +3,23 @@
 
   document.body.classList.add('homepageFinal');
 
+  if (!document.querySelector('link[href^="homepage-worldclass.css"]')) {
+    const worldclass = document.createElement('link');
+    worldclass.rel = 'stylesheet';
+    worldclass.href = 'homepage-worldclass.css?v=1';
+    document.head.appendChild(worldclass);
+  }
+
   const brand = document.querySelector('.siteHeader .brand');
   if (brand) {
     brand.href = 'index.html';
     brand.innerHTML = '<img class="siteLogo" src="assets/aloden-cube-logo.svg" alt="Aloden" decoding="async">';
   }
 
+  // Product proof belongs on the dedicated Built by Aloden page.
+  // Home moves directly from the hero into the buyer-oriented build/modernize story.
   const built = document.querySelector('#built');
-  if (built) {
-    built.className = 'section builtFinalSection';
-    built.innerHTML = `
-      <div class="container builtFinal">
-        <div class="builtFinalHead">
-          <div class="builtFinalTitle">
-            <div class="eyebrow">BUILT BY ALODEN</div>
-            <h2 class="h2">Real products. Built for real use.</h2>
-          </div>
-          <div class="builtFinalIntro">
-            <p>Production software that proves how Aloden thinks, designs, engineers, integrates, and ships.</p>
-            <a class="textLink" href="built-by-aloden.html">Explore everything we’ve built →</a>
-          </div>
-        </div>
-
-        <div class="builtWorkList" aria-label="Selected products built by Aloden">
-          <a class="builtWorkRow flagship" href="built-by-aloden.html#products">
-            <div class="builtWorkIndex"><span>01</span><small>FLAGSHIP</small></div>
-            <div class="builtWorkBrand"><img src="assets/medlivo-logo.webp" alt="Medlivo" loading="lazy" decoding="async"></div>
-            <div class="builtWorkCopy"><strong>Healthcare workforce &amp; care operations platform</strong><span>Product UX · Full Stack · Workflow Engineering · Integrations</span></div>
-            <div class="builtWorkArrow" aria-hidden="true">↗</div>
-          </a>
-          <a class="builtWorkRow" href="built-by-aloden.html#startupfair-proof">
-            <div class="builtWorkIndex"><span>02</span><small>PLATFORM</small></div>
-            <div class="builtWorkBrand"><img src="assets/startupfair-logo.webp" alt="StartupFair" loading="lazy" decoding="async"></div>
-            <div class="builtWorkCopy"><strong>Global hackathon, innovation &amp; talent platform</strong><span>Platform UX · Role Systems · Workspaces · Judging · Operations</span></div>
-            <div class="builtWorkArrow" aria-hidden="true">↗</div>
-          </a>
-          <a class="builtWorkRow" href="built-by-aloden.html#voice-ai-proof">
-            <div class="builtWorkIndex"><span>03</span><small>VOICE</small></div>
-            <div class="builtWorkBrand voice"><img src="assets/aloden-cube-symbol.svg" alt="" aria-hidden="true"><b>Aloden Voice</b></div>
-            <div class="builtWorkCopy"><strong>Voice systems connected to real business workflows</strong><span>Conversation UX · Backend Services · Integrations · Human Handoff</span></div>
-            <div class="builtWorkArrow" aria-hidden="true">↗</div>
-          </a>
-        </div>
-
-        <div class="builtFinalClosing">
-          <b>Different products. One engineering discipline.</b>
-          <span>Product Strategy → Experience → Engineering → Integration → Testing → Production</span>
-        </div>
-      </div>`;
-  }
+  if (built) built.remove();
 
   const footerBrand = document.querySelector('.footerFinalBrand');
   if (footerBrand) {
