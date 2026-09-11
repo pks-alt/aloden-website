@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/start-project-content-review
+      - feature/homepage-design-rework
       - develop
       - main
   pull_request:
