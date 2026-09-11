@@ -1,0 +1,7 @@
+/* V2 Home footer repair — content-preserving layout fix */
+.v2-footerGrid{grid-template-columns:minmax(280px,1.35fr) minmax(145px,.62fr) minmax(190px,.82fr) minmax(150px,.68fr);gap:40px;align-items:start}
+.v2-footerBrand{min-width:0}.v2-footerBrand p{max-width:330px;margin:0;color:#929ba8}
+.v2-footerCol{min-width:0}.v2-footerCol a{line-height:1.45;margin:9px 0;overflow-wrap:anywhere}
+.v2-footerBottom{align-items:center}.v2-footerLegal{justify-content:flex-end;flex-wrap:wrap;text-align:right}
+@media(max-width:1080px){.v2-footerGrid{grid-template-columns:1.2fr .8fr;gap:34px 50px}.v2-footerLegal{justify-content:flex-start;text-align:left}}
+@media(max-width:600px){.v2-footerGrid{grid-template-columns:1fr;gap:24px}.v2-footerBottom{display:block}.v2-footerLegal{justify-content:flex-start;text-align:left;margin-top:10px;gap:10px 14px}.v2-footerCol{padding-top:4px}}
