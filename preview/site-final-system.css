@@ -18,6 +18,18 @@ body.siteFinalSystem{
   --site-dark:#0b0d12;
   --site-max:1260px;
   --site-section:80px;
+  /* Override legacy page tokens so all V1 pages share the homepage palette. */
+  --ink:#0b0d12;
+  --ink-2:#171a21;
+  --body:#4f5965;
+  --muted:#737d89;
+  --line:#dde1e6;
+  --soft:#f7f6f9;
+  --soft-violet:#f4f1fb;
+  --violet:#704de7;
+  --violet-2:#987cff;
+  --blue:#7659df;
+  --teal:#8069df;
   background:var(--site-paper);
   color:var(--site-ink);
 }
@@ -65,16 +77,12 @@ body.siteFinalSystem:not(.homepageRework) .menuBtn{border-color:var(--site-line)
 body.siteFinalSystem:not(.homepageRework) :is(
   .pageHero,.capPageHero,.aipeHero,.voiceEngHero,.agenticHero,.modernizationHero,
   .healthcareAiHero,.insightsHero,.companyHero,.startProjectHero
-){
-  border-bottom:1px solid var(--site-line);
-}
+){border-bottom:1px solid var(--site-line)}
 body.siteFinalSystem:not(.homepageRework) :is(
   .builtHeroGrid,.capHeroGrid,.aipeHeroGrid,.voiceEngHeroGrid,.agenticHeroGrid,
   .modernizationHeroGrid,.healthcareAiHeroGrid,.insightsHeroGrid,.companyHeroGrid,
   .startProjectHeroGrid
-){
-  padding-top:72px!important;padding-bottom:72px!important;gap:56px!important
-}
+){padding-top:72px!important;padding-bottom:72px!important;gap:56px!important}
 body.siteFinalSystem:not(.homepageRework) :is(
   .builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,
   .modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,
@@ -84,9 +92,7 @@ body.siteFinalSystem:not(.homepageRework) :is(
   .builtHeroCopy,.capHeroCopy,.aipeHeroCopy,.voiceEngHeroCopy,.agenticHeroCopy,
   .modernizationHeroCopy,.healthcareAiHeroCopy,.insightsHeroCopy,.companyHeroCopy,
   .startProjectHeroCopy
-) h1{
-  font-size:clamp(46px,4.8vw,66px)!important;line-height:1!important;letter-spacing:-.055em!important;text-wrap:balance
-}
+) h1{font-size:clamp(46px,4.8vw,66px)!important;line-height:1!important;letter-spacing:-.055em!important;text-wrap:balance}
 body.siteFinalSystem:not(.homepageRework) :is(
   .builtHeroSupport,.capHeroSupport,.aipeHeroSupport,.voiceEngHeroSupport,
   .agenticHeroSupport,.modernizationHeroSupport,.healthcareAiHeroSupport,
@@ -106,7 +112,7 @@ body.siteFinalSystem:not(.homepageRework) :is(
   .insightsEditorialSystem,.companySystem,.projectQualifier
 ){border-radius:20px!important;box-shadow:0 24px 64px rgba(11,13,18,.07)!important}
 
-/* Reduce old-page excess vertical space and normalize heading/copy rhythm. */
+/* Reduce legacy excess vertical space and normalize heading/copy rhythm. */
 body.siteFinalSystem:not(.homepageRework) main .section > .container > :is(
   [class$="Head"],[class$="Header"],[class$="Intro"],[class$="Heading"]
 ){margin-bottom:min(36px,4vw)}
