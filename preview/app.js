@@ -67,18 +67,22 @@ function normalizeSiteLinks() {
     ['Company', 'company.html'],
     ['AI Product Engineering', 'ai-product-engineering.html'],
     ['Voice AI Engineering', 'voice-ai-engineering.html'],
+    ['Voice & Conversational AI', 'voice-ai-engineering.html'],
     ['Intelligent Workflow & Agentic Systems', 'agentic-ai.html'],
+    ['Agentic Workflow Engineering', 'agentic-ai.html'],
     ['Product Modernization', 'product-modernization.html'],
+    ['AI-Native Modernization', 'product-modernization.html'],
     ['Healthcare AI', 'healthcare-ai.html'],
+    ['Healthcare AI & Workforce Technology', 'healthcare-ai.html'],
     ['Privacy', 'privacy.html'],
     ['Terms', 'terms.html'],
-    ['View all products →', 'built-by-aloden.html#products'],
-    ['Explore Medlivo →', 'built-by-aloden.html#products'],
-    ['See Medlivo →', 'built-by-aloden.html#products'],
-    ['Explore StartupFair →', 'built-by-aloden.html#startupfair-proof'],
-    ['Explore Aloden Voice AI →', 'built-by-aloden.html#voice-ai-proof'],
-    ['Explore Voice AI →', 'built-by-aloden.html#voice-ai-proof'],
-    ['See Aloden Voice AI', 'built-by-aloden.html#voice-ai-proof'],
+    ['View all products →', 'built-by-aloden.html'],
+    ['Explore Medlivo →', 'built-by-aloden.html#medlivo'],
+    ['See Medlivo →', 'built-by-aloden.html#medlivo'],
+    ['Explore StartupFair →', 'built-by-aloden.html#startupfair'],
+    ['Explore Aloden Voice AI →', 'built-by-aloden.html#voice'],
+    ['Explore Voice AI →', 'built-by-aloden.html#voice'],
+    ['See Aloden Voice AI', 'built-by-aloden.html#voice'],
     ['See Everything We’ve Built →', 'built-by-aloden.html'],
     ["See Everything We've Built →", 'built-by-aloden.html'],
     ['Explore Built by Aloden →', 'built-by-aloden.html'],
@@ -86,8 +90,11 @@ function normalizeSiteLinks() {
     ["See What We've Built", 'built-by-aloden.html'],
     ['Explore AI Product Engineering →', 'ai-product-engineering.html'],
     ['Explore Voice AI Engineering →', 'voice-ai-engineering.html'],
+    ['Explore Voice & Conversational AI →', 'voice-ai-engineering.html'],
     ['Explore Intelligent Workflow & Agentic Systems →', 'agentic-ai.html'],
+    ['Explore Agentic Workflow Engineering →', 'agentic-ai.html'],
     ['Explore Product Modernization →', 'product-modernization.html'],
+    ['Explore AI-Native Modernization →', 'product-modernization.html'],
     ['Explore Healthcare AI →', 'healthcare-ai.html']
   ]);
 
@@ -117,7 +124,7 @@ function normalizeSiteLinks() {
 }
 
 function removeInsightsFromLaunch() {
-  document.querySelectorAll('.navLinks a, .contentReviewFooterCol a, .footerFinalCol a').forEach(anchor => {
+  document.querySelectorAll('a').forEach(anchor => {
     const text = normalizedText(anchor);
     const href = (anchor.getAttribute('href') || '').toLowerCase();
     if (text === 'Insights' || href === '#insights' || href.endsWith('#insights') || href.includes('insights.html')) anchor.remove();
@@ -134,8 +141,6 @@ function standardizeSiteChrome() {
   document.body.dataset.page = currentFile.replace(/\.html$/i, '') || 'home';
   ensureStylesheet('site-final-system.css?v=1');
 
-  // One Aloden logo family across the site. The only variation is dark/light
-  // wordmark treatment required by the background it sits on.
   const headerLogo = isHome ? 'assets/aloden-cube-logo-dark.svg' : 'assets/aloden-cube-logo.svg';
   const footerLogo = 'assets/aloden-cube-logo-dark.svg';
 
@@ -210,6 +215,11 @@ function installMetadataBaseline() {
     }
     return node;
   };
+
+  if (currentFile === 'insights.html') {
+    const robots = ensureMeta('meta[name="robots"]', { name: 'robots', content: 'noindex,nofollow' });
+    robots.setAttribute('content', 'noindex,nofollow');
+  }
 
   ensureMeta('meta[name="theme-color"]', { name: 'theme-color', content: '#fbfaf8' });
   ensureMeta('meta[property="og:title"]', { property: 'og:title', content: title });
