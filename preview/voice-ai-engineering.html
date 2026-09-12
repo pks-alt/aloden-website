@@ -1,247 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Voice AI engineering for real-time conversation, intent, context, system action, confirmation, guardrails, and human escalation.">
-<title>Voice AI Engineering — Aloden</title>
+<meta name="description" content="Voice and conversational AI engineering for real-time conversation, business context, system actions, permissions, verification, observability, and human escalation.">
+<title>Voice &amp; Conversational AI — Aloden</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="voice-ai-engineering.css">
-<link rel="stylesheet" href="voice-final.css">
+<style>
+:root{--v-ink:#0b0d12;--v-ink2:#20242d;--v-body:#4c5565;--v-muted:#727b8b;--v-line:#e3e6eb;--v-soft:#fafbfc;--v-softv:#f7f4ff;--v-violet:#7c4dff;--v-violet2:#9a7cff;--v-dark:#0b0d12;--v-shadow:0 22px 60px rgba(20,27,43,.07)}
+*{box-sizing:border-box}.v-wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}.v-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--v-violet)}.v-brand{width:158px;height:auto}.v-footerLogo{width:176px;height:auto}.siteHeader{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.975);backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid #e4e7eb}.siteHeader .brand{min-width:174px}.siteHeader .navLinks a.active{color:var(--v-ink)}
+
+/* HERO */
+.v-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);border-bottom:1px solid var(--v-line)}
+.v-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 13%,rgba(124,77,255,.13),transparent 25%),radial-gradient(circle at 96% 66%,rgba(62,123,255,.055),transparent 28%);pointer-events:none}
+.v-heroGrid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.75fr);gap:82px;align-items:center;padding:72px 0 64px}.v-hero h1{font-size:clamp(50px,5.15vw,70px);line-height:.99;letter-spacing:-.058em;margin:14px 0 18px;max-width:860px;text-wrap:balance}.v-heroLead{font-size:17px;line-height:1.67;color:var(--v-body);max-width:730px;margin:0}.v-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.v-live{border:1px solid #dfe3e8;border-radius:22px;background:rgba(255,255,255,.98);box-shadow:var(--v-shadow);overflow:hidden}.v-liveTop{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;border-bottom:1px solid var(--v-line);background:#fcfcfd}.v-liveTop>div{display:flex;align-items:center;gap:9px}.v-dot{width:8px;height:8px;border-radius:50%;background:var(--v-violet);box-shadow:0 0 0 5px rgba(124,77,255,.08)}.v-liveTop b{font-size:12.5px}.v-liveTop span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#89919d}.v-speech{padding:20px 20px 18px;background:linear-gradient(145deg,#fff,#fbf9ff)}.v-speech small{font:500 8px "IBM Plex Mono",monospace;color:var(--v-violet);letter-spacing:.08em}.v-speech p{font-size:22px;line-height:1.28;letter-spacing:-.03em;margin:8px 0 14px;color:var(--v-ink2)}.v-wave{height:28px;display:flex;align-items:center;gap:4px}.v-wave i{display:block;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--v-violet2),var(--v-violet));opacity:.72}.v-wave i:nth-child(1){height:9px}.v-wave i:nth-child(2){height:17px}.v-wave i:nth-child(3){height:25px}.v-wave i:nth-child(4){height:14px}.v-wave i:nth-child(5){height:22px}.v-wave i:nth-child(6){height:11px}.v-wave i:nth-child(7){height:27px}.v-wave i:nth-child(8){height:18px}.v-wave i:nth-child(9){height:10px}.v-wave i:nth-child(10){height:21px}.v-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--v-line);border-top:1px solid var(--v-line)}.v-flow div{position:relative;background:#fff;padding:14px 13px;min-height:86px}.v-flow div:nth-child(4),.v-flow div:nth-child(5),.v-flow div:nth-child(6){background:#faf9ff}.v-flow span{font:500 7px "IBM Plex Mono",monospace;color:var(--v-violet)}.v-flow b{display:block;font-size:11.5px;margin-top:7px}.v-escalate{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:14px 18px;border-top:1px solid var(--v-line);background:#101218;color:#fff}.v-escalate span{font:500 7px "IBM Plex Mono",monospace;color:#a58aff;letter-spacing:.08em}.v-escalate b{font-size:11px}.v-escalate p{font-size:9.8px;line-height:1.45;color:#929aa6;margin:3px 0 0}.v-systemLine{padding:13px 18px;border-top:1px solid #292d35;background:#0b0d12;font:500 8px/1.5 "IBM Plex Mono",monospace;color:#9c89ee}
+
+/* COMMON */
+.v-section{padding:74px 0;border-bottom:1px solid var(--v-line)}.v-section.soft{background:linear-gradient(180deg,#fbfbfc,#f8f9fb)}.v-head{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:64px;align-items:end}.v-head h2{font-size:clamp(37px,3.8vw,52px);line-height:1.03;letter-spacing:-.05em;margin:10px 0 0;max-width:820px;text-wrap:balance}.v-head p{font-size:15px;line-height:1.68;color:var(--v-body);margin:0}
+
+/* WHEN */
+.v-whenGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:16px;overflow:hidden;margin-top:32px}.v-whenCard{background:#fff;padding:22px;min-height:220px}.v-whenCard span{font:500 8px "IBM Plex Mono",monospace;color:var(--v-violet)}.v-whenCard b{display:block;font-size:17px;letter-spacing:-.025em;margin-top:14px}.v-whenCard p{font-size:12.2px;line-height:1.58;color:var(--v-muted);margin:8px 0 0}.v-counter{margin-top:18px;padding:18px 20px;border:1px solid #e0dbea;border-radius:14px;background:#f8f6ff;display:grid;grid-template-columns:180px 1fr;gap:24px}.v-counter span{font:500 8px "IBM Plex Mono",monospace;color:var(--v-violet);letter-spacing:.08em}.v-counter p{font-size:13px;line-height:1.58;color:var(--v-body);margin:0}
+
+/* ENGINEERING */
+.v-engineeringGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}.v-engineeringCard{position:relative;border:1px solid #e1e4e9;border-radius:20px;background:#fff;padding:25px;min-height:310px;box-shadow:0 12px 32px rgba(20,27,43,.035);overflow:hidden}.v-engineeringCard:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--v-violet),rgba(124,77,255,.1))}.v-engineeringCard.dark{background:#111318;border-color:#292c34;color:#fff}.v-engineeringCard.dark:before{background:linear-gradient(90deg,#a58aff,#332950)}.v-cardTop{display:flex;justify-content:space-between;gap:14px}.v-cardTop span{font:500 8px "IBM Plex Mono",monospace;color:var(--v-violet)}.v-cardTop small{font:500 8px "IBM Plex Mono",monospace;color:#818996;letter-spacing:.06em}.v-engineeringCard.dark .v-cardTop span{color:#aa93ff}.v-engineeringCard.dark .v-cardTop small{color:#969eaa}.v-engineeringCard h3{font-size:clamp(24px,2.3vw,31px);line-height:1.08;letter-spacing:-.04em;margin:20px 0 10px;text-wrap:balance}.v-engineeringCard p{font-size:13px;line-height:1.64;color:var(--v-body);margin:0}.v-engineeringCard.dark p{color:#aeb4bf}.v-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:16px;border-top:1px solid #e5e8ec}.v-engineeringCard.dark .v-tags{border-color:#2b3038}.v-tags span{border:1px solid #e0e4e9;border-radius:999px;padding:6px 9px;font-size:9.5px;color:#68717e}.v-engineeringCard.dark .v-tags span{border-color:#30343d;color:#b4bbc5;background:#171a20}
+
+/* ACTION */
+.v-action{padding:78px 0;background:#0b0d12;color:#fff}.v-action .v-ey{color:#a58aff}.v-actionTop{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:64px;align-items:end}.v-action h2{font-size:clamp(38px,3.9vw,54px);line-height:1.03;letter-spacing:-.052em;margin:10px 0 0;text-wrap:balance;max-width:820px}.v-actionTop p{font-size:15px;line-height:1.65;color:#a8afb9;margin:0}.v-actionFlow{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#282b33;border:1px solid #282b33;border-radius:16px;overflow:hidden;margin-top:32px}.v-actionFlow div{background:#101218;padding:18px 15px;min-height:118px}.v-actionFlow span{font:500 7px "IBM Plex Mono",monospace;color:#aa93ff}.v-actionFlow b{display:block;font-size:12.5px;margin-top:8px}.v-actionFlow small{display:block;font-size:9.5px;line-height:1.45;color:#8f98a5;margin-top:5px}.v-verification{margin-top:18px;border:1px solid #2d3139;border-radius:14px;background:#0f1116;padding:19px 20px;display:grid;grid-template-columns:180px 1fr;gap:26px}.v-verification span{font:500 8px "IBM Plex Mono",monospace;color:#aa93ff}.v-verification p{font-size:14px;line-height:1.58;color:#c8ccd3;margin:0}.v-verification strong{color:#fff}
+
+/* START */
+.v-startGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}.v-startCard{position:relative;border:1px solid #e1e4e9;border-radius:18px;background:#fff;padding:23px;box-shadow:0 8px 24px rgba(21,28,45,.025);overflow:hidden}.v-startTop{display:flex;align-items:center;justify-content:space-between;gap:16px}.v-startTop span{font:500 8px "IBM Plex Mono",monospace;color:var(--v-violet);letter-spacing:.08em}.v-startTop em{font-style:normal;font:500 8px "IBM Plex Mono",monospace;color:#8a92a0}.v-startCard h3{font-size:24px;line-height:1.1;letter-spacing:-.035em;margin:15px 0 7px;text-wrap:balance}.v-startCard p{font-size:12.8px;line-height:1.62;color:var(--v-body);margin:0}.v-startFlow{margin-top:17px;padding-top:14px;border-top:1px solid var(--v-line);font:500 9px/1.55 "IBM Plex Mono",monospace;color:#7155d2}
+
+/* PRODUCTION */
+.v-productionGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:16px;overflow:hidden;margin-top:32px}.v-productionItem{background:#fff;padding:22px;min-height:190px}.v-productionItem span{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#eee9ff;font:500 8px "IBM Plex Mono",monospace;color:#6a4ed1}.v-productionItem b{display:block;font-size:16px;letter-spacing:-.02em;margin-top:12px}.v-productionItem p{font-size:11.8px;line-height:1.58;color:var(--v-muted);margin:7px 0 0}
+
+/* BRIDGE + CTA */
+.v-bridge{padding:54px 0;background:linear-gradient(180deg,#fff,#fafbfc);border-bottom:1px solid var(--v-line)}.v-bridgeGrid{display:grid;grid-template-columns:280px 1fr;gap:58px;align-items:center}.v-bridge h2{font-size:31px;line-height:1.08;letter-spacing:-.04em;margin:9px 0 0}.v-bridgeItems{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:14px;overflow:hidden}.v-bridgeItems div{background:#fff;padding:17px 18px;min-height:110px}.v-bridgeItems b{display:block;font-size:12.5px}.v-bridgeItems span{display:block;font-size:10.2px;line-height:1.48;color:var(--v-muted);margin-top:5px}.v-cta{padding:36px 0 38px;background:#fff}.v-cta .ctaBand{border-radius:18px;padding:28px 30px}
+
+@media(max-width:1020px){.v-heroGrid,.v-head,.v-actionTop,.v-bridgeGrid{grid-template-columns:1fr}.v-heroGrid{gap:38px}.v-head,.v-actionTop{gap:20px}.v-whenGrid,.v-productionGrid{grid-template-columns:1fr 1fr}.v-actionFlow{grid-template-columns:repeat(3,1fr)}.v-bridgeGrid{gap:24px}}
+@media(max-width:700px){.v-wrap{width:calc(100% - 32px)}.v-heroGrid{padding:52px 0 44px}.v-hero h1{font-size:43px}.v-section,.v-action{padding:56px 0}.v-flow{grid-template-columns:1fr 1fr}.v-whenGrid,.v-engineeringGrid,.v-startGrid,.v-productionGrid,.v-bridgeItems{grid-template-columns:1fr}.v-counter,.v-verification{grid-template-columns:1fr;gap:8px}.v-actionFlow{grid-template-columns:1fr 1fr}.v-escalate{grid-template-columns:1fr}.v-brand{width:144px}.v-footerLogo{width:160px}}
+@media(max-width:460px){.v-actionFlow{grid-template-columns:1fr}.v-actions{flex-direction:column;align-items:stretch}.v-actions .btn{width:100%}}
+</style>
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Aloden home"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="v-brand" src="assets/aloden-cube-logo.svg" alt="Aloden"></a>
     <nav class="navLinks" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="built-by-aloden.html">Built by Aloden</a>
+      <a href="built-by-aloden.html">Our Work</a>
       <a class="active" href="capabilities.html">Capabilities</a>
-      <a href="index.html#insights">Insights</a>
-      <a href="index.html#company">Company</a>
+      <a href="company.html">Company</a>
     </nav>
-    <a class="btn primary navCta" href="#voice-cta">Start a Project →</a>
+    <a class="btn primary navCta" href="start-project.html">Start a Project →</a>
     <button class="menuBtn" aria-expanded="false" aria-label="Open navigation">☰</button>
   </div>
 </header>
 
 <main>
-<section class="voiceEngHero">
-  <div class="container voiceEngHeroGrid">
-    <div class="voiceEngHeroCopy">
-      <div class="eyebrow">VOICE AI ENGINEERING</div>
-      <h1>Turn natural conversation into reliable system action.</h1>
-      <p class="voiceEngHeroSupport">Conversation design. Real-time voice. Context. Tool use. Integrations. Guardrails. Human escalation.</p>
-      <p class="voiceEngHeroDesc">Aloden engineers voice products that do more than talk. They listen in real time, understand intent and context, connect to systems and tools, complete permitted actions, confirm outcomes, recover from ambiguity or failure, and bring a person into the process when judgment or approval is required.</p>
-      <div class="voiceEngHeroActions">
-        <a class="btn primary" href="#voice-cta">Start a Project →</a>
-        <a class="btn secondary" href="built-by-aloden.html#voice-ai-proof">See Aloden Voice AI</a>
-      </div>
+<section class="v-hero">
+  <div class="v-wrap v-heroGrid">
+    <div>
+      <div class="v-ey">VOICE &amp; CONVERSATIONAL AI</div>
+      <h1>From conversation to completed action.</h1>
+      <p class="v-heroLead">Aloden engineers system-connected voice experiences that understand intent, use business context, take permitted actions, confirm outcomes, and hand off to people when judgment is required.</p>
+      <div class="v-actions"><a class="btn primary" href="start-project.html">Start a Voice AI Project →</a><a class="btn secondary" href="built-by-aloden.html">See Our Work</a></div>
     </div>
 
-    <div class="voiceSystemStage" aria-label="Voice AI system from conversation through system action and human escalation">
-      <div class="voiceSystemTop"><span class="liveDot"></span><b>Live voice workflow</b><span class="mono">CONNECTED SYSTEM ACTION</span></div>
-      <div class="voiceLivePanel">
-        <div class="voiceLiveStatus"><span>LIVE</span><b>“Can you move my appointment to Friday afternoon?”</b></div>
-        <div class="voiceWaveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="voiceLatency"><span>Turn detected</span><span>Context retained</span><span>Interruption ready</span></div>
+    <aside class="v-live" aria-label="Voice AI workflow from conversation to verified action">
+      <div class="v-liveTop"><div><span class="v-dot"></span><b>System-connected conversation</b></div><span>REAL-TIME WORKFLOW</span></div>
+      <div class="v-speech"><small>USER</small><p>“Can you move my appointment to Friday afternoon?”</p><div class="v-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="v-flow">
+        <div><span>01</span><b>Intent</b></div><div><span>02</span><b>Business Context</b></div><div><span>03</span><b>Permission</b></div>
+        <div><span>04</span><b>System Action</b></div><div><span>05</span><b>Verification</b></div><div><span>06</span><b>Confirmation</b></div>
       </div>
-      <div class="voiceCoreFlow">
-        <article><span>01</span><b>Conversation</b><small>Natural speech</small></article>
-        <article><span>02</span><b>Speech &amp; Turn Detection</b><small>Listen · interrupt · respond</small></article>
-        <article><span>03</span><b>Intent &amp; Context</b><small>Meaning · state · memory</small></article>
-        <article><span>04</span><b>Policy / Permission Check</b><small>Allowed · confirm · restrict</small></article>
-        <article class="voiceToolStep"><span>05</span><b>Tools &amp; Systems</b><small>APIs · workflows · records</small></article>
-        <article><span>06</span><b>Action</b><small>Complete permitted work</small></article>
-        <article><span>07</span><b>Confirmation</b><small>Outcome made explicit</small></article>
-      </div>
-      <div class="voiceEscalationBranch">
-        <div class="branchTrigger"><span>AMBIGUOUS / RESTRICTED / FAILED</span><b>Human Escalation</b></div>
-        <div class="branchContext">Full conversation context · attempted action · system state · reason for escalation</div>
-      </div>
-      <div class="voicePersistentLayers">
-        <span>Conversation State &amp; Memory</span><span>Latency &amp; Interruption Handling</span><span>Security, Permissions &amp; Audit Context</span>
-      </div>
-      <div class="voiceHeroProof">
-        <article><b>Real-Time by Design</b><p>Natural interruption, turn-taking, response timing, and recovery matter as much as language understanding.</p></article>
-        <article><b>Connected to Systems</b><p>A useful voice product can read context, use tools, update systems, and complete permitted workflows.</p></article>
-        <article><b>Human Control Built In</b><p>Permissions, confirmations, exceptions, escalation, and review are part of the product architecture.</p></article>
-      </div>
-      <div class="voiceSystemClosing">A good voice system does not just understand what was said. It knows what should happen next.</div>
+      <div class="v-escalate"><div><span>WHEN JUDGMENT IS REQUIRED</span><p>Preserve conversation, attempted actions, system state, and reason for escalation.</p></div><b>Human handoff →</b></div>
+      <div class="v-systemLine">CONVERSATION → CONTEXT → AUTHORITY → ACTION → VERIFIED OUTCOME</div>
+    </aside>
+  </div>
+</section>
+
+<section class="v-section" id="when-voice-fits">
+  <div class="v-wrap">
+    <div class="v-head"><div><div class="v-ey">WHEN VOICE IS THE RIGHT INTERFACE</div><h2>Use conversation where it removes real friction.</h2></div><p>Voice is valuable when speaking is faster or more natural than navigating a screen—and when the conversation can connect directly to the workflow, systems, and outcome behind it.</p></div>
+    <div class="v-whenGrid">
+      <article class="v-whenCard"><span>01</span><b>The request is natural to say</b><p>Scheduling, service, status, intake, coordination, and guided workflows can often be expressed faster in conversation than through multiple screens.</p></article>
+      <article class="v-whenCard"><span>02</span><b>Users need to stay in motion</b><p>Voice can reduce interface friction when hands, attention, or device access are constrained during the task.</p></article>
+      <article class="v-whenCard"><span>03</span><b>The task spans systems</b><p>The conversation may need to retrieve context, call APIs, update records, trigger workflows, or coordinate several tools to finish the work.</p></article>
+      <article class="v-whenCard"><span>04</span><b>Guidance improves completion</b><p>Conversational intake and service flows can adapt questions, clarify ambiguity, and guide the user through a structured outcome.</p></article>
+    </div>
+    <div class="v-counter"><span>VOICE IS NOT THE DEFAULT</span><p>Dense comparison, long-form review, private environments, or tasks that require extensive visual confirmation may be better served by screens, forms, or asynchronous workflows. Good voice engineering includes knowing when not to use voice.</p></div>
+  </div>
+</section>
+
+<section class="v-section soft" id="what-aloden-engineers">
+  <div class="v-wrap">
+    <div class="v-head"><div><div class="v-ey">WHAT ALODEN ENGINEERS</div><h2>The conversation is only the visible layer.</h2></div><p>Production Voice AI requires real-time interaction, product context, system connections, authority boundaries, recovery paths, evaluation, and human continuity to behave like a dependable product.</p></div>
+    <div class="v-engineeringGrid">
+      <article class="v-engineeringCard"><div class="v-cardTop"><span>01</span><small>CONVERSATIONAL EXPERIENCE</small></div><h3>Make real-time interaction feel natural.</h3><p>Design turn-taking, pacing, interruption, silence, clarification, correction, and conversational repair so the experience behaves like a useful interface rather than a rigid script.</p><div class="v-tags"><span>Turn detection</span><span>Barge-in</span><span>Pacing</span><span>Clarification</span><span>Repair loops</span></div></article>
+      <article class="v-engineeringCard"><div class="v-cardTop"><span>02</span><small>INTENT, CONTEXT &amp; STATE</small></div><h3>Understand more than the last sentence.</h3><p>Maintain intent, entities, prior turns, workflow state, user context, and what has already been confirmed so the system can reason across the full interaction.</p><div class="v-tags"><span>Intent</span><span>Entities</span><span>Session state</span><span>Business context</span><span>Memory</span></div></article>
+      <article class="v-engineeringCard dark"><div class="v-cardTop"><span>03</span><small>TOOLS &amp; SYSTEM ACTION</small></div><h3>Connect conversation to the systems where work happens.</h3><p>Define the APIs, tools, records, scheduling systems, business applications, and workflows the voice experience may read from or act through.</p><div class="v-tags"><span>APIs</span><span>Tools</span><span>CRM</span><span>Scheduling</span><span>Workflow orchestration</span></div></article>
+      <article class="v-engineeringCard dark"><div class="v-cardTop"><span>04</span><small>IDENTITY, PERMISSION &amp; CONFIRMATION</small></div><h3>Separate capability from authority.</h3><p>Determine who the user is, what may be accessed, what the system may change, what requires confirmation, and which actions must remain restricted or human-owned.</p><div class="v-tags"><span>Identity</span><span>Authorization</span><span>Policy</span><span>Confirmation</span><span>Audit context</span></div></article>
+      <article class="v-engineeringCard"><div class="v-cardTop"><span>05</span><small>RECOVERY &amp; HUMAN HANDOFF</small></div><h3>Design failure and escalation as part of the product.</h3><p>When intent is unclear, a tool fails, a system is unavailable, or judgment is required, recover gracefully or transfer the interaction without making the user start over.</p><div class="v-tags"><span>Retries</span><span>Fallbacks</span><span>Exceptions</span><span>Escalation</span><span>Context-rich handoff</span></div></article>
+      <article class="v-engineeringCard"><div class="v-cardTop"><span>06</span><small>EVALUATION &amp; OBSERVABILITY</small></div><h3>Know whether the conversation actually completed the job.</h3><p>Measure conversational quality and operational outcomes: latency, misunderstood intent, tool success, corrections, task completion, escalation quality, and verified system state.</p><div class="v-tags"><span>Evaluation</span><span>Latency</span><span>Tool success</span><span>Task completion</span><span>Traces</span></div></article>
     </div>
   </div>
 </section>
 
-<section class="voiceWhat section" id="what-gets-engineered">
-  <div class="container">
-    <div class="voiceWhatHead">
-      <div class="eyebrow">WHAT GETS ENGINEERED</div>
-      <h2 class="h2">Voice AI is a real-time product system, not a talking model.</h2>
-      <p class="lead">A production voice product has to manage speech, timing, context, workflow state, system access, permissions, failures, and human handoff while the conversation is happening. Each layer affects whether the experience feels natural—and whether the system can be trusted to act.</p>
+<section class="v-action" id="conversation-to-action">
+  <div class="v-wrap">
+    <div class="v-actionTop"><div><div class="v-ey">FROM CONVERSATION TO COMPLETED ACTION</div><h2>A tool request is not a completed outcome.</h2></div><p>The product should move through explicit state: understand the request, establish context and authority, act through the right system, verify what actually happened, and only then confirm success to the user.</p></div>
+    <div class="v-actionFlow">
+      <div><span>01</span><b>Understand</b><small>Intent · entities · ambiguity</small></div>
+      <div><span>02</span><b>Contextualize</b><small>User · workflow · current state</small></div>
+      <div><span>03</span><b>Authorize</b><small>Permission · policy · confirmation</small></div>
+      <div><span>04</span><b>Act</b><small>Tools · APIs · systems</small></div>
+      <div><span>05</span><b>Verify</b><small>Read actual resulting state</small></div>
+      <div><span>06</span><b>Confirm</b><small>Communicate verified outcome</small></div>
     </div>
-    <div class="voiceArchitectureSystem" aria-label="Voice AI product architecture from channels through controls and escalation">
-      <div class="voiceArchitectureTop"><span>CONNECTED VOICE PRODUCT ARCHITECTURE</span><b>REAL-TIME SYSTEM</b></div>
-      <div class="voiceArchitectureBody">
-        <div class="voiceArchitectureStack">
-          <article><span>01</span><div><small>CHANNEL LAYER</small><b>Phone · Web · App</b></div></article>
-          <article><span>02</span><div><small>REAL-TIME VOICE LAYER</small><b>Speech · Turn Detection · Streaming · Response</b></div></article>
-          <article class="voiceIntelligenceLayer"><span>03</span><div><small>CONVERSATION INTELLIGENCE LAYER</small><b>Intent · Context · State · Reasoning</b></div></article>
-          <article><span>04</span><div><small>ACTION LAYER</small><b>Tools · APIs · Workflows · Systems</b></div></article>
-          <article><span>05</span><div><small>CONTROL LAYER</small><b>Permissions · Confirmation · Guardrails · Human Escalation</b></div></article>
-        </div>
-        <div class="voiceArchitectureRails"><span>Evaluation</span><span>Observability</span><span>Security</span></div>
-      </div>
-      <div class="voiceArchitectureClosing">The conversation is the interface. The product system behind it determines whether anything useful actually happens.</div>
-    </div>
+    <div class="v-verification"><span>PRODUCTION PRINCIPLE</span><p><strong>Never tell the user an action succeeded because the model expected it to.</strong> Confirmation should reflect the underlying system state—or clearly explain that the action is still pending, failed, or needs human help.</p></div>
+  </div>
+</section>
 
-    <div class="voiceEngineeringGrid">
-      <article class="voiceEngineeringCard"><div class="voiceEngineeringTop"><span>01</span><small>CONVERSATION &amp; TURN BEHAVIOR</small></div><h3>Make the interaction feel natural before making it intelligent.</h3><p>Design how the system opens, listens, pauses, interrupts, handles silence, repairs misunderstandings, asks clarifying questions, and knows when the user has finished speaking.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Turn detection</span><span>Barge-in</span><span>Silence handling</span><span>Interruptions</span><span>Repair loops</span><span>Conversational pacing</span></div></article>
-      <article class="voiceEngineeringCard"><div class="voiceEngineeringTop"><span>02</span><small>REAL-TIME SPEECH &amp; VOICE INFRASTRUCTURE</small></div><h3>Keep the conversation responsive under real conditions.</h3><p>Engineer the real-time speech path across phone, web, or application channels—including recognition or speech-to-speech processing, synthesis, streaming, audio quality, connection state, and latency.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Streaming audio</span><span>Speech recognition</span><span>Synthesis</span><span>Realtime models</span><span>Telephony / web channels</span><span>Latency</span><span>Noise handling</span></div></article>
-      <article class="voiceEngineeringCard voiceStateCard"><div class="voiceEngineeringTop"><span>03</span><small>INTENT, CONTEXT &amp; CONVERSATION STATE</small></div><h3>Understand more than the last sentence.</h3><p>Maintain the user’s intent, entities, prior turns, workflow state, relevant business context, and what has already been confirmed so the system can reason across the full conversation.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Intent</span><span>Entities</span><span>Session state</span><span>Context retrieval</span><span>Memory</span><span>Workflow state</span><span>Clarification</span></div></article>
-      <article class="voiceEngineeringCard voiceActionCard"><div class="voiceEngineeringTop"><span>04</span><small>TOOLS, SYSTEMS &amp; WORKFLOW ACTION</small></div><h3>Connect conversation to real work.</h3><p>Define how the voice system reads information, calls APIs, searches systems, updates records, schedules activity, triggers workflows, and coordinates multiple tools safely.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Tool schemas</span><span>APIs</span><span>CRM / scheduling / business systems</span><span>Orchestration</span><span>Retries</span><span>Action state</span></div></article>
-      <article class="voiceEngineeringCard"><div class="voiceEngineeringTop"><span>05</span><small>PERMISSIONS, CONFIRMATION &amp; GUARDRAILS</small></div><h3>The ability to act does not mean permission to act.</h3><p>Determine who the user is, what the system may access, what actions require explicit confirmation, what is restricted, and what must be escalated to a person.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Authentication</span><span>Authorization</span><span>Permission checks</span><span>Confirmations</span><span>Restricted actions</span><span>Audit context</span></div></article>
-      <article class="voiceEngineeringCard"><div class="voiceEngineeringTop"><span>06</span><small>RECOVERY, ESCALATION &amp; HUMAN HANDOFF</small></div><h3>Design failure as part of the product.</h3><p>When intent is unclear, a system is unavailable, an action fails, confidence is insufficient, or human judgment is required, the voice experience should recover gracefully and transfer useful context rather than simply stopping.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Fallbacks</span><span>Retry strategy</span><span>Exception handling</span><span>Confidence thresholds</span><span>Escalation</span><span>Context-rich handoff</span></div></article>
-      <article class="voiceEngineeringCard voiceEvaluationCard"><div class="voiceEngineeringTop"><span>07</span><small>EVALUATION &amp; PRODUCTION OBSERVABILITY</small></div><h3>Know what is happening inside every conversation.</h3><p>Measure both conversational quality and operational outcomes: interruptions, latency, misunderstood intent, tool failures, abandoned tasks, escalation quality, completion, and user correction.</p><div class="voiceEngineeringAreas"><b>Engineering areas</b><span>Conversation evaluation</span><span>Latency</span><span>Tool success</span><span>Task completion</span><span>Failure analysis</span><span>Transcripts / traces</span><span>Product analytics</span></div></article>
+<section class="v-section soft" id="ways-to-start">
+  <div class="v-wrap">
+    <div class="v-head"><div><div class="v-ey">WAYS TO START</div><h2>Start with one workflow where conversation could work better.</h2></div><p>You do not need a full voice strategy before beginning. A focused workflow is usually the best place to test whether conversation can reduce friction and improve completion.</p></div>
+    <div class="v-startGrid">
+      <article class="v-startCard"><div class="v-startTop"><span>VOICE WORKFLOW DISCOVERY</span><em>01</em></div><h3>Find the right voice opportunity.</h3><p>Identify workflows where speaking is materially easier, map the system dependencies, determine risk and authority boundaries, and define what a successful voice experience should accomplish.</p><div class="v-startFlow">Workflow → User → Systems → Controls → Opportunity</div></article>
+      <article class="v-startCard"><div class="v-startTop"><span>ADD VOICE TO AN EXISTING PRODUCT</span><em>02</em></div><h3>Make an existing workflow conversational.</h3><p>Add voice as an interface to product capabilities that already exist, while preserving the same business rules, permissions, system state, and operating controls.</p><div class="v-startFlow">Existing Product → Voice Interface → Context → Actions → Verification</div></article>
+      <article class="v-startCard"><div class="v-startTop"><span>SYSTEM-CONNECTED VOICE EXPERIENCE</span><em>03</em></div><h3>Build voice around a real operational outcome.</h3><p>Engineer an end-to-end experience for scheduling, intake, service, coordination, status, or another workflow that must connect conversation to live systems.</p><div class="v-startFlow">Conversation → Systems → Workflow → Outcome → Human Handoff</div></article>
+      <article class="v-startCard"><div class="v-startTop"><span>VOICE + AGENTIC WORKFLOW PILOT</span><em>04</em></div><h3>Use conversation to drive multi-step work.</h3><p>Combine voice with controlled agentic orchestration when the request requires several tools, changing context, exceptions, approvals, or dynamic next-step decisions.</p><div class="v-startFlow">Intent → State → Tools → Decisions → Verified Completion</div></article>
     </div>
   </div>
 </section>
 
-<section class="voiceExecution section" id="conversation-to-action">
-  <div class="container">
-    <div class="voiceExecutionHead"><div class="eyebrow">FROM CONVERSATION TO COMPLETED ACTION</div><h2 class="h2">Every turn changes the product state.</h2><p class="lead">A useful voice system continuously listens, interprets, updates context, checks what is allowed, interacts with systems, and decides what to say or do next. The conversation and the workflow advance together.</p></div>
-    <div class="voiceRuntimeTrace" aria-label="Live execution trace from user speech through verified system action">
-      <div class="voiceRuntimeTop"><span>LIVE EXECUTION TRACE</span><b>CONVERSATION + PRODUCT STATE + SYSTEM ACTION</b></div>
-      <div class="voiceRuntimeHeader"><span>Conversation</span><span>Product State</span><span>System / Tool</span><span>Control</span></div>
-      <div class="voiceRuntimeRows">
-        <div><span>“Move my appointment…”</span><b>Intent detected</b><span>—</span><em>Identity known</em></div>
-        <div><span>“Friday afternoon.”</span><b>Time preference captured</b><span>Availability lookup</span><em>Read permitted</em></div>
-        <div><span>Options returned</span><b>Choice required</b><span>Scheduling system</span><em>Confirmation required</em></div>
-        <div><span>“2:30 works.”</span><b>Choice confirmed</b><span>Update appointment</span><em>Write permitted</em></div>
-        <div class="runtimeSuccess"><span>Update succeeds</span><b>Completed</b><span>System state verified</span><em>Audit context retained</em></div>
-        <div><span>“You’re set for Friday at 2:30 PM.”</span><b>Confirmed outcome</b><span>—</span><em>Verified state only</em></div>
-      </div>
-      <div class="voiceRuntimeRails"><span>Latency &amp; Turn Handling</span><span>Permissions &amp; State</span><span>Evaluation &amp; Observability</span></div>
+<section class="v-section" id="production-standards">
+  <div class="v-wrap">
+    <div class="v-head"><div><div class="v-ey">PRODUCTION STANDARDS</div><h2>Real conversations create real operating requirements.</h2></div><p>Voice systems have to work while users interrupt, change their minds, speak unclearly, wait on slow systems, fail authentication, or ask for actions the AI should not complete.</p></div>
+    <div class="v-productionGrid">
+      <article class="v-productionItem"><span>01</span><b>Latency &amp; turn-taking</b><p>Keep interaction responsive across listening, reasoning, tool use, and speaking without sacrificing accuracy or state.</p></article>
+      <article class="v-productionItem"><span>02</span><b>Identity &amp; permissions</b><p>A voice interface is not proof of identity. Sensitive information and consequential actions need explicit trust and authority boundaries.</p></article>
+      <article class="v-productionItem"><span>03</span><b>Conversation state</b><p>Corrections, interruptions, prior choices, and workflow progress must remain coherent as the interaction evolves.</p></article>
+      <article class="v-productionItem"><span>04</span><b>System verification</b><p>Downstream timeouts, retries, partial failures, and stale data require explicit confirmation from the system of record.</p></article>
+      <article class="v-productionItem"><span>05</span><b>Human continuity</b><p>Escalation should carry the intent, gathered context, attempted actions, current system state, and reason for handoff.</p></article>
+      <article class="v-productionItem"><span>06</span><b>Observability &amp; evaluation</b><p>Teams need visibility into conversation quality, action success, failure patterns, latency, escalation, and task completion.</p></article>
     </div>
-
-    <div class="voiceExecutionGrid">
-      <article class="voiceExecutionCard"><div class="voiceExecutionTop"><span>01</span><small>LISTEN &amp; DETECT THE TURN</small></div><h3>Know when to listen, when to wait, and when to respond.</h3><p>Capture speech in real time while handling silence, interruption, barge-in, background noise, and incomplete turns.</p><div class="voiceStateChange"><span>System state</span><b>Listening → Turn complete</b></div></article>
-      <article class="voiceExecutionCard"><div class="voiceExecutionTop"><span>02</span><small>UNDERSTAND INTENT &amp; CONTEXT</small></div><h3>Translate natural language into product meaning.</h3><p>Determine what the user wants, extract relevant entities, combine them with conversation history and business context, and identify what information is still missing.</p><div class="voiceIntentExample"><span>Intent</span><b>Reschedule appointment</b><span>Time preference</span><b>Friday afternoon</b><span>Context</span><b>User + current appointment + scheduling rules</b></div></article>
-      <article class="voiceExecutionCard voiceClarifyCard"><div class="voiceExecutionTop"><span>03</span><small>CLARIFY WHAT IS AMBIGUOUS</small></div><h3>Do not guess when the workflow needs certainty.</h3><p>If multiple appointments exist, the requested time is unavailable, identity is unclear, or critical information is missing, ask the smallest useful clarification before proceeding.</p><div class="voiceStateChange"><span>State</span><b>Uncertain → Clarified</b></div></article>
-      <article class="voiceExecutionCard voiceControlCard"><div class="voiceExecutionTop"><span>04</span><small>POLICY, PERMISSION &amp; CONFIRMATION</small></div><h3>Determine what the system is allowed to do.</h3><p>Before accessing or changing data, evaluate authentication, permissions, business policy, restricted actions, and whether explicit user confirmation is required.</p><div class="voiceDecisionFlow"><span>Allowed → continue</span><span>Confirmation required → ask</span><span>Restricted → escalate</span></div></article>
-      <article class="voiceExecutionCard voiceToolCard"><div class="voiceExecutionTop"><span>05</span><small>USE TOOLS &amp; CONNECTED SYSTEMS</small></div><h3>Turn conversation into system activity.</h3><p>Read availability, retrieve records, call APIs, update systems, trigger workflows, or coordinate multiple tools while maintaining action state.</p><div class="voiceToolFlow"><span>Scheduling system</span><span>Check Friday availability</span><span>Return valid options</span></div></article>
-      <article class="voiceExecutionCard"><div class="voiceExecutionTop"><span>06</span><small>COMMIT &amp; VERIFY THE ACTION</small></div><h3>Do not treat a tool call as success until the outcome is known.</h3><p>Execute the permitted action, verify the system response, handle partial failure, and ensure the resulting state matches what the user requested.</p><div class="voiceVerifyGrid"><div><span>Action</span><b>Appointment updated</b></div><div><span>Verification</span><b>New date/time confirmed by system</b></div></div></article>
-      <article class="voiceExecutionCard voiceConfirmCard"><div class="voiceExecutionTop"><span>07</span><small>CONFIRM THE OUTCOME</small></div><h3>Make the result explicit.</h3><p>Tell the user exactly what happened rather than ending with a vague acknowledgement. The response should reflect verified system state, not model assumption.</p><div class="voiceConfirmedSpeech">“Your appointment is now scheduled for Friday at 2:30 PM.”</div></article>
-    </div>
-    <aside class="voiceExceptionPanel"><div class="voiceExceptionLead"><span>EXCEPTION PATH</span><h3>Recover or escalate without losing the work already done.</h3><p>At any point, ambiguity, tool failure, permission issues, restricted actions, or human judgment can change the path.</p></div><div class="voiceExceptionFlow"><span>Ambiguous</span><span>Tool Failure</span><span>Permission Issue</span><span>Restricted Action</span><span>Human Judgment Required</span></div><div class="voiceExceptionDecision"><b>Recover in conversation</b><i>or</i><b>Transfer with context</b></div><div class="voiceHandoffContext"><span>Intent</span><span>Conversation history</span><span>Gathered context</span><span>Attempted actions</span><span>System state</span><span>Reason for escalation</span></div></aside>
-    <div class="voiceExecutionClosing">The conversation may sound simple. The system behind it should be precise.</div>
   </div>
 </section>
 
-<section class="voiceReality section" id="production-reality">
-  <div class="container">
-    <div class="voiceRealityHead"><div class="eyebrow">PRODUCTION REALITY</div><h2 class="h2">Real conversations do not follow a script.</h2><p class="lead">Voice systems operate while people interrupt, change their minds, speak unclearly, move through noisy environments, wait on slow systems, fail authentication, or ask for actions the AI should not complete. Production Voice AI has to handle those conditions without losing context, trust, or control.</p></div>
-    <div class="voiceRealitySimulator" aria-label="Production voice conditions simulator">
-      <div class="voiceRealityTop"><span>PRODUCTION CONDITIONS SIMULATOR</span><b>ONE CONVERSATION · MULTIPLE DISRUPTIONS</b></div>
-      <div class="voiceRealityEvents">
-        <article><small>01 · USER SPEAKS</small><b>Initial request</b><p>Intent begins to form.</p></article>
-        <article><small>02 · INTERRUPTION</small><b>Barge-in</b><p>System stops speaking and listens.</p></article>
-        <article><small>03 · CORRECTION</small><b>Intent revised</b><p>Old state is no longer active.</p></article>
-        <article><small>04 · IDENTITY CHECK</small><b>Verify access</b><p>Sensitive action needs trust.</p></article>
-        <article><small>05 · SLOW TOOL</small><b>Wait / retry safely</b><p>No invented success.</p></article>
-        <article><small>06 · RESTRICTED ACTION</small><b>Do not act</b><p>Policy changes the path.</p></article>
-        <article><small>07 · HANDOFF</small><b>Human continuity</b><p>Context transfers with the user.</p></article>
-      </div>
-      <div class="voiceRealityRails"><span>Latency</span><span>State</span><span>Permissions</span><span>Tool Reliability</span><span>Human Continuity</span></div>
+<section class="v-bridge">
+  <div class="v-wrap v-bridgeGrid">
+    <div><div class="v-ey">CONNECTED CAPABILITY</div><h2>Voice works best as part of the product system.</h2></div>
+    <div class="v-bridgeItems">
+      <div><b>AI Product Engineering</b><span>Design the product, experience, architecture, data, and AI system around the outcome.</span></div>
+      <div><b>Agentic Workflow Engineering</b><span>Coordinate multi-step reasoning, tools, state, approvals, recovery, and human control behind the conversation.</span></div>
+      <div><b>Our Work</b><span>See how Aloden applies product and engineering discipline across different real-world product environments.</span></div>
     </div>
-
-    <div class="voiceRealityGrid">
-      <article class="voiceRealityCard"><div class="voiceRealityTopline"><span>01</span><small>LATENCY &amp; CONVERSATIONAL PACING</small></div><h3>A technically correct response can still feel broken if it arrives too late.</h3><strong>Respond naturally without acting prematurely.</strong><p>Speech processing, reasoning, retrieval, tool calls, and synthesis all contribute to the delay the user experiences. The system has to balance responsiveness with accuracy rather than optimizing one model call.</p><div class="voiceRealityAreas"><span>Streaming</span><span>Response budgeting</span><span>Partial results</span><span>Tool latency</span><span>Synthesis timing</span><span>Perceived latency</span></div></article>
-      <article class="voiceRealityCard dark"><div class="voiceRealityTopline"><span>02</span><small>INTERRUPTIONS &amp; BARGE-IN</small></div><h3>People do not wait politely for an AI to finish speaking.</h3><strong>Preserve useful state while accepting the new turn.</strong><p>If the user interrupts, corrects information, or changes direction, the product has to stop speaking, capture the new turn, determine what changed, and retire stale intent.</p><div class="voiceRealityAreas"><span>Barge-in</span><span>Cancellation</span><span>State revision</span><span>Turn ownership</span><span>Partial utterances</span></div></article>
-      <article class="voiceRealityCard"><div class="voiceRealityTopline"><span>03</span><small>AMBIGUITY &amp; CORRECTION</small></div><h3>Natural speech is incomplete by default.</h3><strong>Clarify uncertainty rather than manufacture certainty.</strong><p>References like “it,” “the other one,” or “next week” only make sense when the system maintains enough product context to resolve them—or knows when to ask a precise clarification.</p><div class="voiceRealityAreas"><span>Reference resolution</span><span>Correction loops</span><span>Context confidence</span><span>Clarification</span><span>State reconciliation</span></div></article>
-      <article class="voiceRealityCard"><div class="voiceRealityTopline"><span>04</span><small>IDENTITY, PRIVACY &amp; PERMISSION</small></div><h3>A voice is an interface—not proof of identity.</h3><strong>Known + permitted → proceed. Verify when needed. Restrict when required.</strong><p>Before exposing sensitive information or completing meaningful actions, the product needs to know who the user is and what that user is authorized to access or change.</p><div class="voiceRealityAreas"><span>Identity verification</span><span>Session trust</span><span>Authorization</span><span>Sensitive data</span><span>Consent</span><span>Audit context</span></div></article>
-      <article class="voiceRealityCard dark"><div class="voiceRealityTopline"><span>05</span><small>SLOW, UNAVAILABLE OR FAILED SYSTEMS</small></div><h3>The AI may be ready before the business system is.</h3><strong>A tool request is not a completed action.</strong><p>APIs time out, downstream systems respond slowly, and updates fail. The product should wait appropriately, retry when safe, explain useful status, verify the outcome, and recover or escalate.</p><div class="voiceRealityAreas"><span>Timeouts</span><span>Retries</span><span>Idempotency</span><span>Partial failure</span><span>System-of-record verification</span><span>User messaging</span></div></article>
-      <article class="voiceRealityCard"><div class="voiceRealityTopline"><span>06</span><small>HUMAN ESCALATION WITHOUT STARTING OVER</small></div><h3>Handoff should preserve the work already done.</h3><strong>Escalation is a designed product path, not a dead end.</strong><p>The transfer should carry identity, intent, gathered information, confirmations, attempted tools, current system state, and the reason human help is required.</p><div class="voiceRealityAreas"><span>User identity</span><span>Intent</span><span>Gathered context</span><span>Confirmed details</span><span>Attempted tools</span><span>System state</span><span>Reason for handoff</span></div></article>
-    </div>
-
-    <div class="voiceDemoContrast"><article><h4>DEMO CONDITIONS</h4><div><span>Clear speech</span><span>One intent</span><span>Fast tools</span><span>Happy path</span><span>No sensitive action</span></div></article><i>→</i><article><h4>PRODUCTION CONDITIONS</h4><div><span>Interruptions</span><span>Corrections</span><span>Ambiguity</span><span>Authentication</span><span>System latency</span><span>Failures</span><span>Restricted actions</span><span>Human escalation</span></div></article></div>
-    <div class="voiceRealityClosing">A voice demo proves that the system can talk. Production engineering proves that it can handle what happens next.</div>
   </div>
 </section>
 
-<section class="voiceValue section" id="where-voice-earns-its-place">
-  <div class="container">
-    <div class="voiceValueHead"><div class="eyebrow">WHERE VOICE CREATES VALUE</div><h2 class="h2">Use voice when conversation removes meaningful friction.</h2><p class="lead">Voice is valuable when speaking is faster or more natural than navigating an interface, when users need to act while their hands or attention are elsewhere, or when a multi-step task benefits from conversational guidance. The goal is not to replace every screen. It is to use voice where it makes the workflow materially easier.</p></div>
-    <div class="voiceInterfaceDecision" aria-label="Decision system for choosing voice, screen, agentic workflow, verification, or digital workflow">
-      <div class="voiceInterfaceTop"><span>INTERFACE DECISION SYSTEM</span><b>RIGHT INTERFACE FOR THE JOB</b></div>
-      <div class="voiceInterfaceBody">
-        <div class="voiceTaskStart"><span>START</span><b>User Task</b><small>What is the simplest reliable path to the outcome?</small></div>
-        <div class="voiceInterfaceBranches">
-          <article class="voiceChoice"><small>FAST TO EXPRESS NATURALLY</small><b>Voice</b><p>Conversation removes interface friction.</p></article>
-          <article><small>NEEDS VISUAL COMPARISON</small><b>Screen</b><p>Dense information or many options need visual review.</p></article>
-          <article class="voiceAgentChoice"><small>MULTI-STEP + SYSTEM-CONNECTED</small><b>Voice + Agentic Workflow</b><p>Conversation becomes the interface to tools and workflows.</p></article>
-          <article><small>SENSITIVE / RESTRICTED</small><b>Voice + Verification / Human Control</b><p>Identity, permission, confirmation, or judgment remains explicit.</p></article>
-          <article><small>BETTER ASYNCHRONOUSLY</small><b>Digital Workflow</b><p>Forms, messages, or self-service may fit the task better.</p></article>
-        </div>
-        <div class="voiceInterfaceConverge"><span>CONVERGE</span><b>Right Interface for the Job</b><small>Voice is one product interface—not the default answer.</small></div>
-      </div>
-    </div>
-
-    <div class="voiceValueGrid">
-      <article class="voiceValueCard"><div class="voiceValueTop"><span>01</span><small>SCHEDULING &amp; COORDINATION</small></div><h3>Turn a simple request into a completed workflow.</h3><p>Users often know exactly what they want but have to navigate several screens, wait on hold, or move between systems to accomplish it. Voice can understand the request, gather missing details, check availability, present valid options, complete the permitted action, and confirm the result.</p><div class="voicePattern"><b>Pattern</b><span>Request</span><span>Context</span><span>Availability</span><span>Choice</span><span>Action</span><span>Confirmation</span></div><div class="voiceExamples"><span>Appointments</span><span>Reservations</span><span>Service windows</span><span>Internal scheduling</span><span>Rescheduling</span></div></article>
-      <article class="voiceValueCard"><div class="voiceValueTop"><span>02</span><small>SERVICE &amp; ACCOUNT WORKFLOWS</small></div><h3>Let people say what they need instead of learning the interface.</h3><p>Voice works well when the user’s intent is clear in natural language but the underlying system requires several steps. Conversation simplifies the interface; it does not bypass business rules.</p><div class="voicePattern"><b>Pattern</b><span>Intent</span><span>Identity</span><span>Account context</span><span>Workflow</span><span>Verified outcome</span></div><div class="voiceExamples"><span>Status checks</span><span>Account changes</span><span>Service requests</span><span>Order / case updates</span></div></article>
-      <article class="voiceValueCard"><div class="voiceValueTop"><span>03</span><small>INTAKE &amp; GUIDED INFORMATION GATHERING</small></div><h3>Make structured workflows feel less like forms.</h3><p>Voice can guide a multi-step interaction conversationally while resolving ambiguous answers, adapting follow-up questions, and still producing structured data for the underlying workflow.</p><div class="voicePattern"><b>Pattern</b><span>Conversation</span><span>Clarification</span><span>Structured context</span><span>Validation</span><span>Next step</span></div><div class="voiceExamples"><span>Onboarding</span><span>Intake</span><span>Qualification</span><span>Request capture</span><span>Guided workflows</span></div></article>
-      <article class="voiceValueCard"><div class="voiceValueTop"><span>04</span><small>HANDS-FREE OPERATIONAL WORK</small></div><h3>Use voice when screens interrupt the work itself.</h3><p>In environments where typing or navigating a UI creates friction, voice can retrieve context, respond, or act while the user continues the task. Permissions, context, and confirmation still remain explicit.</p><div class="voicePattern"><b>Pattern</b><span>Ask</span><span>Retrieve context</span><span>Respond / act</span><span>Continue work</span></div></article>
-      <article class="voiceValueCard voiceSystemConnected"><div class="voiceValueTop"><span>05</span><small>SYSTEM-CONNECTED ASSISTANCE</small></div><h3>Give users conversational access to work spread across multiple systems.</h3><p>A single request may require retrieving information from one system, checking another, applying business rules, and updating a third. Voice can become the interaction layer while agentic workflows coordinate the systems behind it.</p><div class="voicePattern"><b>Pattern</b><span>Conversation</span><span>Intent + context</span><span>Multiple tools / systems</span><span>Decision / action</span><span>Confirmation</span></div></article>
-    </div>
-
-    <aside class="voiceNoVoicePanel"><div class="voiceNoVoiceLead"><span>THE COUNTERPOINT</span><h3>When voice should not be the interface.</h3><p>A screen, form, or asynchronous interaction may be better when conversation does not reduce effort or when visual review, privacy, or environmental constraints matter more.</p></div><div class="voiceNoVoiceReasons"><div><span>01</span><p>Users need to visually compare many options.</p></div><div><span>02</span><p>Dense information needs careful review.</p></div><div><span>03</span><p>The task requires long-form reading or editing.</p></div><div><span>04</span><p>Privacy makes speaking inappropriate.</p></div><div><span>05</span><p>Visual confirmation is safer than spoken confirmation.</p></div><div><span>06</span><p>The environment makes reliable audio difficult.</p></div><div><span>07</span><p>Conversation does not actually reduce effort.</p></div></div><div class="voiceNoVoiceClosing">Good Voice AI Engineering includes knowing when a screen is better.</div></aside>
-    <div class="voiceValueClosing">Voice earns its place when speaking is the simplest path to a useful outcome.</div>
-  </div>
-</section>
-
-<section class="voiceProductProof section" id="voice-product-proof">
-  <div class="container">
-    <div class="voiceProductProofHead"><div class="eyebrow">PRODUCT PROOF</div><h2 class="h2">One conversation. One connected product system.</h2><p class="lead">Aloden Voice AI demonstrates what Voice AI Engineering looks like when conversation, context, permissions, tools, system state, verification, and human escalation are designed as one product rather than assembled as separate technologies.</p></div>
-    <div class="voiceProofConsole" aria-label="Aloden Voice AI runtime product proof">
-      <div class="voiceProofConsoleTop"><span>ALODEN VOICE AI · RUNTIME PRODUCT CONSOLE</span><b>VERIFIED ACTION, NOT ASSUMED SUCCESS</b></div>
-      <div class="voiceProofHeader"><span>Live Conversation</span><span>Product State</span><span>Connected System</span><span>Control</span></div>
-      <div class="voiceProofRows">
-        <div><span>“Can you move my appointment to Friday afternoon?”</span><b>Intent: reschedule</b><span>Current appointment loaded</span><em>Identity known</em></div>
-        <div><span>Friday afternoon</span><b>Preference captured</b><span>Scheduling availability lookup</span><em>Read permitted</em></div>
-        <div><span>Valid Friday options presented</span><b>Choice required</b><span>Scheduling system</span><em>Confirmation required</em></div>
-        <div><span>“2:30 works.”</span><b>Choice confirmed</b><span>Update appointment</span><em>Write permitted</em></div>
-        <div class="voiceProofSuccess"><span>Update succeeds</span><b>System state: completed</b><span>New appointment verified</span><em>Audit context retained</em></div>
-        <div><span>“Your appointment is now scheduled for Friday at 2:30 PM.”</span><b>Verified outcome</b><span>—</span><em>Respond from system state</em></div>
-      </div>
-      <div class="voiceProofFailure"><b>Restricted / ambiguous / tool failure</b><i>→</i><span>Do not invent success · preserve conversation and system context · recover or escalate intelligently</span></div>
-    </div>
-
-    <div class="voiceProofGrid">
-      <article class="voiceProofCard"><span>01</span><h3>Real-Time Conversation</h3><p>Turn-taking, interruption, latency, and conversational repair are part of the product behavior.</p></article>
-      <article class="voiceProofCard"><span>02</span><h3>Context That Persists</h3><p>Intent, entities, prior turns, choices, and workflow state stay connected throughout the interaction.</p></article>
-      <article class="voiceProofCard"><span>03</span><h3>System-Connected Action</h3><p>Voice becomes an interface to APIs, tools, records, scheduling, and business workflows.</p></article>
-      <article class="voiceProofCard"><span>04</span><h3>Permission Before Action</h3><p>Authentication, authorization, confirmation, and restricted actions remain explicit.</p></article>
-      <article class="voiceProofCard"><span>05</span><h3>Outcome Verification</h3><p>A requested action is not considered complete until the underlying system confirms it.</p></article>
-      <article class="voiceProofCard"><span>06</span><h3>Human Continuity</h3><p>Escalation carries conversation context, attempted actions, current system state, and the reason for handoff.</p></article>
-    </div>
-    <div class="voiceCapabilityLine">Conversational UX · Real-Time Voice · Context &amp; State · Tool Use · System Integration · Permissions · Verification · Human Escalation</div>
-    <div class="voiceProofActions"><strong>The voice is what the user hears. The product system is what makes the outcome trustworthy.</strong><a class="textLink" href="built-by-aloden.html#voice-ai-proof">See Aloden Voice AI →</a></div>
-  </div>
-</section>
-
-<section class="voiceFinalCta" id="voice-cta">
-  <div class="container voiceFinalCtaInner">
-    <div><div class="eyebrow">BUILD WITH VOICE</div><h2>Turn conversation into an interface people can depend on.</h2><p>Whether you’re designing a new voice product, adding conversational access to an existing workflow, or connecting voice to business systems and agentic actions, Aloden can help engineer the experience from real-time conversation through secure, verified completion.</p><div class="voiceFinalTags"><span>Voice Product</span><span>System-Connected Assistant</span><span>Workflow Automation</span><span>Human Escalation</span></div></div>
-    <a class="btn primary" href="start-project.html">Start a Project →</a>
-  </div>
+<section class="finalCta v-cta" id="voice-cta">
+  <div class="container"><div class="ctaBand"><div><h2>What should your customers or teams be able to accomplish by voice?</h2><p>Bring us the workflow, the existing product, or the service experience. We’ll help determine where conversation fits and what has to be engineered behind it for dependable real-world use.</p></div><a class="btn" href="start-project.html">Start a Project →</a></div></div>
 </section>
 </main>
 
-<footer class="footer" id="company"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="capabilities.html">Capabilities</a><a href="index.html#insights">Insights</a><a href="index.html#company">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="#top">Voice AI Engineering</a><a href="capabilities.html#agentic-systems">Intelligent Workflow &amp; Agentic Systems</a><a href="capabilities.html#product-modernization">Product Modernization</a><a href="capabilities.html#healthcare-ai">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#voice-cta">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
+<footer class="footer" id="company-footer">
+  <div class="container footerFinal">
+    <div class="footerFinalGrid">
+      <div class="footerFinalBrand"><img class="v-footerLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden"><p>AI-native product engineering and digital modernization for intelligent products built for real-world use.</p></div>
+      <div class="footerFinalCol"><h4>Explore</h4><a href="index.html">Home</a><a href="built-by-aloden.html">Our Work</a><a href="capabilities.html">Capabilities</a><a href="company.html">Company</a></div>
+      <div class="footerFinalCol"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="product-modernization.html">AI-Native Modernization</a><a href="agentic-ai.html">Agentic Workflow Engineering</a><a href="#top">Voice &amp; Conversational AI</a><a href="healthcare-ai.html">Healthcare AI</a></div>
+      <div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="start-project.html">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="https://www.linkedin.com/company/alodenllc" target="_blank" rel="noopener noreferrer">LinkedIn →</a></div>
+    </div>
+    <div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><span class="footerTagline">Built around your vision.</span></div>
+  </div>
+</footer>
 <script defer src="app.js"></script>
 </body>
 </html>
