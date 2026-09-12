@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /insights.html
+Disallow: /reviews/
 Disallow: /live-review.html
+Disallow: /homepage-section1.html
 
 Sitemap: https://www.aloden.com/sitemap.xml
