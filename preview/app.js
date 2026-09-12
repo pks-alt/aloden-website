@@ -56,6 +56,53 @@ function ensureStylesheet(href) {
   document.head.appendChild(link);
 }
 
+function standardizeFooterNavigation() {
+  const footerRenames = new Map([
+    ['Built by Aloden', 'Our Work'],
+    ['Voice AI Engineering', 'Voice & Conversational AI'],
+    ['Intelligent Workflow & Agentic Systems', 'Agentic Workflow Engineering'],
+    ['Product Modernization', 'AI-Native Modernization']
+  ]);
+
+  document.querySelectorAll('footer .footerFinalCol a, footer .contentReviewFooterCol a').forEach(anchor => {
+    const text = normalizedText(anchor);
+    if (footerRenames.has(text)) anchor.textContent = footerRenames.get(text);
+  });
+
+  document.querySelectorAll('footer .footerFinalCol, footer .contentReviewFooterCol').forEach(column => {
+    const heading = (column.querySelector('h4')?.textContent || '').trim();
+    const links = [...column.querySelectorAll('a')];
+    if (heading === 'Explore' && !links.some(link => normalizedText(link) === 'Home')) {
+      const home = document.createElement('a');
+      home.href = 'index.html';
+      home.textContent = 'Home';
+      column.querySelector('h4')?.insertAdjacentElement('afterend', home);
+    }
+    if (heading === 'Connect' && !links.some(link => normalizedText(link) === 'LinkedIn' || normalizedText(link) === 'LinkedIn →')) {
+      const linkedIn = document.createElement('a');
+      linkedIn.href = 'https://www.linkedin.com/company/alodenllc';
+      linkedIn.textContent = 'LinkedIn →';
+      column.appendChild(linkedIn);
+    }
+  });
+
+  document.querySelectorAll('footer .footerLegal, footer .contentReviewFooterLegal').forEach(legal => {
+    const texts = [...legal.querySelectorAll('a')].map(normalizedText);
+    if (!texts.includes('Privacy')) {
+      const privacy = document.createElement('a');
+      privacy.href = 'privacy.html';
+      privacy.textContent = 'Privacy';
+      legal.appendChild(privacy);
+    }
+    if (!texts.includes('Terms')) {
+      const terms = document.createElement('a');
+      terms.href = 'terms.html';
+      terms.textContent = 'Terms';
+      legal.appendChild(terms);
+    }
+  });
+}
+
 function normalizeSiteLinks() {
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const onStartProject = currentFile === 'start-project.html';
@@ -98,15 +145,12 @@ function normalizeSiteLinks() {
     ['Explore Healthcare AI →', 'healthcare-ai.html']
   ]);
 
-  document.querySelectorAll('.navLinks a').forEach(anchor => {
-    if (normalizedText(anchor) === 'Built by Aloden') anchor.textContent = 'Our Work';
-  });
-  document.querySelectorAll('.contentReviewFooterCol a, .footerFinalCol a').forEach(anchor => {
-    if (normalizedText(anchor) === 'Built by Aloden') anchor.textContent = 'Our Work';
-  });
-
   document.querySelectorAll('a').forEach(anchor => {
-    const text = normalizedText(anchor);
+    let text = normalizedText(anchor);
+    if (text === 'Built by Aloden') {
+      anchor.textContent = 'Our Work';
+      text = 'Our Work';
+    }
     if (text === 'Start a Project →' || text === 'Start a Project') {
       anchor.href = onStartProject ? '#project-start' : 'start-project.html';
     } else if (text === 'LinkedIn →' || text === 'LinkedIn') {
@@ -247,6 +291,7 @@ function installMetadataBaseline() {
 }
 
 standardizeSiteChrome();
+standardizeFooterNavigation();
 normalizeSiteLinks();
 removeInsightsFromLaunch();
 installAccessibilityBaseline();
