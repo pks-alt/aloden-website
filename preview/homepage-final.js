@@ -15,11 +15,9 @@
   ensure('homepage-header-final.css?v=1');
   ensure('homepage-sections-final.css?v=1');
 
+  // Site-wide chrome owns the logo source. Homepage only keeps its dark-header styling.
   const brand = document.querySelector('.siteHeader .brand');
-  if (brand) {
-    brand.href = 'index.html';
-    brand.innerHTML = '<img class="siteLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden" decoding="async">';
-  }
+  if (brand) brand.href = 'index.html';
 
   // Final hero wording: retain the approved visual, remove language that suggests
   // a named proprietary software product or methodology.
@@ -127,13 +125,4 @@
     paths.after(audience);
     audience.after(why);
   }
-
-  const footerBrand = document.querySelector('.footerFinalBrand');
-  if (footerBrand) {
-    const oldLockup = footerBrand.querySelector('.alodenLockup');
-    if (oldLockup) oldLockup.outerHTML = '<img class="footerLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden" loading="lazy" decoding="async">';
-  }
-
-  const favicon = document.querySelector('link[rel="icon"]');
-  if (favicon) favicon.href = 'assets/aloden-cube-symbol.svg';
 })();
