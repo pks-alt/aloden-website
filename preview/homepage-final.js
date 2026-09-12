@@ -125,4 +125,10 @@
     paths.after(audience);
     audience.after(why);
   }
+
+  // Cosmetic pass runs after the final homepage structures are in place.
+  const cosmeticScript = document.createElement('script');
+  cosmeticScript.src = 'homepage-cosmetic-pass.js?v=1';
+  cosmeticScript.async = false;
+  document.body.appendChild(cosmeticScript);
 })();
