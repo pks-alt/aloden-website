@@ -1,0 +1,50 @@
+name: Flatten Our Work
+
+on:
+  push:
+    branches:
+      - feature/homepage-design-rework
+    paths:
+      - scripts/flatten-our-work.mjs
+      - .github/workflows/flatten-our-work.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  flatten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/homepage-design-rework
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate flattened production page
+        run: node scripts/flatten-our-work.mjs
+      - name: Verify no iframe remains
+        run: |
+          if grep -qi '<iframe' preview/built-by-aloden.html; then
+            echo 'Our Work is still iframe-based.' >&2
+            exit 1
+          fi
+          grep -q 'id="medlivo"' preview/built-by-aloden.html
+          grep -q 'id="startupfair"' preview/built-by-aloden.html
+          grep -q 'id="voice"' preview/built-by-aloden.html
+      - name: Commit generated production page
+        run: |
+          if git diff --quiet -- preview/built-by-aloden.html; then
+            echo 'Flattened Our Work is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add preview/built-by-aloden.html
+          git commit -m 'Flatten approved Our Work page for production'
+          git push origin HEAD:feature/homepage-design-rework
