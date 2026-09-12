@@ -1,179 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AI product engineering from business problem and product definition through experience, architecture, AI, engineering, evaluation, and production.">
+<meta name="description" content="Aloden AI Product Engineering helps organizations turn AI opportunities, prototypes, and product ideas into dependable production software with experience design, AI architecture, engineering, evaluation, and controls.">
 <title>AI Product Engineering — Aloden</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="ai-product-engineering.css">
-<link rel="stylesheet" href="aipe-final.css">
+<style>
+:root{
+  --ape-ink:#0b0d12;--ape-ink2:#20242d;--ape-body:#4c5565;--ape-muted:#727b8b;
+  --ape-line:#e3e6eb;--ape-line2:#dce1e7;--ape-soft:#fafbfc;--ape-softv:#f7f4ff;
+  --ape-violet:#7c4dff;--ape-violet2:#9a7cff;--ape-blue:#3e7bff;--ape-white:#fff;
+  --ape-shadow:0 22px 60px rgba(20,27,43,.07);--ape-shadow-soft:0 14px 38px rgba(20,27,43,.045)
+}
+*{box-sizing:border-box}.ape-wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}.ape-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--ape-violet)}
+.ape-brand{width:158px;height:auto}.ape-footerLogo{width:176px;height:auto}.siteHeader{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.975);backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid #e4e7eb}.siteHeader .brand{min-width:174px}.siteHeader .navLinks a.active{color:var(--ape-ink)}
+
+/* HERO */
+.ape-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);border-bottom:1px solid var(--ape-line)}
+.ape-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 14%,rgba(124,77,255,.13),transparent 25%),radial-gradient(circle at 98% 66%,rgba(62,123,255,.06),transparent 28%);pointer-events:none}
+.ape-heroGrid{position:relative;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(390px,.74fr);gap:82px;align-items:center;padding:72px 0 66px}.ape-hero h1{font-size:clamp(50px,5.15vw,70px);line-height:.99;letter-spacing:-.058em;margin:14px 0 18px;max-width:870px;text-wrap:balance}.ape-heroLead{font-size:17px;line-height:1.67;color:var(--ape-body);max-width:750px;margin:0}.ape-heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.ape-system{position:relative;border:1px solid #dfe3e9;border-radius:22px;background:rgba(255,255,255,.97);box-shadow:var(--ape-shadow);overflow:hidden}.ape-systemTop{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;border-bottom:1px solid var(--ape-line);background:#fcfcfd}.ape-systemTop>div{display:flex;align-items:center;gap:9px}.ape-dot{width:8px;height:8px;border-radius:50%;background:var(--ape-violet)}.ape-systemTop b{font-size:12.5px}.ape-systemTop>span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#8a92a0}.ape-systemBody{padding:20px}.ape-systemLead{padding:3px 0 17px;border-bottom:1px solid var(--ape-line)}.ape-systemLead span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--ape-violet)}.ape-systemLead h2{font-size:25px;line-height:1.1;letter-spacing:-.035em;margin:8px 0 7px}.ape-systemLead p{font-size:11.5px;line-height:1.55;color:var(--ape-muted);margin:0}.ape-systemFlow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:7px;margin:18px 0}.ape-systemNode{border:1px solid #e2e5ea;border-radius:12px;background:#fff;padding:12px;min-height:88px}.ape-systemNode.ai{background:#101218;border-color:#2c3038;color:#fff}.ape-systemNode span{font:500 7px "IBM Plex Mono",monospace;color:var(--ape-violet)}.ape-systemNode.ai span{color:#ab93ff}.ape-systemNode b{display:block;font-size:11.5px;margin-top:7px}.ape-systemNode p{font-size:9.2px;line-height:1.4;color:#7b8491;margin:4px 0 0}.ape-systemNode.ai p{color:#a3aab5}.ape-arrow{font:500 11px "IBM Plex Mono",monospace;color:#a08fe0}.ape-systemRails{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e0e3e8;border:1px solid #e0e3e8;border-radius:11px;overflow:hidden}.ape-systemRails span{background:#fafbfc;padding:10px 7px;text-align:center;font:500 7.5px/1.3 "IBM Plex Mono",monospace;color:#646d79}.ape-systemClose{margin-top:14px;font-size:12px;font-weight:650;color:#2d323b}.ape-systemClose strong{color:var(--ape-violet)}
+
+/* SHARED */
+.ape-section{padding:72px 0;border-bottom:1px solid var(--ape-line)}.ape-section.soft{background:linear-gradient(180deg,#fbfbfc 0%,#f8f9fb 100%)}.ape-head{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:64px;align-items:end}.ape-head h2{font-size:clamp(37px,3.8vw,52px);line-height:1.03;letter-spacing:-.05em;margin:10px 0 0;max-width:820px;text-wrap:balance}.ape-head p{font-size:15px;line-height:1.68;color:var(--ape-body);margin:0}
+
+/* WHEN */
+.ape-fitGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:16px;overflow:hidden;margin-top:32px}.ape-fit{position:relative;background:#fff;padding:22px;min-height:230px}.ape-fit span{font:500 8px "IBM Plex Mono",monospace;color:var(--ape-violet)}.ape-fit b{display:block;font-size:17px;line-height:1.25;letter-spacing:-.025em;margin-top:14px}.ape-fit p{font-size:12px;line-height:1.6;color:var(--ape-muted);margin:8px 0 0}.ape-fit:after{content:"";position:absolute;left:22px;right:22px;bottom:0;height:2px;background:linear-gradient(90deg,var(--ape-violet),transparent);opacity:.6}
+
+/* WHAT GETS ENGINEERED */
+.ape-engineerGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}.ape-engineer{position:relative;border:1px solid #e1e4e9;border-radius:20px;background:#fff;padding:25px;min-height:330px;box-shadow:var(--ape-shadow-soft);display:flex;flex-direction:column;overflow:hidden}.ape-engineer:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--ape-violet),rgba(124,77,255,.08))}.ape-engineer.dark{background:#101218;border-color:#292c34;color:#fff;box-shadow:0 22px 50px rgba(10,12,18,.11)}.ape-engineer.dark:before{background:linear-gradient(90deg,#a58aff,#332950)}.ape-engineerTop{display:flex;align-items:center;justify-content:space-between;gap:14px}.ape-engineerTop span{font:500 9px "IBM Plex Mono",monospace;color:var(--ape-violet)}.ape-engineerTop small{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#7d8591;text-align:right}.ape-engineer.dark .ape-engineerTop span{color:#aa93ff}.ape-engineer.dark .ape-engineerTop small{color:#9ca4af}.ape-engineer h3{font-size:clamp(25px,2.35vw,31px);line-height:1.08;letter-spacing:-.038em;margin:20px 0 10px;text-wrap:balance;max-width:570px}.ape-engineer>p{font-size:13.3px;line-height:1.64;color:var(--ape-body);margin:0}.ape-engineer.dark>p{color:#aeb4bf}.ape-deliver{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:20px}.ape-deliver span{border:1px solid #e0e4e9;border-radius:999px;background:#fff;padding:7px 10px;font-size:9.7px;color:#66707d}.ape-engineer.dark .ape-deliver span{background:#171a20;border-color:#30343d;color:#b4bbc5}
+
+/* PRODUCT AROUND MODEL */
+.ape-product{padding:76px 0;background:#0b0d12;color:#fff}.ape-product .ape-ey{color:#aa93ff}.ape-productHead{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:64px;align-items:end}.ape-product h2{font-size:clamp(38px,3.9vw,53px);line-height:1.03;letter-spacing:-.05em;margin:10px 0 0;max-width:820px;text-wrap:balance}.ape-productHead p{font-size:15px;line-height:1.66;color:#a8afb9;margin:0}.ape-stack{margin-top:34px;border:1px solid #2b2e36;border-radius:17px;overflow:hidden;background:#2b2e36;display:grid;gap:1px}.ape-layer{display:grid;grid-template-columns:140px 1fr auto;gap:24px;align-items:center;background:#0f1117;padding:18px 20px}.ape-layer span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.07em;color:#aa93ff}.ape-layer b{font-size:15px}.ape-layer p{font-size:10.8px;line-height:1.45;color:#929ba7;margin:0;text-align:right;max-width:520px}.ape-crosscut{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:12px;background:#2a2d35;border:1px solid #2a2d35;border-radius:12px;overflow:hidden}.ape-crosscut div{background:#101218;padding:14px;text-align:center}.ape-crosscut b{display:block;font-size:10.5px}.ape-crosscut span{display:block;font-size:8.8px;line-height:1.4;color:#8f98a4;margin-top:4px}.ape-productLine{margin-top:20px;padding-top:18px;border-top:1px solid #292c34;font-size:14px;font-weight:600;color:#e6e9ed}.ape-productLine strong{color:#aa93ff}
+
+/* PROTOTYPE */
+.ape-proto{display:grid;grid-template-columns:minmax(0,.74fr) minmax(0,1.26fr);gap:66px;align-items:start}.ape-proto h2{font-size:clamp(37px,3.7vw,50px);line-height:1.04;letter-spacing:-.048em;margin:10px 0 13px;text-wrap:balance}.ape-proto>div>p{font-size:15px;line-height:1.66;color:var(--ape-body);margin:0}.ape-protoList{border-top:1px solid var(--ape-line)}.ape-protoRow{display:grid;grid-template-columns:1fr 34px 1.2fr;gap:14px;align-items:center;padding:17px 0;border-bottom:1px solid var(--ape-line)}.ape-protoRow span{font-size:11.5px;color:#7a8390}.ape-protoRow i{font-style:normal;text-align:center;color:#9d89e5}.ape-protoRow b{font-size:12.5px}.ape-protoClose{margin-top:20px;border-radius:13px;background:#f6f3ff;padding:16px 17px;font-size:13px;font-weight:650;color:#302b3d}.ape-protoClose strong{color:var(--ape-violet)}
+
+/* STARTING POINTS */
+.ape-startGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:31px}.ape-start{border:1px solid #e1e4e9;border-radius:18px;background:#fff;padding:23px;min-height:275px;box-shadow:0 9px 28px rgba(20,27,43,.03);display:flex;flex-direction:column}.ape-startTop{display:flex;align-items:center;justify-content:space-between}.ape-startTop span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--ape-violet)}.ape-startTop em{font-style:normal;font:500 8px "IBM Plex Mono",monospace;color:#8b93a0}.ape-start h3{font-size:23px;line-height:1.1;letter-spacing:-.035em;margin:17px 0 8px}.ape-start p{font-size:12.5px;line-height:1.6;color:var(--ape-body);margin:0}.ape-startFlow{margin-top:auto;padding-top:18px;border-top:1px solid var(--ape-line);font:500 9px/1.55 "IBM Plex Mono",monospace;color:#7357d6}
+
+/* PRODUCTION */
+.ape-production{padding:72px 0;background:linear-gradient(180deg,#faf9fd,#f6f3ff);border-bottom:1px solid var(--ape-line)}.ape-productionTop{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:60px;align-items:end}.ape-production h2{font-size:clamp(37px,3.8vw,51px);line-height:1.03;letter-spacing:-.05em;margin:10px 0 0;text-wrap:balance}.ape-productionTop p{font-size:15px;line-height:1.66;color:var(--ape-body);margin:0}.ape-productionGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#dedbe8;border:1px solid #dedbe8;border-radius:16px;overflow:hidden;margin-top:30px}.ape-productionItem{background:rgba(255,255,255,.9);padding:20px;min-height:158px}.ape-productionItem span{font:500 8px "IBM Plex Mono",monospace;color:var(--ape-violet)}.ape-productionItem b{display:block;font-size:15px;margin-top:10px}.ape-productionItem p{font-size:10.8px;line-height:1.55;color:var(--ape-muted);margin:6px 0 0}
+
+/* BRIDGE */
+.ape-bridge{padding:49px 0;background:#fff;border-bottom:1px solid var(--ape-line)}.ape-bridgeInner{display:flex;align-items:center;justify-content:space-between;gap:28px}.ape-bridgeInner div span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--ape-violet)}.ape-bridgeInner h3{font-size:24px;line-height:1.12;letter-spacing:-.035em;margin:7px 0 0}.ape-bridgeInner a{flex:none}
+
+/* CTA */
+.ape-cta{padding:36px 0 38px;background:#fff}.ape-cta .ctaBand{border-radius:18px;padding:28px 30px}
+
+@media(hover:hover){.ape-engineer,.ape-start{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.ape-engineer:hover,.ape-start:hover{transform:translateY(-2px);border-color:#d7d1e8;box-shadow:0 18px 42px rgba(28,23,48,.06)}.ape-engineer.dark:hover{border-color:#403754;box-shadow:0 24px 54px rgba(10,12,18,.16)}}
+@media(max-width:1020px){.ape-heroGrid,.ape-head,.ape-productHead,.ape-proto,.ape-productionTop{grid-template-columns:1fr}.ape-heroGrid{gap:38px}.ape-head,.ape-productHead,.ape-productionTop{gap:20px}.ape-fitGrid{grid-template-columns:1fr 1fr}.ape-startGrid{grid-template-columns:1fr}.ape-productionGrid{grid-template-columns:1fr 1fr}.ape-proto{gap:30px}.ape-layer{grid-template-columns:120px 1fr}.ape-layer p{grid-column:2;text-align:left}.ape-crosscut{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.ape-wrap{width:calc(100% - 32px)}.ape-heroGrid{padding:52px 0 44px}.ape-hero h1{font-size:43px}.ape-section,.ape-product,.ape-production{padding:56px 0}.ape-fitGrid,.ape-engineerGrid,.ape-productionGrid{grid-template-columns:1fr}.ape-systemFlow{grid-template-columns:1fr}.ape-arrow{transform:rotate(90deg);text-align:center}.ape-systemRails,.ape-crosscut{grid-template-columns:1fr 1fr}.ape-layer{grid-template-columns:1fr;gap:6px}.ape-layer p{grid-column:auto}.ape-protoRow{grid-template-columns:1fr 26px 1.15fr}.ape-bridgeInner{align-items:flex-start;flex-direction:column}.ape-heroActions{flex-direction:column;align-items:stretch}.ape-heroActions .btn{width:100%}.ape-brand{width:144px}.ape-footerLogo{width:160px}}
+@media(max-width:460px){.ape-systemRails,.ape-crosscut{grid-template-columns:1fr}.ape-protoRow{grid-template-columns:1fr}.ape-protoRow i{transform:rotate(90deg)}.ape-fit{min-height:0}}
+@media(prefers-reduced-motion:reduce){.ape-engineer,.ape-start{transition:none!important}.ape-engineer:hover,.ape-start:hover{transform:none!important}}
+</style>
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Aloden home"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="ape-brand" src="assets/aloden-cube-logo.svg" alt="Aloden"></a>
     <nav class="navLinks" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="built-by-aloden.html">Built by Aloden</a>
+      <a href="built-by-aloden.html">Our Work</a>
       <a class="active" href="capabilities.html">Capabilities</a>
-      <a href="index.html#insights">Insights</a>
-      <a href="index.html#company">Company</a>
+      <a href="company.html">Company</a>
     </nav>
-    <a class="btn primary navCta" href="#cta">Start a Project →</a>
+    <a class="btn primary navCta" href="start-project.html">Start a Project →</a>
     <button class="menuBtn" aria-expanded="false" aria-label="Open navigation">☰</button>
   </div>
 </header>
 
 <main>
-<section class="aipeHero">
-  <div class="container aipeHeroGrid">
-    <div class="aipeHeroCopy">
-      <div class="eyebrow">AI PRODUCT ENGINEERING</div>
-      <h1>Turn an AI opportunity into a product people can actually use.</h1>
-      <p class="aipeHeroSupport">Product strategy. Experience. Architecture. AI. Engineering. Evaluation. Production.</p>
-      <p class="aipeHeroDesc">Aloden helps teams move from a business problem or AI opportunity to a production-ready digital product. We define where intelligence belongs, design the experience around real users and workflows, engineer the application, data, model, and integration layers, evaluate how the system behaves, and carry it into production with the controls required for real use.</p>
-      <div class="aipeHeroActions"><a class="btn primary" href="#cta">Start a Project →</a><a class="btn secondary" href="built-by-aloden.html">See What We’ve Built</a></div>
+<section class="ape-hero">
+  <div class="ape-wrap ape-heroGrid">
+    <div>
+      <div class="ape-ey">AI PRODUCT ENGINEERING</div>
+      <h1>Build AI-native products that are ready for real use.</h1>
+      <p class="ape-heroLead">Aloden turns AI opportunities, product ideas, and working prototypes into dependable software—combining product strategy, experience design, AI architecture, full-stack engineering, evaluation, and production controls from the beginning.</p>
+      <div class="ape-heroActions"><a class="btn primary" href="start-project.html">Start a Project →</a><a class="btn secondary" href="built-by-aloden.html">See Our Work</a></div>
     </div>
 
-    <div class="aipeSystemStage" aria-label="AI product engineering architecture from business problem to production">
-      <div class="aipeSystemTop"><span class="dot"></span><b>Production product architecture</b><span class="mono">PRODUCT, NOT JUST MODEL</span></div>
-      <div class="aipeArchitecture">
-        <div class="aipeMainPath">
-          <article><span>01</span><b>Business Problem</b><p>Outcome · users · constraints</p></article>
-          <article><span>02</span><b>Product Definition</b><p>Scope · workflow · AI role</p></article>
-          <article><span>03</span><b>Experience &amp; Workflow</b><p>Interaction · decisions · controls</p></article>
-          <article><span>04</span><b>AI + Data</b><p>Models · context · data foundation</p></article>
-          <article><span>05</span><b>Application + Integrations</b><p>Software · APIs · systems</p></article>
-          <article><span>06</span><b>Evaluation</b><p>Quality · behavior · reliability</p></article>
-          <article><span>07</span><b>Production</b><p>Operate · observe · improve</p></article>
+    <aside class="ape-system" aria-label="AI product engineering system">
+      <div class="ape-systemTop"><div><span class="ape-dot"></span><b>The product around the model</b></div><span>PRODUCTION SYSTEM</span></div>
+      <div class="ape-systemBody">
+        <div class="ape-systemLead"><span>AI PRODUCT ENGINEERING</span><h2>From intelligence to dependable product behavior.</h2><p>A model may create capability. The product around it creates the experience, context, controls, integrations, and reliability people can actually depend on.</p></div>
+        <div class="ape-systemFlow">
+          <div class="ape-systemNode"><span>01</span><b>Product & Experience</b><p>Users · workflow · outcome</p></div><div class="ape-arrow">→</div>
+          <div class="ape-systemNode ai"><span>02</span><b>AI & Context</b><p>Models · data · tools · state</p></div><div class="ape-arrow">→</div>
+          <div class="ape-systemNode"><span>03</span><b>Software & Systems</b><p>Application · APIs · operations</p></div>
         </div>
-        <div class="aipePersistentLayers"><span>Human Control</span><span>Security &amp; Reliability</span><span>Observability &amp; Learning</span></div>
+        <div class="ape-systemRails"><span>EVALUATION</span><span>HUMAN CONTROL</span><span>SECURITY</span><span>OBSERVABILITY</span></div>
+        <div class="ape-systemClose"><strong>The standard:</strong> useful, controlled, measurable, production-ready.</div>
       </div>
-      <div class="aipeProofGrid">
-        <article><b>Product First</b><p>Define the user, workflow, outcome, and AI role before choosing technology.</p></article>
-        <article><b>Engineered End to End</b><p>Experience, models, data, APIs, integrations, and controls work as one system.</p></article>
-        <article><b>Production by Design</b><p>Evaluation, reliability, security, human review, and observability are not afterthoughts.</p></article>
-      </div>
-      <div class="aipeSystemClosing">The model is one part of the product.</div>
+    </aside>
+  </div>
+</section>
+
+<section class="ape-section" id="when-you-need-it">
+  <div class="ape-wrap">
+    <div class="ape-head"><div><div class="ape-ey">WHEN YOU NEED AI PRODUCT ENGINEERING</div><h2>Start with the product problem—not the model.</h2></div><p>AI Product Engineering is useful when intelligence is central to the product experience or workflow and needs to operate inside real software, real systems, and real business constraints.</p></div>
+    <div class="ape-fitGrid">
+      <article class="ape-fit"><span>01 · NEW PRODUCT</span><b>You are launching an AI-native product.</b><p>Turn an idea, market opportunity, or business problem into a product with the right experience, architecture, AI role, and production foundation from day one.</p></article>
+      <article class="ape-fit"><span>02 · PROTOTYPE</span><b>You have a demo that needs to become a product.</b><p>Move beyond prompts and happy paths into workflow state, permissions, integrations, exception handling, evaluation, reliability, and operations.</p></article>
+      <article class="ape-fit"><span>03 · EXISTING PRODUCT</span><b>You want to add intelligence where it creates value.</b><p>Identify the right role for AI inside an existing product and engineer it into the surrounding UX, data, logic, systems, and controls.</p></article>
+      <article class="ape-fit"><span>04 · COMPLEX WORKFLOW</span><b>You want AI to improve how work gets done.</b><p>Connect intelligence to context, systems, decisions, tools, approvals, and people so AI can help complete useful work—not simply generate output.</p></article>
     </div>
   </div>
 </section>
 
-<section class="aipeEngineered section" id="what-gets-engineered">
-  <div class="container">
-    <div class="aipeEngineeredHead"><div class="eyebrow">WHAT GETS ENGINEERED</div><h2 class="h2">An intelligent product is a system of connected layers.</h2><p class="lead">A useful AI product requires more than a model endpoint. Product decisions, user experience, data, application logic, models, integrations, evaluation, controls, and production operations have to work together as one system.</p></div>
+<section class="ape-section soft" id="what-we-engineer">
+  <div class="ape-wrap">
+    <div class="ape-head"><div><div class="ape-ey">WHAT ALODEN ENGINEERS</div><h2>Everything required to turn AI capability into a product.</h2></div><p>We engineer the product as one connected system. That means the AI, application, data, experience, integrations, evaluation, and operating controls are designed around the same outcome.</p></div>
+    <div class="ape-engineerGrid">
+      <article class="ape-engineer"><div class="ape-engineerTop"><span>01</span><small>PRODUCT DEFINITION</small></div><h3>Define the product and where intelligence belongs.</h3><p>Clarify the users, workflow, business outcome, product boundaries, success measures, and the specific decisions or interactions where AI creates meaningful value.</p><div class="ape-deliver"><span>Product Strategy</span><span>Workflow Definition</span><span>AI Role</span><span>Success Measures</span></div></article>
 
-    <div class="aipeLayerSystem" aria-label="Four technical layers of an AI product with security, reliability, and observability across all layers">
-      <div class="aipeLayerSystemTop"><span>CONNECTED PRODUCT ARCHITECTURE</span><b>FOUR TECHNICAL LAYERS</b></div>
-      <div class="aipeLayerSystemBody">
-        <div class="aipeLayerStack">
-          <article><span>01</span><div><small>EXPERIENCE LAYER</small><b>Users · workflow · AI interactions · human control</b></div></article>
-          <article><span>02</span><div><small>APPLICATION LAYER</small><b>Product logic · orchestration · APIs · permissions · state</b></div></article>
-          <article class="intelligenceLayer"><span>03</span><div><small>INTELLIGENCE LAYER</small><b>Models · retrieval · context · tools · evaluation</b></div></article>
-          <article><span>04</span><div><small>SYSTEMS &amp; DATA LAYER</small><b>Enterprise systems · databases · services · external APIs</b></div></article>
-        </div>
-        <div class="aipeLayerRails"><span>Security &amp; Governance</span><span>Reliability &amp; Evaluation</span><span>Observability &amp; Learning</span></div>
-      </div>
-      <div class="aipeLayerClosing">AI Product Engineering is the work of making all of these layers behave like one product.</div>
-    </div>
+      <article class="ape-engineer"><div class="ape-engineerTop"><span>02</span><small>EXPERIENCE DESIGN</small></div><h3>Design for intelligence, uncertainty, and human judgment.</h3><p>Create experiences that make AI behavior understandable: recommendations, generated outputs, confirmations, corrections, approvals, uncertainty, fallbacks, and human escalation.</p><div class="ape-deliver"><span>UX/UI</span><span>AI Interaction Patterns</span><span>Human Review</span><span>Fallbacks</span></div></article>
 
-    <div class="aipeEngineeringGrid">
-      <article class="aipeEngineeringCard"><div class="aipeEngineeringTop"><span>01</span><small>PRODUCT DEFINITION &amp; AI ROLE</small></div><h3>Decide what intelligence should—and should not—do.</h3><p>Define the user, workflow, business outcome, constraints, and success criteria. Identify where AI creates meaningful value and where deterministic logic, rules, or human judgment should remain in control.</p><div class="aipeQuestions"><b>Engineering questions</b><span>Product scope</span><span>Users &amp; workflows</span><span>AI boundaries</span><span>Success metrics</span><span>Deterministic vs probabilistic behavior</span></div></article>
-      <article class="aipeEngineeringCard"><div class="aipeEngineeringTop"><span>02</span><small>AI EXPERIENCE &amp; INTERACTION DESIGN</small></div><h3>Design for intelligence, uncertainty, and human judgment.</h3><p>AI changes how a product behaves. The experience has to make recommendations, generated outputs, uncertainty, confirmations, corrections, approvals, and escalation understandable to the person using it.</p><div class="aipeQuestions"><b>Engineering questions</b><span>AI interaction patterns</span><span>Explainability</span><span>Confirmations</span><span>Correction loops</span><span>Fallbacks</span><span>Human review</span></div></article>
-      <article class="aipeEngineeringCard intelligenceCard"><div class="aipeEngineeringTop"><span>03</span><small>AI ARCHITECTURE &amp; DATA FOUNDATION</small></div><h3>Give intelligence the right context.</h3><p>Design how models, application context, retrieval, structured data, memory, tools, and business rules work together. The architecture should support quality, privacy, latency, cost, and future model changes.</p><div class="aipeQuestions"><b>Engineering questions</b><span>Model strategy</span><span>Context architecture</span><span>RAG / retrieval</span><span>Data contracts</span><span>State &amp; memory</span><span>Privacy boundaries</span></div></article>
-      <article class="aipeEngineeringCard"><div class="aipeEngineeringTop"><span>04</span><small>APPLICATION &amp; INTEGRATION ENGINEERING</small></div><h3>Build the product around the intelligence.</h3><p>Engineer the frontend, backend services, APIs, authentication, workflow state, business logic, integrations, and event flows that turn AI capability into a usable product.</p><div class="aipeQuestions"><b>Engineering questions</b><span>Frontend</span><span>Backend</span><span>APIs</span><span>Identity</span><span>Workflow state</span><span>Enterprise integrations</span><span>System events</span></div></article>
-      <article class="aipeEngineeringCard"><div class="aipeEngineeringTop"><span>05</span><small>EVALUATION, GUARDRAILS &amp; RELIABILITY</small></div><h3>Know how the system behaves before users depend on it.</h3><p>Evaluate output quality and product behavior across realistic scenarios. Add permissions, validation, fallback behavior, safety controls, human escalation, and reliability measures around critical actions.</p><div class="aipeQuestions"><b>Engineering questions</b><span>Evaluation datasets</span><span>Behavioral tests</span><span>Permissions</span><span>Validation</span><span>Latency</span><span>Failure handling</span><span>Cost</span></div></article>
-      <article class="aipeEngineeringCard"><div class="aipeEngineeringTop"><span>06</span><small>PRODUCTION OPERATIONS &amp; LEARNING</small></div><h3>Production is where the product starts learning.</h3><p>Instrument the product so teams can understand usage, quality, errors, model behavior, workflow outcomes, and user feedback—then improve the system with evidence.</p><div class="aipeQuestions"><b>Engineering questions</b><span>Observability</span><span>Feedback loops</span><span>Versioning</span><span>Monitoring</span><span>Incident response</span><span>Model changes</span><span>Product analytics</span></div></article>
+      <article class="ape-engineer dark"><div class="ape-engineerTop"><span>03</span><small>AI ARCHITECTURE & CONTEXT</small></div><h3>Give the intelligence the right context, tools, and boundaries.</h3><p>Design the model strategy, retrieval, structured data, application state, memory, tools, business rules, and privacy boundaries that make AI useful inside the product.</p><div class="ape-deliver"><span>Model Strategy</span><span>RAG / Retrieval</span><span>Context & State</span><span>Tool Use</span><span>Data Contracts</span></div></article>
+
+      <article class="ape-engineer"><div class="ape-engineerTop"><span>04</span><small>APPLICATION & INTEGRATION</small></div><h3>Build the software around the intelligence.</h3><p>Engineer frontend, backend services, APIs, identity, workflow state, business logic, events, and integrations so the AI is part of a complete product—not an isolated endpoint.</p><div class="ape-deliver"><span>Full-Stack Engineering</span><span>APIs</span><span>Identity</span><span>Integrations</span><span>Workflow State</span></div></article>
+
+      <article class="ape-engineer"><div class="ape-engineerTop"><span>05</span><small>EVALUATION & CONTROL</small></div><h3>Measure behavior before users are asked to trust it.</h3><p>Evaluate realistic scenarios, quality, edge cases, latency, permissions, failures, and critical actions. Add validation, guardrails, human review, and release criteria where they matter.</p><div class="ape-deliver"><span>Evaluation</span><span>Guardrails</span><span>Validation</span><span>Permissions</span><span>Failure Handling</span></div></article>
+
+      <article class="ape-engineer"><div class="ape-engineerTop"><span>06</span><small>PRODUCTION & LEARNING</small></div><h3>Operate, observe, and improve the product in the real world.</h3><p>Instrument the system so teams can understand usage, quality, model behavior, errors, workflow outcomes, operating cost, and user feedback as the product evolves.</p><div class="ape-deliver"><span>Deployment</span><span>Observability</span><span>Monitoring</span><span>Product Analytics</span><span>Feedback Loops</span></div></article>
     </div>
   </div>
 </section>
 
-<section class="aipeProductionPath section soft" id="opportunity-to-production">
-  <div class="container">
-    <div class="aipeProductionHead"><div class="eyebrow">FROM OPPORTUNITY TO PRODUCTION</div><h2 class="h2">Build in stages. Reduce uncertainty before it becomes technical debt.</h2><p class="lead">AI products carry uncertainty across the problem, user behavior, data, model performance, integrations, cost, and operational risk. Aloden reduces that uncertainty progressively—validating important assumptions early, engineering the product in working slices, and increasing production discipline as evidence grows.</p></div>
-    <div class="aipeDeliverySystem" aria-label="Progressive AI product delivery from validation through production and evolution">
-      <div class="aipeDeliveryTop"><span>PROGRESSIVE DELIVERY SYSTEM</span><b>EVIDENCE GATES BETWEEN STAGES</b></div>
-      <div class="aipeDeliveryStages"><article><span>01</span><b>Validate</b><small>Opportunity</small></article><i>Evidence sufficient?</i><article><span>02</span><b>Define</b><small>Product &amp; controls</small></article><i>Continue / refine</i><article><span>03</span><b>Architect</b><small>System</small></article><i>Evidence sufficient?</i><article><span>04</span><b>Build</b><small>Working slices</small></article><i>Continue / refine</i><article><span>05</span><b>Evaluate</b><small>Harden</small></article><i>Evidence sufficient?</i><article><span>06</span><b>Deploy &amp; Evolve</b><small>Observe &amp; improve</small></article></div>
-      <div class="aipeEvidenceRails"><div><b>Product Evidence</b><span>Does this solve the right problem?</span></div><div><b>Engineering Evidence</b><span>Does the system behave as intended?</span></div><div><b>Operational Evidence</b><span>Can people depend on it in real use?</span></div></div>
+<section class="ape-product" id="product-around-model">
+  <div class="ape-wrap">
+    <div class="ape-productHead"><div><div class="ape-ey">THE PRODUCT AROUND THE MODEL</div><h2>The model is one component. The product is the complete system.</h2></div><p>Production AI succeeds when experience, application logic, intelligence, systems, data, and controls work together. This is where many impressive prototypes become fragile products—or become dependable ones.</p></div>
+    <div class="ape-stack">
+      <div class="ape-layer"><span>01 · EXPERIENCE</span><b>What people see, understand, decide, and control</b><p>Users · workflow · AI interaction · confirmations · escalation</p></div>
+      <div class="ape-layer"><span>02 · APPLICATION</span><b>What coordinates the product behavior</b><p>Product logic · orchestration · APIs · identity · permissions · state</p></div>
+      <div class="ape-layer"><span>03 · INTELLIGENCE</span><b>What interprets context and produces useful capability</b><p>Models · retrieval · tools · memory · reasoning · evaluation</p></div>
+      <div class="ape-layer"><span>04 · SYSTEMS & DATA</span><b>What connects AI to the business reality</b><p>Databases · enterprise systems · services · external APIs · events</p></div>
     </div>
-    <div class="aipeDeliveryGrid">
-      <article class="aipeDeliveryCard"><div class="aipeDeliveryCardTop"><span>01</span><small>VALIDATE THE OPPORTUNITY</small></div><h3>Prove the problem and the role for AI before scaling the build.</h3><p>Understand the users, current workflow, baseline, constraints, available data, business value, and risks. Determine whether AI materially improves the outcome—or whether simpler product logic is better.</p><div class="aipeOutput"><b>Output</b><span>Product thesis</span><span>AI opportunity</span><span>Success measures</span><span>Key constraints</span></div></article>
-      <article class="aipeDeliveryCard"><div class="aipeDeliveryCardTop"><span>02</span><small>DEFINE THE PRODUCT &amp; CONTROLS</small></div><h3>Turn the opportunity into a product people can understand and operate.</h3><p>Define product flows, AI responsibilities, deterministic rules, user decisions, approvals, corrections, fallbacks, and human-control points.</p><div class="aipeOutput"><b>Output</b><span>Product blueprint</span><span>Experience flows</span><span>AI boundaries</span><span>Acceptance criteria</span></div></article>
-      <article class="aipeDeliveryCard architectureDeliveryCard"><div class="aipeDeliveryCardTop"><span>03</span><small>ARCHITECT THE SYSTEM</small></div><h3>Design for today without locking the product to today’s model.</h3><p>Shape the application, data, context, model, retrieval, tool, integration, security, evaluation, and observability architecture around the product requirements.</p><div class="aipeOutput"><b>Output</b><span>System architecture</span><span>Integration model</span><span>Data / context strategy</span><span>Delivery plan</span></div></article>
-      <article class="aipeDeliveryCard"><div class="aipeDeliveryCardTop"><span>04</span><small>BUILD &amp; INTEGRATE</small></div><h3>Engineer working product slices, not disconnected demos.</h3><p>Build frontend and backend behavior together with AI, APIs, enterprise systems, identity, workflow state, permissions, and data flows so each increment behaves like part of the eventual product.</p><div class="aipeOutput"><b>Output</b><span>Working product increments</span><span>Connected workflows</span><span>Integrated intelligence</span></div></article>
-      <article class="aipeDeliveryCard"><div class="aipeDeliveryCardTop"><span>05</span><small>EVALUATE &amp; HARDEN</small></div><h3>Test the behavior users will actually depend on.</h3><p>Evaluate realistic scenarios, quality, edge cases, latency, cost, permissions, failures, fallback behavior, human escalation, and operational readiness before expanding use.</p><div class="aipeOutput"><b>Output</b><span>Evaluation evidence</span><span>Reliability controls</span><span>Release criteria</span><span>Known limitations</span></div></article>
-      <article class="aipeDeliveryCard"><div class="aipeDeliveryCardTop"><span>06</span><small>DEPLOY, OBSERVE &amp; EVOLVE</small></div><h3>Production creates the next set of evidence.</h3><p>Deploy with monitoring, product analytics, model and workflow observability, user feedback, version control, and operational response in place—then improve based on what actually happens.</p><div class="aipeOutput"><b>Output</b><span>Production system</span><span>Monitoring</span><span>Feedback loop</span><span>Evolution roadmap</span></div></article>
-    </div>
-    <div class="aipeProductionClosing">Move quickly where the evidence is strong. Learn early where it is not.</div>
+    <div class="ape-crosscut"><div><b>Evaluation</b><span>Measure behavior, quality, and outcomes.</span></div><div><b>Human Control</b><span>Keep authority and escalation explicit.</span></div><div><b>Security & Reliability</b><span>Protect data and engineer for failure.</span></div><div><b>Observability</b><span>Know what the system is doing in production.</span></div></div>
+    <div class="ape-productLine"><strong>AI Product Engineering</strong> is the work of making these layers behave like one coherent product.</div>
   </div>
 </section>
 
-<section class="aipePrototype section" id="prototype-to-product">
-  <div class="container">
-    <div class="aipePrototypeHead"><div class="eyebrow">FROM PROTOTYPE TO PRODUCT</div><h2 class="h2">The hard part begins after the demo works.</h2><p class="lead">A prototype can prove that an AI idea is possible. A real product has to work consistently across users, workflows, systems, edge cases, permissions, failures, costs, and changing models. AI Product Engineering is what closes that gap.</p></div>
-    <div class="aipePrototypeMatrix" aria-label="Transformation from AI prototype to production product">
-      <div class="aipePrototypeMatrixTop"><span>PROTOTYPE</span><i>→</i><b>PRODUCTION PRODUCT</b></div>
-      <div class="aipePrototypeMatrixBody"><div><span>Prompt</span><i>→</i><b>Workflow</b></div><div><span>Response</span><i>→</i><b>Decision</b></div><div><span>Static context</span><i>→</i><b>Governed context</b></div><div><span>Happy path</span><i>→</i><b>Exception handling</b></div><div><span>Manual testing</span><i>→</i><b>Continuous evaluation</b></div><div><span>Model dependency</span><i>→</i><b>Adaptable architecture</b></div></div>
-      <div class="aipeProductionBar"><span>Product State</span><span>Permissions</span><span>Data</span><span>Integrations</span><span>Evaluation</span><span>Human Control</span><span>Observability</span></div>
+<section class="ape-section" id="prototype-to-production">
+  <div class="ape-wrap ape-proto">
+    <div><div class="ape-ey">PROTOTYPE → PRODUCTION</div><h2>The hard part starts after the demo works.</h2><p>A prototype can prove that an AI idea is possible. A production product has to behave consistently across users, data, systems, permissions, failures, costs, edge cases, and changing models.</p><div class="ape-protoClose"><strong>A demo proves possibility.</strong> A product proves dependability.</div></div>
+    <div class="ape-protoList">
+      <div class="ape-protoRow"><span>Prompt</span><i>→</i><b>Defined workflow and product behavior</b></div>
+      <div class="ape-protoRow"><span>Generated response</span><i>→</i><b>Verified recommendation or outcome</b></div>
+      <div class="ape-protoRow"><span>Static context</span><i>→</i><b>Governed context, state, and permissions</b></div>
+      <div class="ape-protoRow"><span>Happy path</span><i>→</i><b>Exceptions, failures, and escalation</b></div>
+      <div class="ape-protoRow"><span>Manual spot checks</span><i>→</i><b>Repeatable evaluation and observability</b></div>
+      <div class="ape-protoRow"><span>One model implementation</span><i>→</i><b>Adaptable product architecture</b></div>
     </div>
-    <div class="aipePrototypeGrid">
-      <article class="aipePrototypeCard"><div class="aipePrototypeTop"><span>01</span><small>PROMPT → PRODUCT BEHAVIOR</small></div><div class="aipePrototypeCompare"><div><b>Prototype</b><p>A prompt produces an impressive response.</p></div><div><b>Production product</b><p>AI behavior is embedded inside a defined workflow with product state, rules, permissions, confirmations, and fallback behavior.</p></div></div><div class="aipeEngineeringShift"><span>Engineering shift</span><b>Prompt logic → orchestrated product behavior</b></div></article>
-      <article class="aipePrototypeCard"><div class="aipePrototypeTop"><span>02</span><small>MODEL OUTPUT → CONTROLLED DECISION</small></div><div class="aipePrototypeCompare"><div><b>Prototype</b><p>The model generates an answer or recommendation.</p></div><div><b>Production product</b><p>The system determines what AI may recommend, what it may act on, what requires validation, and when human judgment takes over.</p></div></div><div class="aipeEngineeringShift"><span>Engineering shift</span><b>Generation → decision architecture</b></div></article>
-      <article class="aipePrototypeCard"><div class="aipePrototypeTop"><span>03</span><small>STATIC CONTEXT → GOVERNED CONTEXT</small></div><div class="aipePrototypeCompare"><div><b>Prototype</b><p>A few documents or sample records are supplied to the model.</p></div><div><b>Production product</b><p>Context comes from governed data, retrieval, application state, permissions, business rules, and connected systems.</p></div></div><div class="aipeEngineeringShift"><span>Engineering shift</span><b>Prompt context → context architecture</b></div></article>
-      <article class="aipePrototypeCard darkPrototypeCard"><div class="aipePrototypeTop"><span>04</span><small>HAPPY PATH → REAL-WORLD EXCEPTIONS</small></div><div class="aipePrototypeCompare"><div><b>Prototype</b><p>The main scenario works.</p></div><div><b>Production product</b><p>Ambiguity, missing information, tool failures, unavailable systems, invalid actions, low-confidence outcomes, and unusual user behavior have defined responses.</p></div></div><div class="aipeEngineeringShift"><span>Engineering shift</span><b>Demo flow → resilient workflow</b></div></article>
-      <article class="aipePrototypeCard"><div class="aipePrototypeTop"><span>05</span><small>ONE-TIME TESTING → CONTINUOUS EVALUATION</small></div><div class="aipePrototypeCompare"><div><b>Prototype</b><p>A team manually checks a few outputs.</p></div><div><b>Production product</b><p>Quality, behavior, reliability, latency, cost, failures, and workflow outcomes can be measured across versions and real usage.</p></div></div><div class="aipeEngineeringShift"><span>Engineering shift</span><b>Spot checking → evaluation + observability</b></div></article>
-      <article class="aipePrototypeCard"><div class="aipePrototypeTop"><span>06</span><small>MODEL DEPENDENCY → PRODUCT ARCHITECTURE</small></div><div class="aipePrototypeCompare"><div><b>Prototype</b><p>The solution is tightly coupled to one model or vendor.</p></div><div><b>Production product</b><p>Model choice is one architectural decision among many. The system can evolve as models, economics, latency, and capabilities change.</p></div></div><div class="aipeEngineeringShift"><span>Engineering shift</span><b>Model implementation → adaptable product architecture</b></div></article>
-    </div>
-    <div class="aipePrototypeClosing">A demo proves possibility. A product proves dependability.</div>
   </div>
 </section>
 
-<section class="aipeValue section soft" id="where-ai-earns-its-place">
-  <div class="container">
-    <div class="aipeValueHead"><div class="eyebrow">WHERE AI CREATES VALUE</div><h2 class="h2">Use AI where it changes the product—not where it decorates it.</h2><p class="lead">Not every workflow needs a model, an agent, or generated output. The strongest AI products use intelligence where uncertainty, scale, language, context, or complex decision-making make traditional software insufficient—and keep deterministic software or human judgment where those approaches are better.</p></div>
-    <div class="aipeValueDecision" aria-label="Decision system for choosing AI, deterministic software, agentic workflows, or human control">
-      <div class="aipeValueDecisionTop"><span>PRODUCT DECISION SYSTEM</span><b>USE THE SIMPLEST APPROACH THAT EARNS ITS PLACE</b></div>
-      <div class="aipeValueDecisionBody"><div class="aipeValueProblem"><span>START</span><b>Product Problem</b><small>What must become meaningfully better?</small></div><div class="aipeValueBranches"><article><small>STRUCTURED + PREDICTABLE</small><b>Rules / Conventional Software</b><p>Explicit logic where reliability matters more than probabilistic behavior.</p></article><article class="aiBranch"><small>UNSTRUCTURED / CONTEXTUAL / PROBABILISTIC</small><b>AI Capability</b><p>Language, context, ranking, inference, or generated output where traditional software is insufficient.</p></article><article class="agentBranch"><small>MULTI-STEP + TOOL-CONNECTED</small><b>Agentic Workflow</b><p>Reasoning, tools, workflow state, permissions, and coordinated action.</p></article><article><small>JUDGMENT / ACCOUNTABILITY REQUIRED</small><b>Human Control</b><p>Review, approval, escalation, or ownership where people must remain accountable.</p></article></div><div class="aipeValueConverge"><span>CONVERGE</span><b>One Product Experience</b><small>The technology disappears behind a coherent workflow.</small></div></div>
+<section class="ape-section soft" id="ways-to-start">
+  <div class="ape-wrap">
+    <div class="ape-head"><div><div class="ape-ey">COMMON STARTING POINTS</div><h2>Start where the product actually is.</h2></div><p>You do not need a finished architecture or AI strategy before engaging Aloden. The right starting point depends on whether you are defining the opportunity, productizing something that already works, or building the full product.</p></div>
+    <div class="ape-startGrid">
+      <article class="ape-start"><div class="ape-startTop"><span>AI PRODUCT DISCOVERY</span><em>01</em></div><h3>Define what deserves to be built.</h3><p>Clarify the product opportunity, user workflow, AI role, technical boundaries, risks, architecture direction, and measurable outcome before committing to a full build.</p><div class="ape-startFlow">Problem → Workflow → AI Role → Product Direction → Roadmap</div></article>
+      <article class="ape-start"><div class="ape-startTop"><span>PROTOTYPE TO PRODUCT</span><em>02</em></div><h3>Turn working AI into dependable software.</h3><p>Take an existing prototype, proof of concept, agent, or model workflow and engineer the product state, integrations, controls, evaluation, and operations required for real use.</p><div class="ape-startFlow">Prototype → Architecture → Integration → Evaluation → Production</div></article>
+      <article class="ape-start"><div class="ape-startTop"><span>AI PRODUCT BUILD</span><em>03</em></div><h3>Design, engineer, and ship the complete product.</h3><p>Move from validated direction through experience design, application engineering, AI integration, testing, evaluation, deployment, and production readiness.</p><div class="ape-startFlow">Design → Engineer → Connect → Evaluate → Launch → Evolve</div></article>
     </div>
-    <div class="aipeValueGrid">
-      <article class="aipeValueCard"><div class="aipeValueTop"><span>01</span><small>UNSTRUCTURED INFORMATION</small></div><h3>Understand unstructured information.</h3><div class="aipeValueUse"><b>When the problem</b><p>Important context is buried in language, documents, conversations, notes, or other unstructured information.</p></div><div class="aipeValueUse"><b>AI can help</b><p>Extract meaning, classify information, summarize context, identify relationships, or prepare structured inputs for downstream workflows.</p></div><div class="aipeValueRequirement"><span>Product requirement</span><p>The result must connect to a real user decision or workflow—not end as generated text.</p></div><div class="aipeValueExamples"><span>Documents → structured context</span><span>Conversation → intent</span><span>Free text → workflow signal</span></div></article>
-      <article class="aipeValueCard"><div class="aipeValueTop"><span>02</span><small>MATCHING, RANKING &amp; PRIORITIZATION</small></div><h3>Improve matching, ranking, and prioritization.</h3><div class="aipeValueUse"><b>When the problem</b><p>Users have too many possibilities to evaluate manually or simple filtering misses important context.</p></div><div class="aipeValueUse"><b>AI can help</b><p>Rank, match, recommend, prioritize, and explain why an option may fit.</p></div><div class="aipeValueRequirement"><span>Product requirement</span><p>Recommendations need evidence, understandable reasoning, controls, and human review where decisions matter.</p></div><div class="aipeValueExamples"><span>Need → best-fit options</span><span>Signals → priority</span><span>Evidence → recommendation</span></div></article>
-      <article class="aipeValueCard"><div class="aipeValueTop"><span>03</span><small>COMPLEX DECISION SUPPORT</small></div><h3>Support complex decisions.</h3><div class="aipeValueUse"><b>When the problem</b><p>A decision depends on many signals, changing context, or information spread across systems.</p></div><div class="aipeValueUse"><b>AI can help</b><p>Assemble context, surface relevant evidence, identify options, and provide decision support.</p></div><div class="aipeValueRequirement"><span>Product requirement</span><p>AI should inform the decision without obscuring who is accountable for it.</p></div><div class="aipeValueExamples"><span>Context → options</span><span>Evidence → recommendation</span><span>Recommendation → human decision</span></div></article>
-      <article class="aipeValueCard darkValueCard"><div class="aipeValueTop"><span>04</span><small>MULTI-STEP WORKFLOWS</small></div><h3>Transform multi-step workflows.</h3><div class="aipeValueUse"><b>When the problem</b><p>People repeatedly move between systems, gather information, interpret it, choose an action, and complete several connected steps.</p></div><div class="aipeValueUse"><b>AI can help</b><p>Reason across the workflow, use tools, coordinate steps, and automate permitted actions.</p></div><div class="aipeValueRequirement"><span>Product requirement</span><p>State, permissions, validations, exception handling, and escalation have to exist around the intelligence.</p></div><div class="aipeValueExamples"><span>Intent → tools</span><span>Tools → action</span><span>Action → confirmation / escalation</span></div></article>
-      <article class="aipeValueCard conversationalValueCard"><div class="aipeValueTop"><span>05</span><small>CONVERSATIONAL PRODUCTS</small></div><h3>Make products conversational.</h3><div class="aipeValueUse"><b>When the problem</b><p>Traditional interfaces create unnecessary friction for tasks that people can express naturally.</p></div><div class="aipeValueUse"><b>AI can help</b><p>Understand intent and context, guide the user, retrieve information, and connect conversation to permitted actions.</p></div><div class="aipeValueRequirement"><span>Product requirement</span><p>Conversation must connect to product state and systems—not operate as an isolated chatbot.</p></div><div class="aipeValueExamples"><span>Conversation → intent</span><span>Intent → system</span><span>System → completed action</span></div></article>
-    </div>
-    <aside class="aipeNoAiPanel"><div class="aipeNoAiLead"><span>THE COUNTERPOINT</span><h3>When AI should not be the answer.</h3><p>Use deterministic software, rules, or conventional automation when the problem is better served by explicit, predictable logic.</p></div><div class="aipeNoAiReasons"><div><span>01</span><p>The outcome can be defined reliably with explicit logic.</p></div><div><span>02</span><p>Probabilistic behavior adds unnecessary risk.</p></div><div><span>03</span><p>The data or context is insufficient.</p></div><div><span>04</span><p>AI does not materially improve the user or business outcome.</p></div><div><span>05</span><p>The economics do not justify the added complexity.</p></div></div><div class="aipeNoAiClosing">Good AI product engineering includes knowing where not to use AI.</div></aside>
-    <div class="aipeValueClosing">AI earns its place when it makes the product meaningfully better.</div>
   </div>
 </section>
 
-<section class="aipeProductProof section" id="aipe-product-proof">
-  <div class="container">
-    <div class="aipeProductProofHead"><div class="eyebrow">PRODUCT PROOF</div><h2 class="h2">The same engineering discipline shows up in the products we build.</h2><p class="lead">AI Product Engineering becomes meaningful when intelligence is surrounded by the product architecture, workflows, integrations, controls, and human decisions required for real use. Aloden’s products demonstrate that discipline across very different domains.</p></div>
-    <div class="aipeProofStrips">
-      <article class="aipeProofStrip"><div class="aipeProofIdentity"><img src="assets/medlivo-logo.webp" alt="Medlivo"><span>HEALTHCARE WORKFORCE TECHNOLOGY</span></div><div class="aipeProofNarrative"><h3>AI inside an operational healthcare workflow.</h3><p>Matching intelligence is only one part of the product. The surrounding system manages workforce context, clinician readiness, credentialing, workflow state, scheduling, exceptions, and human review.</p><div class="aipeProofFlow"><span>Need / Referral</span><span>Intelligence</span><span>Match</span><span>Clinician Passport</span><span>Credentialing</span><span>Scheduling / Visit</span><span>Operations</span></div></div><div class="aipeProofEvidence"><span>WHAT IT DEMONSTRATES</span><div><b>AI matching</b><b>Context-rich decisions</b><b>Workflow state</b><b>Human review</b><b>Operational integration</b></div></div></article>
-      <article class="aipeProofStrip startupfairProofStrip"><div class="aipeProofIdentity"><img src="assets/startupfair-logo.webp" alt="StartupFair"><span>INNOVATION PLATFORM</span></div><div class="aipeProofNarrative"><h3>Intelligence inside a multi-sided product experience.</h3><p>The product connects organizations, builders, submissions, structured evaluation, governance, and opportunity pathways inside one platform—creating the foundation for intelligent discovery and evaluation without separating AI from the underlying product workflow.</p><div class="aipeProofFlow"><span>Challenge</span><span>Builders</span><span>Solutions</span><span>Evaluation</span><span>Opportunity</span></div></div><div class="aipeProofEvidence"><span>WHAT IT DEMONSTRATES</span><div><b>Multi-role UX</b><b>Workflow architecture</b><b>Evaluation systems</b><b>Structured evidence</b><b>Product governance</b></div></div></article>
-      <article class="aipeProofStrip voiceProofStrip"><div class="aipeProofIdentity voiceProofIdentity"><span class="alodenLockup compactLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><strong>Voice AI</strong><span>CONVERSATIONAL SYSTEM ACTION</span></div><div class="aipeProofNarrative"><h3>Conversation connected to real system action.</h3><p>The intelligence does not stop at understanding language. The product connects intent to context, tools, permissions, workflows, confirmation, and human escalation.</p><div class="aipeProofFlow"><span>Conversation</span><span>Intent</span><span>Context</span><span>System Action</span><span>Confirmation</span><span>Human Escalation</span></div></div><div class="aipeProofEvidence"><span>WHAT IT DEMONSTRATES</span><div><b>Conversational UX</b><b>Context management</b><b>Tool use</b><b>System integration</b><b>Permissions</b><b>Human control</b></div></div></article>
+<section class="ape-production">
+  <div class="ape-wrap">
+    <div class="ape-productionTop"><div><div class="ape-ey">BUILT FOR PRODUCTION</div><h2>Production requirements shape the product from the beginning.</h2></div><p>AI changes the failure modes and operating questions, but it does not remove the fundamentals of strong software engineering. We design both together.</p></div>
+    <div class="ape-productionGrid">
+      <article class="ape-productionItem"><span>01</span><b>Quality & Evaluation</b><p>Test software behavior and AI behavior with evidence appropriate to each.</p></article>
+      <article class="ape-productionItem"><span>02</span><b>Security & Privacy</b><p>Design data boundaries, identity, permissions, and sensitive-context handling into the architecture.</p></article>
+      <article class="ape-productionItem"><span>03</span><b>Human Control</b><p>Define what AI may recommend, what it may do, what requires approval, and how exceptions escalate.</p></article>
+      <article class="ape-productionItem"><span>04</span><b>Reliability & Failure Handling</b><p>Engineer for unavailable tools, missing context, bad outputs, model changes, and unexpected user behavior.</p></article>
+      <article class="ape-productionItem"><span>05</span><b>Observability</b><p>Make model behavior, workflow outcomes, errors, latency, and system decisions visible in production.</p></article>
+      <article class="ape-productionItem"><span>06</span><b>Performance & Economics</b><p>Balance user experience, latency, scale, model choice, infrastructure, and operating cost.</p></article>
     </div>
-    <div class="aipeProofComparisonWrap"><div class="aipeProofComparisonLabel">AI PRODUCT ENGINEERING EVIDENCE</div><div class="aipeProofComparisonScroller"><table class="aipeProofComparison"><thead><tr><th>Product</th><th>Intelligence</th><th>Product system around it</th></tr></thead><tbody><tr><th>Medlivo</th><td>Matching + decision support</td><td>Workflow + readiness + operations</td></tr><tr><th>StartupFair</th><td>Discovery + evaluation workflows</td><td>Multi-role platform + governance</td></tr><tr><th>Aloden Voice AI</th><td>Intent + agentic action</td><td>Systems + permissions + escalation</td></tr></tbody></table></div></div>
-    <div class="aipeProductProofFooter"><strong>Different products. Same standard: intelligence embedded inside a complete product system.</strong><a class="textLink" href="built-by-aloden.html">See Everything We’ve Built →</a></div>
   </div>
 </section>
 
-<section class="aipeFinalCta" id="cta">
-  <div class="container aipeFinalCtaInner">
-    <div><div class="eyebrow">BUILD THE PRODUCT</div><h2>Turn the AI opportunity into something people can depend on.</h2><p>Bring us the product idea, workflow, existing prototype, or business problem. Aloden can help define what AI should do, engineer the surrounding product system, evaluate how it behaves, and move it toward dependable production use.</p><div class="aipeFinalCtaTags"><span>New AI Product</span><span>AI-Enabled Feature</span><span>Workflow Intelligence</span><span>Prototype to Production</span></div></div>
-    <a class="btn primary" href="mailto:hello@aloden.com?subject=Start%20a%20Project">Start a Project →</a>
-  </div>
+<section class="ape-bridge">
+  <div class="ape-wrap ape-bridgeInner"><div><span>WANT TO SEE THE ENGINEERING IN PRACTICE?</span><h3>Explore products built by Aloden.</h3></div><a class="btn secondary" href="built-by-aloden.html">View Our Work →</a></div>
+</section>
+
+<section class="finalCta ape-cta" id="cta">
+  <div class="container"><div class="ctaBand"><div><h2>What AI product are you trying to make real?</h2><p>Bring us the product idea, workflow, prototype, or business problem. We’ll help determine what should be built, how intelligence should fit, and what it will take to reach dependable production.</p></div><a class="btn" href="start-project.html">Start a Project →</a></div></div>
 </section>
 </main>
 
-<footer class="footer" id="company"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="capabilities.html">Capabilities</a><a href="index.html#insights">Insights</a><a href="index.html#company">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="#top">AI Product Engineering</a><a href="capabilities.html#voice-ai-engineering">Voice AI Engineering</a><a href="capabilities.html#agentic-systems">Intelligent Workflow &amp; Agentic Systems</a><a href="capabilities.html#product-modernization">Product Modernization</a><a href="capabilities.html#healthcare-ai">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#cta">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
+<footer class="footer" id="company">
+  <div class="container footerFinal">
+    <div class="footerFinalGrid">
+      <div class="footerFinalBrand"><img class="ape-footerLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden"><p>AI-native product engineering and digital modernization for intelligent products built for real-world use.</p></div>
+      <div class="footerFinalCol"><h4>Explore</h4><a href="index.html">Home</a><a href="built-by-aloden.html">Our Work</a><a href="capabilities.html">Capabilities</a><a href="company.html">Company</a></div>
+      <div class="footerFinalCol"><h4>Capabilities</h4><a href="#top">AI Product Engineering</a><a href="product-modernization.html">AI-Native Modernization</a><a href="agentic-ai.html">Agentic Workflow Engineering</a><a href="voice-ai-engineering.html">Voice & Conversational AI</a><a href="healthcare-ai.html">Healthcare AI</a></div>
+      <div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="start-project.html">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="https://www.linkedin.com/company/alodenllc" target="_blank" rel="noopener noreferrer">LinkedIn →</a></div>
+    </div>
+    <div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><span class="footerTagline">Built around your vision.</span></div>
+  </div>
+</footer>
 <script defer src="app.js"></script>
 </body>
 </html>
