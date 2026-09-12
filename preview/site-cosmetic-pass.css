@@ -1,0 +1,266 @@
+/* Aloden site cosmetic pass — approved page designs preserved.
+   Only spacing, density, background rhythm, section edges, and responsive balance are refined. */
+
+/* =========================
+   SHARED SECONDARY PAGE RHYTHM
+   ========================= */
+
+/* Heroes: keep composition, reduce excess vertical height. */
+.c-heroGrid,.ape-heroGrid,.m-heroGrid,.ag-heroGrid,.v-heroGrid,.h-heroGrid,.co-heroGrid,.startProjectHeroGrid{
+  padding-top:58px!important;
+  padding-bottom:52px!important;
+  gap:64px!important;
+}
+.c-hero h1,.ape-hero h1,.m-hero h1,.ag-hero h1,.v-hero h1,.h-hero h1,.co-hero h1,.startProjectHero h1{
+  margin-top:12px!important;
+  margin-bottom:15px!important;
+}
+.c-heroActions,.ape-heroActions,.m-heroActions,.ag-heroActions,.v-actions,.h-actions,.co-heroActions,.sp-heroActions{
+  margin-top:22px!important;
+}
+
+/* Shared light sections: premium breathing room without dead space. */
+.c-section,.ape-section,.m-section,.ag-section,.v-section,.h-section,.co-section{
+  padding-top:58px!important;
+  padding-bottom:58px!important;
+}
+.c-head,.ape-head,.m-head,.ag-head,.v-head,.h-head,.co-head{
+  gap:48px!important;
+}
+
+/* Shared grid starts. */
+.c-capGrid,.c-beyondGrid,.c-startGrid,
+.ape-fitGrid,.ape-engineerGrid,.ape-startGrid,.ape-productionGrid,
+.m-signalGrid,.m-areaGrid,.m-decisionGrid,.m-startGrid,.m-prodGrid,
+.ag-signalGrid,.ag-engineerGrid,.ag-startGrid,.ag-productionGrid,
+.v-whenGrid,.v-engineeringGrid,.v-startGrid,.v-productionGrid,
+.h-differentGrid,.h-valueGrid,.h-engineeringGrid,.h-startGrid,.h-productionGrid,
+.co-beliefGrid,.co-expectGrid,.co-characterGrid{
+  margin-top:24px!important;
+}
+
+/* Shared background rhythm. */
+.c-section.soft,.ape-section.soft,.m-section.soft,.ag-section.soft,.v-section.soft,.h-section.soft,.co-section.soft{
+  background:linear-gradient(180deg,#f8fafc 0%,#f5f8fa 100%)!important;
+}
+
+/* Dark editorial sections: same design, lower vertical weight. */
+.c-beyond,.ape-product,.m-decision,.ag-beyond,.v-action,.h-value,.co-why,.co-character{
+  padding-top:62px!important;
+  padding-bottom:62px!important;
+}
+.c-beyondHead,.ape-productHead,.m-decisionTop,.v-actionTop,.h-valueTop,.co-characterTop{
+  gap:48px!important;
+}
+
+/* Soft branded systems / proof sections. */
+.c-system,.ape-production,.m-prod,.ag-controlSection,.h-authority,.co-origin,.co-team{
+  padding-top:56px!important;
+  padding-bottom:56px!important;
+}
+.c-system,.ape-production,.m-prod,.ag-controlSection,.h-authority,.co-origin{
+  background:radial-gradient(circle at 88% 8%,rgba(124,77,255,.045),transparent 28%),linear-gradient(180deg,#f7f5fa 0%,#f5f3f8 100%)!important;
+}
+
+/* Bridges and lower-page transitions. */
+.c-eco,.ape-bridge,.m-bridge,.ag-workBridge,.v-bridge,.h-proof{
+  padding-top:42px!important;
+  padding-bottom:42px!important;
+}
+.c-cta,.ape-cta,.m-cta,.ag-cta,.v-cta,.h-cta,.co-cta{
+  padding-top:30px!important;
+  padding-bottom:32px!important;
+}
+
+/* Footer consistency on secondary pages. */
+body:not([data-page="home"]) .footer{
+  padding-top:46px!important;
+}
+body:not([data-page="home"]) .footerFinalGrid,
+body:not([data-page="home"]) .contentReviewFooterGrid{
+  gap:40px!important;
+}
+
+/* =========================
+   CAPABILITIES
+   ========================= */
+.c-cap{min-height:350px!important;padding:22px!important}
+.c-cap h3{margin-top:15px!important}
+.c-capOutcome{padding-top:14px!important}
+.c-beyondItem{min-height:142px!important;padding:18px 20px!important}
+.c-startCard{padding:20px!important}
+.c-systemRail{margin-top:24px!important}
+.c-systemRail div{min-height:82px!important;padding:15px 13px!important}
+.c-healthAreas div{min-height:106px!important;padding:16px 18px!important}
+.c-ecoItems div{min-height:90px!important;padding:14px 16px!important}
+
+/* =========================
+   AI PRODUCT ENGINEERING
+   ========================= */
+.ape-fit{min-height:190px!important;padding:19px!important}
+.ape-engineer{min-height:280px!important;padding:22px!important}
+.ape-engineer h3{margin-top:16px!important}
+.ape-deliver{padding-top:15px!important}
+.ape-stack{margin-top:26px!important}
+.ape-layer{padding:15px 18px!important}
+.ape-crosscut{margin-top:10px!important}
+.ape-proto{gap:52px!important}
+.ape-protoRow{padding:14px 0!important}
+.ape-start{min-height:230px!important;padding:20px!important}
+.ape-productionItem{min-height:135px!important;padding:17px!important}
+
+/* =========================
+   AI-NATIVE MODERNIZATION
+   ========================= */
+.m-signal{min-height:158px!important;padding:19px!important}
+.m-area{min-height:258px!important;padding:22px!important}
+.m-area h3{margin-top:16px!important}
+.m-decisionItem{min-height:172px!important;padding:19px!important}
+.m-aiGrid{gap:52px!important}
+.m-aiLayer{padding:14px 16px!important}
+.m-start{min-height:198px!important;padding:20px!important}
+.m-prodItem{min-height:128px!important;padding:16px!important}
+
+/* =========================
+   AGENTIC WORKFLOW ENGINEERING
+   ========================= */
+.ag-signal{min-height:158px!important;padding:19px!important}
+.ag-card{min-height:260px!important;padding:22px!important}
+.ag-card h3{margin-top:17px!important}
+.ag-tags{margin-top:15px!important;padding-top:13px!important}
+.ag-beyondGrid{gap:58px!important}
+.ag-systemStack div{padding:14px 16px!important}
+.ag-start{padding:20px!important}
+.ag-controlRail{margin-top:24px!important}
+.ag-controlRail div{min-height:84px!important;padding:15px 13px!important}
+.ag-prod{min-height:148px!important;padding:18px!important}
+
+/* =========================
+   VOICE & CONVERSATIONAL AI
+   ========================= */
+.v-whenCard{min-height:184px!important;padding:19px!important}
+.v-counter{margin-top:14px!important;padding:15px 18px!important}
+.v-engineeringCard{min-height:265px!important;padding:22px!important}
+.v-engineeringCard h3{margin-top:16px!important}
+.v-tags{margin-top:15px!important;padding-top:13px!important}
+.v-actionFlow{margin-top:25px!important}
+.v-actionFlow div{min-height:100px!important;padding:15px 13px!important}
+.v-verification{margin-top:14px!important;padding:16px 18px!important}
+.v-startCard{padding:20px!important}
+.v-productionItem{min-height:158px!important;padding:19px!important}
+.v-bridgeItems div{min-height:92px!important;padding:14px 16px!important}
+
+/* =========================
+   HEALTHCARE AI
+   ========================= */
+.h-scope{margin-top:19px!important}
+.h-differentCard{min-height:188px!important;padding:19px!important}
+.h-valueGrid{margin-top:25px!important}
+.h-valueItem{min-height:178px!important;padding:19px!important}
+.h-valueRule{margin-top:14px!important;padding:15px 18px!important}
+.h-engineeringCard{min-height:265px!important;padding:22px!important}
+.h-engineeringCard h3{margin-top:16px!important}
+.h-tags{margin-top:15px!important;padding-top:13px!important}
+.h-authorityRail{margin-top:24px!important}
+.h-authorityRail div{min-height:104px!important;padding:15px 14px!important}
+.h-boundary{margin-top:14px!important;padding:15px 18px!important}
+.h-startCard{padding:20px!important}
+.h-productionItem{min-height:162px!important;padding:19px!important}
+.h-proofPanel{padding:17px 19px!important}
+
+/* =========================
+   COMPANY
+   ========================= */
+.co-principle{padding-top:15px!important;padding-bottom:15px!important}
+.co-whyGrid{gap:62px!important}
+.co-gapCol{padding:19px!important}
+.co-belief{min-height:235px!important;padding:22px!important}
+.co-belief h3{margin-top:18px!important}
+.co-originGrid{gap:48px!important}
+.co-originStamp{padding:17px!important}
+.co-teamRail{margin-top:24px!important}
+.co-teamRail div{min-height:82px!important;padding:15px 13px!important}
+.co-expectItem{min-height:174px!important;padding:19px!important}
+.co-whoGrid{gap:56px!important}
+.co-whoItem{padding:16px 0!important}
+.co-characterItem{min-height:168px!important;padding:19px!important}
+
+/* =========================
+   OUR WORK
+   ========================= */
+.w9-hero{padding-top:58px!important;padding-bottom:48px!important}
+.w9-heroGrid{gap:64px!important}
+.w9-index a{padding-top:16px!important;padding-bottom:15px!important}
+.w9-case{padding-top:64px!important;padding-bottom:66px!important}
+.w9-case.soft{background:linear-gradient(180deg,#f8fafc 0%,#f5f8fa 100%)!important}
+.w9-case.softv{background:radial-gradient(circle at 88% 8%,rgba(124,77,255,.04),transparent 28%),linear-gradient(180deg,#f7f5fa 0%,#f5f3f8 100%)!important}
+.w9-identity{margin-bottom:18px!important}
+.w9-intro{gap:56px!important;margin-bottom:26px!important}
+.w9-scopeLine{margin-top:13px!important}
+
+/* =========================
+   START A PROJECT
+   ========================= */
+.sp-contactRow{margin-top:23px!important;padding-top:17px!important}
+.sp-promise article{padding:18px!important}
+.projectContactSection{padding-top:58px!important;padding-bottom:60px!important;background:linear-gradient(180deg,#f8fafc 0%,#f4f7f9 100%)!important}
+.sp-formShell{gap:24px!important}
+.sp-formIntro{top:98px!important}
+.sp-next{margin-top:19px!important;padding-top:15px!important}
+.sp-next article{padding:10px 0!important}
+.projectContactPanel{box-shadow:0 14px 38px rgba(20,27,43,.05)!important}
+.sp-formBody{padding:21px!important}
+.sp-formBlock{padding-bottom:20px!important;margin-bottom:20px!important}
+.sp-blockHead{margin-bottom:13px!important}
+.projectConsent{margin-bottom:15px!important}
+.projectSubmitFooter{padding-top:16px!important;padding-bottom:18px!important}
+.sp-contactBand{margin-top:22px!important;padding:21px 23px!important}
+
+/* =========================
+   PRIVACY / TERMS / 404
+   ========================= */
+.legalHero{padding-top:70px!important;padding-bottom:40px!important;background:radial-gradient(circle at 82% 16%,rgba(124,77,255,.065),transparent 30%),linear-gradient(180deg,#fff,#faf9fc)!important}
+.legalMeta{margin-top:16px!important}
+.legalBody{padding-top:46px!important;padding-bottom:58px!important;background:linear-gradient(180deg,#fff,#fdfdfc)!important}
+.legalLayout{gap:46px!important}
+.legalToc{padding:13px!important;background:#fafbfd!important}
+.legalContent section{padding-bottom:24px!important;margin-bottom:24px!important}
+.legalContact{padding:15px!important}
+.notFound{min-height:56vh!important;padding-top:72px!important;padding-bottom:58px!important;background:radial-gradient(circle at 82% 16%,rgba(124,77,255,.055),transparent 30%),linear-gradient(180deg,#fff,#fafbfd)!important}
+.notFoundGrid{gap:42px!important}
+.notFoundCode{padding:21px!important}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media(max-width:1020px){
+  .c-heroGrid,.ape-heroGrid,.m-heroGrid,.ag-heroGrid,.v-heroGrid,.h-heroGrid,.co-heroGrid,.startProjectHeroGrid{gap:34px!important}
+  .c-head,.ape-head,.m-head,.ag-head,.v-head,.h-head,.co-head{gap:18px!important}
+  .w9-heroGrid,.w9-intro{gap:34px!important}
+}
+
+@media(max-width:700px){
+  .c-heroGrid,.ape-heroGrid,.m-heroGrid,.ag-heroGrid,.v-heroGrid,.h-heroGrid,.co-heroGrid,.startProjectHeroGrid{
+    padding-top:44px!important;
+    padding-bottom:38px!important;
+  }
+  .c-section,.ape-section,.m-section,.ag-section,.v-section,.h-section,.co-section,
+  .c-beyond,.ape-product,.m-decision,.ag-beyond,.v-action,.h-value,.co-why,.co-character,
+  .c-system,.ape-production,.m-prod,.ag-controlSection,.h-authority,.co-origin,.co-team{
+    padding-top:48px!important;
+    padding-bottom:48px!important;
+  }
+  .w9-hero{padding-top:46px!important;padding-bottom:38px!important}
+  .w9-case{padding-top:50px!important;padding-bottom:52px!important}
+  .projectContactSection{padding-top:48px!important;padding-bottom:50px!important}
+  .legalHero{padding-top:58px!important;padding-bottom:34px!important}
+  .legalBody{padding-top:38px!important;padding-bottom:48px!important}
+  body:not([data-page="home"]) .footer{padding-top:38px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .c-cap,.c-startCard,.ape-engineer,.ape-start,.m-area,.m-start,.ag-card,.ag-start,.v-engineeringCard,.v-startCard,.h-engineeringCard,.h-startCard,.co-belief{
+    transition:none!important;
+    transform:none!important;
+  }
+}
