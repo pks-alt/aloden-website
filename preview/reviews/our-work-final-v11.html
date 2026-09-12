@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Final Our Work review for Aloden.">
+<title>Our Work — Final Review</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff}
+#reviewFrame{display:block;width:100%;height:100vh;border:0;background:#fff}
+</style>
+</head>
+<body>
+<iframe id="reviewFrame" src="our-work-world-class-v9.html" title="Aloden Our Work Final Review"></iframe>
+<script>
+const frame=document.getElementById('reviewFrame');
+frame.addEventListener('load',()=>{
+  const d=frame.contentDocument;
+  if(!d) return;
+
+  /* Preserve V9. Only targeted refinements are applied below. */
+
+  // 1) Header/footer use the exact same approved Aloden asset and sizing.
+  const headerLogo=d.querySelector('.siteHeader .brand img');
+  const footerLogo=d.querySelector('.footerFinalBrand img');
+  if(headerLogo&&footerLogo){
+    footerLogo.src=headerLogo.src;
+    footerLogo.alt='Aloden';
+    footerLogo.style.width='158px';
+    footerLogo.style.height='auto';
+    footerLogo.style.objectFit='contain';
+  }
+
+  // 2) Voice AI positioning: no separate brand, clearer product promise.
+  const voice=d.querySelector('#voice');
+  if(voice){
+    const h=voice.querySelector('.w9-intro h2');
+    const p=voice.querySelector('.w9-introCopy');
+    if(h) h.textContent='From conversation to completed action.';
+    if(p) p.textContent='Aloden engineers system-connected voice experiences that understand intent, use business context, take permitted actions, confirm outcomes, and hand off to people when judgment is required.';
+
+    const visual=voice.querySelector('.voice9');
+    if(visual){
+      visual.innerHTML=`
+        <div class="vf-top"><span class="vf-live"></span><b>Live voice session</b><span>Verified context · active</span></div>
+        <div class="vf-body">
+          <section class="vf-conversation">
+            <div class="vf-label">CONVERSATION</div>
+            <div class="vf-person"><div><b>Patient verified</b><small>Existing appointment · Tuesday 10:00 AM</small></div><span>LIVE</span></div>
+            <div class="vf-wave" aria-hidden="true"></div>
+            <div class="vf-bubble user">I need to move my appointment to Friday afternoon.</div>
+            <div class="vf-bubble ai">I found two Friday afternoon options. Would you like the later one?</div>
+            <div class="vf-bubble user">Yes, use the later one.</div>
+          </section>
+          <section class="vf-orchestration">
+            <div class="vf-label">AI ORCHESTRATION</div>
+            <div class="vf-step"><span>01 · UNDERSTAND</span><div><b>Intent resolved</b><small>Reschedule appointment · Friday afternoon · later slot</small></div><em>READY</em></div>
+            <div class="vf-step"><span>02 · AUTHORIZE</span><div><b>Identity + permission checked</b><small>Verified patient · scheduling update allowed</small></div><em>READY</em></div>
+            <div class="vf-step"><span>03 · ACT</span><div><b>Connected systems updated</b><small>Availability checked · appointment changed</small></div><em>DONE</em></div>
+            <div class="vf-step"><span>04 · CONFIRM</span><div><b>Outcome confirmed</b><small>New appointment saved · confirmation sent</small></div><em>DONE</em></div>
+            <div class="vf-handoff"><b>Human judgment stays in the loop.</b><span>Restricted, ambiguous, or judgment-based requests transfer with the full conversation, state, and attempted actions.</span></div>
+          </section>
+        </div>
+        <div class="vf-rail"><div><span>LISTEN</span></div><div><span>UNDERSTAND</span></div><div><span>AUTHORIZE</span></div><div><span>ACT</span></div><div><span>CONFIRM</span></div></div>`;
+    }
+  }
+
+  // 3) StartupFair: preserve dark V9 visual language, reduce clutter and make Build Studio the hero.
+  const sf=d.querySelector('#startupfair .sf9');
+  if(sf){
+    sf.innerHTML=`
+      <div class="sff-top"><img src="assets/startupfair-logo.webp" alt=""><span class="sff-status ok">Workspace running</span><span class="sff-status ok">GitHub synced ✓</span><div class="sff-grow"></div><span class="sff-status">Preview</span><span class="sff-status">Prepare submission</span></div>
+      <div class="sff-life"><div><span>01</span><b>Challenge</b></div><div><span>02</span><b>Apply / Join</b></div><div><span>03</span><b>Team</b></div><div class="active"><span>04</span><b>Build</b></div><div><span>05</span><b>Submit</b></div><div><span>06</span><b>Judge / Result</b></div><div><span>07</span><b>Opportunity</b></div></div>
+      <div class="sff-body">
+        <aside class="sff-nav"><small>PLATFORM</small><span>Dashboard</span><span>Challenges</span><span>Applications</span><span>Teams</span><span class="active">Build Studio</span><span>Submissions</span><span>Judging</span><span>Results</span><span>Opportunities</span><span>Admin</span></aside>
+        <section class="sff-studio">
+          <div class="sff-studioHead"><div><b>Build Studio</b><small>clinician-matching-ai</small></div><span>Runtime healthy</span></div>
+          <div class="sff-editor">
+            <div class="sff-files">⌄ app<br>&nbsp;&nbsp;layout.tsx<br>&nbsp;&nbsp;page.tsx<br>› components<br>› lib<br>› public<br>package.json<br>README.md</div>
+            <div class="sff-code"><span class="kw">import</span> { <span class="fn">ChallengeWorkspace</span> } <span class="kw">from</span> <span class="str">"@/components/workspace"</span>;<br><br><span class="kw">export default function</span> <span class="fn">Build</span>() {<br>&nbsp;&nbsp;<span class="kw">return</span> &lt;<span class="fn">ChallengeWorkspace</span><br>&nbsp;&nbsp;&nbsp;&nbsp;team=<span class="str">"phoenix"</span><br>&nbsp;&nbsp;&nbsp;&nbsp;repo=<span class="str">"managed"</span><br>&nbsp;&nbsp;/&gt;;<br>}<br><br><span class="cm">// GitHub remains the source of truth.</span></div>
+          </div>
+          <div class="sff-terminal">$ npm run build<br><span class="ok">✓ Production build completed</span><br>$ startupfair validate<br><span class="ok">✓ Repo ✓ Tests ✓ Security ✓ Demo health</span><br><span class="warn">⚠ 1 challenge-specific requirement before freeze</span></div>
+        </section>
+        <aside class="sff-controls"><small>PRODUCTION CONTROLS</small>
+          <article><span>REPOSITORY + RUNTIME</span><b>Private GitHub. Isolated workspace.</b><p>Managed project history, preview, terminal, logs, and cloud runtime stay connected.</p></article>
+          <article><span>VALIDATION + FREEZE</span><b>Rules before exact-commit submission.</b><p>Repo, tests, security, demo health, and challenge requirements validate before the judging snapshot is frozen.</p></article>
+          <article><span>JUDGING + OPPORTUNITY</span><b>Evaluation continues beyond results.</b><p>Rubrics, conflict controls, results, hiring, pilot, and partnership workflows remain part of the same platform.</p></article>
+        </aside>
+      </div>
+      <div class="sff-proof"><div><span>PRIVATE GITHUB</span><b>Source of truth</b></div><div><span>ISOLATED RUNTIME</span><b>Build in browser</b></div><div><span>EXACT-COMMIT FREEZE</span><b>Submission integrity</b></div><div><span>RESULTS → OPPORTUNITY</span><b>Hiring · Pilot · Partnership</b></div></div>`;
+  }
+
+  // 4) Make proof rails feel like evidence, not another large section.
+  d.querySelectorAll('.w9-proofRail').forEach(r=>r.classList.add('final-proofRail'));
+
+  // 5) Strengthen the transition from product proof to Aloden's method.
+  const discipline=d.querySelector('.w9-disciplineGrid>div:first-child');
+  if(discipline && !discipline.querySelector('.final-disciplineCopy')){
+    const p=d.createElement('p');
+    p.className='final-disciplineCopy';
+    p.textContent='The products differ. The discipline behind them does not: product strategy, experience, engineering, AI, integration, and production move together.';
+    discipline.appendChild(p);
+  }
+
+  // 6) Remove the invalid nested main in the original StartupFair markup if present anywhere.
+  d.querySelectorAll('#startupfair main.sf9-studio').forEach(el=>{
+    const div=d.createElement('div');
+    div.className=el.className;
+    div.innerHTML=el.innerHTML;
+    el.replaceWith(div);
+  });
+
+  const style=d.createElement('style');
+  style.textContent=`
+    /* FINAL REVIEW REFINEMENTS — V9 preserved as the base */
+    .footerFinalBrand .w9-brandLogo{width:158px!important;height:auto!important;object-fit:contain!important}
+
+    /* StartupFair — fewer panels, larger Build Studio */
+    .sff-top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #273640;background:#101a23;color:#fff}
+    .sff-top img{height:25px;width:auto}.sff-grow{flex:1}.sff-status{font:500 6.3px "IBM Plex Mono",monospace;border:1px solid #344653;border-radius:999px;padding:5px 7px;color:#a4b5be}.sff-status.ok{color:#70d8b7;border-color:#31594d}
+    .sff-life{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:12px 14px;border-bottom:1px solid #22303a;background:#0c1218;color:#fff}
+    .sff-life>div{border:1px solid #2a3944;border-radius:8px;background:#111a22;padding:8px 7px;min-height:58px}.sff-life span{font:500 5.7px "IBM Plex Mono",monospace;color:#758c99}.sff-life b{display:block;font-size:7.2px;line-height:1.25;margin-top:5px}.sff-life .active{background:#19182a;border-color:#534b85}.sff-life .active span{color:#a68dff}
+    .sff-body{display:grid;grid-template-columns:118px minmax(0,1fr) 205px;min-height:360px;background:#0c1218;color:#fff}
+    .sff-nav{border-right:1px solid #25343f;background:#0f171e;padding:10px 8px}.sff-nav small,.sff-controls>small{display:block;font:500 5.8px "IBM Plex Mono",monospace;color:#718694;letter-spacing:.09em;margin:8px 5px 6px}.sff-nav span{display:block;padding:7px 6px;border-radius:6px;font-size:7.2px;color:#9aadb7;margin-bottom:2px}.sff-nav span.active{background:#172b39;color:#fff}
+    .sff-studio{padding:12px;min-width:0}.sff-studioHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.sff-studioHead b{display:block;font-size:9px}.sff-studioHead small{display:block;font:500 6px "IBM Plex Mono",monospace;color:#8097a3;margin-top:3px}.sff-studioHead>span{font:500 5.8px "IBM Plex Mono",monospace;color:#70d8b7}
+    .sff-editor{display:grid;grid-template-columns:92px 1fr;min-height:226px;margin-top:9px;border:1px solid #293844;border-radius:9px;overflow:hidden;background:#0e151c}.sff-files{border-right:1px solid #263641;padding:9px 7px;color:#8fa3af;font-size:6.1px;line-height:1.8}.sff-code{padding:11px;font:500 6.1px/1.62 "IBM Plex Mono",monospace;color:#b8c7cf}.sff-code .kw{color:#c792ea}.sff-code .fn{color:#82aaff}.sff-code .str{color:#c3e88d}.sff-code .cm{color:#607d8b}
+    .sff-terminal{border:1px solid #293844;border-radius:8px;background:#080d11;padding:9px 10px;margin-top:8px;font:500 5.9px/1.6 "IBM Plex Mono",monospace;color:#9fb1bb}.sff-terminal .ok{color:#70d8b7}.sff-terminal .warn{color:#e7b55c}
+    .sff-controls{border-left:1px solid #25343f;padding:10px;background:#0f171e}.sff-controls article{border-top:1px solid #293944;padding:12px 4px}.sff-controls article:first-of-type{border-top:0}.sff-controls article span{font:500 5.7px "IBM Plex Mono",monospace;color:#7f9cac}.sff-controls article b{display:block;font-size:7.6px;line-height:1.35;margin-top:6px}.sff-controls article p{font-size:6.6px;line-height:1.45;color:#9aabb4;margin:5px 0 0}
+    .sff-proof{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#273641;border-top:1px solid #273641}.sff-proof div{background:#101a22;padding:10px 11px}.sff-proof span{font:500 5.4px "IBM Plex Mono",monospace;color:#7896a5}.sff-proof b{display:block;font-size:7px;margin-top:5px;color:#eef3f6}
+
+    /* Voice AI — one conversation surface + one orchestration surface */
+    .vf-top{height:46px;display:flex;align-items:center;gap:9px;padding:0 15px;border-bottom:1px solid #e5e7eb;background:#fff}.vf-live{width:7px;height:7px;border-radius:50%;background:#28b58d;box-shadow:0 0 0 4px rgba(40,181,141,.10)}.vf-top b{font-size:10px}.vf-top span:last-child{margin-left:auto;font:500 6.5px "IBM Plex Mono",monospace;color:#6f7984}
+    .vf-body{display:grid;grid-template-columns:.9fr 1.1fr;background:#fbfbfc}.vf-conversation,.vf-orchestration{padding:20px}.vf-conversation{border-right:1px solid #e3e6e9}.vf-label{font:500 6.5px "IBM Plex Mono",monospace;letter-spacing:.1em;color:#858f99}.vf-person{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:13px}.vf-person b{display:block;font-size:12px}.vf-person small{display:block;font-size:7px;color:#818b95;margin-top:3px}.vf-person>span{font:500 6px "IBM Plex Mono",monospace;border:1px solid #d9dfe4;border-radius:999px;padding:5px 7px;color:#247c60;background:#f4fbf8}.vf-wave{height:44px;margin:15px 0 5px;border-radius:9px;background:repeating-linear-gradient(90deg,#7c4dff 0 2px,transparent 2px 8px);opacity:.48}.vf-bubble{font-size:10.3px;line-height:1.5;padding:10px 11px;border-radius:9px;margin-top:9px}.vf-bubble.user{background:#eceff3}.vf-bubble.ai{background:#1e1a28;color:#fff}
+    .vf-step{display:grid;grid-template-columns:98px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #e4e7eb}.vf-step>span{font:500 6.4px "IBM Plex Mono",monospace;color:#7357d8}.vf-step b{display:block;font-size:10px}.vf-step small{display:block;font-size:7.4px;line-height:1.45;color:#7d8792;margin-top:3px}.vf-step em{font:500 6px "IBM Plex Mono",monospace;font-style:normal;color:#247c60}.vf-handoff{margin-top:14px;border-radius:10px;background:#f1edff;padding:12px 13px}.vf-handoff b{display:block;font-size:9.5px;color:#4f3d8f}.vf-handoff span{display:block;font-size:7.7px;line-height:1.5;color:#6b5b9d;margin-top:4px}
+    .vf-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#e0e3e7;border-top:1px solid #e0e3e7}.vf-rail div{background:#fff;padding:11px 10px;text-align:center}.vf-rail span{font:500 6px "IBM Plex Mono",monospace;color:#6e5bb2;letter-spacing:.04em}
+
+    /* Lighter evidence rails */
+    .final-proofRail{border-bottom:0!important;margin-top:18px!important}.final-proofRail div{padding-top:16px!important;padding-bottom:8px!important}.final-proofRail small{font-size:9.5px!important;color:#7f8791!important}
+
+    /* Connect product proof to Aloden's method */
+    .final-disciplineCopy{font-size:12.5px;line-height:1.55;color:#9ea5b0;margin:12px 0 0;max-width:290px}
+
+    @media(max-width:980px){.sff-body{grid-template-columns:100px 1fr}.sff-controls{grid-column:1/-1;border-left:0;border-top:1px solid #25343f;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.sff-controls>small{grid-column:1/-1}.sff-controls article{border-top:0;border-left:1px solid #293944;padding:8px 10px}.sff-controls article:first-of-type{border-left:0}.vf-body{grid-template-columns:1fr}.vf-conversation{border-right:0;border-bottom:1px solid #e3e6e9}}
+    @media(max-width:650px){.sff-life{grid-template-columns:repeat(2,1fr)}.sff-body{grid-template-columns:1fr}.sff-nav{display:none}.sff-controls{grid-template-columns:1fr}.sff-controls article,.sff-controls article:first-of-type{border-left:0;border-top:1px solid #293944}.sff-proof{grid-template-columns:1fr 1fr}.vf-step{grid-template-columns:82px 1fr}.vf-step em{display:none}.vf-rail{grid-template-columns:1fr 1fr}.vf-rail div:last-child{grid-column:1/-1}}
+  `;
+  d.head.appendChild(style);
+});
+</script>
+</body>
+</html>
