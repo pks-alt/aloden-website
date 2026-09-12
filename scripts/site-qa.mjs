@@ -23,7 +23,6 @@ const launchPages = [
   '404.html'
 ];
 
-const standardPages = launchPages.filter((file) => file !== 'built-by-aloden.html');
 const supportPages = ['contact.html', 'insights.html'];
 const requiredFiles = [
   'robots.txt',
@@ -114,7 +113,7 @@ function auditResources(file, html) {
     const raw = match[1];
     if (/^(#|mailto:|tel:|https?:\/\/|data:|javascript:)/i.test(raw)) continue;
     const local = cleanUrl(raw.split('#')[0]);
-    if (!local) continue;
+    if (!local || local.endsWith('.html')) continue;
     if (!fs.existsSync(path.join(preview, local))) errors.push(`${file}: missing local resource ${local}`);
   }
 }
@@ -143,11 +142,6 @@ function auditLinks(file, html) {
     }
     if (!fragment) continue;
 
-    if (targetFile === 'built-by-aloden.html') {
-      if (!workFragments.has(fragment)) errors.push(`${file}: Our Work link “${anchorText}” uses unsupported #${fragment}`);
-      continue;
-    }
-
     const targetHtml = read(targetFile);
     if (!hasId(targetHtml, fragment)) errors.push(`${file}: link “${anchorText}” points to missing #${fragment} in ${targetFile}`);
   }
@@ -160,7 +154,7 @@ for (const file of requiredFiles) {
   if (!fileExists(file)) errors.push(`${file}: required launch-support file is missing`);
 }
 
-for (const file of standardPages) {
+for (const file of launchPages) {
   const html = read(file);
   if (!/<!doctype html>/i.test(html)) errors.push(`${file}: missing doctype`);
   if (!/<html\b[^>]*\blang=["']en["']/i.test(html)) errors.push(`${file}: missing lang="en"`);
@@ -191,20 +185,21 @@ for (const file of standardPages) {
   auditResources(file, html);
 }
 
-// Our Work preserves the approved visual through a review-frame shell. Audit the
-// shell and its deep-link forwarding separately instead of pretending it is a
-// conventional content page.
+// Our Work is now a first-class production page generated from the approved V9
+// base plus the approved V11 refinements. It must remain iframe-free and keep
+// the three product anchors directly in the production document.
 if (fileExists('built-by-aloden.html')) {
   const work = read('built-by-aloden.html');
-  if (!/<!doctype html>/i.test(work)) errors.push('built-by-aloden.html: missing doctype');
-  if (!/name=["']description["']/i.test(work)) errors.push('built-by-aloden.html: missing meta description');
+  if (/<iframe\b/i.test(work)) errors.push('built-by-aloden.html: production page must not contain an iframe');
+  if (/<base\b[^>]*href=["']\.\.\//i.test(work)) errors.push('built-by-aloden.html: review-directory base href leaked into production');
   if (!/rel=["']canonical["'][^>]*https:\/\/www\.aloden\.com\/built-by-aloden\.html/i.test(work)) errors.push('built-by-aloden.html: canonical URL is missing');
-  if (!/id=["']work-frame["'][^>]*src=["']reviews\/our-work-final-v11\.html["']/i.test(work)) errors.push('built-by-aloden.html: approved V11 work frame is missing');
   for (const fragment of workFragments) {
-    if (!work.includes(`${fragment}: '${fragment}'`) && fragment !== 'work') warnings.push(`built-by-aloden.html: verify hash forwarding for #${fragment}`);
+    if (!hasId(work, fragment)) errors.push(`built-by-aloden.html: missing production section #${fragment}`);
   }
-  if (!work.includes("'medlivo-proof': 'medlivo'") || !work.includes("'startupfair-proof': 'startupfair'") || !work.includes("'voice-ai-proof': 'voice'")) errors.push('built-by-aloden.html: legacy work-fragment aliases are incomplete');
-  auditResources('built-by-aloden.html', work);
+  if (!work.includes('From conversation to completed action.')) errors.push('built-by-aloden.html: approved V11 Voice refinement is missing');
+  if (!work.includes('PRODUCTION CONTROLS')) errors.push('built-by-aloden.html: approved V11 StartupFair refinement is missing');
+  if (!work.includes('final-proofRail')) errors.push('built-by-aloden.html: approved V11 proof-rail refinement is missing');
+  if (!work.includes('const d = document;')) errors.push('built-by-aloden.html: direct V11 refinement bootstrap is missing');
 }
 
 // Contact is intentionally a noindex alias to the single Start a Project flow.
@@ -216,7 +211,7 @@ if (fileExists('contact.html')) {
 }
 
 // Insights remains in source for a future launch, but it must stay outside the
-// current launch/search surface.
+// current navigation, sitemap, and search surface.
 if (fileExists('insights.html')) {
   const app = read('app.js');
   if (!app.includes("currentFile === 'insights.html'") || !app.includes('noindex,nofollow')) errors.push('app.js: Insights noindex protection is missing');
@@ -276,4 +271,4 @@ if (errors.length) {
   console.error(`QA failed with ${errors.length} error(s).`);
   process.exit(1);
 }
-console.log('QA passed: launch structure, effective navigation, local resources, metadata, support-page indexing rules, Our Work deep links, and project-form structure are intact.');
+console.log('QA passed: launch structure, navigation, local resources, metadata, indexing rules, flattened Our Work content, and project-form structure are intact.');
