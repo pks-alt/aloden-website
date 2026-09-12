@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Final review candidate for Aloden Our Work / Built by Aloden.">
+<title>Built by Aloden — Final Candidate Review</title>
+<style>
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f7fafb;color:#0d1721}.reviewLoading{min-height:100vh;display:grid;place-items:center}.reviewLoading>div{max-width:440px;padding:28px 32px;border:1px solid #dce5eb;border-radius:18px;background:#fff;box-shadow:0 22px 60px rgba(20,42,62,.08);text-align:center}.reviewLoading b{display:block;font-size:19px}.reviewLoading span{display:block;margin-top:8px;color:#657582;font-size:13px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="reviewLoading" id="reviewLoading"><div><b>Loading Built by Aloden final candidate…</b><span>Full page structure + approved Medlivo, StartupFair, and Voice AI product proof</span></div></div>
+<script>
+(async()=>{
+  const BASE='640e0acb2d3a7709bf3fd1a4bc0df19abef1a7a8';
+  const fullUrl=`https://cdn.jsdelivr.net/gh/pks-alt/aloden-website@${BASE}/preview/built-by-aloden.html`;
+  const proofUrl=`https://cdn.jsdelivr.net/gh/pks-alt/aloden-website@${BASE}/preview/reviews/section2-development-review.html`;
+  try{
+    const [fullRes,proofRes]=await Promise.all([fetch(fullUrl,{cache:'no-store'}),fetch(proofUrl,{cache:'no-store'})]);
+    if(!fullRes.ok||!proofRes.ok) throw new Error('Unable to load the locked GitHub review sources.');
+    const parser=new DOMParser();
+    const fullDoc=parser.parseFromString(await fullRes.text(),'text/html');
+    const proofDoc=parser.parseFromString(await proofRes.text(),'text/html');
+
+    fullDoc.querySelectorAll('base').forEach(n=>n.remove());
+    const base=fullDoc.createElement('base');base.href='../';fullDoc.head.prepend(base);
+    fullDoc.title='Built by Aloden — Final Candidate Review';
+    const meta=fullDoc.querySelector('meta[name="description"]');
+    if(meta) meta.content='Explore Aloden-built products across healthcare workforce orchestration, full-production AI hackathon infrastructure, and system-connected voice AI.';
+
+    const proofStyle=proofDoc.querySelector('style');
+    if(proofStyle) fullDoc.head.appendChild(fullDoc.importNode(proofStyle,true));
+    const overrides=fullDoc.createElement('style');
+    overrides.textContent=`
+      .work2{padding:78px 0 82px}
+      .work2Intro{grid-template-columns:minmax(0,1fr) 430px;gap:54px}
+      .work2Intro h2{font-size:clamp(40px,4vw,54px)}
+      .work2Stage{margin-top:24px}
+      .work2Case{min-height:560px}
+      .work2Copy{padding:31px 29px 27px}
+      .work2Brand{margin-bottom:24px}
+      .medSideLogoImage{display:block;width:34px;height:auto;max-height:28px;object-fit:contain;object-position:left center;margin:0 0 10px 0;background:#fff;border-radius:6px;padding:3px}
+      .voiceBrandLockup .alodenLockup{display:inline-flex;align-items:center;gap:8px;flex:none}
+      .voiceBrandLockup .alodenWord{font-size:22px}
+      .voiceBrandLockup .alodenMark{transform:scale(.78);transform-origin:left center;margin-right:-4px}
+      .voiceBrandLockup>div strong{font-size:18px}
+      .voiceBrandLockup>div span{font-size:7px;line-height:1.35}
+      .work2Closing{margin-top:18px}
+      .portfolioEvidenceHead{max-width:820px}
+      @media(max-width:960px){.work2Intro{grid-template-columns:1fr;gap:16px}.work2Intro p{max-width:760px}.work2Case{min-height:0}}
+      @media(max-width:640px){.work2{padding:58px 0 62px}.work2 .container{width:calc(100% - 32px)}.work2Intro h2{font-size:38px}.work2Nav{grid-template-columns:1fr}.work2Nav button{border-right:0;border-bottom:1px solid var(--ow-line);padding:0 4px}.work2Nav button:last-child{border-bottom:0}.work2Nav button.active:after{right:0}}
+    `;
+    fullDoc.head.appendChild(overrides);
+
+    ['products','startupfair-proof','voice-ai-proof'].forEach(id=>fullDoc.getElementById(id)?.remove());
+    const evidence=fullDoc.getElementById('product-evidence');
+    const work=proofDoc.querySelector('.work2');
+    if(!work||!evidence) throw new Error('Expected Our Work sections were not found.');
+    const finalWork=fullDoc.importNode(work,true);
+    finalWork.id='products';
+
+    const introTitle=finalWork.querySelector('.work2Intro h2');
+    const introBody=finalWork.querySelector('.work2Intro p');
+    if(introTitle) introTitle.textContent='Three product systems. One full-stack engineering discipline.';
+    if(introBody) introBody.textContent='Medlivo, StartupFair, and Aloden Voice AI show how Aloden moves from product definition and experience design through frontend, backend, data, integrations, workflow logic, testing, deployment, and continuous product evolution.';
+
+    const medKicker=finalWork.querySelector('.medlivoCase .work2Kicker');
+    if(medKicker) medKicker.textContent='Healthcare Workforce & Care Orchestration Platform';
+    const medCopy=finalWork.querySelector('.medlivoCase .work2Copy>p');
+    if(medCopy) medCopy.textContent='Aloden designed and engineered a connected healthcare workforce and care-operations product experience that moves from demand and referral intake through intelligent matching, clinician readiness, credentialing, scheduling, documentation, approvals, and downstream operations.';
+    const medSide=finalWork.querySelector('.medSideLogo');
+    if(medSide){const img=fullDoc.createElement('img');img.className='medSideLogoImage';img.src='assets/medlivo-logo.webp';img.alt='';img.setAttribute('aria-hidden','true');medSide.replaceWith(img);}
+
+    const sfBrand=finalWork.querySelector('.work2Brand.startupfair img');
+    if(sfBrand) sfBrand.src='assets/startupfair-logo.webp';
+    const sfKicker=finalWork.querySelector('.startupCase .work2Kicker');
+    if(sfKicker) sfKicker.textContent='Full Production AI Hackathon & Innovation Platform';
+    const sfCopy=finalWork.querySelector('.startupCase .work2Copy>p');
+    if(sfCopy) sfCopy.textContent='Aloden is developing StartupFair as a production multi-role platform spanning challenge management, applications, team formation, browser-based development, private GitHub workspaces, isolated runtime, validation, exact-commit submission freeze, judging, results, opportunity workflows, and administration.';
+
+    const voiceLock=finalWork.querySelector('.voiceBrandLockup');
+    if(voiceLock){voiceLock.innerHTML=`<span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><span class="voiceBrandDivider"></span><div><strong>Voice AI Engineering</strong><span>SYSTEM-CONNECTED ALODEN CAPABILITY</span></div>`;}
+    const voiceCopy=finalWork.querySelector('.voiceCase .work2Copy>p');
+    if(voiceCopy) voiceCopy.textContent='Aloden engineers the product system behind real-time voice experiences: conversation behavior, speech and turn handling, intent and context, tool use, permissions, connected-system actions, confirmation, observability, failure recovery, and context-rich human escalation.';
+    const voiceMeta=finalWork.querySelector('.voiceCase .work2Meta span');
+    if(voiceMeta) voiceMeta.textContent='ALODEN VOICE AI ENGINEERING';
+
+    const closing=finalWork.querySelector('.work2Closing b');
+    if(closing) closing.textContent='Three different product systems. One end-to-end engineering discipline.';
+
+    evidence.before(finalWork);
+
+    const heroDesc=fullDoc.querySelector('.builtHeroDesc');
+    if(heroDesc) heroDesc.textContent='From healthcare workforce orchestration to a full-production AI hackathon platform and system-connected voice AI, Aloden turns complex operating problems into clear product experiences, connected workflows, and production-ready digital systems.';
+    const heroProof=fullDoc.querySelector('.productProofStage');
+    if(heroProof) heroProof.setAttribute('aria-label','Product proof across Medlivo, StartupFair, and Aloden Voice AI Engineering');
+
+    const evidenceLead=fullDoc.querySelector('.portfolioEvidenceHead .lead');
+    if(evidenceLead) evidenceLead.textContent='Medlivo, StartupFair, and Aloden Voice AI solve different problems, but together they demonstrate the same core capability: product architecture, multi-role UX, AI embedded in real workflows, connected systems, human control, and production discipline.';
+    const matrixRows=[...fullDoc.querySelectorAll('.portfolioMatrix tbody tr')];
+    if(matrixRows[0]) matrixRows[0].innerHTML='<th>Complex workflow</th><td>Demand → readiness → operations</td><td>Challenge → build → judging → opportunity</td><td>Conversation → action → confirmation</td>';
+    if(matrixRows[4]) matrixRows[4].innerHTML='<th>Connected systems</th><td>Workforce + care operations</td><td>GitHub + isolated runtime + platform services</td><td>APIs + business tools + permissions</td>';
+    if(matrixRows[5]) matrixRows[5].innerHTML='<th>Production thinking</th><td>Readiness + approvals + downstream handoff</td><td>Validation + exact-commit freeze + results</td><td>Action + observability + human escalation</td>';
+
+    const ctaP=fullDoc.querySelector('.ctaBand p');
+    if(ctaP) ctaP.textContent='Bring us the product idea, workflow, or platform you want to build or modernize. Aloden can shape the experience, engineer the system, connect the intelligence, and move it toward production.';
+
+    const tabs=[...finalWork.querySelectorAll('[data-case]')];
+    const panels=[...finalWork.querySelectorAll('[data-case-panel]')];
+    tabs.forEach((tab,index)=>{
+      const id=tab.dataset.case;
+      tab.id=`work-tab-${id}`;tab.setAttribute('role','tab');tab.setAttribute('aria-controls',`work-panel-${id}`);tab.tabIndex=index===0?0:-1;
+      const panel=panels.find(p=>p.dataset.casePanel===id);if(panel){panel.id=`work-panel-${id}`;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby',tab.id);panel.tabIndex=0;}
+    });
+    const tabScript=fullDoc.createElement('script');
+    tabScript.textContent=`(()=>{const tabs=[...document.querySelectorAll('#products [data-case]')],panels=[...document.querySelectorAll('#products [data-case-panel]')];function activate(tab,focus){const id=tab.dataset.case;tabs.forEach(t=>{const on=t===tab;t.classList.toggle('active',on);t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1});panels.forEach(p=>p.classList.toggle('active',p.dataset.casePanel===id));if(focus)tab.focus()}tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activate(tab,false));tab.addEventListener('keydown',e=>{let n=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=tabs[(i+1)%tabs.length];if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=tabs[(i-1+tabs.length)%tabs.length];if(e.key==='Home')n=tabs[0];if(e.key==='End')n=tabs[tabs.length-1];if(n){e.preventDefault();activate(n,true)}})});})();`;
+    fullDoc.body.appendChild(tabScript);
+
+    document.open();document.write('<!doctype html>'+fullDoc.documentElement.outerHTML);document.close();
+  }catch(err){
+    document.getElementById('reviewLoading').innerHTML=`<div><b>Review could not load.</b><span>${err.message}</span></div>`;
+  }
+})();
+</script>
+</body>
+</html>
