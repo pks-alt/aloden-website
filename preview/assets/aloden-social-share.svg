@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Aloden — AI Product Engineering</title>
+<desc id="desc">Branded social sharing card for Aloden.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0d12"/><stop offset="1" stop-color="#141926"/></linearGradient>
+  <radialGradient id="glow1" cx="0.82" cy="0.16" r="0.55"><stop offset="0" stop-color="#7c4dff" stop-opacity="0.34"/><stop offset="1" stop-color="#7c4dff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glow2" cx="0.95" cy="0.84" r="0.5"><stop offset="0" stop-color="#3e7bff" stop-opacity="0.2"/><stop offset="1" stop-color="#3e7bff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<rect width="1200" height="630" fill="url(#glow1)"/>
+<rect width="1200" height="630" fill="url(#glow2)"/>
+<g transform="translate(76 68) scale(1.08)">
+  <path d="M50 12 L82 30 L50 48 L18 30 Z" fill="#9d78ff"/>
+  <path d="M18 30 L50 48 L50 86 L18 68 Z" fill="#7c4dff"/>
+  <path d="M82 30 L50 48 L50 86 L82 68 Z" fill="#4a2bb8"/>
+</g>
+<text x="192" y="145" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="-3" fill="#ffffff">aloden</text>
+<text x="82" y="302" font-family="Arial, Helvetica, sans-serif" font-size="61" font-weight="700" letter-spacing="-2.5" fill="#ffffff">AI product engineering</text>
+<text x="82" y="371" font-family="Arial, Helvetica, sans-serif" font-size="61" font-weight="700" letter-spacing="-2.5" fill="#ffffff">for real-world use.</text>
+<text x="84" y="449" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#b9c0cc">Build intelligent products. Modernize what matters.</text>
+<line x1="84" y1="510" x2="1116" y2="510" stroke="#313746" stroke-width="1"/>
+<text x="84" y="554" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.2" fill="#a78cff">AI PRODUCT ENGINEERING  ·  MODERNIZATION  ·  AGENTIC WORKFLOWS  ·  VOICE AI</text>
+</svg>
