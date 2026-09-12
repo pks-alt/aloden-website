@@ -1,0 +1,72 @@
+name: SEO and Social Assets
+
+on:
+  push:
+    branches:
+      - feature/homepage-design-rework
+    paths:
+      - scripts/apply-seo.mjs
+      - preview/assets/aloden-social-share.svg
+      - docs/SEO-KEYWORD-MAP.md
+      - .github/workflows/seo-social.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/homepage-design-rework
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply static SEO metadata
+        run: node scripts/apply-seo.mjs
+      - name: Generate 1200x630 social share PNG
+        run: |
+          if ! command -v rsvg-convert >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y librsvg2-bin
+          fi
+          rsvg-convert -w 1200 -h 630 preview/assets/aloden-social-share.svg > preview/assets/aloden-social-share.png
+          test -s preview/assets/aloden-social-share.png
+          file preview/assets/aloden-social-share.png | grep -qi 'PNG image data'
+      - name: Verify SEO and social metadata
+        run: |
+          for f in index.html built-by-aloden.html capabilities.html ai-product-engineering.html product-modernization.html agentic-ai.html voice-ai-engineering.html healthcare-ai.html company.html start-project.html privacy.html terms.html; do
+            grep -q 'rel="canonical"' "preview/$f"
+            grep -q 'property="og:image" content="https://www.aloden.com/assets/aloden-social-share.png"' "preview/$f"
+            grep -q 'name="twitter:card" content="summary_large_image"' "preview/$f"
+            grep -q 'data-aloden-organization-schema="true"' "preview/$f"
+          done
+          grep -q 'noindex,nofollow' preview/insights.html
+          grep -q '<lastmod>' preview/sitemap.xml
+      - name: Check JavaScript syntax
+        run: |
+          node --check preview/app.js
+          node --check preview/start-project-form.js
+          node --check server/project-brief-handler.mjs
+          node --check scripts/apply-seo.mjs
+      - name: Audit launch pages and links
+        run: node scripts/site-qa.mjs
+      - name: Test secure project-brief handler
+        run: node --test server/project-brief-handler.test.mjs
+      - name: Commit generated SEO output
+        run: |
+          if git diff --quiet -- preview; then
+            echo 'SEO/social output is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add preview
+          git commit -m 'Apply launch SEO metadata and social sharing assets'
+          git push origin HEAD:feature/homepage-design-rework
