@@ -64,7 +64,6 @@ function normalizeSiteLinks() {
     ['Our Work', 'built-by-aloden.html'],
     ['Built by Aloden', 'built-by-aloden.html'],
     ['Capabilities', 'capabilities.html'],
-    ['Insights', 'insights.html'],
     ['Company', 'company.html'],
     ['AI Product Engineering', 'ai-product-engineering.html'],
     ['Voice AI Engineering', 'voice-ai-engineering.html'],
@@ -89,9 +88,7 @@ function normalizeSiteLinks() {
     ['Explore Voice AI Engineering →', 'voice-ai-engineering.html'],
     ['Explore Intelligent Workflow & Agentic Systems →', 'agentic-ai.html'],
     ['Explore Product Modernization →', 'product-modernization.html'],
-    ['Explore Healthcare AI →', 'healthcare-ai.html'],
-    ['Read the Insight →', 'insights.html#featured-thinking'],
-    ['Explore Aloden Insights →', 'insights.html']
+    ['Explore Healthcare AI →', 'healthcare-ai.html']
   ]);
 
   document.querySelectorAll('.navLinks a').forEach(anchor => {
@@ -117,6 +114,17 @@ function normalizeSiteLinks() {
   });
 
   document.querySelectorAll('.navLinks a.active').forEach(anchor => anchor.setAttribute('aria-current', 'page'));
+}
+
+function removeInsightsFromLaunch() {
+  document.querySelectorAll('.navLinks a, .contentReviewFooterCol a, .footerFinalCol a').forEach(anchor => {
+    const text = normalizedText(anchor);
+    const href = (anchor.getAttribute('href') || '').toLowerCase();
+    if (text === 'Insights' || href === '#insights' || href.endsWith('#insights') || href.includes('insights.html')) anchor.remove();
+  });
+
+  const homeInsights = document.querySelector('#insights');
+  if (homeInsights) homeInsights.remove();
 }
 
 function standardizeSiteChrome() {
@@ -230,6 +238,7 @@ function installMetadataBaseline() {
 
 standardizeSiteChrome();
 normalizeSiteLinks();
+removeInsightsFromLaunch();
 installAccessibilityBaseline();
 installMetadataBaseline();
 
