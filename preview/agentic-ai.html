@@ -1,291 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Intelligent workflow and agentic systems engineering for context, reasoning, tool use, workflow state, approvals, verified action, observability, and human control.">
-<title>Intelligent Workflow &amp; Agentic Systems — Aloden</title>
+<meta name="description" content="Aloden engineers governed agentic workflows that connect AI to real systems, tools, approvals, verification, observability, and human control.">
+<title>Agentic Workflow Engineering — Aloden</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="agentic-ai.css">
-<link rel="stylesheet" href="agentic-final.css">
+<style>
+:root{--ag-ink:#0b0d12;--ag-ink2:#20242d;--ag-body:#4c5565;--ag-muted:#727b8b;--ag-line:#e3e6eb;--ag-soft:#fafbfc;--ag-softv:#f7f4ff;--ag-violet:#7c4dff;--ag-violet2:#9a7cff;--ag-dark:#0b0d12;--ag-shadow:0 22px 60px rgba(20,27,43,.07);--ag-shadow-soft:0 14px 36px rgba(22,28,43,.045)}
+*{box-sizing:border-box}.ag-wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}.ag-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--ag-violet)}.ag-brand{width:158px;height:auto}.ag-footerLogo{width:176px;height:auto}
+.siteHeader{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.975);backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid #e4e7eb}.siteHeader .brand{min-width:174px}.siteHeader .navLinks a.active{color:var(--ag-ink)}
+
+/* HERO */
+.ag-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);border-bottom:1px solid var(--ag-line)}
+.ag-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 13%,rgba(124,77,255,.13),transparent 25%),radial-gradient(circle at 96% 65%,rgba(62,123,255,.055),transparent 28%);pointer-events:none}
+.ag-heroGrid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.75fr);gap:80px;align-items:center;padding:72px 0 64px}.ag-hero h1{font-size:clamp(50px,5.15vw,70px);line-height:.99;letter-spacing:-.058em;margin:14px 0 18px;max-width:860px;text-wrap:balance}.ag-heroLead{font-size:17px;line-height:1.67;color:var(--ag-body);max-width:735px;margin:0}.ag-heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.ag-runtime{border:1px solid #2a2d34;border-radius:21px;background:#0e1015;color:#fff;box-shadow:0 28px 72px rgba(11,13,18,.15);overflow:hidden}.ag-runtimeTop{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 17px;border-bottom:1px solid #2a2d34;background:#111319}.ag-runtimeTop b{font-size:12.5px}.ag-runtimeTop span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#a58aff}.ag-runtimeBody{padding:18px}.ag-trigger{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #2b2e37;border-radius:11px;background:#14171d;padding:12px 13px}.ag-trigger span{font:500 8px "IBM Plex Mono",monospace;color:#a58aff}.ag-trigger b{font-size:12px}.ag-flow{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#2a2d34;border:1px solid #2a2d34;border-radius:13px;overflow:hidden;margin-top:10px}.ag-flow div{background:#12151b;padding:14px;min-height:84px}.ag-flow span{font:500 7px "IBM Plex Mono",monospace;color:#a58aff}.ag-flow b{display:block;font-size:12px;margin-top:7px}.ag-flow small{display:block;font-size:9px;line-height:1.4;color:#858e9a;margin-top:4px}.ag-control{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.ag-control div{border:1px solid #30343d;border-radius:10px;padding:10px 11px}.ag-control span{display:block;font:500 7px "IBM Plex Mono",monospace;color:#8f98a4}.ag-control b{display:block;font-size:10px;line-height:1.4;margin-top:4px}.ag-control div:last-child{border-color:#4a3c72;background:#171321}.ag-runtimeClosing{margin-top:12px;padding-top:12px;border-top:1px solid #2a2d34;font:500 9px/1.5 "IBM Plex Mono",monospace;color:#a58aff}
+
+/* SHARED */
+.ag-section{padding:72px 0;border-bottom:1px solid var(--ag-line)}.ag-section.soft{background:linear-gradient(180deg,#fbfbfc 0%,#f8f9fb 100%)}.ag-head{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:64px;align-items:end}.ag-head h2{font-size:clamp(37px,3.8vw,52px);line-height:1.03;letter-spacing:-.05em;margin:10px 0 0;max-width:820px;text-wrap:balance}.ag-head p{font-size:15px;line-height:1.68;color:var(--ag-body);margin:0}
+
+/* WHEN */
+.ag-signalGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e0e3e8;border:1px solid #e0e3e8;border-radius:16px;overflow:hidden;margin-top:32px}.ag-signal{background:#fff;padding:22px;min-height:188px}.ag-signal span{font:500 8px "IBM Plex Mono",monospace;color:var(--ag-violet)}.ag-signal b{display:block;font-size:17px;letter-spacing:-.025em;margin-top:13px}.ag-signal p{font-size:12.3px;line-height:1.58;color:var(--ag-muted);margin:7px 0 0}
+
+/* ENGINEERING */
+.ag-engineerGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}.ag-card{position:relative;border:1px solid #e1e4e9;border-radius:20px;background:#fff;padding:25px;min-height:305px;box-shadow:var(--ag-shadow-soft);overflow:hidden}.ag-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--ag-violet),rgba(124,77,255,.1))}.ag-card.dark{background:#111318;border-color:#2a2d34;color:#fff;box-shadow:0 22px 50px rgba(10,12,18,.11)}.ag-card.dark:before{background:linear-gradient(90deg,#a58aff,#332950)}.ag-cardTop{display:flex;align-items:center;justify-content:space-between;gap:12px}.ag-cardNum{font:500 9px "IBM Plex Mono",monospace;color:var(--ag-violet)}.ag-cardType{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#7d8592}.ag-card.dark .ag-cardNum{color:#aa93ff}.ag-card.dark .ag-cardType{color:#9da5b0}.ag-card h3{font-size:clamp(24px,2.35vw,31px);line-height:1.08;letter-spacing:-.04em;margin:21px 0 10px;text-wrap:balance}.ag-card p{font-size:13.2px;line-height:1.63;color:var(--ag-body);margin:0}.ag-card.dark p{color:#aeb4bf}.ag-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:15px;border-top:1px solid #e4e7eb}.ag-card.dark .ag-tags{border-color:#2c3039}.ag-tags span{border:1px solid #e0e4e9;border-radius:999px;background:#fff;padding:6px 9px;font-size:9.5px;color:#68717e}.ag-card.dark .ag-tags span{background:#171a20;border-color:#30343d;color:#b4bbc5}
+
+/* BEYOND AGENT */
+.ag-beyond{padding:74px 0 76px;background:#0b0d12;color:#fff}.ag-beyond .ag-ey{color:#aa93ff}.ag-beyondGrid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:74px;align-items:start}.ag-beyond h2{font-size:clamp(38px,3.9vw,54px);line-height:1.03;letter-spacing:-.052em;margin:10px 0 18px;text-wrap:balance}.ag-beyondLead{font-size:15px;line-height:1.68;color:#a8afb9;margin:0}.ag-systemStack{border:1px solid #2b2e36;border-radius:16px;overflow:hidden;background:#24272e}.ag-systemStack div{display:grid;grid-template-columns:46px 180px 1fr;gap:16px;align-items:center;background:#101218;padding:16px 18px;border-bottom:1px solid #2b2e36}.ag-systemStack div:last-child{border-bottom:0}.ag-systemStack span{font:500 8px "IBM Plex Mono",monospace;color:#aa93ff}.ag-systemStack b{font-size:13px}.ag-systemStack small{font-size:10.5px;line-height:1.45;color:#8e97a4}.ag-beyondNote{margin-top:18px;padding-top:16px;border-top:1px solid #2c3037;font-size:14px;font-weight:600;color:#dedfe4}
+
+/* START */
+.ag-startGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}.ag-start{position:relative;border:1px solid #e1e4e9;border-radius:18px;background:#fff;padding:23px;overflow:hidden;box-shadow:0 8px 24px rgba(21,28,45,.025)}.ag-startTop{display:flex;align-items:center;justify-content:space-between}.ag-startTop span{font:500 8px "IBM Plex Mono",monospace;color:var(--ag-violet);letter-spacing:.08em}.ag-startTop em{font:500 8px "IBM Plex Mono",monospace;font-style:normal;color:#8c94a0}.ag-start h3{font-size:24px;line-height:1.1;letter-spacing:-.035em;margin:15px 0 7px;text-wrap:balance}.ag-start p{font-size:12.8px;line-height:1.6;color:var(--ag-body);margin:0}.ag-startFlow{margin-top:16px;padding-top:13px;border-top:1px solid var(--ag-line);font:500 9px/1.55 "IBM Plex Mono",monospace;color:#7155d2}
+
+/* CONTROL */
+.ag-controlSection{padding:72px 0;background:linear-gradient(180deg,#faf9fd,#f6f3ff);border-bottom:1px solid var(--ag-line)}.ag-controlTop{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:60px;align-items:end}.ag-controlTop h2{font-size:clamp(37px,3.8vw,51px);line-height:1.03;letter-spacing:-.05em;margin:10px 0 0;text-wrap:balance}.ag-controlTop p{font-size:15px;line-height:1.66;color:var(--ag-body);margin:0}.ag-controlRail{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#dedbe8;border:1px solid #dedbe8;border-radius:16px;overflow:hidden;margin-top:30px}.ag-controlRail div{position:relative;background:rgba(255,255,255,.9);padding:18px 14px;min-height:100px}.ag-controlRail div:not(:last-child):after{content:"→";position:absolute;right:-7px;top:50%;transform:translateY(-50%);width:14px;height:14px;border-radius:50%;background:#f2effa;color:#8d79d9;display:grid;place-items:center;font-size:8px;z-index:2}.ag-controlRail span{font:500 7px "IBM Plex Mono",monospace;color:var(--ag-violet)}.ag-controlRail b{display:block;font-size:12px;margin-top:8px}.ag-controlLine{margin-top:20px;padding-top:18px;border-top:1px solid #ddd9e8;font-size:14px;font-weight:600;color:#292d36}.ag-controlLine strong{color:var(--ag-violet)}
+
+/* PRODUCTION */
+.ag-productionGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:16px;overflow:hidden;margin-top:32px}.ag-prod{background:#fff;padding:21px;min-height:170px}.ag-prod span{font:500 8px "IBM Plex Mono",monospace;color:var(--ag-violet)}.ag-prod b{display:block;font-size:16px;margin-top:12px}.ag-prod p{font-size:11.8px;line-height:1.58;color:var(--ag-muted);margin:7px 0 0}
+
+/* BRIDGE / CTA */
+.ag-workBridge{padding:48px 0;background:#fff;border-bottom:1px solid var(--ag-line)}.ag-workBridgeInner{display:flex;align-items:center;justify-content:space-between;gap:30px}.ag-workBridge h3{font-size:25px;letter-spacing:-.035em;margin:0 0 5px}.ag-workBridge p{font-size:13px;color:var(--ag-body);margin:0}.ag-workBridge a{font-size:13px;font-weight:650;color:var(--ag-violet);white-space:nowrap}.ag-cta{padding:36px 0 38px;background:#fff}.ag-cta .ctaBand{border-radius:18px;padding:28px 30px}
+
+@media(max-width:1020px){.ag-heroGrid,.ag-head,.ag-beyondGrid,.ag-controlTop{grid-template-columns:1fr}.ag-heroGrid{gap:38px}.ag-head,.ag-controlTop{gap:20px}.ag-signalGrid,.ag-productionGrid{grid-template-columns:1fr 1fr}.ag-engineerGrid,.ag-startGrid{grid-template-columns:1fr}.ag-beyondGrid{gap:34px}.ag-controlRail{grid-template-columns:repeat(3,1fr)}.ag-controlRail div:nth-child(3):after{display:none}.ag-workBridgeInner{align-items:flex-start;flex-direction:column}}
+@media(max-width:700px){.ag-wrap{width:calc(100% - 32px)}.ag-heroGrid{padding:52px 0 44px}.ag-hero h1{font-size:43px}.ag-section,.ag-beyond,.ag-controlSection{padding:56px 0}.ag-signalGrid,.ag-productionGrid{grid-template-columns:1fr}.ag-flow{grid-template-columns:1fr}.ag-control{grid-template-columns:1fr}.ag-systemStack div{grid-template-columns:34px 1fr}.ag-systemStack small{grid-column:2}.ag-controlRail{grid-template-columns:1fr 1fr}.ag-controlRail div:nth-child(odd):after{display:block}.ag-controlRail div:nth-child(even):after{display:none}.ag-brand{width:144px}.ag-footerLogo{width:160px}}
+@media(max-width:460px){.ag-controlRail{grid-template-columns:1fr}.ag-controlRail div:after{display:none!important}.ag-heroActions{flex-direction:column;align-items:stretch}.ag-heroActions .btn{width:100%}.ag-card{padding:22px}}
+</style>
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Aloden home"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="ag-brand" src="assets/aloden-cube-logo.svg" alt="Aloden"></a>
     <nav class="navLinks" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="built-by-aloden.html">Built by Aloden</a>
+      <a href="built-by-aloden.html">Our Work</a>
       <a class="active" href="capabilities.html">Capabilities</a>
-      <a href="index.html#insights">Insights</a>
-      <a href="index.html#company">Company</a>
+      <a href="company.html">Company</a>
     </nav>
-    <a class="btn primary navCta" href="#agentic-cta">Start a Project →</a>
+    <a class="btn primary navCta" href="start-project.html">Start a Project →</a>
     <button class="menuBtn" aria-expanded="false" aria-label="Open navigation">☰</button>
   </div>
 </header>
 
 <main>
-<section class="agenticHero">
-  <div class="container agenticHeroGrid">
-    <div class="agenticHeroCopy">
-      <div class="eyebrow">INTELLIGENT WORKFLOW &amp; AGENTIC SYSTEMS</div>
-      <h1>Turn complex workflows into intelligent systems that can reason and act.</h1>
-      <p class="agenticHeroSupport">Context. Reasoning. Tools. Workflow state. Approvals. Verification. Human control.</p>
-      <p class="agenticHeroDesc">Aloden engineers agentic systems that connect AI to real work. They assemble the right context, reason about the next step, use permitted tools, maintain workflow state, coordinate multi-step activity, pause for approval when required, verify what happened, and keep people in control when judgment or accountability matters.</p>
-      <div class="agenticHeroActions">
-        <a class="btn primary" href="#agentic-cta">Start a Project →</a>
-        <a class="btn secondary" href="built-by-aloden.html">See What We’ve Built</a>
-      </div>
+<section class="ag-hero">
+  <div class="ag-wrap ag-heroGrid">
+    <div>
+      <div class="ag-ey">AGENTIC WORKFLOW ENGINEERING</div>
+      <h1>Turn complex work into AI systems that can act—with control.</h1>
+      <p class="ag-heroLead">Aloden engineers governed agentic workflows that understand context, maintain state, use permitted tools, coordinate multi-step work, verify outcomes, and bring people in when judgment or authority is required.</p>
+      <div class="ag-heroActions"><a class="btn primary" href="start-project.html">Start a Project →</a><a class="btn secondary" href="capabilities.html">See Capabilities</a></div>
     </div>
-
-    <div class="agenticSystemStage" aria-label="Agentic workflow system from goal or event through verified action and observability">
-      <div class="agenticSystemTop"><span class="agenticDot"></span><b>Controlled agentic workflow</b><span class="mono">STATE + TOOLS + HUMAN CONTROL</span></div>
-      <div class="agenticTrigger"><span>TRIGGER</span><div><b>Goal / Event</b><small>A request, system event, exception, or business objective starts the workflow.</small></div></div>
-      <div class="agenticCoreFlow">
-        <article><span>01</span><b>Context</b><small>Data · history · policy</small></article>
-        <article><span>02</span><b>Reasoning</b><small>Interpret · plan · decide</small></article>
-        <article class="agenticToolStep"><span>03</span><b>Tools</b><small>APIs · systems · services</small></article>
-        <article><span>04</span><b>Workflow State</b><small>Progress · memory · next step</small></article>
-        <article class="agenticControlStep"><span>05</span><b>Approval / Human Control</b><small>Review · approve · redirect</small></article>
-        <article><span>06</span><b>Action</b><small>Execute permitted work</small></article>
-        <article><span>07</span><b>Verification</b><small>Confirm actual outcome</small></article>
-        <article><span>08</span><b>Observability</b><small>Trace · evaluate · improve</small></article>
-      </div>
-      <div class="agenticRails"><span>Policies &amp; Permissions</span><span>State &amp; Memory</span><span>Exceptions &amp; Escalation</span><span>Evaluation &amp; Auditability</span></div>
-      <div class="agenticDecisionPanel"><div><span>LOW-RISK / REVERSIBLE</span><b>System can continue within defined boundaries.</b></div><div><span>HIGH-IMPACT / UNCERTAIN</span><b>Pause, request approval, or escalate to a person.</b></div></div>
-      <div class="agenticHeroProof">
-        <article><b>Stateful by Design</b><p>The workflow persists beyond one model response. Context, decisions, actions, and next steps stay connected.</p></article>
-        <article><b>Tool-Connected, Not Isolated</b><p>Intelligence becomes useful when it can safely read from and act through the systems where work already happens.</p></article>
-        <article><b>Human Control at the Right Points</b><p>Autonomy is bounded by permissions, approval gates, exceptions, verification, and accountability.</p></article>
-      </div>
-      <div class="agenticSystemClosing">Autonomy is a design choice, not a default.</div>
-    </div>
-  </div>
-</section>
-
-<section class="agenticWhat section" id="what-gets-engineered">
-  <div class="container">
-    <div class="agenticWhatHead">
-      <div class="eyebrow">WHAT GETS ENGINEERED</div>
-      <h2 class="h2">An agentic system is more than a model with access to tools.</h2>
-      <p class="lead">A production agentic workflow has to understand what started the work, assemble the right context, maintain state across multiple steps, decide what can happen next, interact with external systems safely, recover when something fails, involve people when required, and leave enough evidence to understand what actually happened.</p>
-    </div>
-
-    <div class="agenticArchitecture" aria-label="Five-layer architecture for intelligent workflow and agentic systems">
-      <div class="agenticArchitectureTop"><span>CONTROLLED AGENTIC PRODUCT ARCHITECTURE</span><b>FIVE SYSTEM LAYERS</b></div>
-      <div class="agenticArchitectureBody">
-        <div class="agenticArchitectureStack">
-          <article><span>01</span><div><small>TRIGGER &amp; EXPERIENCE LAYER</small><b>User request · system event · schedule · API · queue</b></div></article>
-          <article class="agenticDecisionLayer"><span>02</span><div><small>DECISION &amp; INTELLIGENCE LAYER</small><b>Context · reasoning · planning · model strategy · next-step selection</b></div></article>
-          <article><span>03</span><div><small>WORKFLOW &amp; STATE LAYER</small><b>State · transitions · checkpoints · queues · retries · long-running work</b></div></article>
-          <article><span>04</span><div><small>TOOLS &amp; SYSTEMS LAYER</small><b>APIs · databases · SaaS platforms · enterprise systems · internal services</b></div></article>
-          <article><span>05</span><div><small>CONTROL &amp; ASSURANCE LAYER</small><b>Identity · permissions · approvals · verification · exceptions · audit</b></div></article>
+    <aside class="ag-runtime" aria-label="Controlled agentic workflow">
+      <div class="ag-runtimeTop"><b>Controlled agentic workflow</b><span>STATE · TOOLS · CONTROL</span></div>
+      <div class="ag-runtimeBody">
+        <div class="ag-trigger"><span>TRIGGER</span><b>Goal / request / system event</b></div>
+        <div class="ag-flow">
+          <div><span>01</span><b>Context + state</b><small>Data · history · current workflow position</small></div>
+          <div><span>02</span><b>Reason + plan</b><small>Interpret · choose next valid step</small></div>
+          <div><span>03</span><b>Tool / system</b><small>APIs · applications · internal services</small></div>
+          <div><span>04</span><b>Permission check</b><small>Identity · policy · allowed action</small></div>
+          <div><span>05</span><b>Action + verify</b><small>Execute · inspect resulting state</small></div>
+          <div><span>06</span><b>Continue / escalate</b><small>Proceed · recover · request human input</small></div>
         </div>
-        <div class="agenticArchitectureRails"><span>Security &amp; Governance</span><span>Evaluation &amp; Observability</span><span>Human Control</span></div>
+        <div class="ag-control"><div><span>LOW-RISK / REVERSIBLE</span><b>Continue within defined boundaries.</b></div><div><span>HIGH-IMPACT / UNCERTAIN</span><b>Pause for approval or human judgment.</b></div></div>
+        <div class="ag-runtimeClosing">AUTONOMY IS A DESIGN CHOICE, NOT A DEFAULT.</div>
       </div>
-      <div class="agenticArchitectureClosing">The agent is not the workflow. It is one decision-making component inside a controlled product system.</div>
-    </div>
-
-    <div class="agenticEngineeringGrid">
-      <article class="agenticEngineeringCard">
-        <div class="agenticEngineeringTop"><span>01</span><small>GOALS, TRIGGERS &amp; COMPLETION CRITERIA</small></div>
-        <h3>Define what starts the workflow—and what “done” actually means.</h3>
-        <p>Agentic behavior should begin from a clear event or objective rather than an open-ended instruction. Define the trigger, objective, constraints, and completion criteria so the system knows both why the work started and when the work is actually finished.</p>
-        <div class="agenticDefinitionGrid"><div><span>Trigger</span><b>What starts the work</b></div><div><span>Objective</span><b>What outcome is being pursued</b></div><div><span>Constraints</span><b>What the system must respect</b></div><div><span>Completion</span><b>How the product knows the work is finished</b></div></div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Events</span><span>Goals</span><span>Success criteria</span><span>Constraints</span><span>Time limits</span><span>Termination conditions</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard agenticStateCard">
-        <div class="agenticEngineeringTop"><span>02</span><small>CONTEXT &amp; DURABLE STATE</small></div>
-        <h3>Give every decision the right history.</h3>
-        <p>Real workflows rarely complete in one turn. The system needs to know what has already happened, which data was gathered, which actions were attempted, what remains unresolved, and what changed since the previous step.</p>
-        <div class="agenticPrinciple"><b>Context</b><span>What do we know?</span><i>+</i><b>State</b><span>Where are we in the work?</span></div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Session context</span><span>Durable state</span><span>Workflow history</span><span>Memory</span><span>Checkpoints</span><span>Data freshness</span><span>State reconciliation</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard agenticReasoningCard">
-        <div class="agenticEngineeringTop"><span>03</span><small>REASONING, PLANNING &amp; DECISION LOGIC</small></div>
-        <h3>Use intelligence to choose the next useful step—not to invent the entire process.</h3>
-        <p>Some workflows benefit from dynamic reasoning. Others should follow explicit business logic. The architecture deliberately separates deterministic rules, model-supported decisions, agent planning, and human judgment rather than forcing every decision through an LLM.</p>
-        <div class="agenticDecisionModes"><span>Deterministic Rules</span><span>Model-Supported Decisions</span><span>Agent Planning</span><span>Human Judgment</span></div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Planning</span><span>Routing</span><span>Decision policies</span><span>Model selection</span><span>Structured outputs</span><span>Deterministic logic</span><span>Confidence</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard agenticToolContractCard">
-        <div class="agenticEngineeringTop"><span>04</span><small>TOOL CONTRACTS &amp; SYSTEM INTEGRATION</small></div>
-        <h3>An agent is only as dependable as the actions it is allowed to call.</h3>
-        <p>Tools need explicit contracts defining what the tool does, what inputs it accepts, what permissions it requires, what success and failure look like, and whether the action is reversible.</p>
-        <div class="agenticToolContract"><span>Function</span><span>Inputs</span><span>Permissions</span><span>Success</span><span>Failure</span><span>Reversibility</span></div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Tool schemas</span><span>APIs</span><span>Authentication</span><span>Validation</span><span>Read/write boundaries</span><span>Idempotency</span><span>Service contracts</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard">
-        <div class="agenticEngineeringTop"><span>05</span><small>ORCHESTRATION &amp; WORKFLOW CONTROL</small></div>
-        <h3>Coordinate the work around the intelligence.</h3>
-        <p>Agentic systems often involve multiple tools, multiple decisions, parallel activity, waits on external systems, approvals, long-running processes, retries, and resumptions. The workflow layer coordinates what happens next even when the model is not actively running.</p>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Orchestration</span><span>Queues</span><span>Workflow engines</span><span>Transitions</span><span>Parallelism</span><span>Scheduling</span><span>Resumability</span><span>Timeout handling</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard agenticControlCard">
-        <div class="agenticEngineeringTop"><span>06</span><small>PERMISSIONS, APPROVALS &amp; HUMAN CONTROL</small></div>
-        <h3>Capability does not equal authority.</h3>
-        <p>Before the system takes consequential action, it should understand who initiated the work, what that identity can access, what the agent may decide itself, what requires confirmation or formal approval, and what must remain human-owned.</p>
-        <div class="agenticApprovalFlow"><span>Low risk + permitted → continue</span><span>Consequence requires approval → pause &amp; request approval</span><span>Restricted / uncertain → escalate</span></div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>RBAC / permissions</span><span>Approval gates</span><span>Identity</span><span>Policy checks</span><span>Confirmation</span><span>Escalation</span><span>Audit context</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard agenticVerificationCard">
-        <div class="agenticEngineeringTop"><span>07</span><small>VERIFICATION, EXCEPTIONS &amp; RECOVERY</small></div>
-        <h3>Do not confuse an attempted action with a successful outcome.</h3>
-        <p>After using a tool, the system should inspect what actually happened. If something fails, it should retry safely, choose an alternate path, request clarification, compensate or reverse where possible, or escalate.</p>
-        <div class="agenticVerifyFlow"><span>Requested action</span><span>Tool call</span><span>System response</span><span>Verify resulting state</span></div>
-        <div class="agenticVerificationPrinciple">An action is complete only when the resulting state is verified.</div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Verification</span><span>Retries</span><span>Idempotency</span><span>Compensation</span><span>Exception routing</span><span>Partial failure</span><span>Recovery</span></div>
-      </article>
-
-      <article class="agenticEngineeringCard agenticObservabilityCard">
-        <div class="agenticEngineeringTop"><span>08</span><small>EVALUATION, OBSERVABILITY &amp; AUDITABILITY</small></div>
-        <h3>You should be able to reconstruct why the system did what it did.</h3>
-        <p>Production teams need visibility into the trigger, context used, decision made, tool selected, approval received, action attempted, result returned, and final state—along with quality, latency, cost, failures, retries, and escalation.</p>
-        <div class="agenticTrace"><span>Trigger</span><span>Context</span><span>Decision</span><span>Tool</span><span>Approval</span><span>Action</span><span>Result</span><span>Final State</span></div>
-        <div class="agenticEngineeringAreas"><b>Engineering areas</b><span>Traces</span><span>Structured logs</span><span>Decision records</span><span>Evaluations</span><span>Workflow metrics</span><span>Cost</span><span>Latency</span><span>Audit trails</span><span>Product analytics</span></div>
-      </article>
-    </div>
-    <div class="agenticWhatClosing">The agent is not the workflow. It is one decision-making component inside a controlled product system.</div>
+    </aside>
   </div>
 </section>
 
-<section class="agenticRuntime section" id="trigger-to-outcome">
-  <div class="container">
-    <div class="agenticRuntimeHead">
-      <div class="eyebrow">FROM TRIGGER TO VERIFIED OUTCOME</div>
-      <h2 class="h2">The workflow advances one verified state change at a time.</h2>
-      <p class="lead">An agentic system should not receive a goal and disappear into an opaque loop. Each step begins from known state, makes a bounded decision, uses permitted tools, records what changed, verifies the result, and determines whether the workflow can continue, needs approval, must recover, or is actually complete.</p>
+<section class="ag-section" id="when-agentic-fits">
+  <div class="ag-wrap">
+    <div class="ag-head"><div><div class="ag-ey">WHEN AGENTIC WORKFLOWS MAKE SENSE</div><h2>The workflow needs more than simple automation.</h2></div><p>Agents create value when the next step depends on changing context, multiple systems, exceptions, judgment, or long-running state. If a fixed rule can solve the problem reliably, ordinary software is usually the better choice.</p></div>
+    <div class="ag-signalGrid">
+      <article class="ag-signal"><span>01</span><b>Work spans multiple systems</b><p>People continually move information, decisions, and actions across applications, APIs, databases, and operational tools.</p></article>
+      <article class="ag-signal"><span>02</span><b>The next step changes</b><p>The workflow cannot always be fully predetermined because new context, exceptions, or system responses change what should happen next.</p></article>
+      <article class="ag-signal"><span>03</span><b>Decisions repeat at scale</b><p>Teams repeatedly gather context, interpret information, choose an action, and complete similar follow-up work.</p></article>
+      <article class="ag-signal"><span>04</span><b>Exceptions are part of the work</b><p>Missing data, conflicting records, failed tools, unusual cases, and policy boundaries regularly change the happy path.</p></article>
+      <article class="ag-signal"><span>05</span><b>The workflow lasts beyond one session</b><p>Approvals, documents, events, or external responses may arrive hours or days later and the system needs to resume safely.</p></article>
+      <article class="ag-signal"><span>06</span><b>People must stay accountable</b><p>Some steps can be automated while higher-impact decisions still require confirmation, approval, or human ownership.</p></article>
     </div>
-
-    <div class="agenticRuntimeConsole" aria-label="Customer onboarding agentic runtime trace">
-      <div class="agenticRuntimeConsoleTop"><span>RUNTIME ORCHESTRATION CONSOLE</span><b>CUSTOMER ONBOARDING · VERIFIED STATE CHANGES</b></div>
-      <div class="agenticRuntimeHeader"><span>Step</span><span>Workflow State</span><span>Decision / Tool</span><span>Control</span></div>
-      <div class="agenticRuntimeRows">
-        <div><span>Customer approved</span><b>Started</b><span>Load onboarding context</span><em>Initiator verified</em></div>
-        <div><span>Context assembled</span><b>Ready to act</b><span>Choose next valid step</span><em>Policy applied</em></div>
-        <div><span>Workspace missing</span><b>In progress</b><span>Create workspace</span><em>Permitted</em></div>
-        <div><span>Tool reports created</span><b>Verify</b><span>Read actual system state</span><em>Do not assume success</em></div>
-        <div><span>Workspace verified</span><b>Ready</b><span>Provision access</span><em>Standard scope</em></div>
-        <div class="runtimeApproval"><span>Elevated access found</span><b>WAITING_FOR_APPROVAL</b><span>Pause workflow</span><em>Formal approval required</em></div>
-        <div><span>Approval received</span><b>Resumed</b><span>Provision permitted access</span><em>Approval recorded</em></div>
-        <div class="runtimeException"><span>Calendar timeout</span><b>Exception</b><span>Retry / alternate path</span><em>Safe recovery</em></div>
-        <div class="runtimeComplete"><span>All criteria true</span><b>WORKFLOW COMPLETE</b><span>Close workflow</span><em>Audit record retained</em></div>
-      </div>
-      <div class="agenticRuntimeRails"><span>Durable State</span><span>Permissions</span><span>Verification</span><span>Exceptions</span><span>Observability</span></div>
-    </div>
-
-    <div class="agenticLoop" aria-label="Controlled agentic decision loop"><span>Observe Current State</span><span>Choose Next Valid Step</span><span>Check Permission / Policy</span><span>Use Tool</span><span>Verify Result</span><span>Update State</span></div>
-    <div class="agenticLoopDecision"><b>Complete?</b> No → repeat from updated state · Approval needed → pause · Exception → recover / escalate · Yes → close workflow</div>
-
-    <div class="agenticRuntimeGrid">
-      <article class="agenticRuntimeCard"><div class="agenticRuntimeTop"><span>01</span><small>TRIGGER THE WORKFLOW</small></div><h3>Create a real workflow record when the event occurs.</h3><p>A CRM status change to Approved starts the process and creates a workflow ID tied to the initiating user, customer, target start date, and relevant policy context.</p><div class="agenticRuntimeDetail"><span>Workflow ID</span><span>Initiator</span><span>Customer</span><span>Target date</span><span>Policy context</span></div></article>
-      <article class="agenticRuntimeCard"><div class="agenticRuntimeTop"><span>02</span><small>ASSEMBLE CONTEXT</small></div><h3>Build the context snapshot the next decision actually needs.</h3><p>Retrieve the customer record, agreement, scope, contacts, requested start date, requirements, and known exceptions so the next step is based on current evidence.</p><div class="agenticRuntimeDetail"><span>Customer record</span><span>Agreement</span><span>Scope</span><span>Contacts</span><span>Exceptions</span></div></article>
-      <article class="agenticRuntimeCard"><div class="agenticRuntimeTop"><span>03</span><small>CHOOSE THE NEXT VALID STEP</small></div><h3>Plan from current state, not from assumptions made ten steps earlier.</h3><p>If the customer is approved, an owner is assigned, access is missing, and a workspace does not exist, the workflow chooses the next valid action from that actual state.</p><div class="agenticRuntimeDetail"><span>Current state</span><span>Gap identified</span><span>Next step selected</span></div></article>
-      <article class="agenticRuntimeCard dark"><div class="agenticRuntimeTop"><span>04</span><small>SELECT &amp; VALIDATE THE TOOL</small></div><h3>Validate the contract before the action runs.</h3><p>The Create Customer Workspace tool is checked for valid input, permission, required fields, and reversibility before it is called.</p><div class="agenticRuntimeDetail"><span>Input valid ✓</span><span>Identity permitted ✓</span><span>Fields present ✓</span><span>Reversible ✓</span></div></article>
-      <article class="agenticRuntimeCard dark"><div class="agenticRuntimeTop"><span>05</span><small>VERIFY THE RESULT</small></div><h3>Tool response does not equal verified outcome.</h3><p>After the tool reports success, the workflow reads the actual system state and verifies the workspace ID, customer linkage, and template before recording Workspace Ready.</p><div class="agenticRuntimeDetail"><span>Workspace ID ✓</span><span>Customer linked ✓</span><span>Template applied ✓</span></div></article>
-      <article class="agenticRuntimeCard"><div class="agenticRuntimeTop"><span>06</span><small>PAUSE FOR APPROVAL</small></div><h3>Approval becomes a first-class workflow state.</h3><p>If elevated access is requested, the workflow becomes WAITING_FOR_APPROVAL and presents the reviewer with the action, reason, context, requested permissions, policy evidence, and current state.</p><div class="agenticRuntimeDetail"><span>Approve</span><span>Modify</span><span>Reject</span><span>Resume from checkpoint</span></div></article>
-      <article class="agenticRuntimeCard"><div class="agenticRuntimeTop"><span>07</span><small>HANDLE EXCEPTIONS</small></div><h3>Recover from the current state instead of hiding failure.</h3><p>If calendar scheduling times out, the workflow stays incomplete and chooses a safe recovery path: retry, alternate tool, wait, clarify, or escalate.</p><div class="agenticRuntimeDetail"><span>Retry safely</span><span>Alternate path</span><span>Wait &amp; resume</span><span>Clarify</span><span>Escalate</span></div></article>
-      <article class="agenticRuntimeCard"><div class="agenticRuntimeTop"><span>08</span><small>COMPLETE AGAINST CRITERIA</small></div><h3>Close only when the actual completion conditions are true.</h3><p>Workspace ready, required access provisioned, owner assigned, kickoff scheduled, and required records updated must all be verified before the workflow is marked complete.</p><div class="agenticRuntimeDetail"><span>Decisions</span><span>Tools</span><span>Approvals</span><span>Exceptions</span><span>Final state</span></div></article>
-    </div>
-    <div class="agenticRuntimeClosing">A dependable agentic workflow does not simply keep acting. It knows when to continue, when to wait, when to recover, and when the work is actually done.</div>
   </div>
 </section>
 
-<section class="agenticAutonomy section" id="autonomy-human-control">
-  <div class="container">
-    <div class="agenticAutonomyHead">
-      <div class="eyebrow">AUTONOMY &amp; HUMAN CONTROL</div>
-      <h2 class="h2">Give the system enough autonomy to be useful—and no more.</h2>
-      <p class="lead">The right level of autonomy depends on the action, not on what the model is technically capable of doing. Low-risk, reversible work may proceed automatically. Higher-impact actions may require confirmation, formal approval, or direct human ownership. The product should make those boundaries explicit before the workflow runs.</p>
+<section class="ag-section soft" id="what-we-engineer">
+  <div class="ag-wrap">
+    <div class="ag-head"><div><div class="ag-ey">WHAT ALODEN ENGINEERS</div><h2>The agent is one component inside a controlled workflow system.</h2></div><p>Dependable agentic software needs product state, tool contracts, permissions, orchestration, recovery, verification, and observability around the intelligence.</p></div>
+    <div class="ag-engineerGrid">
+      <article class="ag-card"><div class="ag-cardTop"><span class="ag-cardNum">01</span><span class="ag-cardType">WORKFLOW MODEL</span></div><h3>Define the work before automating it.</h3><p>Map the trigger, objective, current state, valid next steps, completion criteria, exceptions, and human decision points so the workflow has explicit boundaries.</p><div class="ag-tags"><span>Triggers</span><span>Goals</span><span>State transitions</span><span>Completion criteria</span><span>Exceptions</span></div></article>
+      <article class="ag-card dark"><div class="ag-cardTop"><span class="ag-cardNum">02</span><span class="ag-cardType">CONTEXT & DURABLE STATE</span></div><h3>Give every decision the right history.</h3><p>Maintain what has happened, what is true now, what remains unresolved, and what changed so the system can safely continue beyond one model response.</p><div class="ag-tags"><span>Context</span><span>Memory</span><span>Workflow state</span><span>Checkpoints</span><span>Resumability</span></div></article>
+      <article class="ag-card"><div class="ag-cardTop"><span class="ag-cardNum">03</span><span class="ag-cardType">REASONING & ORCHESTRATION</span></div><h3>Choose the next useful step from current evidence.</h3><p>Combine deterministic logic, model-supported decisions, routing, and agent planning instead of forcing every workflow decision through an LLM.</p><div class="ag-tags"><span>Planning</span><span>Routing</span><span>Rules</span><span>Model decisions</span><span>Workflow orchestration</span></div></article>
+      <article class="ag-card"><div class="ag-cardTop"><span class="ag-cardNum">04</span><span class="ag-cardType">TOOLS & SYSTEMS</span></div><h3>Connect intelligence to the systems where work happens.</h3><p>Engineer clear tool contracts around APIs, applications, databases, and services—including inputs, permissions, success conditions, failure behavior, and reversibility.</p><div class="ag-tags"><span>APIs</span><span>Tool contracts</span><span>Authentication</span><span>Validation</span><span>Read/write boundaries</span></div></article>
+      <article class="ag-card dark"><div class="ag-cardTop"><span class="ag-cardNum">05</span><span class="ag-cardType">PERMISSIONS & HUMAN CONTROL</span></div><h3>Capability does not equal authority.</h3><p>Define what the system may do automatically, what needs confirmation, what requires formal approval, and what should remain human-owned.</p><div class="ag-tags"><span>Identity</span><span>Permissions</span><span>Approval gates</span><span>Policy checks</span><span>Escalation</span></div></article>
+      <article class="ag-card"><div class="ag-cardTop"><span class="ag-cardNum">06</span><span class="ag-cardType">VERIFICATION & OBSERVABILITY</span></div><h3>Know what actually happened.</h3><p>Verify resulting system state after actions, recover safely from failures, and retain enough trace evidence to understand decisions, tool use, approvals, costs, latency, and outcomes.</p><div class="ag-tags"><span>Verification</span><span>Retries</span><span>Recovery</span><span>Traces</span><span>Evaluation</span><span>Audit evidence</span></div></article>
     </div>
-
-    <div class="agenticAutonomySystem">
-      <div class="agenticAutonomyTop"><span>AUTONOMY DECISION SYSTEM</span><b>CONTROL INCREASES WITH CONSEQUENCE</b></div>
-      <div class="agenticAutonomyQuestions">
-        <div><span>IMPACT</span><b>What happens if the action is wrong?</b></div><div><span>REVERSIBILITY</span><b>Can the action be safely undone?</b></div><div><span>CONFIDENCE</span><b>Is there enough evidence to proceed?</b></div><div><span>AUTHORITY</span><b>Is this identity allowed to act?</b></div><div><span>ACCOUNTABILITY</span><b>Must a person own the decision?</b></div>
-      </div>
-      <div class="agenticAutonomyLadder">
-        <div><span>LEVEL 1</span><b>Rules</b><small>Deterministic automation</small></div><div><span>LEVEL 2</span><b>Agent Acts</b><small>Bounded autonomy</small></div><div><span>LEVEL 3</span><b>User Confirms</b><small>Explicit intent</small></div><div><span>LEVEL 4</span><b>Approver Decides</b><small>Formal authority</small></div><div><span>LEVEL 5</span><b>Human Owns</b><small>Accountable judgment</small></div>
-      </div>
-      <div class="agenticAutonomyRisk"><span>LOWER IMPACT / MORE REVERSIBLE</span><span>↑ Impact · irreversibility · uncertainty · sensitivity · accountability ↑</span><span>HIGHER HUMAN OWNERSHIP</span></div>
-    </div>
-
-    <div class="agenticAutonomyGrid">
-      <article class="agenticAutonomyCard"><span>01 · DETERMINISTIC AUTOMATION</span><h3>Use explicit software when the decision does not need AI.</h3><p>Create a standard workflow record, apply an approved template, move an item to the next known state, or send an already-approved notification when rules fully define the outcome.</p><div class="agenticAutonomyFlow"><span>Known rule</span><span>Execute</span><span>Verify</span></div></article>
-      <article class="agenticAutonomyCard"><span>02 · AGENT MAY ACT</span><h3>Allow bounded autonomy for low-risk, reversible work.</h3><p>The agent can choose among permitted tools and complete the next valid step when the action is inside policy, inputs are complete, resulting state can be verified, and failure is recoverable.</p><div class="agenticAutonomyFlow"><span>Eligible</span><span>Permission valid</span><span>Execute</span><span>Verify</span><span>Continue</span></div></article>
-      <article class="agenticAutonomyCard"><span>03 · USER CONFIRMATION</span><h3>Prepare the action, then make intent explicit.</h3><p>When the system understands what should happen but the consequence should be visible to the user, it pauses for confirmation rather than treating inference as authorization.</p><div class="agenticAutonomyFlow"><span>Prepare</span><span>Explain</span><span>Confirm</span><span>Execute</span></div></article>
-      <article class="agenticAutonomyCard dark"><span>04 · FORMAL APPROVAL</span><h3>Pause when specific authority must decide.</h3><p>The agent can gather context, validate the request, identify policy, and prepare a recommendation, but the workflow remains WAITING_FOR_APPROVAL until the authorized reviewer approves, modifies, or rejects it.</p><div class="agenticAutonomyFlow"><span>Context</span><span>Policy</span><span>Evidence</span><span>Approve / Modify / Reject</span></div></article>
-      <article class="agenticAutonomyCard wide"><span>05 · HUMAN-OWNED DECISION</span><h3>Keep accountable judgment human-owned.</h3><p>Material business commitments, contractual interpretation, sensitive personnel decisions, high-impact exceptions, ambiguous policy, irreversible external actions, and other decisions requiring human accountability should remain human-owned even when AI can prepare the evidence and options.</p><div class="agenticAutonomyFlow"><span>Gather evidence</span><span>Organize context</span><span>Identify options</span><span>Prepare decision</span><span>Human owns outcome</span></div><div class="agenticApprovalState"><b>Approval is a workflow state—not a popup.</b> The system must know what is waiting, who can approve, what happens after approval or rejection, how long the workflow may wait, and exactly where it resumes.</div></article>
-    </div>
-
-    <div class="agenticControlMatrixWrap"><table class="agenticControlMatrix"><thead><tr><th>Action</th><th>Agent role</th><th>Control</th></tr></thead><tbody><tr><th>Read customer record</th><td>Retrieve</td><td>Permission</td></tr><tr><th>Create standard workspace</th><td>Execute + verify</td><td>Bounded autonomy</td></tr><tr><th>Schedule approved kickoff</th><td>Prepare / execute</td><td>Confirmation if needed</td></tr><tr><th>Grant elevated access</th><td>Prepare</td><td>Formal approval</td></tr><tr><th>Override security policy</th><td>Assist only</td><td>Human-owned</td></tr><tr><th>Make contractual commitment</th><td>Context / recommendation</td><td>Human-owned</td></tr></tbody></table></div>
-    <div class="agenticAutonomyClosing">Good agentic engineering is not about removing people from the workflow. It is about placing judgment, authority, and automation where each belongs.</div>
   </div>
 </section>
 
-<section class="agenticValue section" id="where-agentic-earns-its-place">
-  <div class="container">
-    <div class="agenticValueHead"><div class="eyebrow">WHERE AGENTIC SYSTEMS CREATE VALUE</div><h2 class="h2">Use agentic systems when the workflow itself needs to adapt.</h2><p class="lead">Not every automation needs an agent. Agentic systems create value when work spans multiple steps, changing context, several tools or systems, exceptions, approvals, and decisions where the next action cannot always be predetermined. When the path is simple and known, conventional software or workflow automation is usually better.</p></div>
-
-    <div class="agenticOperatingSystem">
-      <div class="agenticOperatingTop"><span>OPERATING MODEL DECISION</span><b>USE THE SIMPLEST SYSTEM THAT CAN RELIABLY COMPLETE THE WORK</b></div>
-      <div class="agenticOperatingBody">
-        <div class="agenticOperatingStart"><span>START</span><b>What kind of work is this?</b></div>
-        <div class="agenticOperatingBranches"><article><small>KNOWN STEPS + PREDICTABLE RULES</small><b>Deterministic Workflow</b><p>Use explicit software when the path is stable.</p></article><article><small>ONE INTERPRETATION / GENERATION TASK</small><b>AI Capability</b><p>Use one intelligent function when one task is enough.</p></article><article class="agenticChoice"><small>MULTIPLE STEPS + CHANGING CONTEXT + TOOLS</small><b>Agentic Workflow</b><p>Adapt the next step from state while preserving controls.</p></article><article><small>CONSEQUENTIAL JUDGMENT / AUTHORITY</small><b>Human Decision / Approval</b><p>Keep accountable decisions with people.</p></article></div>
-        <div class="agenticOperatingConverge"><span>CONVERGE</span><b>Right Operating Model</b></div>
+<section class="ag-beyond">
+  <div class="ag-wrap ag-beyondGrid">
+    <div><div class="ag-ey">BEYOND THE AGENT</div><h2>The hard part is the system around the reasoning.</h2><p class="ag-beyondLead">A model may be able to decide or generate the next action. Production software still has to know whether that action is permitted, whether the tool succeeded, what changed, what should happen after failure, and when a person must take over.</p></div>
+    <div>
+      <div class="ag-systemStack">
+        <div><span>01</span><b>Trigger</b><small>Know why the work started and who or what initiated it.</small></div>
+        <div><span>02</span><b>State</b><small>Persist where the workflow is, what happened, and what is still unresolved.</small></div>
+        <div><span>03</span><b>Decision</b><small>Use the simplest reliable decision mode—rules, model support, planning, or human judgment.</small></div>
+        <div><span>04</span><b>Action</b><small>Use a clearly defined tool with explicit identity, permission, and input boundaries.</small></div>
+        <div><span>05</span><b>Verification</b><small>Inspect actual system state instead of assuming a tool response means success.</small></div>
+        <div><span>06</span><b>Control</b><small>Continue, retry, recover, request approval, or escalate from the updated state.</small></div>
       </div>
+      <div class="ag-beyondNote">The agent is not the workflow. It is one decision-making component inside a controlled product system.</div>
     </div>
-
-    <div class="agenticValueGrid">
-      <article class="agenticValueCard"><div class="agenticValueTop"><span>01</span><small>CROSS-SYSTEM OPERATIONAL COORDINATION</small></div><h3>Coordinate work that currently lives between applications.</h3><p>Many processes are difficult because people continually move information and decisions across several systems. An agentic workflow can read context, determine the next step, use the right system, verify state, and continue.</p><div class="agenticPattern"><span>Trigger</span><span>CRM</span><span>Internal platform</span><span>Access system</span><span>Scheduling</span><span>Verification</span></div></article>
-      <article class="agenticValueCard"><div class="agenticValueTop"><span>02</span><small>EXCEPTION-RICH WORKFLOWS</small></div><h3>Handle the cases fixed automation cannot anticipate cleanly.</h3><p>Missing information, conflicting records, unavailable systems, policy exceptions, unusual requests, and failed actions can change the path. Agentic reasoning can help choose the next valid recovery step without abandoning workflow controls.</p><div class="agenticPattern"><span>Normal path</span><span>Exception</span><span>Gather context</span><span>Evaluate</span><span>Recover / clarify / escalate</span><span>Resume</span></div></article>
-      <article class="agenticValueCard"><div class="agenticValueTop"><span>03</span><small>LONG-RUNNING, STATEFUL WORK</small></div><h3>Continue even when the work takes hours, days, or weeks.</h3><p>Documents, external responses, approvals, system events, scheduled dates, and human decisions may arrive long after the model session ends. The workflow must persist independently and resume from durable state.</p><div class="agenticPattern"><span>Start</span><span>Act</span><span>Checkpoint</span><span>Wait</span><span>Event arrives</span><span>Resume</span></div></article>
-      <article class="agenticValueCard"><div class="agenticValueTop"><span>04</span><small>DYNAMIC NEXT-BEST ACTION</small></div><h3>Choose the next useful step from current evidence.</h3><p>When an objective has several valid paths, the system can inspect current state, identify what is missing, select the next valid action, check permission, act, verify, and reassess.</p><div class="agenticPattern"><span>Observe state</span><span>Identify gap</span><span>Select next action</span><span>Act</span><span>Verify</span><span>Reassess</span></div></article>
-      <article class="agenticValueCard wide"><div class="agenticValueTop"><span>05</span><small>HUMAN + AGENT WORKFLOW</small></div><h3>Automate the preparation around human judgment.</h3><p>The system can gather information, check completeness, retrieve evidence, apply known policy, identify exceptions, prepare a recommendation, and route the case to the right person. After the human decision is recorded, the workflow resumes automatically.</p><div class="agenticPattern"><span>Agent prepares</span><span>Human reviews</span><span>Decision recorded</span><span>Workflow resumes</span><span>Action verified</span></div></article>
-    </div>
-
-    <aside class="agenticNoAgentPanel"><div class="agenticNoAgentLead"><span>THE COUNTERPOINT</span><h3>When an agentic system is not the answer.</h3><p>Use ordinary software, deterministic automation, or a single AI capability when a simpler system can reliably solve the problem.</p></div><div class="agenticNoAgentReasons"><div><span>01</span><p>The workflow follows a known sequence.</p></div><div><span>02</span><p>Explicit rules can reliably determine the next step.</p></div><div><span>03</span><p>One model call or one tool call solves the problem.</p></div><div><span>04</span><p>There is no durable workflow state to manage.</p></div><div><span>05</span><p>Source systems cannot provide reliable verification.</p></div><div><span>06</span><p>Tool permissions and contracts are poorly defined.</p></div><div><span>07</span><p>Added autonomy does not materially improve the outcome.</p></div></div></aside>
-    <div class="agenticValueClosing">Agentic systems earn their place when adapting the workflow creates more value than merely automating the steps.</div>
   </div>
 </section>
 
-<section class="agenticProductProof section" id="agentic-product-proof">
-  <div class="container">
-    <div class="agenticProductProofHead"><div class="eyebrow">PRODUCT PROOF</div><h2 class="h2">Different products. The same workflow discipline behind dependable agents.</h2><p class="lead">Agentic capability becomes dependable when it sits on top of durable product state, clear tool boundaries, permissions, checkpoints, verification, exceptions, and human ownership. Aloden’s products demonstrate those foundations in different forms—from long-running healthcare workflows and multi-role platform orchestration to real-time tool-connected Voice AI.</p></div>
-
-    <div class="agenticProofStrips">
-      <article class="agenticProofStrip medlivoAgenticProof"><div class="agenticProofIdentity"><img src="assets/medlivo-logo.webp" alt="Medlivo"><span>LONG-RUNNING HEALTHCARE WORKFLOW</span></div><div class="agenticProofNarrative"><h3>Move a clinician from opportunity to operational readiness without losing the state in between.</h3><p>The workflow can persist across days or weeks while documents arrive, requirements change, credentialing progresses, exceptions appear, and people make readiness decisions. Matching intelligence is one decision point inside a broader operational system.</p><div class="agenticProofFlow"><span>Need / Referral</span><span>Clinician Context</span><span>Match / Human Review</span><span>Clinician Passport</span><span>Requirements Gap</span><span>Credentialing / Verification</span><span>Approval / Exception</span><span>Ready</span><span>Scheduling / Visit</span></div></div><div class="agenticProofEvidence"><span>WORKFLOW EVIDENCE</span><div><b>Durable state</b><b>Next-step orchestration</b><b>Exception routing</b><b>Verification</b><b>Human approval</b><b>Operational readiness</b></div></div></article>
-
-      <article class="agenticProofStrip startupfairAgenticProof"><div class="agenticProofIdentity"><img src="assets/startupfair-logo.webp" alt="StartupFair"><span>MULTI-ROLE PLATFORM ORCHESTRATION</span></div><div class="agenticProofNarrative"><h3>Coordinate one lifecycle across organizations, builders, judges, mentors, and admins.</h3><p>StartupFair demonstrates multiple roles, permissions, event-driven transitions, checkpoints, evaluation state, deadlines, governance, and human decision ownership across one connected platform lifecycle.</p><div class="agenticProofFlow"><span>Challenge</span><span>Discover / Apply</span><span>Team / Build</span><span>Submit</span><span>Evaluation Readiness</span><span>Judge Scoring</span><span>Selection / Admin Control</span><span>Opportunity</span></div></div><div class="agenticProofEvidence"><span>WORKFLOW EVIDENCE</span><div><b>Multi-role workflow</b><b>Lifecycle state</b><b>Permissions</b><b>Checkpoints</b><b>Evaluation orchestration</b><b>Human governance</b></div></div></article>
-
-      <article class="agenticProofStrip voiceAgenticProof"><div class="agenticProofIdentity"><span class="alodenLockup compactLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><strong>Voice AI</strong><span>DYNAMIC, TOOL-CONNECTED ACTION</span></div><div class="agenticProofNarrative"><h3>Choose the next valid action from conversation and system state.</h3><p>The next step can change based on what the user says, what the system returns, what permissions allow, and whether the resulting state can be verified.</p><div class="agenticProofFlow"><span>Conversation</span><span>Intent &amp; Context</span><span>Current State</span><span>Choose Next Step</span><span>Permission Check</span><span>Tool / System</span><span>Verify Result</span><span>Continue / Escalate</span></div></div><div class="agenticProofEvidence"><span>WORKFLOW EVIDENCE</span><div><b>Dynamic next-step selection</b><b>Tool use</b><b>Context</b><b>Permissions</b><b>Verified action</b><b>Exception recovery</b><b>Human escalation</b></div></div></article>
+<section class="ag-section soft" id="ways-to-start">
+  <div class="ag-wrap">
+    <div class="ag-head"><div><div class="ag-ey">WAYS TO START</div><h2>Start with one workflow worth improving.</h2></div><p>You do not need an enterprise-wide agent strategy. A strong first engagement identifies one high-value workflow, the systems it touches, the controls it needs, and the evidence required to justify production investment.</p></div>
+    <div class="ag-startGrid">
+      <article class="ag-start"><div class="ag-startTop"><span>WORKFLOW DISCOVERY</span><em>01</em></div><h3>Find where agentic behavior actually belongs.</h3><p>Map the current workflow, systems, decisions, exceptions, approvals, manual work, and measurable opportunity before deciding how much autonomy is useful.</p><div class="ag-startFlow">Workflow → Friction → Decision points → Systems → Opportunity</div></article>
+      <article class="ag-start"><div class="ag-startTop"><span>AGENTIC WORKFLOW PILOT</span><em>02</em></div><h3>Prove one controlled workflow end to end.</h3><p>Connect the minimum required context, tools, permissions, state, human controls, and evaluation needed to validate real workflow value.</p><div class="ag-startFlow">Trigger → Context → Agent → Tools → Control → Measured result</div></article>
+      <article class="ag-start"><div class="ag-startTop"><span>EXISTING WORKFLOW UPGRADE</span><em>03</em></div><h3>Add intelligence without replacing the process around it.</h3><p>Introduce agentic decisioning or tool use into an existing application, automation, or operational workflow while preserving reliable deterministic logic.</p><div class="ag-startFlow">Current workflow → Intelligence → Tool use → Existing systems → Better outcome</div></article>
+      <article class="ag-start"><div class="ag-startTop"><span>PRODUCTION HARDENING</span><em>04</em></div><h3>Turn an agent prototype into dependable software.</h3><p>Add durable state, permissions, verification, recovery, evaluation, observability, cost controls, and human escalation around an existing agent or prototype.</p><div class="ag-startFlow">Prototype → State → Controls → Evaluation → Production</div></article>
     </div>
-
-    <div class="agenticProofMatrixWrap"><table class="agenticProofMatrix"><thead><tr><th>Product</th><th>Workflow evidence</th><th>Human control</th></tr></thead><tbody><tr><th>Medlivo</th><td>Durable state · readiness · exceptions · verification</td><td>Recruiter / credentialing / clinical review</td></tr><tr><th>StartupFair</th><td>Multi-role lifecycle · checkpoints · evaluation state</td><td>Judges · organizations · admins</td></tr><tr><th>Aloden Voice AI</th><td>Dynamic next step · tools · verification · recovery</td><td>Confirmation · permission · escalation</td></tr></tbody></table></div>
-    <div class="agenticProductProofFooter"><strong>Agentic intelligence works best when the product already knows what state it is in, what may happen next, and who remains accountable.</strong><a class="textLink" href="built-by-aloden.html">See Everything We’ve Built →</a></div>
   </div>
 </section>
 
-<section class="agenticFinalCta" id="agentic-cta">
-  <div class="container agenticFinalCtaInner">
-    <div><div class="eyebrow">BUILD THE WORKFLOW</div><h2>Turn complex work into a system that knows what should happen next.</h2><p>Whether you’re coordinating work across multiple systems, adding intelligence to an existing process, or designing a new agentic workflow from the ground up, Aloden can help define the right level of autonomy, engineer the state and tool architecture around it, and move the system into controlled production use.</p><div class="agenticFinalTags"><span>Agentic Workflow</span><span>Multi-System Orchestration</span><span>Human Approval</span><span>Exception Recovery</span></div></div>
-    <a class="btn primary" href="index.html#cta">Start a Project →</a>
+<section class="ag-controlSection" id="human-control">
+  <div class="ag-wrap">
+    <div class="ag-controlTop"><div><div class="ag-ey">GOVERNED AUTONOMY</div><h2>Give the system enough autonomy to be useful—and no more.</h2></div><p>The right level of autonomy depends on impact, reversibility, confidence, authority, and accountability. Higher consequence should mean more explicit control, not less.</p></div>
+    <div class="ag-controlRail">
+      <div><span>01</span><b>Rules</b><small>Explicit deterministic automation</small></div>
+      <div><span>02</span><b>Agent Acts</b><small>Bounded, low-risk autonomy</small></div>
+      <div><span>03</span><b>User Confirms</b><small>Intent made explicit</small></div>
+      <div><span>04</span><b>Approver Decides</b><small>Formal authority required</small></div>
+      <div><span>05</span><b>Human Owns</b><small>Accountable judgment</small></div>
+    </div>
+    <div class="ag-controlLine"><strong>Good agentic engineering does not remove people by default.</strong> It places automation, authority, and human judgment where each belongs.</div>
   </div>
+</section>
+
+<section class="ag-section" id="production-standard">
+  <div class="ag-wrap">
+    <div class="ag-head"><div><div class="ag-ey">BUILT FOR PRODUCTION</div><h2>Agentic systems have to be understandable when they fail.</h2></div><p>Production readiness means the workflow can be observed, constrained, recovered, measured, and explained—not just that the agent can complete the happy path.</p></div>
+    <div class="ag-productionGrid">
+      <article class="ag-prod"><span>01</span><b>Permissions</b><p>Identity and authority are explicit before tools can read, write, commit, or change system state.</p></article>
+      <article class="ag-prod"><span>02</span><b>Verification</b><p>Actions are considered complete only when the resulting state is checked against expected outcomes.</p></article>
+      <article class="ag-prod"><span>03</span><b>Recovery</b><p>Retries, alternate paths, compensation, waits, and escalation are designed around real failure modes.</p></article>
+      <article class="ag-prod"><span>04</span><b>Evaluation</b><p>Decision quality, workflow completion, failure rates, cost, latency, and escalation behavior are measured.</p></article>
+      <article class="ag-prod"><span>05</span><b>Observability</b><p>Teams can trace the trigger, context, decision, tool, approval, action, result, and final state.</p></article>
+      <article class="ag-prod"><span>06</span><b>Human control</b><p>Consequential or ambiguous decisions can pause cleanly and resume after the right person decides.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="ag-workBridge">
+  <div class="ag-wrap ag-workBridgeInner"><div><h3>Want to see how Aloden thinks about real product systems?</h3><p>Explore products and platforms built across healthcare, innovation, and conversational workflows.</p></div><a href="built-by-aloden.html">View Our Work →</a></div>
+</section>
+
+<section class="finalCta ag-cta" id="agentic-cta">
+  <div class="container"><div class="ctaBand"><div><h2>What workflow should work better?</h2><p>Bring us the process, systems, exceptions, or agent prototype. We’ll help determine the right level of intelligence, automation, control, and production engineering.</p></div><a class="btn" href="start-project.html">Start a Project →</a></div></div>
 </section>
 </main>
 
-<footer class="footer" id="company"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="capabilities.html">Capabilities</a><a href="index.html#insights">Insights</a><a href="index.html#company">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="voice-ai-engineering.html">Voice AI Engineering</a><a href="#top">Intelligent Workflow &amp; Agentic Systems</a><a href="capabilities.html#product-modernization">Product Modernization</a><a href="capabilities.html#healthcare-ai">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#agentic-cta">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
+<footer class="footer" id="company-footer">
+  <div class="container footerFinal">
+    <div class="footerFinalGrid">
+      <div class="footerFinalBrand"><img class="ag-footerLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden"><p>AI-native product engineering and digital modernization for intelligent products built for real-world use.</p></div>
+      <div class="footerFinalCol"><h4>Explore</h4><a href="index.html">Home</a><a href="built-by-aloden.html">Our Work</a><a href="capabilities.html">Capabilities</a><a href="company.html">Company</a></div>
+      <div class="footerFinalCol"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="product-modernization.html">AI-Native Modernization</a><a href="#top">Agentic Workflow Engineering</a><a href="voice-ai-engineering.html">Voice & Conversational AI</a></div>
+      <div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="start-project.html">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="https://www.linkedin.com/company/alodenllc" target="_blank" rel="noopener noreferrer">LinkedIn →</a></div>
+    </div>
+    <div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><span class="footerTagline">Built around your vision.</span></div>
+  </div>
+</footer>
 <script defer src="app.js"></script>
 </body>
 </html>
