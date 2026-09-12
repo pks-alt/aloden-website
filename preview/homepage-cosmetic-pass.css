@@ -1,15 +1,16 @@
-/* Homepage cosmetic pass — spacing, density, and restrained background rhythm only. No section/content redesign. */
+/* FINAL Home cosmetic pass — approved design/content preserved.
+   Only spacing, density, background rhythm, section edges, and alignment are refined. */
 
-/* HERO: keep approved composition; reduce excess vertical height. */
+/* HERO — approved composition, slightly tighter without feeling compressed. */
 .homepageFinal .heroOneGrid{padding:46px 0 32px}
 .homepageFinal .heroOneActions{margin-top:20px}
 .homepageFinal .heroOneDiscipline{margin-top:18px}
 .homepageFinal .heroOneJourney{margin-top:10px}
 
-/* Keep the existing three proof items, but make the band lighter and shorter. */
-.homepageFinal .heroOneProofBand{background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);border-top:1px solid #e2e6eb}
+/* HERO PROOF BAND — same content, cleaner and lighter. */
+.homepageFinal .heroOneProofBand{background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);border-top:1px solid #e2e6eb;border-bottom:1px solid #ebecef}
 .homepageFinal .heroOneProofGrid{gap:0;padding-top:10px;padding-bottom:11px}
-.homepageFinal .heroOneProof{grid-template-columns:38px 1fr;gap:10px;padding:10px 17px;border:0;border-right:1px solid #e2e6eb;border-radius:0;background:transparent;box-shadow:none}
+.homepageFinal .heroOneProof{grid-template-columns:38px 1fr;gap:10px;align-items:center;padding:10px 17px;border:0;border-right:1px solid #e2e6eb;border-radius:0;background:transparent;box-shadow:none}
 .homepageFinal .heroOneProof:first-child{padding-left:0}
 .homepageFinal .heroOneProof:last-child{padding-right:0;border-right:0}
 .homepageFinal .heroOneProofIcon{width:34px;height:34px;font-size:8px}
@@ -19,64 +20,79 @@
 .homepageFinal .heroOneProof h2{font-size:15px;margin:2px 0 3px}
 .homepageFinal .heroOneProof p{font-size:12.2px;line-height:1.4}
 
-/* SECTION 2 — warm ivory: a softer handoff from the dark hero. */
+/* SECTION 2 — WHAT ALODEN DOES: warm ivory transition from dark hero. */
 .homepageFinal .homePositioning{padding:48px 0;background:linear-gradient(180deg,#fbfaf8 0%,#f8f7f4 100%);border-bottom:1px solid #e4e1dc}
 .homepageFinal .homePositioningGrid{gap:42px}
 .homepageFinal .homePositioningCopy h2{font-size:clamp(36px,3.45vw,47px)}
 .homepageFinal .homePositioningCopy p{margin-top:11px}
-.homepageFinal .homePositioningRow{padding:10px 0}
+.homepageFinal .homePositioningRows{border-top-color:#dedbd6}
+.homepageFinal .homePositioningRow{padding:10px 0;border-bottom-color:#dedbd6}
 
-/* SECTION 3 — pale Aloden violet: enough brand tone to distinguish capabilities. */
+/* SECTION 3 — CORE CAPABILITIES: restrained Aloden violet. */
 .homepageFinal .homeCapabilities{padding:50px 0;background:radial-gradient(circle at 88% 8%,rgba(124,77,255,.055),transparent 30%),linear-gradient(180deg,#f5f3f9 0%,#f8f7fb 100%);border-bottom:1px solid #ddd9e7}
 .homepageFinal .homeSectionHead{margin-bottom:15px}
+.homepageFinal .homeCapabilityGrid{border-top-color:#d8d4e1;border-bottom-color:#d8d4e1}
 .homepageFinal .homeCapability{padding-top:16px;padding-bottom:15px}
 .homepageFinal .homeCapability:nth-child(even){padding-top:16px;padding-bottom:15px}
+.homepageFinal .homeCapability:nth-child(odd){border-right-color:#d8d4e1}
+.homepageFinal .homeCapability:nth-child(-n+2){border-bottom-color:#d8d4e1}
 .homepageFinal .homeCapability h3{font-size:22px}
 .homepageFinal .homeCapabilityProof{padding-top:12px}
 
-/* SECTION 4 — clean white: reset the eye around the two paths. */
+/* SECTION 4 — BUILD NEW / MODERNIZE: clean white reset. */
 .homepageFinal .homePaths{padding:48px 0;background:linear-gradient(180deg,#fff 0%,#fdfdfc 100%);border-bottom:1px solid #e2e5e9}
+.homepageFinal .homePathGrid{border-top-color:#dde1e5;border-bottom-color:#dde1e5}
 .homepageFinal .homePath{padding-top:17px;padding-bottom:17px}
+.homepageFinal .homePath+.homePath{border-left-color:#dde1e5}
 .homepageFinal .homePath h3{font-size:27px;margin-top:9px;margin-bottom:6px}
 .homepageFinal .homePath p{margin-bottom:9px}
-.homepageFinal .homePathRail{padding-top:9px}
+.homepageFinal .homePathRail{padding-top:9px;border-top-color:#dde1e5}
 .homepageFinal .homePath a{margin-top:7px}
 
-/* SECTION 5 — cool neutral: distinct from both white and lavender. */
+/* SECTION 5 — WHO WE WORK WITH: cool neutral for separation. */
 .homepageFinal .homeAudience{padding:47px 0;background:linear-gradient(180deg,#f8fafc 0%,#f5f8fa 100%);border-bottom:1px solid #dde3e8}
 .homepageFinal .homeAudienceGrid{gap:40px}
 .homepageFinal .homeAudienceCopy h2{font-size:clamp(36px,3.45vw,47px)}
 .homepageFinal .homeAudienceCopy p{margin-top:11px}
-.homepageFinal .homeAudienceRow{grid-template-columns:32px 168px 1fr;gap:12px;padding:9px 0}
+.homepageFinal .homeAudienceRows{border-top-color:#d7dee4}
+.homepageFinal .homeAudienceRow{grid-template-columns:32px 168px 1fr;gap:12px;padding:9px 0;border-bottom-color:#d7dee4}
 .homepageFinal .homeAudienceRow b{font-size:16px}
 .homepageFinal .homeAudienceRow p{font-size:13px}
 
-/* SECTION 6 — soft lavender: subtle brand return before Trust. */
+/* SECTION 6 — WHY ALODEN: soft lavender brand return. */
 .homepageFinal .homeWhy{padding:49px 0;background:radial-gradient(circle at 10% 0%,rgba(124,77,255,.045),transparent 25%),linear-gradient(180deg,#f5f2fa 0%,#f8f6fb 100%);border-bottom:1px solid #dfdbe8}
 .homepageFinal .homeWhy .homeSectionHead{margin-bottom:14px}
+.homepageFinal .homeWhyGrid{border-top-color:#d8d3e1;border-bottom-color:#d8d3e1}
 .homepageFinal .homeWhyItem{padding:15px 17px}
+.homepageFinal .homeWhyItem+.homeWhyItem{border-left-color:#d8d3e1}
 .homepageFinal .homeWhyItem>span{margin-bottom:8px}
 .homepageFinal .homeWhyItem b{font-size:17.5px}
 .homepageFinal .homeWhyItem p{font-size:12.7px}
 
-/* SECTION 7 — Trust: neutral gray-blue, calm and credible. */
+/* SECTION 7 — TRUST: calm gray-blue, less vertical weight. */
 .homepageFinal #trust{padding:50px 0!important;background:linear-gradient(180deg,#f5f7f9 0%,#f1f4f6 100%);border-bottom:1px solid #dbe1e6}
-.homepageFinal #trust .trustGrid{margin-top:18px}
+.homepageFinal #trust .trustGrid{margin-top:18px;border-top-color:#d5dde4;border-bottom-color:#d5dde4}
 .homepageFinal #trust .trustGrid>div{min-height:174px;padding:17px 18px}
+.homepageFinal #trust .trustGrid>div+div{border-left-color:#d5dde4}
 .homepageFinal #trust .trustGrid>div:before{margin-bottom:16px}
 .homepageFinal #trust .trustGrid b{font-size:16.5px}
 .homepageFinal #trust .trustGrid span{font-size:12.7px;line-height:1.48}
 .homepageFinal #trust .trustClosing{margin-top:9px;padding:11px 0}
 
-/* CTA: keep dark, with a slightly richer Aloden glow. */
+/* FINAL CTA — same design, visually connected to Trust and footer. */
 .homepageFinal .finalCta{padding:32px 0;background:radial-gradient(circle at 82% 18%,rgba(124,77,255,.10),transparent 32%),#0b0e14}
 .homepageFinal .finalCta .ctaBand{padding-top:27px;padding-bottom:27px}
+
+/* FOOTER — same design, slightly less unused vertical space. */
+.homepageFinal .footer{padding-top:46px;border-top-color:#20242d}
+.homepageFinal .footerFinalGrid{gap:48px}
 
 @media(max-width:820px){
   .homepageFinal .heroOneGrid{padding:42px 0 31px}
   .homepageFinal .homePositioning,.homepageFinal .homeCapabilities,.homepageFinal .homePaths,.homepageFinal .homeAudience,.homepageFinal .homeWhy{padding:46px 0}
   .homepageFinal #trust{padding:46px 0!important}
   .homepageFinal #trust .trustGrid>div{min-height:0}
+  .homepageFinal .footer{padding-top:42px}
 }
 
 @media(max-width:620px){
@@ -89,4 +105,5 @@
   .homepageFinal .homeAudienceRow p{grid-column:2}
   .homepageFinal #trust{padding:40px 0!important}
   .homepageFinal .finalCta{padding:28px 0}
+  .homepageFinal .footer{padding-top:38px}
 }
