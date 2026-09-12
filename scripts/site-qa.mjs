@@ -7,7 +7,7 @@ const preview = path.join(root, 'preview');
 const errors = [];
 const warnings = [];
 
-const requiredPublicPages = [
+const launchPages = [
   'index.html',
   'built-by-aloden.html',
   'capabilities.html',
@@ -16,7 +16,6 @@ const requiredPublicPages = [
   'agentic-ai.html',
   'product-modernization.html',
   'healthcare-ai.html',
-  'insights.html',
   'company.html',
   'start-project.html',
   'privacy.html',
@@ -24,27 +23,44 @@ const requiredPublicPages = [
   '404.html'
 ];
 
+const standardPages = launchPages.filter((file) => file !== 'built-by-aloden.html');
+const supportPages = ['contact.html', 'insights.html'];
+const requiredFiles = [
+  'robots.txt',
+  'sitemap.xml',
+  'app.js',
+  'site-final-system.css',
+  'site-qa.css',
+  'legal.css',
+  'start-project-form.js',
+  'start-project-form.css'
+];
+
+const workFragments = new Set(['work', 'medlivo', 'startupfair', 'voice']);
 const effectiveRoutes = new Map([
   ['Home', 'index.html'],
   ['Our Work', 'built-by-aloden.html'],
   ['Built by Aloden', 'built-by-aloden.html'],
   ['Capabilities', 'capabilities.html'],
-  ['Insights', 'insights.html'],
   ['Company', 'company.html'],
   ['AI Product Engineering', 'ai-product-engineering.html'],
   ['Voice AI Engineering', 'voice-ai-engineering.html'],
+  ['Voice & Conversational AI', 'voice-ai-engineering.html'],
   ['Intelligent Workflow & Agentic Systems', 'agentic-ai.html'],
+  ['Agentic Workflow Engineering', 'agentic-ai.html'],
   ['Product Modernization', 'product-modernization.html'],
+  ['AI-Native Modernization', 'product-modernization.html'],
   ['Healthcare AI', 'healthcare-ai.html'],
+  ['Healthcare AI & Workforce Technology', 'healthcare-ai.html'],
   ['Privacy', 'privacy.html'],
   ['Terms', 'terms.html'],
-  ['View all products →', 'built-by-aloden.html#products'],
-  ['Explore Medlivo →', 'built-by-aloden.html#products'],
-  ['See Medlivo →', 'built-by-aloden.html#products'],
-  ['Explore StartupFair →', 'built-by-aloden.html#startupfair-proof'],
-  ['Explore Aloden Voice AI →', 'built-by-aloden.html#voice-ai-proof'],
-  ['Explore Voice AI →', 'built-by-aloden.html#voice-ai-proof'],
-  ['See Aloden Voice AI', 'built-by-aloden.html#voice-ai-proof'],
+  ['View all products →', 'built-by-aloden.html'],
+  ['Explore Medlivo →', 'built-by-aloden.html#medlivo'],
+  ['See Medlivo →', 'built-by-aloden.html#medlivo'],
+  ['Explore StartupFair →', 'built-by-aloden.html#startupfair'],
+  ['Explore Aloden Voice AI →', 'built-by-aloden.html#voice'],
+  ['Explore Voice AI →', 'built-by-aloden.html#voice'],
+  ['See Aloden Voice AI', 'built-by-aloden.html#voice'],
   ['See Everything We’ve Built →', 'built-by-aloden.html'],
   ["See Everything We've Built →", 'built-by-aloden.html'],
   ['Explore Built by Aloden →', 'built-by-aloden.html'],
@@ -52,11 +68,12 @@ const effectiveRoutes = new Map([
   ["See What We've Built", 'built-by-aloden.html'],
   ['Explore AI Product Engineering →', 'ai-product-engineering.html'],
   ['Explore Voice AI Engineering →', 'voice-ai-engineering.html'],
+  ['Explore Voice & Conversational AI →', 'voice-ai-engineering.html'],
   ['Explore Intelligent Workflow & Agentic Systems →', 'agentic-ai.html'],
+  ['Explore Agentic Workflow Engineering →', 'agentic-ai.html'],
   ['Explore Product Modernization →', 'product-modernization.html'],
-  ['Explore Healthcare AI →', 'healthcare-ai.html'],
-  ['Read the Insight →', 'insights.html#featured-thinking'],
-  ['Explore Aloden Insights →', 'insights.html']
+  ['Explore AI-Native Modernization →', 'product-modernization.html'],
+  ['Explore Healthcare AI →', 'healthcare-ai.html']
 ]);
 
 const decode = (value) => value
@@ -77,7 +94,13 @@ function hasId(html, id) {
   return new RegExp(`\\bid=["']${escaped}["']`).test(html);
 }
 
+function runtimeRemovesInsight(anchorText, rawHref) {
+  const href = rawHref.toLowerCase();
+  return anchorText === 'Insights' || href === '#insights' || href.endsWith('#insights') || href.includes('insights.html');
+}
+
 function effectiveHref(file, rawHref, anchorText) {
+  if (runtimeRemovesInsight(anchorText, rawHref)) return null;
   if (anchorText === 'Start a Project →' || anchorText === 'Start a Project') {
     return file === 'start-project.html' ? '#project-start' : 'start-project.html';
   }
@@ -85,28 +108,66 @@ function effectiveHref(file, rawHref, anchorText) {
   return effectiveRoutes.get(anchorText) || rawHref;
 }
 
-for (const file of requiredPublicPages) {
-  if (!fileExists(file)) errors.push(`${file}: required public page is missing`);
+function auditResources(file, html) {
+  const resourceRe = /(?:src|href)=["']([^"']+)["']/gi;
+  for (const match of html.matchAll(resourceRe)) {
+    const raw = match[1];
+    if (/^(#|mailto:|tel:|https?:\/\/|data:|javascript:)/i.test(raw)) continue;
+    const local = cleanUrl(raw.split('#')[0]);
+    if (!local) continue;
+    if (!fs.existsSync(path.join(preview, local))) errors.push(`${file}: missing local resource ${local}`);
+  }
 }
-for (const file of ['robots.txt', 'sitemap.xml', 'app.js', 'site-qa.css', 'legal.css']) {
+
+function auditLinks(file, html) {
+  const anchorRe = /<a\b([^>]*)href=["']([^"']*)["']([^>]*)>([\s\S]*?)<\/a>/gi;
+  for (const match of html.matchAll(anchorRe)) {
+    const rawHref = match[2].trim();
+    const anchorText = textOf(match[4]);
+    const effective = effectiveHref(file, rawHref, anchorText);
+    if (effective === null) continue;
+    const href = effective.trim();
+
+    if (!href || href === '#') {
+      errors.push(`${file}: unresolved placeholder link for “${anchorText || '(no text)'}”`);
+      continue;
+    }
+    if (/^(mailto:|tel:|https?:\/\/)/i.test(href)) continue;
+
+    const [targetPart, fragment] = href.split('#');
+    const targetFile = cleanUrl(targetPart || file) || file;
+    if (!targetFile.endsWith('.html')) continue;
+    if (!fileExists(targetFile)) {
+      errors.push(`${file}: link “${anchorText}” points to missing ${targetFile}`);
+      continue;
+    }
+    if (!fragment) continue;
+
+    if (targetFile === 'built-by-aloden.html') {
+      if (!workFragments.has(fragment)) errors.push(`${file}: Our Work link “${anchorText}” uses unsupported #${fragment}`);
+      continue;
+    }
+
+    const targetHtml = read(targetFile);
+    if (!hasId(targetHtml, fragment)) errors.push(`${file}: link “${anchorText}” points to missing #${fragment} in ${targetFile}`);
+  }
+}
+
+for (const file of [...launchPages, ...supportPages]) {
+  if (!fileExists(file)) errors.push(`${file}: required page is missing`);
+}
+for (const file of requiredFiles) {
   if (!fileExists(file)) errors.push(`${file}: required launch-support file is missing`);
 }
-for (const file of ['start-project-form.js', 'start-project-form.css']) {
-  if (!fileExists(file)) errors.push(`${file}: project form functionality file is missing`);
-}
 
-const htmlFiles = fs.readdirSync(preview).filter((name) => name.endsWith('.html'));
-const internalReviewPages = new Set(['live-review.html', 'homepage-section1.html']);
-const publicHtmlFiles = htmlFiles.filter((name) => !internalReviewPages.has(name));
-
-for (const file of publicHtmlFiles) {
+for (const file of standardPages) {
   const html = read(file);
   if (!/<!doctype html>/i.test(html)) errors.push(`${file}: missing doctype`);
   if (!/<html\b[^>]*\blang=["']en["']/i.test(html)) errors.push(`${file}: missing lang="en"`);
   if (!/<meta\b[^>]*charset=/i.test(html)) errors.push(`${file}: missing charset metadata`);
   if (!/<meta\b[^>]*name=["']viewport["']/i.test(html)) errors.push(`${file}: missing viewport metadata`);
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${file}: missing title`);
-  if (file !== '404.html' && !/<meta\b[^>]*name=["']description["']/i.test(html)) errors.push(`${file}: missing meta description`);
+  if (!/<meta\b[^>]*name=["']description["']/i.test(html)) errors.push(`${file}: missing meta description`);
   if (!/<main\b/i.test(html)) errors.push(`${file}: missing main landmark`);
   if (!/<header\b/i.test(html)) errors.push(`${file}: missing header landmark`);
   if (!/<footer\b/i.test(html)) errors.push(`${file}: missing footer landmark`);
@@ -126,42 +187,39 @@ for (const file of publicHtmlFiles) {
     if (!/\balt=["'][^"']*["']/i.test(match[0])) errors.push(`${file}: image is missing an alt attribute: ${match[0].slice(0, 120)}`);
   }
 
-  const anchorRe = /<a\b([^>]*)href=["']([^"']*)["']([^>]*)>([\s\S]*?)<\/a>/gi;
-  for (const match of html.matchAll(anchorRe)) {
-    const rawHref = match[2].trim();
-    const anchorText = textOf(match[4]);
-    const href = effectiveHref(file, rawHref, anchorText).trim();
+  auditLinks(file, html);
+  auditResources(file, html);
+}
 
-    if (!href || href === '#') {
-      errors.push(`${file}: unresolved placeholder link for “${anchorText || '(no text)'}”`);
-      continue;
-    }
-    if (/^(mailto:|tel:|https?:\/\/)/i.test(href)) continue;
-
-    const [targetPart, fragment] = href.split('#');
-    const targetFile = cleanUrl(targetPart || file) || file;
-    if (targetFile.endsWith('.html')) {
-      if (!fileExists(targetFile)) {
-        errors.push(`${file}: link “${anchorText}” points to missing ${targetFile}`);
-        continue;
-      }
-      if (fragment) {
-        const targetHtml = read(targetFile);
-        if (!hasId(targetHtml, fragment)) errors.push(`${file}: link “${anchorText}” points to missing #${fragment} in ${targetFile}`);
-      }
-    } else if (!targetPart && fragment && !hasId(html, fragment)) {
-      errors.push(`${file}: link “${anchorText}” points to missing #${fragment}`);
-    }
+// Our Work preserves the approved visual through a review-frame shell. Audit the
+// shell and its deep-link forwarding separately instead of pretending it is a
+// conventional content page.
+if (fileExists('built-by-aloden.html')) {
+  const work = read('built-by-aloden.html');
+  if (!/<!doctype html>/i.test(work)) errors.push('built-by-aloden.html: missing doctype');
+  if (!/name=["']description["']/i.test(work)) errors.push('built-by-aloden.html: missing meta description');
+  if (!/rel=["']canonical["'][^>]*https:\/\/www\.aloden\.com\/built-by-aloden\.html/i.test(work)) errors.push('built-by-aloden.html: canonical URL is missing');
+  if (!/id=["']work-frame["'][^>]*src=["']reviews\/our-work-final-v11\.html["']/i.test(work)) errors.push('built-by-aloden.html: approved V11 work frame is missing');
+  for (const fragment of workFragments) {
+    if (!work.includes(`${fragment}: '${fragment}'`) && fragment !== 'work') warnings.push(`built-by-aloden.html: verify hash forwarding for #${fragment}`);
   }
+  if (!work.includes("'medlivo-proof': 'medlivo'") || !work.includes("'startupfair-proof': 'startupfair'") || !work.includes("'voice-ai-proof': 'voice'")) errors.push('built-by-aloden.html: legacy work-fragment aliases are incomplete');
+  auditResources('built-by-aloden.html', work);
+}
 
-  const resourceRe = /(?:src|href)=["']([^"']+)["']/gi;
-  for (const match of html.matchAll(resourceRe)) {
-    const raw = match[1];
-    if (/^(#|mailto:|tel:|https?:\/\/|data:|javascript:)/i.test(raw)) continue;
-    const local = cleanUrl(raw.split('#')[0]);
-    if (!local || local.endsWith('.html')) continue;
-    if (!fs.existsSync(path.join(preview, local))) errors.push(`${file}: missing local resource ${local}`);
-  }
+// Contact is intentionally a noindex alias to the single Start a Project flow.
+if (fileExists('contact.html')) {
+  const contact = read('contact.html');
+  if (!/name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(contact)) errors.push('contact.html: redirect alias must be noindex');
+  if (!/rel=["']canonical["'][^>]*https:\/\/www\.aloden\.com\/start-project\.html/i.test(contact)) errors.push('contact.html: canonical must point to start-project.html');
+  if (!/url=start-project\.html/i.test(contact) && !/location\.replace\(['"]start-project\.html['"]\)/i.test(contact)) errors.push('contact.html: redirect to start-project.html is missing');
+}
+
+// Insights remains in source for a future launch, but it must stay outside the
+// current launch/search surface.
+if (fileExists('insights.html')) {
+  const app = read('app.js');
+  if (!app.includes("currentFile === 'insights.html'") || !app.includes('noindex,nofollow')) errors.push('app.js: Insights noindex protection is missing');
 }
 
 const cssFiles = fs.readdirSync(preview).filter((name) => name.endsWith('.css'));
@@ -180,36 +238,42 @@ if (fileExists('live-review.html') && !/name=["']robots["'][^>]*content=["'][^"'
 
 if (fileExists('start-project.html')) {
   const formPage = read('start-project.html');
-  const requiredIds = ['project-start', 'project-stage', 'project-help', 'project-context', 'project-contact', 'project-outcome', 'project-name', 'project-email', 'project-company', 'submit-project-brief'];
+  const requiredIds = ['project-start', 'project-contact', 'project-outcome', 'project-name', 'project-email', 'project-company', 'submit-project-brief'];
   for (const id of requiredIds) if (!hasId(formPage, id)) errors.push(`start-project.html: missing required form element #${id}`);
   for (const name of ['project-type', 'project-stage', 'project-help', 'project-timing']) {
     if (!new RegExp(`name=["']${name}["']`).test(formPage)) errors.push(`start-project.html: missing field group ${name}`);
   }
+  if (!/class=["'][^"']*projectStageField/i.test(formPage)) errors.push('start-project.html: current-state fieldset is missing');
+  if (!/class=["'][^"']*projectHelpField/i.test(formPage)) errors.push('start-project.html: needed-help fieldset is missing');
 }
 
 if (fileExists('robots.txt')) {
   const robots = read('robots.txt');
   if (!/Sitemap:\s*https:\/\/www\.aloden\.com\/sitemap\.xml/i.test(robots)) errors.push('robots.txt: sitemap declaration is missing');
-  if (!/Disallow:\s*\/live-review\.html/i.test(robots)) warnings.push('robots.txt: live-review.html is not explicitly excluded');
+  for (const pathName of ['/insights.html', '/reviews/', '/live-review.html', '/homepage-section1.html']) {
+    if (!robots.includes(`Disallow: ${pathName}`)) errors.push(`robots.txt: missing Disallow: ${pathName}`);
+  }
 }
 
 if (fileExists('sitemap.xml')) {
   const sitemap = read('sitemap.xml');
-  for (const file of requiredPublicPages.filter((name) => name !== '404.html')) {
+  for (const file of launchPages.filter((name) => name !== '404.html')) {
     const expected = file === 'index.html' ? 'https://www.aloden.com/' : `https://www.aloden.com/${file}`;
     if (!sitemap.includes(`<loc>${expected}</loc>`)) errors.push(`sitemap.xml: missing ${expected}`);
   }
-  if (sitemap.includes('/404.html') || sitemap.includes('/live-review.html')) errors.push('sitemap.xml: contains a non-indexable support page');
+  for (const excluded of ['/insights.html', '/contact.html', '/404.html', '/live-review.html', '/reviews/']) {
+    if (sitemap.includes(excluded)) errors.push(`sitemap.xml: contains excluded launch resource ${excluded}`);
+  }
 }
 
 if (!fs.existsSync(path.join(root, 'server', 'project-brief-handler.mjs'))) errors.push('server/project-brief-handler.mjs: missing secure form handler core');
 if (!fs.existsSync(path.join(root, 'server', 'project-brief-handler.test.mjs'))) errors.push('server/project-brief-handler.test.mjs: missing form-handler tests');
 
-console.log(`Aloden V1 QA audited ${publicHtmlFiles.length} public/support HTML pages and ${cssFiles.length} CSS files.`);
+console.log(`Aloden launch QA audited ${launchPages.length} launch pages, ${supportPages.length} hidden/redirect pages, and ${cssFiles.length} CSS files.`);
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 if (errors.length) {
   for (const error of errors) console.error(`ERROR: ${error}`);
   console.error(`QA failed with ${errors.length} error(s).`);
   process.exit(1);
 }
-console.log('QA passed: page structure, headings, unique anchors, effective links, local resources, CSS assets, metadata, image alt coverage, support pages, and project-form structure are intact.');
+console.log('QA passed: launch structure, effective navigation, local resources, metadata, support-page indexing rules, Our Work deep links, and project-form structure are intact.');
