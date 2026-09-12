@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Selected products designed and engineered by Aloden across healthcare, innovation, and system-connected voice AI.">
+<title>Our Work — Aloden</title>
+<base href="../">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link href="final.css" rel="stylesheet">
+<style>
+:root{--ow-ink:#0b0d12;--ow-body:#4c5565;--ow-muted:#727b8b;--ow-line:#e6e8ed;--ow-soft:#fafbfc;--ow-violet:#7c4dff;--ow-violet2:#9a7cff;--ow-white:#fff;--ow-dark:#0b0d12;--ow-max:1240px;--ow-shadow:0 20px 48px rgba(21,28,45,.07)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ow-ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.ow6-wrap{width:min(1240px,calc(100% - 48px));margin:0 auto}
+.ow6-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--ow-violet)}
+.ow6-brand-logo{width:154px;height:auto}
+.siteHeader{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(226,229,235,.95)}
+.siteHeader .brand{min-width:170px}
+.siteHeader .navLinks a.active{color:var(--ow-ink)}
+.siteHeader .navLinks a.active:after{content:"";position:absolute;height:2px;left:0;right:0;bottom:17px;background:var(--ow-violet);border-radius:99px}
+
+/* intro — intentionally not a second homepage */
+.ow6-hero{padding:68px 0 54px;background:linear-gradient(180deg,#fff 0%,#fbfbfc 100%);border-bottom:1px solid var(--ow-line)}
+.ow6-heroGrid{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:72px;align-items:end}
+.ow6-hero h1{font-size:clamp(46px,4.6vw,64px);line-height:1.01;letter-spacing:-.052em;margin:14px 0 16px;max-width:760px}
+.ow6-hero p{font-size:17px;line-height:1.65;color:var(--ow-body);max-width:720px;margin:0}
+.ow6-heroAside{padding:0 0 2px 28px;border-left:1px solid var(--ow-line)}
+.ow6-heroAside b{display:block;font-size:16px;margin-bottom:6px}
+.ow6-heroAside span{font-size:13px;line-height:1.55;color:var(--ow-muted)}
+
+/* project index */
+.ow6-index{background:#fff;border-bottom:1px solid var(--ow-line)}
+.ow6-indexGrid{display:grid;grid-template-columns:repeat(3,1fr)}
+.ow6-index a{display:flex;gap:14px;padding:20px 24px 19px 0;border-right:1px solid var(--ow-line)}
+.ow6-index a+a{padding-left:24px}.ow6-index a:last-child{border-right:0}
+.ow6-index span{font:500 8px "IBM Plex Mono",monospace;color:var(--ow-violet);padding-top:3px}
+.ow6-index b{display:block;font-size:14px}.ow6-index small{display:block;font-size:11.5px;color:var(--ow-muted);margin-top:3px}
+
+/* shared cases */
+.ow6-case{padding:78px 0;border-bottom:1px solid var(--ow-line)}
+.ow6-case.soft{background:var(--ow-soft)}
+.ow6-case.violet{background:var(--soft-violet,#f7f4ff)}
+.ow6-caseGrid{display:grid;grid-template-columns:minmax(330px,.72fr) minmax(0,1.28fr);gap:68px;align-items:center}
+.ow6-caseGrid.reverse{grid-template-columns:minmax(0,1.28fr) minmax(330px,.72fr)}
+.ow6-copy{max-width:470px}
+.ow6-logo{height:44px;width:auto;object-fit:contain;object-position:left center;margin:18px 0 22px}.ow6-logo.sf{height:39px}
+.ow6-case h2{font-size:clamp(36px,3.7vw,50px);line-height:1.04;letter-spacing:-.046em;margin:10px 0 14px}
+.ow6-copy>p{font-size:15.5px;line-height:1.66;color:var(--ow-body);margin:0}
+.ow6-scope{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.ow6-scope span{font:500 8px "IBM Plex Mono",monospace;color:#5e6570;border:1px solid #dfe2e8;border-radius:999px;padding:7px 9px;background:rgba(255,255,255,.72)}
+
+/* one visual per case */
+.ow6-frame{border:1px solid #dfe3e8;border-radius:18px;background:#fff;box-shadow:var(--ow-shadow);overflow:hidden}
+.ow6-frameTop{height:44px;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #e8eaf0;background:#fcfcfd}
+.ow6-frameTop i{width:7px;height:7px;border-radius:50%;background:#d9dce2}.ow6-frameTop b{font-size:10.5px;margin-left:6px}.ow6-frameTop span{margin-left:auto;font:500 6.5px "IBM Plex Mono",monospace;color:#818996;letter-spacing:.08em}
+.ow6-frameBody{padding:22px}
+
+/* Medlivo */
+.ow6-medTop{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}
+.ow6-medCard{border:1px solid #e5e8ec;border-radius:12px;padding:15px;background:#fafbfc}
+.ow6-medCard small{font:500 7px "IBM Plex Mono",monospace;letter-spacing:.09em;color:#808a95}.ow6-medCard h3{font-size:16px;margin:9px 0 5px;letter-spacing:-.025em}.ow6-medCard p{font-size:10.5px;line-height:1.5;color:#727c87;margin:0}
+.ow6-medCard.dark{background:#11151c;border-color:#1e2530;color:#fff}.ow6-medCard.dark small,.ow6-medCard.dark p{color:#abb3be}
+.ow6-medFlow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e3e6ea;border:1px solid #e3e6ea;border-radius:12px;overflow:hidden;margin-top:12px}
+.ow6-medFlow div{background:#fff;padding:14px 12px;min-height:78px}.ow6-medFlow span{font:500 7px "IBM Plex Mono",monospace;color:var(--ow-violet)}.ow6-medFlow b{display:block;font-size:11.5px;margin-top:7px}.ow6-medFlow small{display:block;font-size:9px;line-height:1.4;color:#7a8490;margin-top:3px}
+
+/* StartupFair */
+.ow6-sfShell{background:#0e141b;color:#fff;border-radius:13px;padding:14px}
+.ow6-sfTop{display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid #28323e}.ow6-sfTop b{font-size:10px}.ow6-sfTop span{margin-left:auto;font:500 6.5px "IBM Plex Mono",monospace;color:#8ea4b1}
+.ow6-sfFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.ow6-sfStep{min-height:105px;border:1px solid #2b3541;border-radius:10px;background:#141c25;padding:12px}
+.ow6-sfStep span{font:500 6.5px "IBM Plex Mono",monospace;color:#9f86ff}.ow6-sfStep b{display:block;font-size:11.5px;line-height:1.25;margin:9px 0 4px}.ow6-sfStep p{font-size:9px;line-height:1.4;color:#9aa5b0;margin:0}
+.ow6-sfProof{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.ow6-sfProof span{font:500 6.5px "IBM Plex Mono",monospace;border:1px solid #313c48;border-radius:999px;padding:6px 8px;color:#acb6c0}
+
+/* Voice */
+.ow6-voiceBrand{display:flex;align-items:center;gap:13px;margin:18px 0 22px}.ow6-voiceBrand img{width:142px;height:auto}.ow6-voiceDivider{width:1px;height:27px;background:#dfe1e6}.ow6-voiceBrand strong{font-size:19px}.ow6-voiceBrand small{display:block;font:500 7px "IBM Plex Mono",monospace;color:var(--ow-violet);letter-spacing:.08em;margin-top:3px}
+.ow6-voiceGrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:12px}
+.ow6-convo,.ow6-actions{border:1px solid #e4e7eb;border-radius:12px;background:#fafbfc;padding:15px}
+.ow6-label{font:500 7px "IBM Plex Mono",monospace;letter-spacing:.09em;color:#808994}
+.ow6-bubble{font-size:11px;line-height:1.45;padding:10px 11px;border-radius:9px;margin-top:9px}.ow6-bubble.user{background:#eceff3}.ow6-bubble.ai{background:#1e1a28;color:#fff}
+.ow6-action{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid #e5e8eb}.ow6-action:last-child{border-bottom:0}.ow6-action span{font-size:10.5px;color:#65707a}.ow6-action b{font:500 6.5px "IBM Plex Mono",monospace;color:#5c43bd}
+.ow6-handoff{margin-top:10px;padding:10px 12px;border-radius:9px;background:#f1edff;font-size:10px;line-height:1.45;color:#5c4a9d}
+
+/* concise engineering rail */
+.ow6-discipline{padding:58px 0;background:#0b0d12;color:#fff}
+.ow6-disciplineGrid{display:grid;grid-template-columns:330px 1fr;gap:54px;align-items:center}
+.ow6-discipline h2{font-size:32px;line-height:1.08;letter-spacing:-.04em;margin:8px 0 0}.ow6-discipline .ow6-ey{color:#a58aff}
+.ow6-rail{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#272a31;border:1px solid #272a31}
+.ow6-rail div{background:#0f1117;padding:17px 13px;min-height:76px}.ow6-rail span{font:500 7px "IBM Plex Mono",monospace;color:#9b83ff}.ow6-rail b{display:block;font-size:11.5px;margin-top:7px;color:#e9ebef}
+
+/* footer brand using approved logo */
+.ow6-footer-logo{width:150px;height:auto;filter:none}
+
+@media(max-width:960px){.ow6-heroGrid,.ow6-caseGrid,.ow6-caseGrid.reverse,.ow6-disciplineGrid{grid-template-columns:1fr}.ow6-caseGrid.reverse .ow6-visual{order:2}.ow6-caseGrid.reverse .ow6-copy{order:1}.ow6-heroGrid{gap:28px}.ow6-heroAside{border-left:0;border-top:1px solid var(--ow-line);padding:18px 0 0}.ow6-copy{max-width:720px}.ow6-sfFlow{grid-template-columns:repeat(3,1fr)}.ow6-rail{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.ow6-wrap{width:calc(100% - 32px)}.ow6-hero{padding:52px 0 42px}.ow6-hero h1{font-size:42px}.ow6-indexGrid{grid-template-columns:1fr}.ow6-index a,.ow6-index a+a{padding:14px 0;border-right:0;border-bottom:1px solid var(--ow-line)}.ow6-index a:last-child{border-bottom:0}.ow6-case{padding:54px 0}.ow6-medTop,.ow6-voiceGrid{grid-template-columns:1fr}.ow6-medFlow{grid-template-columns:1fr 1fr}.ow6-sfFlow{grid-template-columns:1fr}.ow6-rail{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body class="v10-refined">
+<header class="siteHeader" id="top">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="ow6-brand-logo" src="assets/aloden-logo-primary.webp" alt="Aloden"></a>
+    <nav class="navLinks" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="#work">Built by Aloden</a>
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="index.html#insights">Insights</a>
+      <a href="index.html#company">Company</a>
+    </nav>
+    <a class="btn primary navCta" href="#cta">Start a Project →</a>
+    <button class="menuBtn" aria-expanded="false" aria-label="Open navigation">☰</button>
+  </div>
+</header>
+
+<main id="work">
+<section class="ow6-hero">
+  <div class="ow6-wrap ow6-heroGrid">
+    <div>
+      <div class="ow6-ey">OUR WORK</div>
+      <h1>Products engineered for real use.</h1>
+      <p>Selected Aloden work across healthcare, innovation, and voice AI—showing how product design, intelligent workflows, engineering, and connected systems come together in production-ready software.</p>
+    </div>
+    <div class="ow6-heroAside"><b>The work is the proof.</b><span>Each example focuses on the product problem, the system Aloden engineered, and the outcome the experience is designed to support.</span></div>
+  </div>
+</section>
+
+<nav class="ow6-index" aria-label="Selected projects">
+  <div class="ow6-wrap ow6-indexGrid">
+    <a href="#medlivo"><span>01</span><div><b>Medlivo</b><small>Healthcare workforce operations</small></div></a>
+    <a href="#startupfair"><span>02</span><div><b>StartupFair</b><small>Hackathon & innovation platform</small></div></a>
+    <a href="#voice"><span>03</span><div><b>Voice AI Engineering</b><small>Conversation to system action</small></div></a>
+  </div>
+</nav>
+
+<section class="ow6-case" id="medlivo">
+  <div class="ow6-wrap ow6-caseGrid">
+    <div class="ow6-copy">
+      <div class="ow6-ey">01 · HEALTHCARE</div>
+      <img class="ow6-logo" src="assets/medlivo-logo.webp" alt="Medlivo">
+      <h2>One connected platform from workforce demand to deployment.</h2>
+      <p>Aloden designed and engineered the product experience that connects workforce needs with clinician matching, credential readiness, scheduling, documentation, approvals, and downstream operations.</p>
+      <div class="ow6-scope"><span>PRODUCT UX</span><span>AI MATCHING</span><span>CREDENTIALING</span><span>SCHEDULING</span><span>INTEGRATIONS</span></div>
+    </div>
+    <div class="ow6-visual">
+      <div class="ow6-frame">
+        <div class="ow6-frameTop"><i></i><i></i><i></i><b>Medlivo · Workforce Operations</b><span>CONNECTED WORKFLOW</span></div>
+        <div class="ow6-frameBody">
+          <div class="ow6-medTop">
+            <div class="ow6-medCard"><small>WORKFORCE NEED</small><h3>Home health therapy coverage</h3><p>Discipline, geography, timing, visit requirements and operational context captured in one request.</p></div>
+            <div class="ow6-medCard dark"><small>BEST-FIT MATCH</small><h3>Ready clinician identified</h3><p>Experience, availability, license status and readiness combined at the decision point.</p></div>
+          </div>
+          <div class="ow6-medFlow">
+            <div><span>01</span><b>Need</b><small>Referral / request</small></div>
+            <div><span>02</span><b>Match</b><small>Evidence-ranked fit</small></div>
+            <div><span>03</span><b>Ready</b><small>Credentials + approval</small></div>
+            <div><span>04</span><b>Operate</b><small>Schedule + downstream flow</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ow6-case soft" id="startupfair">
+  <div class="ow6-wrap ow6-caseGrid reverse">
+    <div class="ow6-visual">
+      <div class="ow6-frame">
+        <div class="ow6-frameTop"><i></i><i></i><i></i><b>StartupFair · Build Studio</b><span>PRODUCTION HACKATHON PLATFORM</span></div>
+        <div class="ow6-frameBody">
+          <div class="ow6-sfShell">
+            <div class="ow6-sfTop"><b>Team Phoenix · Workspace active</b><span>PRIVATE GITHUB · ISOLATED RUNTIME</span></div>
+            <div class="ow6-sfFlow">
+              <div class="ow6-sfStep"><span>01</span><b>Challenge</b><p>Organizations publish real problems and requirements.</p></div>
+              <div class="ow6-sfStep"><span>02</span><b>Team</b><p>Applications, roles, eligibility and team formation.</p></div>
+              <div class="ow6-sfStep"><span>03</span><b>Build</b><p>Browser studio, repo, runtime, assistant and preview.</p></div>
+              <div class="ow6-sfStep"><span>04</span><b>Validate</b><p>Tests, security, demo health and exact commit freeze.</p></div>
+              <div class="ow6-sfStep"><span>05</span><b>Judge</b><p>Submission review, results and next-step opportunities.</p></div>
+            </div>
+            <div class="ow6-sfProof"><span>BROWSER BUILD STUDIO</span><span>PRIVATE GITHUB</span><span>ISOLATED RUNTIME</span><span>EXACT-COMMIT SUBMISSION</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ow6-copy">
+      <div class="ow6-ey">02 · INNOVATION</div>
+      <img class="ow6-logo sf" src="assets/startupfair-logo.webp" alt="StartupFair">
+      <h2>A full platform for the complete hackathon lifecycle.</h2>
+      <p>Aloden is developing StartupFair as a multi-role production platform—from challenge creation and team formation through in-browser development, validation, exact-commit submission, judging, results, and opportunity workflows.</p>
+      <div class="ow6-scope"><span>MULTI-ROLE UX</span><span>BUILD STUDIO</span><span>GITHUB</span><span>VALIDATION</span><span>JUDGING</span><span>ADMIN</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ow6-case violet" id="voice">
+  <div class="ow6-wrap ow6-caseGrid">
+    <div class="ow6-copy">
+      <div class="ow6-ey">03 · VOICE AI ENGINEERING</div>
+      <div class="ow6-voiceBrand"><img src="assets/aloden-logo-primary.webp" alt="Aloden"><span class="ow6-voiceDivider"></span><div><strong>Voice AI Engineering</strong><small>AN ALODEN PRODUCT ENGINEERING CAPABILITY</small></div></div>
+      <h2>Voice experiences that move from conversation to action.</h2>
+      <p>Aloden engineers voice systems that understand intent, use context, connect to tools and business systems, complete permitted actions, confirm outcomes, and hand off to a person when judgment is required.</p>
+      <div class="ow6-scope"><span>CONVERSATION UX</span><span>INTENT & CONTEXT</span><span>TOOLS & APIS</span><span>GUARDRAILS</span><span>HUMAN HANDOFF</span></div>
+    </div>
+    <div class="ow6-visual">
+      <div class="ow6-frame">
+        <div class="ow6-frameTop"><i></i><i></i><i></i><b>Voice AI · Live Workflow</b><span>CONVERSATION → ACTION</span></div>
+        <div class="ow6-frameBody">
+          <div class="ow6-voiceGrid">
+            <div class="ow6-convo"><span class="ow6-label">CONVERSATION</span><div class="ow6-bubble user">Can you move my appointment to Friday afternoon?</div><div class="ow6-bubble ai">I found two available times. I can update the later option if you confirm.</div><div class="ow6-bubble user">Use the later one.</div></div>
+            <div class="ow6-actions"><span class="ow6-label">CONNECTED SYSTEM ACTION</span><div class="ow6-action"><span>Calendar</span><b>CHECKED</b></div><div class="ow6-action"><span>Permission layer</span><b>VALIDATED</b></div><div class="ow6-action"><span>Scheduling system</span><b>UPDATED</b></div><div class="ow6-action"><span>Confirmation</span><b>SENT</b></div><div class="ow6-handoff">When the action is ambiguous, restricted, or judgment-based, the workflow routes to a person with full context.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ow6-discipline">
+  <div class="ow6-wrap ow6-disciplineGrid">
+    <div><div class="ow6-ey">HOW ALODEN BUILDS</div><h2>Different products. The same end-to-end responsibility.</h2></div>
+    <div class="ow6-rail"><div><span>01</span><b>Product Strategy</b></div><div><span>02</span><b>Experience Design</b></div><div><span>03</span><b>Engineering</b></div><div><span>04</span><b>AI & Automation</b></div><div><span>05</span><b>Integrations</b></div><div><span>06</span><b>Production</b></div></div>
+  </div>
+</section>
+
+<section class="finalCta" id="cta">
+  <div class="container"><div class="ctaBand"><div><h2>Have something worth building?</h2><p>Tell us what you’re building, modernizing, or trying to solve. Aloden can help shape the right path from idea to production.</p></div><a class="btn" href="#cta">Start a Project →</a></div></div>
+</section>
+</main>
+
+<footer class="footer" id="company">
+  <div class="container footerFinal">
+    <div class="footerFinalGrid">
+      <div class="footerFinalBrand"><img class="ow6-footer-logo" src="assets/aloden-logo-primary.webp" alt="Aloden"><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div>
+      <div class="footerFinalCol"><h4>Explore</h4><a href="#work">Built by Aloden</a><a href="index.html#capabilities">Capabilities</a><a href="index.html#insights">Insights</a><a href="index.html#company">Company</a></div>
+      <div class="footerFinalCol"><h4>Capabilities</h4><a href="index.html#capabilities">AI Product Engineering</a><a href="index.html#capabilities">Voice AI Engineering</a><a href="index.html#capabilities">Intelligent Workflow &amp; Agentic Systems</a><a href="index.html#capabilities">Product Modernization</a><a href="index.html#capabilities">Healthcare AI</a></div>
+      <div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="#cta">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div>
+    </div>
+    <div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="footerTagline">Built around your vision.</span></div>
+  </div>
+</footer>
+<script defer src="app.js"></script>
+</body>
+</html>
