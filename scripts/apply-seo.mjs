@@ -64,6 +64,11 @@ const pages = {
     description: 'Aloden is an AI-native product engineering company founded in 2024, combining product thinking, engineering depth, practical AI, and production discipline.',
     schemaType: 'AboutPage'
   },
+  'careers.html': {
+    title: 'Careers at Aloden | AI Product Engineering Jobs',
+    description: 'Explore careers at Aloden and learn how our product, design, engineering, and AI teams turn ambitious ideas into production-ready software.',
+    schemaType: 'WebPage'
+  },
   'start-project.html': {
     title: 'Start an AI Product Engineering Project | Aloden',
     description: 'Tell Aloden what you want to build, modernize, or automate. Start a conversation about AI product engineering, agentic workflows, voice AI, or healthcare AI.',
