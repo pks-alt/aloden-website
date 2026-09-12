@@ -1,85 +1,87 @@
 /* Homepage cosmetic pass — spacing and density only. No section/content redesign. */
 
 /* HERO: keep approved composition; reduce excess vertical height. */
-.homepageFinal .heroOneGrid{padding:50px 0 38px}
-.homepageFinal .heroOneActions{margin-top:22px}
-.homepageFinal .heroOneDiscipline{margin-top:20px}
-.homepageFinal .heroOneJourney{margin-top:12px}
+.homepageFinal .heroOneGrid{padding:46px 0 32px}
+.homepageFinal .heroOneActions{margin-top:20px}
+.homepageFinal .heroOneDiscipline{margin-top:18px}
+.homepageFinal .heroOneJourney{margin-top:10px}
 
 /* Keep the existing three proof items, but make the band lighter and shorter. */
-.homepageFinal .heroOneProofGrid{gap:0;padding-top:12px;padding-bottom:14px}
-.homepageFinal .heroOneProof{grid-template-columns:40px 1fr;gap:11px;padding:12px 18px;border:0;border-right:1px solid #e2e6eb;border-radius:0;background:transparent;box-shadow:none}
+.homepageFinal .heroOneProofGrid{gap:0;padding-top:10px;padding-bottom:11px}
+.homepageFinal .heroOneProof{grid-template-columns:38px 1fr;gap:10px;padding:10px 17px;border:0;border-right:1px solid #e2e6eb;border-radius:0;background:transparent;box-shadow:none}
 .homepageFinal .heroOneProof:first-child{padding-left:0}
 .homepageFinal .heroOneProof:last-child{padding-right:0;border-right:0}
-.homepageFinal .heroOneProofIcon{width:36px;height:36px;font-size:8px}
-.homepageFinal .heroOneProofIcon.modernize{font-size:16px}
-.homepageFinal .heroOneProofIcon.realUse{font-size:14px}
+.homepageFinal .heroOneProofIcon{width:34px;height:34px;font-size:8px}
+.homepageFinal .heroOneProofIcon.modernize{font-size:15px}
+.homepageFinal .heroOneProofIcon.realUse{font-size:13px}
 .homepageFinal .heroOneProof span{font-size:7.2px}
-.homepageFinal .heroOneProof h2{font-size:15.5px;margin:3px 0 4px}
-.homepageFinal .heroOneProof p{font-size:12.4px;line-height:1.42}
+.homepageFinal .heroOneProof h2{font-size:15px;margin:2px 0 3px}
+.homepageFinal .heroOneProof p{font-size:12.2px;line-height:1.4}
 
 /* Preserve the finalized Home sequence; only tighten section rhythm. */
-.homepageFinal .homePositioning{padding:56px 0}
-.homepageFinal .homePositioningGrid{gap:46px}
+.homepageFinal .homePositioning{padding:48px 0}
+.homepageFinal .homePositioningGrid{gap:42px}
 .homepageFinal .homePositioningCopy h2{font-size:clamp(36px,3.45vw,47px)}
-.homepageFinal .homePositioningCopy p{margin-top:13px}
-.homepageFinal .homePositioningRow{padding:11px 0}
+.homepageFinal .homePositioningCopy p{margin-top:11px}
+.homepageFinal .homePositioningRow{padding:10px 0}
 
-.homepageFinal .homeCapabilities{padding:58px 0}
-.homepageFinal .homeSectionHead{margin-bottom:18px}
-.homepageFinal .homeCapability{padding-top:18px;padding-bottom:17px}
-.homepageFinal .homeCapability:nth-child(even){padding-top:18px;padding-bottom:17px}
+.homepageFinal .homeCapabilities{padding:50px 0}
+.homepageFinal .homeSectionHead{margin-bottom:15px}
+.homepageFinal .homeCapability{padding-top:16px;padding-bottom:15px}
+.homepageFinal .homeCapability:nth-child(even){padding-top:16px;padding-bottom:15px}
 .homepageFinal .homeCapability h3{font-size:22px}
-.homepageFinal .homeCapabilityProof{padding-top:14px}
+.homepageFinal .homeCapabilityProof{padding-top:12px}
 
-.homepageFinal .homePaths{padding:56px 0}
-.homepageFinal .homePath{padding-top:20px;padding-bottom:20px}
-.homepageFinal .homePath h3{font-size:27px}
-.homepageFinal .homePath p{margin-bottom:11px}
-.homepageFinal .homePath a{margin-top:8px}
+.homepageFinal .homePaths{padding:48px 0}
+.homepageFinal .homePath{padding-top:17px;padding-bottom:17px}
+.homepageFinal .homePath h3{font-size:27px;margin-top:9px;margin-bottom:6px}
+.homepageFinal .homePath p{margin-bottom:9px}
+.homepageFinal .homePathRail{padding-top:9px}
+.homepageFinal .homePath a{margin-top:7px}
 
-.homepageFinal .homeAudience{padding:54px 0}
-.homepageFinal .homeAudienceGrid{gap:44px}
+.homepageFinal .homeAudience{padding:47px 0}
+.homepageFinal .homeAudienceGrid{gap:40px}
 .homepageFinal .homeAudienceCopy h2{font-size:clamp(36px,3.45vw,47px)}
-.homepageFinal .homeAudienceCopy p{margin-top:13px}
-.homepageFinal .homeAudienceRow{grid-template-columns:32px 168px 1fr;gap:13px;padding:11px 0}
+.homepageFinal .homeAudienceCopy p{margin-top:11px}
+.homepageFinal .homeAudienceRow{grid-template-columns:32px 168px 1fr;gap:12px;padding:9px 0}
 .homepageFinal .homeAudienceRow b{font-size:16px}
 .homepageFinal .homeAudienceRow p{font-size:13px}
 
-.homepageFinal .homeWhy{padding:56px 0}
-.homepageFinal .homeWhy .homeSectionHead{margin-bottom:17px}
-.homepageFinal .homeWhyItem{padding:17px 18px}
-.homepageFinal .homeWhyItem>span{margin-bottom:10px}
+.homepageFinal .homeWhy{padding:49px 0}
+.homepageFinal .homeWhy .homeSectionHead{margin-bottom:14px}
+.homepageFinal .homeWhyItem{padding:15px 17px}
+.homepageFinal .homeWhyItem>span{margin-bottom:8px}
 .homepageFinal .homeWhyItem b{font-size:17.5px}
 .homepageFinal .homeWhyItem p{font-size:12.7px}
 
 /* Keep the finalized Trust section; reduce its height only. */
-.homepageFinal #trust{padding:60px 0!important}
-.homepageFinal #trust .trustGrid{margin-top:22px}
-.homepageFinal #trust .trustGrid>div{min-height:188px;padding:20px 19px}
-.homepageFinal #trust .trustGrid>div:before{margin-bottom:20px}
-.homepageFinal #trust .trustGrid b{font-size:17px}
-.homepageFinal #trust .trustGrid span{font-size:13px;line-height:1.5}
-.homepageFinal #trust .trustClosing{margin-top:12px;padding:13px 0}
+.homepageFinal #trust{padding:50px 0!important}
+.homepageFinal #trust .trustGrid{margin-top:18px}
+.homepageFinal #trust .trustGrid>div{min-height:174px;padding:17px 18px}
+.homepageFinal #trust .trustGrid>div:before{margin-bottom:16px}
+.homepageFinal #trust .trustGrid b{font-size:16.5px}
+.homepageFinal #trust .trustGrid span{font-size:12.7px;line-height:1.48}
+.homepageFinal #trust .trustClosing{margin-top:9px;padding:11px 0}
 
-.homepageFinal .finalCta{padding:40px 0}
-.homepageFinal .finalCta .ctaBand{padding-top:30px;padding-bottom:30px}
+/* CTA should feel connected to Trust instead of floating below it. */
+.homepageFinal .finalCta{padding:32px 0}
+.homepageFinal .finalCta .ctaBand{padding-top:27px;padding-bottom:27px}
 
 @media(max-width:820px){
-  .homepageFinal .heroOneGrid{padding:44px 0 34px}
-  .homepageFinal .homePositioning,.homepageFinal .homeCapabilities,.homepageFinal .homePaths,.homepageFinal .homeAudience,.homepageFinal .homeWhy{padding:50px 0}
-  .homepageFinal #trust{padding:50px 0!important}
+  .homepageFinal .heroOneGrid{padding:42px 0 31px}
+  .homepageFinal .homePositioning,.homepageFinal .homeCapabilities,.homepageFinal .homePaths,.homepageFinal .homeAudience,.homepageFinal .homeWhy{padding:46px 0}
+  .homepageFinal #trust{padding:46px 0!important}
   .homepageFinal #trust .trustGrid>div{min-height:0}
 }
 
 @media(max-width:620px){
-  .homepageFinal .heroOneGrid{padding:40px 0 31px}
-  .homepageFinal .heroOneProofGrid{grid-template-columns:1fr;padding:8px 0}
-  .homepageFinal .heroOneProof,.homepageFinal .heroOneProof:first-child,.homepageFinal .heroOneProof:last-child{padding:11px 0;border-right:0;border-bottom:1px solid #e2e6eb}
+  .homepageFinal .heroOneGrid{padding:38px 0 29px}
+  .homepageFinal .heroOneProofGrid{grid-template-columns:1fr;padding:7px 0}
+  .homepageFinal .heroOneProof,.homepageFinal .heroOneProof:first-child,.homepageFinal .heroOneProof:last-child{padding:9px 0;border-right:0;border-bottom:1px solid #e2e6eb}
   .homepageFinal .heroOneProof:last-child{border-bottom:0}
-  .homepageFinal .homePositioning,.homepageFinal .homeCapabilities,.homepageFinal .homePaths,.homepageFinal .homeAudience,.homepageFinal .homeWhy{padding:44px 0}
+  .homepageFinal .homePositioning,.homepageFinal .homeCapabilities,.homepageFinal .homePaths,.homepageFinal .homeAudience,.homepageFinal .homeWhy{padding:40px 0}
   .homepageFinal .homeAudienceRow{grid-template-columns:30px 1fr}
   .homepageFinal .homeAudienceRow p{grid-column:2}
-  .homepageFinal #trust{padding:44px 0!important}
-  .homepageFinal .finalCta{padding:34px 0}
+  .homepageFinal #trust{padding:40px 0!important}
+  .homepageFinal .finalCta{padding:28px 0}
 }
