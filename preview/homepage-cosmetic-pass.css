@@ -1,0 +1,108 @@
+/* Homepage cosmetic pass: tighter rhythm, generic Aloden-first hero, compact proof. */
+
+.homepageFinal .heroOneGrid{padding:50px 0 38px}
+.homepageFinal .heroOneProofGrid{gap:0;padding-top:12px;padding-bottom:14px}
+.homepageFinal .heroOneProof{grid-template-columns:40px 1fr;gap:11px;padding:12px 18px;border:0;border-right:1px solid #e2e6eb;border-radius:0;background:transparent;box-shadow:none}
+.homepageFinal .heroOneProof:first-child{padding-left:0}
+.homepageFinal .heroOneProof:last-child{padding-right:0;border-right:0}
+.homepageFinal .heroOneProofIcon{width:36px;height:36px;font-size:8px}
+.homepageFinal .heroOneProofIcon.modernize{font-size:16px}
+.homepageFinal .heroOneProofIcon.realUse{font-size:14px}
+.homepageFinal .heroOneProof span{font-size:7.2px}
+.homepageFinal .heroOneProof h2{font-size:15.5px;margin:3px 0 4px}
+.homepageFinal .heroOneProof p{font-size:12.4px;line-height:1.42}
+
+.homepageFinal .homeSelectedWork{padding:60px 0 56px;background:linear-gradient(180deg,#fbfbfd 0%,#fff 100%);border-bottom:1px solid #dde1e6}
+.homepageFinal .homeSelectedHead{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:44px;align-items:end;margin-bottom:18px}
+.homepageFinal .homeSelectedHead h2{font-size:clamp(36px,3.55vw,48px);line-height:1.02;letter-spacing:-.05em;margin:12px 0 0;color:#111319}
+.homepageFinal .homeSelectedIntro{justify-self:end;max-width:430px}
+.homepageFinal .homeSelectedIntro p{font-size:14.5px;line-height:1.58;color:#56606b;margin:0 0 9px}
+.homepageFinal .homeSelectedIntro a{font-size:13px;font-weight:700;color:#5f43c5}
+.homepageFinal .homeSelectedRows{border-top:1px solid #dde1e6;border-bottom:1px solid #dde1e6}
+.homepageFinal .homeSelectedRow{display:grid;grid-template-columns:44px 190px minmax(0,1fr) 28px;gap:18px;align-items:center;min-height:84px;border-bottom:1px solid #dde1e6;transition:background .18s ease}
+.homepageFinal .homeSelectedRow:last-child{border-bottom:0}
+.homepageFinal .homeSelectedRow:hover{background:#faf9ff}
+.homepageFinal .homeSelectedIndex{font:500 8.4px "IBM Plex Mono",monospace;color:#7053d5}
+.homepageFinal .homeSelectedBrand img{max-width:132px;max-height:34px;object-fit:contain}
+.homepageFinal .homeSelectedBrand.textOnly b{font-size:17px;letter-spacing:-.025em;color:#171a20}
+.homepageFinal .homeSelectedCopy b{display:block;font-size:16.5px;letter-spacing:-.02em;color:#1b2027}
+.homepageFinal .homeSelectedCopy small{display:block;margin-top:4px;font:500 7.4px/1.45 "IBM Plex Mono",monospace;color:#7c8792;letter-spacing:.025em}
+.homepageFinal .homeSelectedArrow{font-size:18px;text-align:right;color:#7053d5}
+
+.homepageFinal .homePositioning{padding:54px 0}
+.homepageFinal .homePositioningGrid{gap:46px}
+.homepageFinal .homePositioningRow{padding:11px 0}
+.homepageFinal .homePositioningCopy h2{font-size:clamp(36px,3.45vw,47px)}
+.homepageFinal .homePositioningCopy p{margin-top:13px}
+
+.homepageFinal .homePaths{padding:56px 0}
+.homepageFinal .homeSectionHead{margin-bottom:18px}
+.homepageFinal .homePath{padding-top:20px;padding-bottom:20px}
+.homepageFinal .homePath h3{font-size:27px}
+.homepageFinal .homePath p{margin-bottom:11px}
+.homepageFinal .homePath a{margin-top:8px}
+
+.homepageFinal .homeCapabilities{padding:60px 0}
+.homepageFinal .homeCapability{padding-top:18px;padding-bottom:17px}
+.homepageFinal .homeCapability:nth-child(even){padding-top:18px;padding-bottom:17px}
+.homepageFinal .homeCapability h3{font-size:22px}
+.homepageFinal .homeCapabilityProof{padding-top:14px}
+
+.homepageFinal .homeAudience{padding:54px 0}
+.homepageFinal .homeAudienceGrid{gap:44px}
+.homepageFinal .homeAudienceCopy h2{font-size:clamp(36px,3.45vw,47px)}
+.homepageFinal .homeAudienceCopy p{margin-top:13px}
+.homepageFinal .homeAudienceRow{grid-template-columns:32px 168px 1fr;gap:13px;padding:11px 0}
+.homepageFinal .homeAudienceRow b{font-size:16px}
+.homepageFinal .homeAudienceRow p{font-size:13px}
+
+.homepageFinal .homeWhy{padding:56px 0}
+.homepageFinal .homeWhy .homeSectionHead{margin-bottom:17px}
+.homepageFinal .homeWhyItem{padding:17px 18px}
+.homepageFinal .homeWhyItem>span{margin-bottom:10px}
+.homepageFinal .homeWhyItem b{font-size:17.5px}
+.homepageFinal .homeWhyItem p{font-size:12.7px}
+.homepageFinal .homeTrustRail{display:grid;grid-template-columns:128px repeat(4,1fr);border-top:1px solid #d9dde3;border-bottom:1px solid #d9dde3;margin-top:16px;align-items:stretch}
+.homepageFinal .homeTrustRail>span{padding:13px 15px;border-left:1px solid #d9dde3}
+.homepageFinal .homeTrustRail>span:first-child{border-left:0;padding-left:0}
+.homepageFinal .homeTrustLabel{font:500 7.8px/1.4 "IBM Plex Mono",monospace;color:#7053d5;letter-spacing:.11em;display:flex;align-items:center}
+.homepageFinal .homeTrustRail b{display:block;font-size:12.5px;color:#20242b;margin-bottom:2px}
+.homepageFinal .homeTrustRail small{display:block;font-size:10.5px;line-height:1.35;color:#6b7580}
+
+.homepageFinal .finalCta{padding:40px 0}
+.homepageFinal .finalCta .ctaBand{padding-top:30px;padding-bottom:30px}
+
+@media(max-width:980px){
+  .homepageFinal .homeSelectedHead{grid-template-columns:1fr;gap:12px}
+  .homepageFinal .homeSelectedIntro{justify-self:start}
+  .homepageFinal .homeTrustRail{grid-template-columns:1fr 1fr}
+  .homepageFinal .homeTrustRail>span,.homepageFinal .homeTrustRail>span:first-child{padding:12px 0;border-left:0;border-top:1px solid #d9dde3}
+  .homepageFinal .homeTrustLabel{grid-column:1/-1;border-top:0!important}
+  .homepageFinal .homeTrustRail>span:nth-child(even){padding-right:16px}
+  .homepageFinal .homeTrustRail>span:nth-child(odd):not(:first-child){padding-left:16px;border-left:1px solid #d9dde3}
+}
+
+@media(max-width:760px){
+  .homepageFinal .heroOneGrid{padding:42px 0 32px}
+  .homepageFinal .heroOneProofGrid{grid-template-columns:1fr;padding:8px 0}
+  .homepageFinal .heroOneProof,.homepageFinal .heroOneProof:first-child,.homepageFinal .heroOneProof:last-child{padding:11px 0;border-right:0;border-bottom:1px solid #e2e6eb}
+  .homepageFinal .heroOneProof:last-child{border-bottom:0}
+  .homepageFinal .homeSelectedWork,.homepageFinal .homePositioning,.homepageFinal .homePaths,.homepageFinal .homeCapabilities,.homepageFinal .homeAudience,.homepageFinal .homeWhy{padding:46px 0}
+  .homepageFinal .homeSelectedRow{grid-template-columns:36px 1fr 24px;gap:12px;padding:13px 0}
+  .homepageFinal .homeSelectedBrand{grid-column:2}
+  .homepageFinal .homeSelectedCopy{grid-column:2;grid-row:2}
+  .homepageFinal .homeSelectedArrow{grid-column:3;grid-row:1/3}
+  .homepageFinal .homeSelectedIndex{grid-row:1/3;align-self:start;padding-top:5px}
+  .homepageFinal .homeAudienceRow{grid-template-columns:30px 1fr}
+  .homepageFinal .homeAudienceRow p{grid-column:2}
+}
+
+@media(max-width:520px){
+  .homepageFinal .homeTrustRail{grid-template-columns:1fr}
+  .homepageFinal .homeTrustRail>span,.homepageFinal .homeTrustRail>span:nth-child(n){padding:11px 0!important;border-left:0!important;border-top:1px solid #d9dde3}
+  .homepageFinal .homeTrustLabel{border-top:0!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .homepageFinal .homeSelectedRow{transition:none}
+}
