@@ -17,6 +17,7 @@ const launchPages = [
   'product-modernization.html',
   'healthcare-ai.html',
   'company.html',
+  'careers.html',
   'start-project.html',
   'privacy.html',
   'terms.html',
@@ -31,6 +32,7 @@ const requiredFiles = [
   'site-final-system.css',
   'site-qa.css',
   'legal.css',
+  'careers.css',
   'start-project-form.js',
   'start-project-form.css'
 ];
@@ -42,6 +44,7 @@ const effectiveRoutes = new Map([
   ['Built by Aloden', 'built-by-aloden.html'],
   ['Capabilities', 'capabilities.html'],
   ['Company', 'company.html'],
+  ['Careers', 'careers.html'],
   ['AI Product Engineering', 'ai-product-engineering.html'],
   ['Voice AI Engineering', 'voice-ai-engineering.html'],
   ['Voice & Conversational AI', 'voice-ai-engineering.html'],
@@ -242,6 +245,14 @@ if (fileExists('start-project.html')) {
   if (!/class=["'][^"']*projectHelpField/i.test(formPage)) errors.push('start-project.html: needed-help fieldset is missing');
 }
 
+if (fileExists('careers.html')) {
+  const careers = read('careers.html');
+  if (!hasId(careers, 'opportunities')) errors.push('careers.html: opportunities section is missing');
+  if (!hasId(careers, 'early-career')) errors.push('careers.html: early-career section is missing');
+  if (!/mailto:hr@aloden\.com/i.test(careers)) errors.push('careers.html: HR contact path is missing');
+  if (!/rel=["']canonical["'][^>]*https:\/\/www\.aloden\.com\/careers\.html/i.test(careers)) errors.push('careers.html: canonical URL is missing');
+}
+
 if (fileExists('robots.txt')) {
   const robots = read('robots.txt');
   if (!/Sitemap:\s*https:\/\/www\.aloden\.com\/sitemap\.xml/i.test(robots)) errors.push('robots.txt: sitemap declaration is missing');
@@ -271,4 +282,4 @@ if (errors.length) {
   console.error(`QA failed with ${errors.length} error(s).`);
   process.exit(1);
 }
-console.log('QA passed: launch structure, navigation, local resources, metadata, indexing rules, flattened Our Work content, and project-form structure are intact.');
+console.log('QA passed: launch structure, navigation, local resources, metadata, indexing rules, flattened Our Work content, Careers, and project-form structure are intact.');
