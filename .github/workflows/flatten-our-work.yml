@@ -37,6 +37,15 @@ jobs:
           grep -q 'id="medlivo"' preview/built-by-aloden.html
           grep -q 'id="startupfair"' preview/built-by-aloden.html
           grep -q 'id="voice"' preview/built-by-aloden.html
+      - name: Check JavaScript syntax
+        run: |
+          node --check preview/app.js
+          node --check preview/start-project-form.js
+          node --check server/project-brief-handler.mjs
+      - name: Audit launch pages and links
+        run: node scripts/site-qa.mjs
+      - name: Test secure project-brief handler
+        run: node --test server/project-brief-handler.test.mjs
       - name: Commit generated production page
         run: |
           if git diff --quiet -- preview/built-by-aloden.html; then
