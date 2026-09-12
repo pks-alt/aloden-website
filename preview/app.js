@@ -94,7 +94,6 @@ function normalizeSiteLinks() {
     ['Explore Aloden Insights →', 'insights.html']
   ]);
 
-  // Familiar navigation wording; the destination page itself remains branded “Built by Aloden.”
   document.querySelectorAll('.navLinks a').forEach(anchor => {
     if (normalizedText(anchor) === 'Built by Aloden') anchor.textContent = 'Our Work';
   });
@@ -126,16 +125,28 @@ function standardizeSiteChrome() {
   document.body.dataset.page = currentFile.replace(/\.html$/i, '') || 'home';
   ensureStylesheet('site-final-system.css?v=1');
 
-  // One official cube + wordmark proportion across every header.
+  const approvedHeaderLogo = 'assets/aloden-logo-approved-final.svg';
+  const approvedFooterLogo = 'assets/aloden-logo-approved-dark.svg';
+
+  // One approved ribbon-A primary lockup across every header.
   document.querySelectorAll('.siteHeader .brand').forEach(brand => {
     brand.href = 'index.html';
     brand.setAttribute('aria-label', 'Aloden home');
-    brand.innerHTML = '<img class="siteBrandLogo" src="assets/aloden-cube-logo.svg" alt="Aloden" decoding="async">';
+    brand.innerHTML = `<img class="siteBrandLogo" src="${approvedHeaderLogo}" alt="Aloden" decoding="async">`;
   });
 
-  // One official dark-background lockup across every footer.
+  // Replace legacy footer lockups with the approved reverse logo for dark backgrounds.
   document.querySelectorAll('footer .alodenLockup').forEach(lockup => {
-    lockup.outerHTML = '<img class="siteFooterLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden" loading="lazy" decoding="async">';
+    lockup.outerHTML = `<img class="siteFooterLogo" src="${approvedFooterLogo}" alt="Aloden" loading="lazy" decoding="async">`;
+  });
+
+  // Normalize newer footer image implementations too, so no page can keep an older mark.
+  document.querySelectorAll('footer img.c-footerBrand, footer img.w9-footerLogo, footer .footerFinalBrand > img, footer .contentReviewFooterBrand > img').forEach(img => {
+    img.src = approvedFooterLogo;
+    img.alt = 'Aloden';
+    img.classList.add('siteFooterLogo');
+    img.setAttribute('loading', 'lazy');
+    img.setAttribute('decoding', 'async');
   });
 }
 
@@ -179,7 +190,7 @@ function installMetadataBaseline() {
     icon.type = 'image/svg+xml';
     document.head.appendChild(icon);
   }
-  icon.href = 'assets/aloden-cube-symbol.svg';
+  icon.href = 'assets/aloden-symbol-approved.svg';
 
   const ensureMeta = (selector, attrs) => {
     let node = document.head.querySelector(selector);
@@ -208,7 +219,7 @@ function installMetadataBaseline() {
       '@type': 'Organization',
       name: 'Aloden LLC',
       url: `${siteOrigin}/`,
-      logo: `${siteOrigin}/assets/aloden-cube-logo.svg`,
+      logo: `${siteOrigin}/assets/aloden-logo-approved-final.svg`,
       email: 'hello@aloden.com',
       sameAs: ['https://www.linkedin.com/company/alodenllc']
     });
