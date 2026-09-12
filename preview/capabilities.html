@@ -1,21 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Explore Aloden capabilities across AI product engineering, voice AI, intelligent workflow and agentic systems, product modernization, and deep healthcare AI experience.">
-<title>Aloden Capabilities — AI Product Engineering &amp; Modernization</title>
+<meta name="description" content="Aloden helps teams build new intelligent products, modernize existing platforms, and add AI, agentic workflows, and voice where they create real business value.">
+<title>Capabilities — Aloden</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="capabilities.css">
+<style>
+:root{--capx-ink:#0b0d12;--capx-body:#4c5565;--capx-muted:#727b8b;--capx-line:#e6e8ed;--capx-soft:#fafbfc;--capx-softv:#f7f4ff;--capx-violet:#7c4dff;--capx-shadow:0 18px 46px rgba(21,28,45,.07)}
+*{box-sizing:border-box}.capx-wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}.capx-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--capx-violet)}.capx-brandLogo{width:158px;height:auto}.capx-footerLogo{width:148px;height:auto}
+.siteHeader{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.965);backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(226,229,235,.95)}.siteHeader .brand{min-width:174px}.siteHeader .navLinks a.active{color:var(--capx-ink)}
+
+/* HERO */
+.capx-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--capx-line);background:linear-gradient(180deg,#fff 0%,#fbfbfc 100%)}
+.capx-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 84% 12%,rgba(124,77,255,.10),transparent 27%),radial-gradient(circle at 96% 56%,rgba(62,123,255,.05),transparent 28%);pointer-events:none}
+.capx-heroGrid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.75fr);gap:72px;align-items:center;padding:72px 0 62px}
+.capx-hero h1{font-size:clamp(48px,5vw,68px);line-height:1;letter-spacing:-.055em;margin:14px 0 18px;max-width:820px}
+.capx-heroLead{font-size:17px;line-height:1.66;color:var(--capx-body);max-width:760px;margin:0}.capx-heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.capx-start{border:1px solid #e1e4e9;border-radius:18px;background:#fff;box-shadow:var(--capx-shadow);overflow:hidden}.capx-startTop{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;border-bottom:1px solid var(--capx-line);background:#fcfcfd}.capx-startTop b{font-size:12px}.capx-startTop span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--capx-muted)}
+.capx-startItem{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:16px;border-bottom:1px solid var(--capx-line)}.capx-startItem:last-child{border-bottom:0}.capx-startNum{width:34px;height:34px;border-radius:10px;background:#f1edff;display:grid;place-items:center;font:500 8px "IBM Plex Mono",monospace;color:#6245c9}.capx-startItem:nth-child(3) .capx-startNum{background:#11131a;color:#b59fff}.capx-startItem b{display:block;font-size:16px;letter-spacing:-.02em}.capx-startItem p{font-size:12.5px;line-height:1.52;color:var(--capx-muted);margin:4px 0 0}
+
+/* CAPABILITIES */
+.capx-section{padding:78px 0;border-bottom:1px solid var(--capx-line)}.capx-section.soft{background:var(--capx-soft)}.capx-head{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:56px;align-items:end}.capx-head h2{font-size:clamp(36px,3.7vw,50px);line-height:1.04;letter-spacing:-.046em;margin:10px 0 0}.capx-head p{font-size:15px;line-height:1.65;color:var(--capx-body);margin:0}
+.capx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:32px}.capx-card{position:relative;border:1px solid #e1e4e9;border-radius:18px;background:#fff;padding:24px;overflow:hidden;box-shadow:0 10px 30px rgba(21,28,45,.025)}.capx-card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--capx-violet),rgba(124,77,255,.12))}.capx-card.dark{background:#111318;border-color:#292c34;color:#fff}.capx-card.dark:before{background:linear-gradient(90deg,#a58aff,#332950)}.capx-card.softv{background:linear-gradient(145deg,#fff,#fbf9ff)}
+.capx-cardTop{display:flex;align-items:center;justify-content:space-between;gap:14px}.capx-cardNum{font:500 9px "IBM Plex Mono",monospace;color:var(--capx-violet)}.capx-cardType{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.09em;color:#7b8491;text-align:right}.capx-card.dark .capx-cardNum{color:#a58aff}.capx-card.dark .capx-cardType{color:#a1a8b2}
+.capx-card h3{font-size:clamp(25px,2.5vw,33px);line-height:1.08;letter-spacing:-.04em;margin:18px 0 10px;max-width:560px}.capx-card>p{font-size:13.5px;line-height:1.62;color:var(--capx-body);margin:0;max-width:610px}.capx-card.dark>p{color:#aeb4bf}
+.capx-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:21px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:11px;overflow:hidden}.capx-flow span{background:#fbfcfd;padding:11px 7px;text-align:center;font-size:9.5px;color:#626b79}.capx-card.dark .capx-flow{background:#30343d;border-color:#30343d}.capx-card.dark .capx-flow span{background:#171a20;color:#b7bec8}
+.capx-areas{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.capx-areas span{border:1px solid #e0e4e9;background:#fff;border-radius:999px;padding:6px 9px;font-size:9.5px;line-height:1.2;color:#68717e}.capx-card.dark .capx-areas span{background:#171a20;border-color:#30343d;color:#b4bbc5}
+
+/* HEALTHCARE */
+.capx-health{padding:72px 0;background:linear-gradient(180deg,#fafbfc 0%,#f8f8fb 100%);border-bottom:1px solid var(--capx-line)}.capx-healthGrid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(420px,1.14fr);gap:60px;align-items:center}.capx-health h2{font-size:clamp(34px,3.5vw,48px);line-height:1.04;letter-spacing:-.045em;margin:10px 0 13px}.capx-health p{font-size:15px;line-height:1.66;color:var(--capx-body);margin:0}.capx-healthAreas{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e0e3e7;border:1px solid #e0e3e7;border-radius:12px;overflow:hidden;margin-top:24px}.capx-healthAreas div{background:#fff;padding:14px}.capx-healthAreas b{display:block;font-size:13px}.capx-healthAreas span{display:block;font-size:10.5px;line-height:1.45;color:var(--capx-muted);margin-top:4px}.capx-healthProof{border:1px solid #dfe3e8;border-radius:18px;background:#fff;box-shadow:var(--capx-shadow);overflow:hidden}.capx-healthProofTop{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-bottom:1px solid var(--capx-line);background:#fcfcfd}.capx-healthProofTop img{width:118px;height:auto}.capx-healthProofTop span{font:500 7px "IBM Plex Mono",monospace;color:#7c4dff;letter-spacing:.08em}.capx-healthProofBody{padding:18px}.capx-healthProofBody h3{font-size:23px;letter-spacing:-.03em;margin:0 0 8px}.capx-healthProofBody p{font-size:12.5px}.capx-healthFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#e1e4e9;border:1px solid #e1e4e9;border-radius:10px;overflow:hidden;margin-top:16px}.capx-healthFlow span{background:#fff;padding:12px 8px;text-align:center;font-size:9px;color:#616b76}.capx-healthLink{display:inline-block;margin-top:16px;color:var(--capx-violet);font-size:12px;font-weight:600}
+
+/* PROOF */
+.capx-proof{padding:74px 0;background:#fff;border-bottom:1px solid var(--capx-line)}.capx-proofHead{display:flex;align-items:end;justify-content:space-between;gap:32px}.capx-proofHead h2{font-size:clamp(34px,3.5vw,48px);line-height:1.04;letter-spacing:-.045em;margin:10px 0 0}.capx-proofHead p{max-width:560px;font-size:14px;line-height:1.62;color:var(--capx-body);margin:0}.capx-proofGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}.capx-proofCard{border:1px solid #e1e4e9;border-radius:16px;background:#fff;padding:20px;min-height:220px;display:flex;flex-direction:column}.capx-proofBrand{height:42px;display:flex;align-items:center}.capx-proofBrand img.med{width:118px}.capx-proofBrand img.sf{width:112px}.capx-proofBrand.voice{font-size:18px;font-weight:700;letter-spacing:-.025em}.capx-proofCard h3{font-size:18px;letter-spacing:-.025em;margin:18px 0 7px}.capx-proofCard p{font-size:12.5px;line-height:1.58;color:var(--capx-muted);margin:0}.capx-proofMeta{margin-top:auto;padding-top:18px;font:500 8px "IBM Plex Mono",monospace;color:var(--capx-violet);letter-spacing:.05em}.capx-proofAction{margin-top:22px;text-align:right}.capx-proofAction a{color:var(--capx-violet);font-size:13px;font-weight:600}
+
+/* CTA */
+.capx-cta{padding:30px 0 32px;background:#fff}
+
+@media(max-width:980px){.capx-heroGrid,.capx-head,.capx-healthGrid{grid-template-columns:1fr}.capx-heroGrid{gap:36px}.capx-grid{grid-template-columns:1fr}.capx-head{gap:18px}.capx-healthGrid{gap:34px}.capx-proofGrid{grid-template-columns:1fr 1fr}.capx-proofCard:last-child{grid-column:1/-1}.capx-proofHead{align-items:flex-start;flex-direction:column}}
+@media(max-width:650px){.capx-wrap{width:calc(100% - 32px)}.capx-heroGrid{padding:54px 0 44px}.capx-hero h1{font-size:43px}.capx-section,.capx-health,.capx-proof{padding:56px 0}.capx-flow{grid-template-columns:1fr}.capx-healthAreas,.capx-healthFlow,.capx-proofGrid{grid-template-columns:1fr}.capx-proofCard:last-child{grid-column:auto}.capx-footerLogo,.capx-brandLogo{width:142px}}
+</style>
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Aloden home"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="capx-brandLogo" src="assets/aloden-logo-primary.webp" alt="Aloden"></a>
     <nav class="navLinks" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="built-by-aloden.html">Built by Aloden</a>
@@ -23,207 +56,110 @@
       <a href="index.html#insights">Insights</a>
       <a href="index.html#company">Company</a>
     </nav>
-    <a class="btn primary navCta" href="#cta">Start a Project →</a>
+    <a class="btn primary navCta" href="mailto:hello@aloden.com">Start a Project →</a>
     <button class="menuBtn" aria-expanded="false" aria-label="Open navigation">☰</button>
   </div>
 </header>
 
 <main>
-<section class="capPageHero">
-  <div class="container capHeroGrid">
-    <div class="capHeroCopy">
-      <div class="eyebrow">CAPABILITIES</div>
-      <h1>Capabilities built around the product, not the technology.</h1>
-      <p class="capHeroSupport">Strategy. Design. AI. Engineering. Production.</p>
-      <p class="capHeroDesc">Aloden brings product strategy, AI architecture, experience design, engineering, integration, and modernization together around one goal: building intelligent digital products that work in the real world.</p>
-      <div class="capHeroActions">
-        <a class="btn primary" href="#cta">Start a Project →</a>
+<section class="capx-hero">
+  <div class="capx-wrap capx-heroGrid">
+    <div>
+      <div class="capx-ey">CAPABILITIES</div>
+      <h1>Build what’s next. Modernize what already matters.</h1>
+      <p class="capx-heroLead">Aloden brings product strategy, AI, experience design, and engineering together to build new intelligent products, modernize existing platforms, and connect AI to real business workflows.</p>
+      <div class="capx-heroActions">
+        <a class="btn primary" href="mailto:hello@aloden.com">Start a Project →</a>
         <a class="btn secondary" href="built-by-aloden.html">See What We’ve Built</a>
       </div>
     </div>
-
-    <div class="capSystemStage" aria-label="Four Aloden capabilities connected into one product system">
-      <div class="capSystemTop"><span class="dot"></span><b>Capability system</b><span class="mono">ONE PRODUCT OUTCOME</span></div>
-      <div class="capSystemGrid">
-        <article class="capSystemCard"><span class="capNum">01</span><h3>AI Product Engineering</h3><p>Product definition · architecture · full-stack engineering</p></article>
-        <article class="capSystemCard"><span class="capNum">02</span><h3>Voice AI Engineering</h3><p>Conversation · intent · connected action</p></article>
-        <article class="capSystemCard"><span class="capNum">03</span><h3>Intelligent Workflow &amp; Agentic Systems</h3><p>Tools · orchestration · automation · human control</p></article>
-        <article class="capSystemCard"><span class="capNum">04</span><h3>Product Modernization</h3><p>Architecture · experience · integrations · AI enablement</p></article>
-      </div>
-      <div class="capOutcomePath">
-        <div class="capOutcomeLabel">CONNECTED PRODUCT PATH</div>
-        <div class="capOutcomeFlow"><span>Problem / Opportunity</span><span>Product</span><span>Production</span><span>Evolution</span></div>
-      </div>
-      <div class="capSystemClosing">Different capabilities. One product system.</div>
+    <div class="capx-start" aria-label="Three common ways clients engage Aloden">
+      <div class="capx-startTop"><b>Start with the outcome.</b><span>THREE COMMON ENTRY POINTS</span></div>
+      <div class="capx-startItem"><span class="capx-startNum">01</span><div><b>Build New</b><p>Turn an opportunity into a production-ready intelligent product.</p></div></div>
+      <div class="capx-startItem"><span class="capx-startNum">02</span><div><b>Modernize Existing</b><p>Improve architecture, experience, integrations, and AI capability without unnecessary rewrites.</p></div></div>
+      <div class="capx-startItem"><span class="capx-startNum">03</span><div><b>Add Intelligence</b><p>Use AI, agents, automation, or voice where they materially improve a workflow or decision.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="coreCapabilities section" id="core-capabilities">
-  <div class="container">
-    <div class="coreCapabilitiesHead">
-      <div class="eyebrow">CORE CAPABILITIES</div>
-      <h2 class="h2">Four capabilities. One connected product system.</h2>
-      <p class="lead">Aloden combines capabilities that are often separated across strategy, design, AI, and engineering teams. We bring them together around the product itself—from defining what should exist to making it work reliably in production.</p>
+<section class="capx-section" id="core-capabilities">
+  <div class="capx-wrap">
+    <div class="capx-head">
+      <div><div class="capx-ey">WHAT WE BRING TO THE PRODUCT</div><h2>Four capabilities. Applied where they create value.</h2></div>
+      <p>We do not lead with a technology stack. We start with the product, the workflow, and the outcome—then bring together the capabilities required to get it into production.</p>
     </div>
-
-    <div class="coreCapabilityGrid">
-      <article class="coreCapabilityCard" id="ai-product-engineering">
-        <div class="coreCapabilityTop"><span class="coreCapabilityNum">01</span><span class="coreCapabilityType">AI PRODUCT ENGINEERING</span></div>
+    <div class="capx-grid">
+      <article class="capx-card" id="ai-product-engineering">
+        <div class="capx-cardTop"><span class="capx-cardNum">01</span><span class="capx-cardType">AI PRODUCT ENGINEERING</span></div>
         <h3>Build the intelligent product, not just the model.</h3>
-        <p>Turn a business problem or product idea into a production-ready digital product by connecting product definition, AI architecture, experience design, application engineering, integration, evaluation, and deployment.</p>
-        <div class="coreCapabilityFlow" aria-label="AI Product Engineering flow"><span>Define</span><span>Design</span><span>Engineer</span><span>Evaluate</span><span>Deploy</span></div>
-        <div class="coreCapabilityAreas"><span>Product strategy</span><span>AI architecture</span><span>Full-stack engineering</span><span>Model &amp; data integration</span><span>Evaluation &amp; observability</span><span>Production delivery</span></div>
-        <a class="textLink coreCapabilityLink" href="#cta">Explore AI Product Engineering →</a>
+        <p>From product definition and AI architecture through experience design, full-stack engineering, evaluation, and production delivery.</p>
+        <div class="capx-flow"><span>Define</span><span>Design</span><span>Engineer</span><span>Evaluate</span><span>Deploy</span></div>
+        <div class="capx-areas"><span>Product strategy</span><span>AI architecture</span><span>Full-stack engineering</span><span>Evaluation &amp; observability</span></div>
       </article>
 
-      <article class="coreCapabilityCard voiceCapability" id="voice-ai-engineering">
-        <div class="coreCapabilityTop"><span class="coreCapabilityNum">02</span><span class="coreCapabilityType">VOICE AI ENGINEERING</span></div>
-        <h3>Turn conversation into useful, controlled action.</h3>
-        <p>Design voice experiences that understand intent and context, connect to business systems, complete permitted actions, confirm outcomes, and involve people when judgment or approval is required.</p>
-        <div class="coreCapabilityFlow" aria-label="Voice AI Engineering flow"><span>Listen</span><span>Understand</span><span>Connect</span><span>Act</span><span>Escalate</span></div>
-        <div class="coreCapabilityAreas"><span>Conversational UX</span><span>Speech &amp; intent</span><span>Context management</span><span>System / tool integration</span><span>Guardrails</span><span>Human escalation</span></div>
-        <a class="textLink coreCapabilityLink" href="#cta">Explore Voice AI Engineering →</a>
+      <article class="capx-card softv" id="product-modernization">
+        <div class="capx-cardTop"><span class="capx-cardNum">02</span><span class="capx-cardType">PRODUCT MODERNIZATION</span></div>
+        <h3>Make existing software ready for what comes next.</h3>
+        <p>Modernize architecture, experience, integrations, data, and workflows while protecting the business logic and product value that already work.</p>
+        <div class="capx-flow"><span>Assess</span><span>Prioritize</span><span>Modernize</span><span>Integrate</span><span>Evolve</span></div>
+        <div class="capx-areas"><span>Architecture</span><span>Experience redesign</span><span>APIs &amp; integrations</span><span>AI enablement</span></div>
       </article>
 
-      <article class="coreCapabilityCard agenticCapability" id="agentic-systems">
-        <div class="coreCapabilityTop"><span class="coreCapabilityNum">03</span><span class="coreCapabilityType">INTELLIGENT WORKFLOW &amp; AGENTIC SYSTEMS</span></div>
-        <h3>Connect intelligence to the work around it.</h3>
-        <p>Engineer AI systems that can reason across workflows, use tools, maintain context, coordinate multiple steps, work with approvals, and involve people at the right points.</p>
-        <div class="coreCapabilityFlow" aria-label="Intelligent workflow and agentic systems flow"><span>Context</span><span>Reason</span><span>Tools</span><span>Workflow</span><span>Human Control</span></div>
-        <div class="coreCapabilityAreas"><span>Agentic workflows</span><span>Tool use</span><span>Orchestration</span><span>State &amp; context</span><span>Workflow automation</span><span>Human-in-the-loop controls</span></div>
-        <a class="textLink coreCapabilityLink" href="#cta">Explore Intelligent Workflow &amp; Agentic Systems →</a>
+      <article class="capx-card dark" id="agentic-systems">
+        <div class="capx-cardTop"><span class="capx-cardNum">03</span><span class="capx-cardType">INTELLIGENT WORKFLOW &amp; AGENTIC SYSTEMS</span></div>
+        <h3>Connect intelligence to the work that needs to happen.</h3>
+        <p>Build AI systems that use tools, maintain context, coordinate multi-step work, connect across systems, and preserve approvals and human control where judgment matters.</p>
+        <div class="capx-flow"><span>Context</span><span>Reason</span><span>Tools</span><span>Workflow</span><span>Human Control</span></div>
+        <div class="capx-areas"><span>Agentic workflows</span><span>Tool use</span><span>Orchestration</span><span>Human-in-the-loop</span></div>
       </article>
 
-      <article class="coreCapabilityCard modernizationCapability" id="product-modernization">
-        <div class="coreCapabilityTop"><span class="coreCapabilityNum">04</span><span class="coreCapabilityType">PRODUCT MODERNIZATION</span></div>
-        <h3>Make what already works significantly better.</h3>
-        <p>Modernize existing applications and platforms by improving architecture, experience, workflows, integrations, data, and AI capability without unnecessary rewrites or disruption.</p>
-        <div class="coreCapabilityFlow" aria-label="Product Modernization flow"><span>Assess</span><span>Prioritize</span><span>Modernize</span><span>Integrate</span><span>Evolve</span></div>
-        <div class="coreCapabilityAreas"><span>Architecture modernization</span><span>Experience redesign</span><span>API &amp; integration modernization</span><span>Data foundations</span><span>AI enablement</span><span>Phased migration</span></div>
-        <a class="textLink coreCapabilityLink" href="#cta">Explore Product Modernization →</a>
+      <article class="capx-card" id="voice-ai-engineering">
+        <div class="capx-cardTop"><span class="capx-cardNum">04</span><span class="capx-cardType">VOICE AI ENGINEERING</span></div>
+        <h3>From conversation to completed action.</h3>
+        <p>Engineer system-connected voice experiences that understand intent, use business context, take permitted actions, confirm outcomes, and hand off when judgment is required.</p>
+        <div class="capx-flow"><span>Listen</span><span>Understand</span><span>Authorize</span><span>Act</span><span>Confirm</span></div>
+        <div class="capx-areas"><span>Conversational UX</span><span>Speech &amp; intent</span><span>Tool integration</span><span>Human escalation</span></div>
       </article>
     </div>
-
-    <div class="coreCapabilitiesClosing">The right capability depends on the product. The disciplines work better together.</div>
   </div>
 </section>
 
-<section class="healthcareDepth section soft" id="healthcare-ai">
-  <div class="container">
-    <div class="healthcareDepthHead">
-      <div>
-        <div class="eyebrow">DEEP DOMAIN EXPERIENCE</div>
-        <h2 class="h2">Healthcare AI where workflow, trust, and operational reality matter.</h2>
-        <p class="healthcareSupport">Applying Aloden’s product-engineering capabilities to complex healthcare workflows.</p>
-      </div>
-      <p class="healthcarePositioning">Healthcare is one domain where Aloden’s capabilities run especially deep.</p>
-    </div>
-
-    <p class="healthcareIntro">Healthcare products operate across people, clinical and operational workflows, fragmented systems, sensitive data, regulatory requirements, and decisions where human judgment still matters. Aloden brings product engineering, AI, workflow design, integration, and modernization together to build healthcare technology around those realities.</p>
-
-    <div class="healthcareSystem" aria-label="Healthcare workflow from need or referral through operations">
-      <div class="healthcareSystemTop"><span>HEALTHCARE PRODUCT SYSTEM</span><b>WORKFLOW + TRUST + OPERATIONS</b></div>
-      <div class="healthcareFlow"><span>Need / Referral</span><span>Intelligence</span><span>Readiness</span><span>Scheduling / Care</span><span>Documentation</span><span>Operations</span></div>
-      <div class="healthcareLayers"><span>People</span><span>Workflow</span><span>Data</span><span>Human Control</span></div>
-    </div>
-
-    <div class="healthcareDepthGrid">
-      <article class="healthcareDepthCard"><span class="num">01</span><h3>Workforce Intelligence &amp; Matching</h3><strong>Move from demand to better-informed workforce decisions.</strong><p>Design products that structure workforce needs, clinician profiles, availability, qualifications, readiness, and relevant evidence so matching and prioritization can happen with clearer context.</p></article>
-      <article class="healthcareDepthCard"><span class="num">02</span><h3>Credentialing &amp; Operational Readiness</h3><strong>Make readiness visible before it becomes an operational problem.</strong><p>Connect requirements, documentation, verification, approvals, exceptions, and human review into workflows that make readiness easier to understand and manage.</p></article>
-      <article class="healthcareDepthCard"><span class="num">03</span><h3>Scheduling, Care &amp; Workflow Coordination</h3><strong>Connect the work before, during, and after an assignment or visit.</strong><p>Design scheduling, visit or shift workflows, operational handoffs, documentation status, and downstream activity as part of one connected product experience.</p></article>
-      <article class="healthcareDepthCard"><span class="num">04</span><h3>Responsible AI &amp; Human Control</h3><strong>Use intelligence without losing accountability.</strong><p>Build explainability, permissions, review points, exception handling, audit context, privacy considerations, and escalation into AI-enabled healthcare workflows.</p></article>
-    </div>
-
-    <div class="healthcareDepthActions"><a class="textLink" href="#cta">Explore Healthcare AI →</a><a class="textLink secondaryDepthLink" href="built-by-aloden.html#products">See Medlivo →</a></div>
-  </div>
-</section>
-
-<section class="capabilityComposition section" id="capability-composition">
-  <div class="container">
-    <div class="capabilityCompositionHead">
-      <div class="eyebrow">HOW THE CAPABILITIES WORK TOGETHER</div>
-      <h2 class="h2">The capability mix follows the problem.</h2>
-      <p class="lead">Aloden does not force every product into the same delivery model. We start with the problem, the product that already exists—or needs to exist—and the outcome the business is trying to create. Then we bring together the right combination of product, AI, workflow, voice, modernization, and engineering disciplines.</p>
-    </div>
-
-    <div class="capabilityPathStack">
-      <article class="capabilityPathRow">
-        <div class="capabilityPathIntro">
-          <span class="capabilityPathNum">01</span>
-          <div class="capabilityStartTag">BUILD NEW</div>
-          <h3>Build a New Intelligent Product</h3>
-          <strong>Turn an opportunity into something people can actually use.</strong>
-          <p>For a new product, the work usually begins with product definition and architecture, then expands into experience design, engineering, AI, integrations, evaluation, and production.</p>
-        </div>
-        <div class="capabilityPathSystem">
-          <div class="capabilityMix"><span class="mixLabel">TYPICAL CAPABILITY MIX</span><div class="mixPills"><b>AI Product Engineering <em>Primary</em></b><span>Agentic Systems · as needed</span><span>Voice AI · as needed</span><span class="mutedMix">Modernization · minimal</span></div></div>
-          <div class="capabilityJourney" aria-label="Build new product flow"><span>Opportunity</span><span>Product Definition</span><span>Architecture</span><span>Experience</span><span>Engineering</span><span>Production</span></div>
-        </div>
-      </article>
-
-      <article class="capabilityPathRow modernizationPath">
-        <div class="capabilityPathIntro">
-          <span class="capabilityPathNum">02</span>
-          <div class="capabilityStartTag">MODERNIZE</div>
-          <h3>Modernize an Existing Product</h3>
-          <strong>Improve what already has value without rebuilding everything.</strong>
-          <p>For an existing product, we first understand what should stay, what is holding the product back, and where modernization will create the most value. Architecture, experience, integrations, data, and AI can then evolve in controlled stages.</p>
-        </div>
-        <div class="capabilityPathSystem">
-          <div class="capabilityMix"><span class="mixLabel">TYPICAL CAPABILITY MIX</span><div class="mixPills"><b>Product Modernization <em>Primary</em></b><span>AI Product Engineering · supporting</span><span>Agentic Systems · as needed</span><span>Voice AI · as needed</span></div></div>
-          <div class="capabilityJourney" aria-label="Product modernization flow"><span>Current Product</span><span>Priorities</span><span>Modernization Path</span><span>Incremental Change</span><span>Integration</span><span>Evolution</span></div>
-        </div>
-      </article>
-
-      <article class="capabilityPathRow intelligencePath">
-        <div class="capabilityPathIntro">
-          <span class="capabilityPathNum">03</span>
-          <div class="capabilityStartTag">ADD INTELLIGENCE</div>
-          <h3>Add Intelligence to a Workflow</h3>
-          <strong>Improve a decision or workflow without inventing AI for its own sake.</strong>
-          <p>Sometimes the product already works—the opportunity is to make a particular workflow more intelligent, automated, conversational, or easier to operate.</p>
-        </div>
-        <div class="capabilityPathSystem">
-          <div class="capabilityMix"><span class="mixLabel">TYPICAL CAPABILITY MIX</span><div class="mixPills"><b>Intelligent Workflow &amp; Agentic Systems <em>Primary</em></b><span>AI Product Engineering · supporting</span><span>Voice AI · as needed</span><span>Modernization · as needed</span></div></div>
-          <div class="capabilityJourney" aria-label="Add intelligence to workflow flow"><span>Workflow</span><span>Decision Point</span><span>Intelligence</span><span>Tools / Systems</span><span>Human Control</span><span>Measure &amp; Improve</span></div>
-        </div>
-      </article>
-    </div>
-
-    <div class="capabilityMatrixWrap">
-      <div class="capabilityMatrixLabel">CAPABILITY COMPOSITION</div>
-      <div class="capabilityMatrixScroller">
-        <table class="capabilityMatrix">
-          <thead><tr><th>Starting point</th><th>AI Product Engineering</th><th>Voice AI</th><th>Agentic Systems</th><th>Modernization</th></tr></thead>
-          <tbody>
-            <tr><th>Build New</th><td><b>Primary</b></td><td>As needed</td><td>As needed</td><td>—</td></tr>
-            <tr><th>Modernize</th><td>Supporting</td><td>As needed</td><td>As needed</td><td><b>Primary</b></td></tr>
-            <tr><th>Add Intelligence</th><td>Supporting</td><td>As needed</td><td><b>Primary</b></td><td>As needed</td></tr>
-          </tbody>
-        </table>
+<section class="capx-health" id="healthcare-ai">
+  <div class="capx-wrap capx-healthGrid">
+    <div>
+      <div class="capx-ey">DEEP DOMAIN EXPERIENCE · HEALTHCARE</div>
+      <h2>Healthcare AI where workflow, trust, and operational reality matter.</h2>
+      <p>Healthcare is one domain where Aloden’s product-engineering capabilities run especially deep. We design around people, sensitive data, clinical and operational workflows, fragmented systems, readiness requirements, and decisions where human judgment still matters.</p>
+      <div class="capx-healthAreas">
+        <div><b>Workforce intelligence</b><span>Matching, prioritization, readiness, and decision support.</span></div>
+        <div><b>Credentialing &amp; readiness</b><span>Requirements, approvals, exceptions, and human review.</span></div>
+        <div><b>Scheduling &amp; operations</b><span>Connected workflows before, during, and after assignments.</span></div>
+        <div><b>Responsible AI</b><span>Permissions, explainability, audit context, and escalation.</span></div>
       </div>
     </div>
-
-    <div class="capabilityCompositionClosing">Start with the outcome. Use the technology that earns its place.</div>
-  </div>
-</section>
-
-<section class="finalCta capFinalCta" id="cta">
-  <div class="container">
-    <div class="ctaBand">
-      <div>
-        <h2>Start with the problem. We’ll shape the right path.</h2>
-        <p>Whether you’re building a new intelligent product, modernizing software already in use, or improving a workflow with AI, Aloden can help define the opportunity, bring together the right capabilities, and move from idea to production.</p>
-        <div class="capCtaSupport">New Product · Modernization · AI Workflow · Voice AI</div>
-      </div>
-      <a class="btn" href="#">Start a Project →</a>
+    <div class="capx-healthProof">
+      <div class="capx-healthProofTop"><img src="assets/medlivo-logo.webp" alt="Medlivo"><span>BUILT BY ALODEN</span></div>
+      <div class="capx-healthProofBody"><h3>Healthcare capability, proven in product.</h3><p>Medlivo connects healthcare workforce demand, clinician matching, credentialing, scheduling, documentation, and operational follow-through in one product experience.</p><div class="capx-healthFlow"><span>Need</span><span>Match</span><span>Credential</span><span>Schedule</span><span>Operate</span></div><a class="capx-healthLink" href="built-by-aloden.html">See Medlivo in Our Work →</a></div>
     </div>
   </div>
 </section>
+
+<section class="capx-proof">
+  <div class="capx-wrap">
+    <div class="capx-proofHead"><div><div class="capx-ey">CAPABILITIES IN PRACTICE</div><h2>The work makes the capability real.</h2></div><p>Our capabilities are not a service catalog in isolation. They show up in products that connect people, systems, intelligence, and real operating workflows.</p></div>
+    <div class="capx-proofGrid">
+      <article class="capx-proofCard"><div class="capx-proofBrand"><img class="med" src="assets/medlivo-logo.webp" alt="Medlivo"></div><h3>Healthcare workforce technology</h3><p>Product engineering, AI matching, credentialing, scheduling, workflow design, and operational integrations.</p><div class="capx-proofMeta">PRODUCT · AI · WORKFLOW · INTEGRATION</div></article>
+      <article class="capx-proofCard"><div class="capx-proofBrand"><img class="sf" src="assets/startupfair-logo.webp" alt="StartupFair"></div><h3>AI innovation platform</h3><p>Multi-role product architecture, browser Build Studio, private GitHub, isolated runtime, validation, judging, and opportunity workflows.</p><div class="capx-proofMeta">PLATFORM · CLOUD · GITHUB · AI WORKFLOWS</div></article>
+      <article class="capx-proofCard"><div class="capx-proofBrand voice">Voice AI Engineering</div><h3>Conversation connected to business systems</h3><p>Intent, context, permissions, tool use, system action, confirmation, guardrails, observability, and human handoff.</p><div class="capx-proofMeta">VOICE · ORCHESTRATION · TOOLS · HUMAN CONTROL</div></article>
+    </div>
+    <div class="capx-proofAction"><a href="built-by-aloden.html">See Our Work →</a></div>
+  </div>
+</section>
+
+<section class="finalCta capx-cta" id="cta"><div class="container"><div class="ctaBand"><div><h2>Start with the problem. We’ll shape the right path.</h2><p>Whether you’re building something new, modernizing a product already in use, or adding intelligence to a workflow, Aloden can help move it from opportunity to production.</p></div><a class="btn" href="mailto:hello@aloden.com">Start a Project →</a></div></div></section>
 </main>
 
-<footer class="footer" id="company"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="#top">Capabilities</a><a href="index.html#insights">Insights</a><a href="index.html#company">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="#ai-product-engineering">AI Product Engineering</a><a href="#voice-ai-engineering">Voice AI Engineering</a><a href="#agentic-systems">Intelligent Workflow &amp; Agentic Systems</a><a href="#product-modernization">Product Modernization</a><a href="#healthcare-ai">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#cta">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
+<footer class="footer" id="company"><div class="container footerFinal"><div class="footerFinalGrid"><div class="footerFinalBrand"><img class="capx-footerLogo" src="assets/aloden-logo-primary.webp" alt="Aloden"><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="footerFinalCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="#top">Capabilities</a><a href="index.html#insights">Insights</a><a href="index.html#company">Company</a></div><div class="footerFinalCol"><h4>Capabilities</h4><a href="#ai-product-engineering">AI Product Engineering</a><a href="#product-modernization">Product Modernization</a><a href="#agentic-systems">Intelligent Workflow &amp; Agentic Systems</a><a href="#voice-ai-engineering">Voice AI Engineering</a><a href="#healthcare-ai">Healthcare AI</a></div><div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="mailto:hello@aloden.com">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="footerTagline">Built around your vision.</span></div></div></footer>
 <script defer src="app.js"></script>
 </body>
 </html>
