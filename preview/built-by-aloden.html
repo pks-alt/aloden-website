@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Selected products designed and engineered by Aloden across healthcare workforce operations, innovation platforms, and system-connected voice AI.">
+
 <meta name="robots" content="index,follow">
-<title>Our Work — Aloden</title>
 <link rel="canonical" href="https://www.aloden.com/built-by-aloden.html">
 <link rel="icon" type="image/svg+xml" href="assets/aloden-cube-symbol.svg">
 <meta property="og:title" content="Our Work — Aloden">
@@ -14,54 +14,263 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aloden">
 <meta name="twitter:card" content="summary">
+<title>Our Work — Aloden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="final.css">
 <style>
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff}
-iframe{display:block;width:100%;height:100vh;border:0;background:#fff}
-.fallback{position:absolute;left:-9999px}
+:root{
+  --w9-ink:#0b0d12;--w9-ink2:#20242d;--w9-body:#4c5565;--w9-muted:#727b8b;
+  --w9-line:#e6e8ed;--w9-soft:#fafbfc;--w9-softv:#f7f4ff;--w9-violet:#7c4dff;
+  --w9-violet2:#9a7cff;--w9-dark:#0b0d12;--w9-white:#fff;--w9-max:1240px;
+  --w9-shadow:0 24px 64px rgba(18,27,40,.08)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--w9-ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.w9-wrap{width:min(var(--w9-max),calc(100% - 48px));margin-inline:auto}.w9-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--w9-violet)}
+
+/* exact site family, approved Aloden logo only */
+.siteHeader{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid rgba(226,229,235,.95)}
+.w9-brandLogo{width:158px;height:auto}.siteHeader .brand{min-width:174px}.siteHeader .navLinks a.active{color:var(--w9-ink)}.siteHeader .navLinks a.active:after{content:"";position:absolute;height:2px;left:0;right:0;bottom:17px;background:var(--w9-violet);border-radius:99px}
+
+/* intro */
+.w9-hero{padding:74px 0 60px;background:linear-gradient(180deg,#fff 0%,#fbfbfc 100%);border-bottom:1px solid var(--w9-line)}
+.w9-heroGrid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.62fr);gap:82px;align-items:end}.w9-hero h1{font-size:clamp(48px,5vw,68px);line-height:1;letter-spacing:-.055em;margin:14px 0 18px;max-width:830px}.w9-hero p{font-size:17px;line-height:1.66;color:var(--w9-body);max-width:760px;margin:0}.w9-heroAside{border-left:1px solid var(--w9-line);padding-left:28px}.w9-heroAside b{display:block;font-size:17px;letter-spacing:-.02em;margin-bottom:7px}.w9-heroAside span{display:block;font-size:13px;line-height:1.58;color:var(--w9-muted)}
+.w9-index{background:#fff;border-bottom:1px solid var(--w9-line)}.w9-indexGrid{display:grid;grid-template-columns:repeat(3,1fr)}.w9-index a{display:flex;gap:14px;padding:20px 24px 19px 0;border-right:1px solid var(--w9-line)}.w9-index a+a{padding-left:24px}.w9-index a:last-child{border-right:0}.w9-indexNum{font:500 8px "IBM Plex Mono",monospace;color:var(--w9-violet);padding-top:4px}.w9-index b{display:block;font-size:14px}.w9-index small{display:block;font-size:11.5px;color:var(--w9-muted);margin-top:3px}
+
+/* editorial product chapters */
+.w9-case{padding:84px 0 88px;border-bottom:1px solid var(--w9-line);background:#fff}.w9-case.soft{background:var(--w9-soft)}.w9-case.softv{background:linear-gradient(180deg,#faf9fd,#f7f4ff)}
+.w9-identity{display:flex;align-items:center;gap:18px;margin-bottom:24px}.w9-identity img{height:42px;width:auto;object-fit:contain}.w9-identity img.sf{height:38px}.w9-identityRule{width:1px;height:34px;background:var(--w9-line)}.w9-category{font:500 9px/1.45 "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--w9-muted)}
+.w9-intro{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.72fr);gap:72px;align-items:end;margin-bottom:34px}.w9-intro h2{font-size:clamp(38px,4vw,54px);line-height:1.03;letter-spacing:-.05em;margin:0;max-width:760px}.w9-introCopy{font-size:15.5px;line-height:1.68;color:var(--w9-body);margin:0}.w9-scopeLine{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.w9-scopeLine span{font:500 7.5px "IBM Plex Mono",monospace;border:1px solid #dfe2e7;border-radius:999px;background:rgba(255,255,255,.72);padding:7px 9px;color:#626b76}
+
+/* visual frame */
+.w9-showcase{border:1px solid #dfe3e8;border-radius:20px;background:#fff;box-shadow:var(--w9-shadow);overflow:hidden}.w9-browser{height:46px;display:flex;align-items:center;gap:6px;padding:0 15px;border-bottom:1px solid #e8eaf0;background:#fcfcfd}.w9-browser i{width:7px;height:7px;border-radius:50%;background:#d8dce2}.w9-browser b{font-size:10.5px;margin-left:6px}.w9-browser span{margin-left:auto;font:500 6.5px "IBM Plex Mono",monospace;color:#838c97;letter-spacing:.08em}
+
+/* Medlivo */
+.med9{display:grid;grid-template-columns:126px 1fr;min-height:470px;background:#f5f7f9}.med9-nav{background:#11151c;padding:18px 13px;color:#fff}.med9-nav img{width:88px;margin-bottom:24px}.med9-nav small{display:block;font:500 6px "IBM Plex Mono",monospace;color:#78828d;letter-spacing:.1em;margin:17px 0 8px}.med9-nav span{display:block;padding:8px;border-radius:7px;font-size:8.5px;color:#a8b0b9;margin-bottom:3px}.med9-nav span.active{background:#1c2330;color:#fff}.med9-main{padding:18px}.med9-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.med9-head h3{font-size:20px;line-height:1.1;letter-spacing:-.03em;margin:0}.med9-head p{font-size:8px;color:#7b8490;margin:4px 0 0}.med9-head button{border:0;background:#11151c;color:#fff;border-radius:7px;font-size:7px;padding:8px 10px}.med9-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.med9-metric{border:1px solid #e1e4e8;background:#fff;border-radius:9px;padding:10px}.med9-metric span{display:block;font-size:6.5px;text-transform:uppercase;letter-spacing:.06em;color:#818a95}.med9-metric b{display:block;font-size:11px;margin-top:5px}.med9-work{display:grid;grid-template-columns:1.3fr .7fr;gap:10px;margin-top:10px}.med9-panel{border:1px solid #e1e4e8;background:#fff;border-radius:10px;overflow:hidden}.med9-panelHead{display:flex;justify-content:space-between;padding:10px 11px;border-bottom:1px solid #e8eaed}.med9-panelHead b{font-size:9px}.med9-panelHead span{font:500 5.5px "IBM Plex Mono",monospace;color:#7f8994}.med9-tableHead,.med9-row{display:grid;grid-template-columns:1.25fr .8fr .75fr .65fr;gap:8px;align-items:center;padding:8px 10px}.med9-tableHead{font:500 5.5px "IBM Plex Mono",monospace;color:#87909a;background:#fafbfc}.med9-row{border-top:1px solid #edf0f2;font-size:7.4px;color:#4e5964}.med9-chip{font:500 5.4px "IBM Plex Mono",monospace;border-radius:999px;padding:4px 5px;width:max-content}.med9-chip.match{background:#f0ebff;color:#5d43bd}.med9-chip.ready{background:#e8f7f1;color:#247c60}.med9-chip.review{background:#fff3dc;color:#9a6815}.med9-candidate{display:grid;grid-template-columns:26px 1fr auto;gap:7px;align-items:center;padding:8px;border-bottom:1px solid #eef0f2}.med9-candidate:last-child{border-bottom:0}.med9-avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#ece6ff,#d9dcf5);display:grid;place-items:center;font-size:7px;font-weight:700;color:#5b4b9b}.med9-candidate b{display:block;font-size:7.5px}.med9-candidate span{display:block;font-size:6px;color:#84909a;margin-top:2px}.med9-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#e1e5e8;border:1px solid #e1e5e8;border-radius:9px;overflow:hidden;margin-top:10px}.med9-flow div{background:#fff;padding:8px}.med9-flow span{font:500 5.5px "IBM Plex Mono",monospace;color:var(--w9-violet)}.med9-flow b{display:block;font-size:7.5px;margin-top:4px}
+
+/* StartupFair — visual-first and full lifecycle */
+.sf9-showcase{background:#0c1218;border-color:#23313d;box-shadow:0 28px 72px rgba(7,12,18,.18)}.sf9-showcase .w9-browser{background:#101a23;border-color:#273541}.sf9-showcase .w9-browser i{background:#42515c}.sf9-showcase .w9-browser b{color:#eef4f7}.sf9-showcase .w9-browser span{color:#82a0af}.sf9{color:#fff;background:#0c1218;min-height:520px}.sf9-top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #273640;background:#101a23}.sf9-top img{height:25px;width:auto}.sf9-top .grow{flex:1}.sf9-pill{font:500 6px "IBM Plex Mono",monospace;border:1px solid #344653;border-radius:999px;padding:5px 7px;color:#9eb2bd}.sf9-pill.ok{color:#70d8b7;border-color:#31594d}.sf9-lifecycle{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:12px 14px;border-bottom:1px solid #22303a}.sf9-life{border:1px solid #2a3944;border-radius:8px;background:#111a22;padding:8px 7px;min-height:58px}.sf9-life span{font:500 5.2px "IBM Plex Mono",monospace;color:#708895}.sf9-life b{display:block;font-size:6.8px;line-height:1.25;margin-top:5px}.sf9-life.active{background:#19182a;border-color:#534b85}.sf9-life.active span{color:#a68dff}.sf9-body{display:grid;grid-template-columns:126px minmax(0,1fr) 216px;min-height:345px}.sf9-nav{border-right:1px solid #25343f;background:#0f171e;padding:10px 8px}.sf9-nav small{display:block;font:500 5.2px "IBM Plex Mono",monospace;color:#718694;letter-spacing:.09em;margin:8px 5px 6px}.sf9-nav span{display:block;padding:7px 6px;border-radius:6px;font-size:6.8px;color:#9aadb7;margin-bottom:2px}.sf9-nav span.active{background:#172b39;color:#fff}.sf9-studio{padding:10px;min-width:0}.sf9-studioTop{display:flex;align-items:center;gap:8px}.sf9-studioTop b{font-size:8px}.sf9-studioTop span{margin-left:auto;font:500 5.3px "IBM Plex Mono",monospace;color:#70d8b7}.sf9-editor{display:grid;grid-template-columns:90px 1fr;min-height:220px;margin-top:8px;border:1px solid #293844;border-radius:9px;overflow:hidden;background:#0e151c}.sf9-files{border-right:1px solid #263641;padding:8px 6px;color:#8fa3af;font-size:5.8px;line-height:1.75}.sf9-code{padding:10px;font:500 5.7px/1.55 "IBM Plex Mono",monospace;color:#b8c7cf}.sf9-code .kw{color:#c792ea}.sf9-code .fn{color:#82aaff}.sf9-code .str{color:#c3e88d}.sf9-code .cm{color:#607d8b}.sf9-terminal{border:1px solid #293844;border-radius:8px;background:#080d11;padding:8px 9px;margin-top:7px;font:500 5.5px/1.55 "IBM Plex Mono",monospace;color:#9fb1bb}.sf9-terminal .ok{color:#70d8b7}.sf9-terminal .warn{color:#e7b55c}.sf9-ops{border-left:1px solid #25343f;padding:10px;background:#0f171e}.sf9-ops small{font:500 5.2px "IBM Plex Mono",monospace;color:#718694;letter-spacing:.09em}.sf9-op{border:1px solid #2d3d48;border-radius:8px;background:#111b24;padding:8px;margin-top:7px}.sf9-op span{font:500 5px "IBM Plex Mono",monospace;color:#7897a7}.sf9-op b{display:block;font-size:6.8px;margin-top:5px}.sf9-op p{font-size:5.8px;line-height:1.4;color:#98a9b3;margin:3px 0 0}.sf9-proof{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0 14px 14px}.sf9-proof div{border:1px solid #2a3b46;border-radius:7px;background:#101a22;padding:7px}.sf9-proof span{font:500 5px "IBM Plex Mono",monospace;color:#7594a4}.sf9-proof b{display:block;font-size:6.4px;margin-top:4px}
+
+/* Voice AI — operational, not branded */
+.voice9{min-height:500px;background:#fbfbfc}.voice9-top{height:44px;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid #e5e7eb;background:#fff}.voice9-live{width:7px;height:7px;border-radius:50%;background:#28b58d;box-shadow:0 0 0 4px rgba(40,181,141,.10)}.voice9-top b{font-size:9px}.voice9-top span{margin-left:auto;font:500 6px "IBM Plex Mono",monospace;border:1px solid #e0e3e7;border-radius:999px;padding:5px 7px;color:#69747f}.voice9-body{display:grid;grid-template-columns:1.05fr .8fr 1.05fr;min-height:390px}.voice9-col{padding:15px;border-right:1px solid #e3e6e9}.voice9-col:last-child{border-right:0}.voice9-label{font:500 6px "IBM Plex Mono",monospace;letter-spacing:.09em;color:#858f99}.voice9-call{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-top:10px}.voice9-call b{display:block;font-size:12px}.voice9-call small{display:block;font-size:7px;color:#818b95;margin-top:3px}.voice9-wave{height:40px;margin-top:13px;border-radius:9px;background:repeating-linear-gradient(90deg,#7c4dff 0 2px,transparent 2px 8px);opacity:.55}.voice9-bubble{font-size:10px;line-height:1.45;padding:9px 10px;border-radius:9px;margin-top:9px}.voice9-bubble.user{background:#eceff3}.voice9-bubble.ai{background:#1e1a28;color:#fff}.voice9-kv{display:grid;grid-template-columns:72px 1fr;gap:8px;padding:10px 0;border-bottom:1px solid #e5e8eb}.voice9-kv span{font-size:7.5px;color:#7d8792}.voice9-kv b{font-size:8.5px}.voice9-action{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid #e5e8eb}.voice9-action span{font-size:8.5px;color:#5f6974}.voice9-action b{font:500 6px "IBM Plex Mono",monospace;color:#247c60}.voice9-handoff{margin-top:12px;padding:11px;border-radius:9px;background:#f1edff;color:#5b499c;font-size:8px;line-height:1.45}.voice9-audit{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#e0e3e7;border-top:1px solid #e0e3e7}.voice9-audit div{background:#fff;padding:10px 9px}.voice9-audit span{font:500 5.5px "IBM Plex Mono",monospace;color:#7f8994}.voice9-audit b{display:block;font-size:7.2px;margin-top:4px}
+
+/* chapter proof rails */
+.w9-proofRail{display:grid;grid-template-columns:repeat(4,1fr);margin-top:22px;border-top:1px solid var(--w9-line);border-bottom:1px solid var(--w9-line)}.w9-proofRail div{padding:18px 20px 18px 0}.w9-proofRail div+div{padding-left:20px;border-left:1px solid var(--w9-line)}.w9-proofRail span{font:500 7px "IBM Plex Mono",monospace;color:var(--w9-violet)}.w9-proofRail b{display:block;font-size:12px;margin-top:7px;line-height:1.35}.w9-proofRail small{display:block;font-size:10px;line-height:1.45;color:#77808b;margin-top:4px}
+
+/* concise discipline */
+.w9-discipline{padding:56px 0;background:#0b0d12;color:#fff}.w9-disciplineGrid{display:grid;grid-template-columns:300px 1fr;gap:54px;align-items:center}.w9-discipline .w9-ey{color:#a58aff}.w9-discipline h2{font-size:31px;line-height:1.08;letter-spacing:-.04em;margin:8px 0 0}.w9-rail{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#272a31;border:1px solid #272a31}.w9-rail div{background:#0f1117;padding:17px 13px;min-height:76px}.w9-rail span{font:500 7px "IBM Plex Mono",monospace;color:#9b83ff}.w9-rail b{display:block;font-size:11.5px;margin-top:7px;color:#e9ebef}
+
+/* exact family CTA/footer */
+.w9-cta{padding:64px 0;background:linear-gradient(180deg,#fbfaf8,#f7f4ff)}.w9-ctaBand{background:#0b0d12;color:#fff;border-radius:18px;padding:34px 38px;display:flex;align-items:center;justify-content:space-between;gap:26px}.w9-ctaBand h2{font-size:clamp(30px,3.2vw,42px);line-height:1.04;letter-spacing:-.04em;margin:0 0 8px}.w9-ctaBand p{font-size:14px;line-height:1.58;color:#aeb4bd;margin:0;max-width:660px}.w9-ctaBand .btn{background:#fff;color:#111}.w9-footerLogo{width:150px;height:auto}
+
+@media(max-width:980px){.w9-heroGrid,.w9-intro,.w9-disciplineGrid{grid-template-columns:1fr}.w9-heroGrid{gap:30px}.w9-heroAside{border-left:0;border-top:1px solid var(--w9-line);padding:20px 0 0}.sf9-body{grid-template-columns:100px 1fr}.sf9-ops{grid-column:1/-1;border-left:0;border-top:1px solid #25343f;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.sf9-op{margin-top:0}.voice9-body{grid-template-columns:1fr 1fr}.voice9-col:last-child{grid-column:1/-1;border-top:1px solid #e3e6e9}.w9-proofRail{grid-template-columns:1fr 1fr}.w9-proofRail div:nth-child(3){border-left:0;border-top:1px solid var(--w9-line)}.w9-proofRail div:nth-child(4){border-top:1px solid var(--w9-line)}.w9-rail{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.w9-wrap{width:calc(100% - 32px)}.w9-hero{padding:54px 0 44px}.w9-hero h1{font-size:43px}.w9-indexGrid{grid-template-columns:1fr}.w9-index a,.w9-index a+a{padding:14px 0;border-right:0;border-bottom:1px solid var(--w9-line)}.w9-case{padding:58px 0}.w9-identity{align-items:flex-start;flex-wrap:wrap}.w9-intro{gap:20px}.med9{grid-template-columns:82px 1fr}.med9-nav{padding:12px 8px}.med9-nav img{width:62px}.med9-metrics{grid-template-columns:1fr 1fr}.med9-work{grid-template-columns:1fr}.med9-flow{grid-template-columns:repeat(3,1fr)}.sf9-lifecycle{grid-template-columns:repeat(2,1fr)}.sf9-body{grid-template-columns:1fr}.sf9-nav{display:none}.sf9-ops{grid-template-columns:1fr}.sf9-proof{grid-template-columns:1fr 1fr}.voice9-body{grid-template-columns:1fr}.voice9-col{border-right:0;border-bottom:1px solid #e3e6e9}.voice9-col:last-child{grid-column:auto}.voice9-audit{grid-template-columns:1fr 1fr}.w9-proofRail{grid-template-columns:1fr}.w9-proofRail div,.w9-proofRail div+div{padding:16px 0;border-left:0;border-top:1px solid var(--w9-line)}.w9-proofRail div:first-child{border-top:0}.w9-rail{grid-template-columns:1fr 1fr}.w9-ctaBand{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
-<body>
-<iframe id="work-frame" src="reviews/our-work-final-v11.html" title="Aloden Our Work"></iframe>
-<noscript><p class="fallback"><a href="reviews/our-work-world-class-v9.html">View Aloden Our Work</a></p></noscript>
+<body class="v10-refined">
+<header class="siteHeader" id="top">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="w9-brandLogo" src="assets/aloden-cube-logo.svg" alt="Aloden"></a>
+    <nav class="navLinks" aria-label="Primary navigation">
+      <a href="index.html">Home</a><a class="active" href="#work">Our Work</a><a href="capabilities.html">Capabilities</a><a href="company.html">Company</a>
+    </nav>
+    <a class="btn primary navCta" href="#cta">Start a Project →</a>
+    <button class="menuBtn" aria-expanded="false" aria-label="Open navigation">☰</button>
+  </div>
+</header>
+
+<main id="work">
+<section class="w9-hero">
+  <div class="w9-wrap w9-heroGrid">
+    <div><div class="w9-ey">OUR WORK</div><h1>Products designed and engineered for real-world use.</h1><p>Selected Aloden work across healthcare, innovation, and voice AI—showing how product thinking, intelligent workflows, engineering, and connected systems come together in software built for production.</p></div>
+    <div class="w9-heroAside"><b>The product is the proof.</b><span>Each chapter focuses on what the system needs to do, how people move through it, and the engineering required to make the experience work end to end.</span></div>
+  </div>
+</section>
+<nav class="w9-index" aria-label="Selected projects"><div class="w9-wrap w9-indexGrid">
+  <a href="#medlivo"><span class="w9-indexNum">01</span><div><b>Medlivo</b><small>Healthcare workforce operations</small></div></a>
+  <a href="#startupfair"><span class="w9-indexNum">02</span><div><b>StartupFair</b><small>AI hackathon & innovation platform</small></div></a>
+  <a href="#voice"><span class="w9-indexNum">03</span><div><b>Voice AI Engineering</b><small>Conversation to system action</small></div></a>
+</div></nav>
+
+<section class="w9-case" id="medlivo"><div class="w9-wrap">
+  <div class="w9-identity"><img src="assets/medlivo-logo.webp" alt="Medlivo"><span class="w9-identityRule"></span><span class="w9-category">01 · HEALTHCARE WORKFORCE PLATFORM</span></div>
+  <div class="w9-intro"><h2>One connected platform from workforce demand to deployment.</h2><div><p class="w9-introCopy">Medlivo brings referral intake, clinician matching, credentialing, scheduling, documentation, approvals, and workforce operations into one connected product experience.</p><div class="w9-scopeLine"><span>Product UX</span><span>AI Matching</span><span>Credentialing</span><span>Scheduling</span><span>Integrations</span></div></div></div>
+  <div class="w9-showcase"><div class="w9-browser"><i></i><i></i><i></i><b>Medlivo · Workforce Operations</b><span>CONNECTED WORKFLOW</span></div><div class="med9">
+    <aside class="med9-nav"><img src="assets/medlivo-logo.webp" alt=""><small>WORKSPACE</small><span class="active">Overview</span><span>Open Demand</span><span>Clinicians</span><span>Credentialing</span><span>Assignments</span><span>Operations</span></aside>
+    <div class="med9-main"><div class="med9-head"><div><h3>Workforce operations</h3><p>Demand → match → readiness → assignment → operations</p></div><button>+ New requirement</button></div>
+      <div class="med9-metrics"><div class="med9-metric"><span>Open demand</span><b>186 roles</b></div><div class="med9-metric"><span>Matched</span><b>42 clinicians</b></div><div class="med9-metric"><span>Credentialing</span><b>18 in progress</b></div><div class="med9-metric"><span>Upcoming starts</span><b>11 this week</b></div></div>
+      <div class="med9-work"><section class="med9-panel"><div class="med9-panelHead"><b>Priority requirements</b><span>LIVE OPERATIONS</span></div><div class="med9-tableHead"><span>Requirement</span><span>Location</span><span>Stage</span><span>Status</span></div><div class="med9-row"><b>Physical Therapist</b><span>Bellevue, WA</span><span>Matching</span><span class="med9-chip match">12 FITS</span></div><div class="med9-row"><b>CT Technologist</b><span>Dallas, TX</span><span>Credentialing</span><span class="med9-chip review">REVIEW</span></div><div class="med9-row"><b>Registered Nurse</b><span>Minneapolis, MN</span><span>Ready</span><span class="med9-chip ready">START</span></div></section>
+      <section class="med9-panel"><div class="med9-panelHead"><b>Best-fit clinicians</b><span>EVIDENCE RANKED</span></div><div class="med9-candidate"><div class="med9-avatar">AM</div><div><b>A. Morgan, PT</b><span>License ready · 4.2 mi</span></div><span class="med9-chip ready">READY</span></div><div class="med9-candidate"><div class="med9-avatar">JS</div><div><b>J. Singh, PT</b><span>Available · 6.8 mi</span></div><span class="med9-chip match">94%</span></div><div class="med9-candidate"><div class="med9-avatar">KR</div><div><b>K. Rivera, PT</b><span>Credential review · 8.1 mi</span></div><span class="med9-chip review">CHECK</span></div></section></div>
+      <div class="med9-flow"><div><span>01</span><b>Demand</b></div><div><span>02</span><b>AI Match</b></div><div><span>03</span><b>Credential</b></div><div><span>04</span><b>Schedule</b></div><div><span>05</span><b>Document</b></div><div><span>06</span><b>Operate</b></div></div>
+    </div></div></div>
+  <div class="w9-proofRail"><div><span>01</span><b>Unified workflow</b><small>Demand, clinician readiness and operations in one system.</small></div><div><span>02</span><b>Intelligence at the decision point</b><small>Matching and prioritization where teams actually work.</small></div><div><span>03</span><b>Readiness visibility</b><small>Credentialing, approvals and exceptions stay visible.</small></div><div><span>04</span><b>Operational follow-through</b><small>Assignment, documentation and downstream handoffs stay connected.</small></div></div>
+</div></section>
+
+<section class="w9-case soft" id="startupfair"><div class="w9-wrap">
+  <div class="w9-identity"><img class="sf" src="assets/startupfair-logo.webp" alt="StartupFair"><span class="w9-identityRule"></span><span class="w9-category">02 · INNOVATION PLATFORM</span></div>
+  <div class="w9-intro"><h2>A complete operating system for an AI hackathon.</h2><div><p class="w9-introCopy">StartupFair connects challenge owners, participants, teams, mentors, judges, sponsors, and administrators across one lifecycle—from applications and team formation through building, validation, exact-commit submission, judging, results, and opportunity workflows.</p><div class="w9-scopeLine"><span>Challenge Management</span><span>Team Formation</span><span>Build Studio</span><span>GitHub</span><span>Validation</span><span>Judging</span><span>Opportunities</span></div></div></div>
+  <div class="w9-showcase sf9-showcase"><div class="w9-browser"><i></i><i></i><i></i><b>StartupFair · Production Platform</b><span>TEAM PHOENIX · RUNNING</span></div><div class="sf9">
+    <div class="sf9-top"><img src="assets/startupfair-logo.webp" alt=""><span class="sf9-pill ok">Workspace running</span><span class="sf9-pill ok">GitHub synced ✓</span><div class="grow"></div><span class="sf9-pill">Preview</span><span class="sf9-pill">Prepare submission</span></div>
+    <div class="sf9-lifecycle"><div class="sf9-life"><span>01</span><b>Challenge</b></div><div class="sf9-life"><span>02</span><b>Apply / Join</b></div><div class="sf9-life"><span>03</span><b>Team</b></div><div class="sf9-life active"><span>04</span><b>Build</b></div><div class="sf9-life"><span>05</span><b>Submit</b></div><div class="sf9-life"><span>06</span><b>Judge / Result</b></div><div class="sf9-life"><span>07</span><b>Opportunity</b></div></div>
+    <div class="sf9-body"><aside class="sf9-nav"><small>PLATFORM</small><span>Dashboard</span><span>Challenges</span><span>Applications</span><span>Teams</span><span class="active">Build Studio</span><span>Submissions</span><span>Judging</span><span>Results</span><span>Opportunities</span><span>Admin</span></aside>
+      <div class="sf9-studio"><div class="sf9-studioTop"><b>Build Studio · clinician-matching-ai</b><span>Runtime healthy</span></div><div class="sf9-editor"><div class="sf9-files">⌄ app<br>&nbsp;&nbsp;layout.tsx<br>&nbsp;&nbsp;page.tsx<br>› components<br>› lib<br>› public<br>package.json<br>README.md</div><div class="sf9-code"><span class="kw">import</span> { <span class="fn">ChallengeWorkspace</span> } <span class="kw">from</span> <span class="str">"@/components/workspace"</span>;<br><br><span class="kw">export default function</span> <span class="fn">Build</span>() {<br>&nbsp;&nbsp;<span class="kw">return</span> &lt;<span class="fn">ChallengeWorkspace</span><br>&nbsp;&nbsp;&nbsp;&nbsp;team=<span class="str">"phoenix"</span><br>&nbsp;&nbsp;&nbsp;&nbsp;repo=<span class="str">"managed"</span><br>&nbsp;&nbsp;/&gt;;<br>}<br><br><span class="cm">// GitHub remains the source of truth.</span></div></div><div class="sf9-terminal">$ npm run build<br><span class="ok">✓ Production build completed</span><br>$ startupfair validate<br><span class="ok">✓ Repo ✓ Tests ✓ Security ✓ Demo health</span><br><span class="warn">⚠ 1 challenge-specific requirement before freeze</span></div></div>
+      <aside class="sf9-ops"><small>BUILD OPERATIONS</small><div class="sf9-op"><span>TEAM MATCHING</span><b>4-person team formed</b><p>Role fit + skills + preferences</p></div><div class="sf9-op"><span>PRIVATE REPOSITORY</span><b>StartupFair-managed GitHub</b><p>Exact project history preserved</p></div><div class="sf9-op"><span>ISOLATED RUNTIME</span><b>Cloud workspace active</b><p>Preview, terminal, logs and build</p></div><div class="sf9-op"><span>SUBMISSION CONTROL</span><b>Exact-commit freeze</b><p>Immutable judging snapshot</p></div><div class="sf9-op"><span>JUDGING</span><b>Rubric + conflict controls</b><p>Structured evaluation workflow</p></div></aside></div>
+    <div class="sf9-proof"><div><span>GITHUB</span><b>Private managed repo</b></div><div><span>RUNTIME</span><b>Isolated workspace</b></div><div><span>VALIDATION</span><b>Rules before freeze</b></div><div><span>RESULTS</span><b>Hiring · Pilot · Partnership</b></div></div>
+  </div></div>
+  <div class="w9-proofRail"><div><span>01</span><b>Multi-role platform</b><small>Organizations, participants, mentors, judges, sponsors and admins.</small></div><div><span>02</span><b>Build in the browser</b><small>Files, editor, assistant, preview, terminal, logs and runtime.</small></div><div><span>03</span><b>Submission integrity</b><small>Validation and exact-commit freeze preserve the judging snapshot.</small></div><div><span>04</span><b>Beyond the event</b><small>Results flow into hiring, pilots, partnerships and opportunity workflows.</small></div></div>
+</div></section>
+
+<section class="w9-case softv" id="voice"><div class="w9-wrap">
+  <div class="w9-identity"><span class="w9-category">03 · VOICE AI ENGINEERING</span></div>
+  <div class="w9-intro"><h2>Voice experiences that complete real work.</h2><div><p class="w9-introCopy">Aloden engineers voice workflows that move beyond transcription: understand intent, use business context, check permissions, call connected systems, confirm the result, preserve an audit trail, and escalate with full context when a person should take over.</p><div class="w9-scopeLine"><span>Live Voice</span><span>Intent & Context</span><span>Tool Use</span><span>Permissions</span><span>Confirmation</span><span>Human Handoff</span></div></div></div>
+  <div class="w9-showcase"><div class="w9-browser"><i></i><i></i><i></i><b>Voice Operations · Live Session</b><span>CONNECTED SYSTEM ACTION</span></div><div class="voice9">
+    <div class="voice9-top"><span class="voice9-live"></span><b>Live appointment call</b><span>Session active · 02:14</span></div>
+    <div class="voice9-body"><section class="voice9-col"><div class="voice9-label">LIVE CONVERSATION</div><div class="voice9-call"><div><b>Patient · verified</b><small>Existing appointment · Tuesday 10:00 AM</small></div></div><div class="voice9-wave"></div><div class="voice9-bubble user">I need to move my appointment to Friday afternoon.</div><div class="voice9-bubble ai">I found two Friday afternoon options. Would you like the later one?</div><div class="voice9-bubble user">Yes, use the later one.</div></section>
+      <section class="voice9-col"><div class="voice9-label">INTENT & CONTEXT</div><div class="voice9-kv"><span>Intent</span><b>Reschedule appointment</b></div><div class="voice9-kv"><span>Identity</span><b>Verified patient</b></div><div class="voice9-kv"><span>Preference</span><b>Friday afternoon · later slot</b></div><div class="voice9-kv"><span>Permission</span><b>Scheduling update allowed</b></div><div class="voice9-kv"><span>Context</span><b>Patient + appointment + availability</b></div></section>
+      <section class="voice9-col"><div class="voice9-label">CONNECTED ACTIONS</div><div class="voice9-action"><span>Calendar service · availability checked</span><b>DONE</b></div><div class="voice9-action"><span>Permission layer · action validated</span><b>DONE</b></div><div class="voice9-action"><span>Scheduling system · appointment updated</span><b>DONE</b></div><div class="voice9-action"><span>Notification service · confirmation sent</span><b>DONE</b></div><div class="voice9-handoff"><b>Human handoff is always available.</b><br>Restricted, ambiguous, or judgment-based actions route with the full conversation and action context.</div></section></div>
+    <div class="voice9-audit"><div><span>00:04</span><b>Identity verified</b></div><div><span>00:31</span><b>Intent resolved</b></div><div><span>00:48</span><b>Tool permission checked</b></div><div><span>01:32</span><b>System action completed</b></div><div><span>01:38</span><b>Confirmation sent</b></div></div>
+  </div></div>
+  <div class="w9-proofRail"><div><span>01</span><b>Understand the outcome</b><small>Speech, intent, context and state resolve what the caller wants.</small></div><div><span>02</span><b>Act inside real systems</b><small>APIs and business tools turn conversation into approved action.</small></div><div><span>03</span><b>Keep control visible</b><small>Permissions, confirmations and audit context surround every action.</small></div><div><span>04</span><b>Escalate with context</b><small>Human teams receive the conversation, state and attempted actions.</small></div></div>
+</div></section>
+
+<section class="w9-discipline"><div class="w9-wrap w9-disciplineGrid"><div><div class="w9-ey">HOW ALODEN BUILDS</div><h2>Different products. One end-to-end responsibility.</h2></div><div class="w9-rail"><div><span>01</span><b>Product Strategy</b></div><div><span>02</span><b>Experience Design</b></div><div><span>03</span><b>Engineering</b></div><div><span>04</span><b>AI & Automation</b></div><div><span>05</span><b>Integrations</b></div><div><span>06</span><b>Production</b></div></div></div></section>
+
+<section class="w9-cta" id="cta"><div class="w9-wrap"><div class="w9-ctaBand"><div><h2>Have something worth building?</h2><p>Tell us what you’re building, modernizing, or trying to solve. Aloden can help shape the path from product idea to production.</p></div><a class="btn" href="mailto:hello@aloden.com">Start a Project →</a></div></div></section>
+</main>
+
+<footer class="footer" id="company"><div class="container footerFinal"><div class="footerFinalGrid"><div class="footerFinalBrand"><img class="w9-footerLogo" src="assets/aloden-cube-logo.svg" alt="Aloden"><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="footerFinalCol"><h4>Explore</h4><a href="#top">Our Work</a><a href="capabilities.html">Capabilities</a><a href="company.html">Company</a></div><div class="footerFinalCol"><h4>Capabilities</h4><a href="capabilities.html">AI Product Engineering</a><a href="capabilities.html">Voice AI Engineering</a><a href="capabilities.html">Intelligent Workflow & Agentic Systems</a><a href="capabilities.html">Product Modernization</a></div><div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="mailto:hello@aloden.com">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="footerTagline">Built around your vision.</span></div></div></footer>
+<script defer src="app.js"></script>
 <script>
 (() => {
-  const outer = document.getElementById('work-frame');
-  const aliases = {
-    products: 'work',
-    work: 'work',
-    medlivo: 'medlivo',
-    'medlivo-proof': 'medlivo',
-    startupfair: 'startupfair',
-    'startupfair-proof': 'startupfair',
-    voice: 'voice',
-    'voice-ai-proof': 'voice'
-  };
+  const d = document;
+/* Preserve V9. Only targeted refinements are applied below. */
 
-  function requestedTarget() {
-    const raw = decodeURIComponent(location.hash.replace(/^#/, '')).trim();
-    return aliases[raw] || raw || '';
+  // 1) Header/footer use the exact same approved Aloden asset and sizing.
+  const headerLogo=d.querySelector('.siteHeader .brand img');
+  const footerLogo=d.querySelector('.footerFinalBrand img');
+  if(headerLogo&&footerLogo){
+    footerLogo.src=headerLogo.src;
+    footerLogo.alt='Aloden';
+    footerLogo.style.width='158px';
+    footerLogo.style.height='auto';
+    footerLogo.style.objectFit='contain';
   }
 
-  function scrollInnerPage() {
-    const targetId = requestedTarget();
-    if (!targetId) return;
-    try {
-      const reviewDoc = outer.contentDocument;
-      const inner = reviewDoc?.getElementById('reviewFrame');
-      if (!inner) return;
-      const scroll = () => {
-        try {
-          const target = inner.contentDocument?.getElementById(targetId);
-          if (target) target.scrollIntoView({ block: 'start' });
-        } catch (_) { /* same-origin review frame expected */ }
-      };
-      if (inner.contentDocument?.readyState === 'complete') window.setTimeout(scroll, 60);
-      inner.addEventListener('load', () => window.setTimeout(scroll, 60), { once: true });
-    } catch (_) { /* preserve the approved page even if deep-link forwarding is unavailable */ }
+  // 2) Voice AI positioning: no separate brand, clearer product promise.
+  const voice=d.querySelector('#voice');
+  if(voice){
+    const h=voice.querySelector('.w9-intro h2');
+    const p=voice.querySelector('.w9-introCopy');
+    if(h) h.textContent='From conversation to completed action.';
+    if(p) p.textContent='Aloden engineers system-connected voice experiences that understand intent, use business context, take permitted actions, confirm outcomes, and hand off to people when judgment is required.';
+
+    const visual=voice.querySelector('.voice9');
+    if(visual){
+      visual.innerHTML=`
+        <div class="vf-top"><span class="vf-live"></span><b>Live voice session</b><span>Verified context · active</span></div>
+        <div class="vf-body">
+          <section class="vf-conversation">
+            <div class="vf-label">CONVERSATION</div>
+            <div class="vf-person"><div><b>Patient verified</b><small>Existing appointment · Tuesday 10:00 AM</small></div><span>LIVE</span></div>
+            <div class="vf-wave" aria-hidden="true"></div>
+            <div class="vf-bubble user">I need to move my appointment to Friday afternoon.</div>
+            <div class="vf-bubble ai">I found two Friday afternoon options. Would you like the later one?</div>
+            <div class="vf-bubble user">Yes, use the later one.</div>
+          </section>
+          <section class="vf-orchestration">
+            <div class="vf-label">AI ORCHESTRATION</div>
+            <div class="vf-step"><span>01 · UNDERSTAND</span><div><b>Intent resolved</b><small>Reschedule appointment · Friday afternoon · later slot</small></div><em>READY</em></div>
+            <div class="vf-step"><span>02 · AUTHORIZE</span><div><b>Identity + permission checked</b><small>Verified patient · scheduling update allowed</small></div><em>READY</em></div>
+            <div class="vf-step"><span>03 · ACT</span><div><b>Connected systems updated</b><small>Availability checked · appointment changed</small></div><em>DONE</em></div>
+            <div class="vf-step"><span>04 · CONFIRM</span><div><b>Outcome confirmed</b><small>New appointment saved · confirmation sent</small></div><em>DONE</em></div>
+            <div class="vf-handoff"><b>Human judgment stays in the loop.</b><span>Restricted, ambiguous, or judgment-based requests transfer with the full conversation, state, and attempted actions.</span></div>
+          </section>
+        </div>
+        <div class="vf-rail"><div><span>LISTEN</span></div><div><span>UNDERSTAND</span></div><div><span>AUTHORIZE</span></div><div><span>ACT</span></div><div><span>CONFIRM</span></div></div>`;
+    }
   }
 
-  outer.addEventListener('load', scrollInnerPage);
-  window.addEventListener('hashchange', scrollInnerPage);
+  // 3) StartupFair: preserve dark V9 visual language, reduce clutter and make Build Studio the hero.
+  const sf=d.querySelector('#startupfair .sf9');
+  if(sf){
+    sf.innerHTML=`
+      <div class="sff-top"><img src="assets/startupfair-logo.webp" alt=""><span class="sff-status ok">Workspace running</span><span class="sff-status ok">GitHub synced ✓</span><div class="sff-grow"></div><span class="sff-status">Preview</span><span class="sff-status">Prepare submission</span></div>
+      <div class="sff-life"><div><span>01</span><b>Challenge</b></div><div><span>02</span><b>Apply / Join</b></div><div><span>03</span><b>Team</b></div><div class="active"><span>04</span><b>Build</b></div><div><span>05</span><b>Submit</b></div><div><span>06</span><b>Judge / Result</b></div><div><span>07</span><b>Opportunity</b></div></div>
+      <div class="sff-body">
+        <aside class="sff-nav"><small>PLATFORM</small><span>Dashboard</span><span>Challenges</span><span>Applications</span><span>Teams</span><span class="active">Build Studio</span><span>Submissions</span><span>Judging</span><span>Results</span><span>Opportunities</span><span>Admin</span></aside>
+        <section class="sff-studio">
+          <div class="sff-studioHead"><div><b>Build Studio</b><small>clinician-matching-ai</small></div><span>Runtime healthy</span></div>
+          <div class="sff-editor">
+            <div class="sff-files">⌄ app<br>&nbsp;&nbsp;layout.tsx<br>&nbsp;&nbsp;page.tsx<br>› components<br>› lib<br>› public<br>package.json<br>README.md</div>
+            <div class="sff-code"><span class="kw">import</span> { <span class="fn">ChallengeWorkspace</span> } <span class="kw">from</span> <span class="str">"@/components/workspace"</span>;<br><br><span class="kw">export default function</span> <span class="fn">Build</span>() {<br>&nbsp;&nbsp;<span class="kw">return</span> &lt;<span class="fn">ChallengeWorkspace</span><br>&nbsp;&nbsp;&nbsp;&nbsp;team=<span class="str">"phoenix"</span><br>&nbsp;&nbsp;&nbsp;&nbsp;repo=<span class="str">"managed"</span><br>&nbsp;&nbsp;/&gt;;<br>}<br><br><span class="cm">// GitHub remains the source of truth.</span></div>
+          </div>
+          <div class="sff-terminal">$ npm run build<br><span class="ok">✓ Production build completed</span><br>$ startupfair validate<br><span class="ok">✓ Repo ✓ Tests ✓ Security ✓ Demo health</span><br><span class="warn">⚠ 1 challenge-specific requirement before freeze</span></div>
+        </section>
+        <aside class="sff-controls"><small>PRODUCTION CONTROLS</small>
+          <article><span>REPOSITORY + RUNTIME</span><b>Private GitHub. Isolated workspace.</b><p>Managed project history, preview, terminal, logs, and cloud runtime stay connected.</p></article>
+          <article><span>VALIDATION + FREEZE</span><b>Rules before exact-commit submission.</b><p>Repo, tests, security, demo health, and challenge requirements validate before the judging snapshot is frozen.</p></article>
+          <article><span>JUDGING + OPPORTUNITY</span><b>Evaluation continues beyond results.</b><p>Rubrics, conflict controls, results, hiring, pilot, and partnership workflows remain part of the same platform.</p></article>
+        </aside>
+      </div>
+      <div class="sff-proof"><div><span>PRIVATE GITHUB</span><b>Source of truth</b></div><div><span>ISOLATED RUNTIME</span><b>Build in browser</b></div><div><span>EXACT-COMMIT FREEZE</span><b>Submission integrity</b></div><div><span>RESULTS → OPPORTUNITY</span><b>Hiring · Pilot · Partnership</b></div></div>`;
+  }
+
+  // 4) Make proof rails feel like evidence, not another large section.
+  d.querySelectorAll('.w9-proofRail').forEach(r=>r.classList.add('final-proofRail'));
+
+  // 5) Strengthen the transition from product proof to Aloden's method.
+  const discipline=d.querySelector('.w9-disciplineGrid>div:first-child');
+  if(discipline && !discipline.querySelector('.final-disciplineCopy')){
+    const p=d.createElement('p');
+    p.className='final-disciplineCopy';
+    p.textContent='The products differ. The discipline behind them does not: product strategy, experience, engineering, AI, integration, and production move together.';
+    discipline.appendChild(p);
+  }
+
+  // 6) Remove the invalid nested main in the original StartupFair markup if present anywhere.
+  d.querySelectorAll('#startupfair main.sf9-studio').forEach(el=>{
+    const div=d.createElement('div');
+    div.className=el.className;
+    div.innerHTML=el.innerHTML;
+    el.replaceWith(div);
+  });
+
+  const style=d.createElement('style');
+  style.textContent=`
+    /* FINAL REVIEW REFINEMENTS — V9 preserved as the base */
+    .footerFinalBrand .w9-brandLogo{width:158px!important;height:auto!important;object-fit:contain!important}
+
+    /* StartupFair — fewer panels, larger Build Studio */
+    .sff-top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #273640;background:#101a23;color:#fff}
+    .sff-top img{height:25px;width:auto}.sff-grow{flex:1}.sff-status{font:500 6.3px "IBM Plex Mono",monospace;border:1px solid #344653;border-radius:999px;padding:5px 7px;color:#a4b5be}.sff-status.ok{color:#70d8b7;border-color:#31594d}
+    .sff-life{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:12px 14px;border-bottom:1px solid #22303a;background:#0c1218;color:#fff}
+    .sff-life>div{border:1px solid #2a3944;border-radius:8px;background:#111a22;padding:8px 7px;min-height:58px}.sff-life span{font:500 5.7px "IBM Plex Mono",monospace;color:#758c99}.sff-life b{display:block;font-size:7.2px;line-height:1.25;margin-top:5px}.sff-life .active{background:#19182a;border-color:#534b85}.sff-life .active span{color:#a68dff}
+    .sff-body{display:grid;grid-template-columns:118px minmax(0,1fr) 205px;min-height:360px;background:#0c1218;color:#fff}
+    .sff-nav{border-right:1px solid #25343f;background:#0f171e;padding:10px 8px}.sff-nav small,.sff-controls>small{display:block;font:500 5.8px "IBM Plex Mono",monospace;color:#718694;letter-spacing:.09em;margin:8px 5px 6px}.sff-nav span{display:block;padding:7px 6px;border-radius:6px;font-size:7.2px;color:#9aadb7;margin-bottom:2px}.sff-nav span.active{background:#172b39;color:#fff}
+    .sff-studio{padding:12px;min-width:0}.sff-studioHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.sff-studioHead b{display:block;font-size:9px}.sff-studioHead small{display:block;font:500 6px "IBM Plex Mono",monospace;color:#8097a3;margin-top:3px}.sff-studioHead>span{font:500 5.8px "IBM Plex Mono",monospace;color:#70d8b7}
+    .sff-editor{display:grid;grid-template-columns:92px 1fr;min-height:226px;margin-top:9px;border:1px solid #293844;border-radius:9px;overflow:hidden;background:#0e151c}.sff-files{border-right:1px solid #263641;padding:9px 7px;color:#8fa3af;font-size:6.1px;line-height:1.8}.sff-code{padding:11px;font:500 6.1px/1.62 "IBM Plex Mono",monospace;color:#b8c7cf}.sff-code .kw{color:#c792ea}.sff-code .fn{color:#82aaff}.sff-code .str{color:#c3e88d}.sff-code .cm{color:#607d8b}
+    .sff-terminal{border:1px solid #293844;border-radius:8px;background:#080d11;padding:9px 10px;margin-top:8px;font:500 5.9px/1.6 "IBM Plex Mono",monospace;color:#9fb1bb}.sff-terminal .ok{color:#70d8b7}.sff-terminal .warn{color:#e7b55c}
+    .sff-controls{border-left:1px solid #25343f;padding:10px;background:#0f171e}.sff-controls article{border-top:1px solid #293944;padding:12px 4px}.sff-controls article:first-of-type{border-top:0}.sff-controls article span{font:500 5.7px "IBM Plex Mono",monospace;color:#7f9cac}.sff-controls article b{display:block;font-size:7.6px;line-height:1.35;margin-top:6px}.sff-controls article p{font-size:6.6px;line-height:1.45;color:#9aabb4;margin:5px 0 0}
+    .sff-proof{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#273641;border-top:1px solid #273641}.sff-proof div{background:#101a22;padding:10px 11px}.sff-proof span{font:500 5.4px "IBM Plex Mono",monospace;color:#7896a5}.sff-proof b{display:block;font-size:7px;margin-top:5px;color:#eef3f6}
+
+    /* Voice AI — one conversation surface + one orchestration surface */
+    .vf-top{height:46px;display:flex;align-items:center;gap:9px;padding:0 15px;border-bottom:1px solid #e5e7eb;background:#fff}.vf-live{width:7px;height:7px;border-radius:50%;background:#28b58d;box-shadow:0 0 0 4px rgba(40,181,141,.10)}.vf-top b{font-size:10px}.vf-top span:last-child{margin-left:auto;font:500 6.5px "IBM Plex Mono",monospace;color:#6f7984}
+    .vf-body{display:grid;grid-template-columns:.9fr 1.1fr;background:#fbfbfc}.vf-conversation,.vf-orchestration{padding:20px}.vf-conversation{border-right:1px solid #e3e6e9}.vf-label{font:500 6.5px "IBM Plex Mono",monospace;letter-spacing:.1em;color:#858f99}.vf-person{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:13px}.vf-person b{display:block;font-size:12px}.vf-person small{display:block;font-size:7px;color:#818b95;margin-top:3px}.vf-person>span{font:500 6px "IBM Plex Mono",monospace;border:1px solid #d9dfe4;border-radius:999px;padding:5px 7px;color:#247c60;background:#f4fbf8}.vf-wave{height:44px;margin:15px 0 5px;border-radius:9px;background:repeating-linear-gradient(90deg,#7c4dff 0 2px,transparent 2px 8px);opacity:.48}.vf-bubble{font-size:10.3px;line-height:1.5;padding:10px 11px;border-radius:9px;margin-top:9px}.vf-bubble.user{background:#eceff3}.vf-bubble.ai{background:#1e1a28;color:#fff}
+    .vf-step{display:grid;grid-template-columns:98px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #e4e7eb}.vf-step>span{font:500 6.4px "IBM Plex Mono",monospace;color:#7357d8}.vf-step b{display:block;font-size:10px}.vf-step small{display:block;font-size:7.4px;line-height:1.45;color:#7d8792;margin-top:3px}.vf-step em{font:500 6px "IBM Plex Mono",monospace;font-style:normal;color:#247c60}.vf-handoff{margin-top:14px;border-radius:10px;background:#f1edff;padding:12px 13px}.vf-handoff b{display:block;font-size:9.5px;color:#4f3d8f}.vf-handoff span{display:block;font-size:7.7px;line-height:1.5;color:#6b5b9d;margin-top:4px}
+    .vf-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#e0e3e7;border-top:1px solid #e0e3e7}.vf-rail div{background:#fff;padding:11px 10px;text-align:center}.vf-rail span{font:500 6px "IBM Plex Mono",monospace;color:#6e5bb2;letter-spacing:.04em}
+
+    /* Lighter evidence rails */
+    .final-proofRail{border-bottom:0!important;margin-top:18px!important}.final-proofRail div{padding-top:16px!important;padding-bottom:8px!important}.final-proofRail small{font-size:9.5px!important;color:#7f8791!important}
+
+    /* Connect product proof to Aloden's method */
+    .final-disciplineCopy{font-size:12.5px;line-height:1.55;color:#9ea5b0;margin:12px 0 0;max-width:290px}
+
+    @media(max-width:980px){.sff-body{grid-template-columns:100px 1fr}.sff-controls{grid-column:1/-1;border-left:0;border-top:1px solid #25343f;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.sff-controls>small{grid-column:1/-1}.sff-controls article{border-top:0;border-left:1px solid #293944;padding:8px 10px}.sff-controls article:first-of-type{border-left:0}.vf-body{grid-template-columns:1fr}.vf-conversation{border-right:0;border-bottom:1px solid #e3e6e9}}
+    @media(max-width:650px){.sff-life{grid-template-columns:repeat(2,1fr)}.sff-body{grid-template-columns:1fr}.sff-nav{display:none}.sff-controls{grid-template-columns:1fr}.sff-controls article,.sff-controls article:first-of-type{border-left:0;border-top:1px solid #293944}.sff-proof{grid-template-columns:1fr 1fr}.vf-step{grid-template-columns:82px 1fr}.vf-step em{display:none}.vf-rail{grid-template-columns:1fr 1fr}.vf-rail div:last-child{grid-column:1/-1}}
+  `;
+  d.head.appendChild(style);
 })();
 </script>
 </body>
