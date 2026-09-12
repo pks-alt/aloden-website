@@ -1,5 +1,7 @@
 name: Flatten Our Work
 
+# Rebuilds the production Our Work page from the approved V9 base + V11 refinements,
+# then validates the generated page and the full launch surface from a clean checkout.
 on:
   push:
     branches:
