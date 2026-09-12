@@ -1,30 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Start a product engineering engagement with Aloden across AI product engineering, voice AI, agentic systems, product modernization, and healthcare AI.">
-<title>Start a Project — Aloden</title>
+<meta name="description" content="Start a project with Aloden. Tell us what you are building, modernizing, or making more intelligent and share a short project brief.">
+<title>Start a Project | Contact Aloden</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="final.css">
-<link rel="stylesheet" href="start-project.css?v=final">
-<link rel="stylesheet" href="start-project-section2.css?v=final">
-<link rel="stylesheet" href="start-project-section3.css?v=final">
-<link rel="stylesheet" href="start-project-section4.css?v=final">
-<link rel="stylesheet" href="start-project-section5.css?v=final">
+<style>
+:root{--sp-ink:#0b0d12;--sp-ink2:#20242d;--sp-body:#4c5565;--sp-muted:#727b8b;--sp-line:#e3e6eb;--sp-soft:#fafbfc;--sp-violet:#7c4dff;--sp-violet2:#9a7cff;--sp-dark:#0b0d12;--sp-shadow:0 22px 60px rgba(20,27,43,.07)}
+*{box-sizing:border-box}.sp-wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}.sp-ey{font:500 10px/1.2 "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--sp-violet)}
+.siteHeader{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.975);backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid #e4e7eb}.siteHeader .brand{min-width:174px}.siteHeader .navCta{background:var(--sp-ink);color:#fff}.sp-brand{width:158px;height:auto}.sp-footerLogo{width:176px;height:auto}
+
+/* HERO */
+.startProjectHero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);border-bottom:1px solid var(--sp-line)}
+.startProjectHero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 12%,rgba(124,77,255,.12),transparent 25%),radial-gradient(circle at 96% 68%,rgba(62,123,255,.055),transparent 28%);pointer-events:none}
+.startProjectHeroGrid{position:relative;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(390px,.76fr);gap:82px;align-items:center;padding:72px 0 64px}
+.startProjectHero h1{font-size:clamp(50px,5.15vw,70px);line-height:.99;letter-spacing:-.058em;margin:14px 0 18px;max-width:850px;text-wrap:balance}.startProjectHeroDesc{font-size:17px;line-height:1.67;color:var(--sp-body);max-width:720px;margin:0}.sp-heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.sp-contactRow{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid var(--sp-line)}.sp-contactRow span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#8b93a0}.sp-contactRow a{font-size:13px;font-weight:650;color:var(--sp-violet)}
+.projectQualifier{border:1px solid #dde1e7;border-radius:21px;background:rgba(255,255,255,.97);box-shadow:var(--sp-shadow);overflow:hidden}.projectQualifierTop{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 18px;border-bottom:1px solid var(--sp-line);background:#fcfcfd}.projectQualifierTop>div{display:flex;align-items:center;gap:9px}.projectQualifierDot{width:8px;height:8px;border-radius:50%;background:var(--sp-violet)}.projectQualifierTop b{font-size:12.5px}.projectQualifierTop>span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#89919d}.projectQualifierBody{padding:20px}.projectQualifier fieldset{border:0;padding:0;margin:0}.projectQualifier legend{font-size:22px;line-height:1.12;letter-spacing:-.03em;font-weight:650}.projectQuestionHelp{font-size:12.3px;line-height:1.55;color:var(--sp-muted);margin:7px 0 15px}.projectChoiceGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.projectChoice{position:relative;display:block}.projectChoice input{position:absolute;opacity:0;pointer-events:none}.projectChoice span{display:block;height:100%;border:1px solid #e1e4e9;border-radius:11px;background:#fff;padding:11px 12px;cursor:pointer;transition:.16s ease}.projectChoice strong{display:block;font-size:11.5px;line-height:1.35}.projectChoice small{display:block;font-size:9.5px;line-height:1.45;color:var(--sp-muted);margin-top:4px}.projectChoice input:checked+span{border-color:#a99ae6;background:#f8f5ff;box-shadow:0 0 0 2px rgba(124,77,255,.08)}.projectChoice:has(input[value="not-sure"]){grid-column:1/-1}.projectQualifierFooter{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:16px;padding-top:15px;border-top:1px solid var(--sp-line)}.projectQualifierFooter p{font-size:10px;line-height:1.45;color:var(--sp-muted);margin:0;max-width:330px}.projectQualifierFooter a{font-size:12px;font-weight:650;color:var(--sp-violet)}
+
+/* SHORT PROMISE STRIP */
+.sp-promise{background:#fff;border-bottom:1px solid var(--sp-line)}.sp-promiseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sp-line)}.sp-promise article{background:#fff;padding:22px}.sp-promise span{font:500 8px "IBM Plex Mono",monospace;color:var(--sp-violet)}.sp-promise b{display:block;font-size:15px;margin-top:7px}.sp-promise p{font-size:11.5px;line-height:1.55;color:var(--sp-muted);margin:5px 0 0}
+
+/* FORM AREA */
+.projectContactSection{padding:74px 0;background:linear-gradient(180deg,#fafbfc 0%,#f7f8fa 100%)}.sp-formShell{display:grid;grid-template-columns:310px minmax(0,1fr);gap:28px;align-items:start}.sp-formIntro{position:sticky;top:112px}.sp-formIntro h2{font-size:clamp(34px,3.2vw,46px);line-height:1.04;letter-spacing:-.045em;margin:10px 0 13px;text-wrap:balance}.sp-formIntro>p{font-size:14px;line-height:1.65;color:var(--sp-body);margin:0}.sp-next{margin-top:24px;border-top:1px solid #dfe3e8;padding-top:18px}.sp-next>span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--sp-violet)}.sp-next article{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid #e3e6eb}.sp-next article>span{width:26px;height:26px;border-radius:8px;background:#eee9ff;display:grid;place-items:center;font:500 7px "IBM Plex Mono",monospace;color:#6b4dd6}.sp-next b{display:block;font-size:11.5px}.sp-next small{display:block;font-size:9.5px;line-height:1.45;color:var(--sp-muted);margin-top:3px}.sp-direct{margin-top:20px;font-size:11px;color:var(--sp-muted)}.sp-direct a{color:var(--sp-violet);font-weight:650}
+.projectContactPanel{border:1px solid #dde1e7;border-radius:20px;background:#fff;box-shadow:0 18px 46px rgba(20,27,43,.055);overflow:hidden}.sp-panelTop{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 18px;border-bottom:1px solid var(--sp-line);background:#fcfcfd}.sp-panelTop b{font-size:12px}.sp-panelTop span{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.08em;color:#8a92a0}.sp-formBody{padding:24px}
+.sp-formBlock{padding:0 0 24px;margin:0 0 24px;border:0;border-bottom:1px solid var(--sp-line)}.sp-formBlock:last-of-type{margin-bottom:0}.sp-blockHead{display:grid;grid-template-columns:36px 1fr;gap:12px;margin-bottom:15px}.sp-step{width:36px;height:36px;border-radius:10px;background:#f0ebff;display:grid;place-items:center;font:500 8px "IBM Plex Mono",monospace;color:#684bd0}.sp-blockHead b{display:block;font-size:17px;line-height:1.25;letter-spacing:-.02em}.sp-blockHead p{font-size:10.5px;line-height:1.5;color:var(--sp-muted);margin:3px 0 0}
+.projectStageGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.projectStageChoice,.projectHelpChoice,.projectTimingChoice{position:relative;display:block}.projectStageChoice input,.projectHelpChoice input,.projectTimingChoice input{position:absolute;opacity:0;pointer-events:none}.projectStageChoice span,.projectHelpChoice span,.projectTimingChoice span{display:block;height:100%;border:1px solid #e1e4e9;border-radius:11px;background:#fff;padding:11px 12px;cursor:pointer;transition:.16s ease}.projectStageChoice strong,.projectHelpChoice strong{display:block;font-size:11px;line-height:1.35}.projectStageChoice small,.projectHelpChoice small{display:block;font-size:9.3px;line-height:1.45;color:var(--sp-muted);margin-top:4px}.projectStageChoice input:checked+span,.projectHelpChoice input:checked+span,.projectTimingChoice input:checked+span{border-color:#a99ae6;background:#f8f5ff;box-shadow:0 0 0 2px rgba(124,77,255,.07)}
+.projectHelpGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.projectHelpChoice.wide{grid-column:1/-1}.projectTimingGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.projectTimingChoice span{font-size:10px;line-height:1.4}
+.sp-contextGrid,.projectContactGrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.projectContextField,.projectContactField{min-width:0}.projectContextField.wide,.projectContactField.wide{grid-column:1/-1}.projectContextField>label,.projectContextField>legend,.projectContactField>label{display:block;font-size:11px;font-weight:650;color:var(--sp-ink2);margin:0 0 6px}.projectContextField>small,.projectContactField>small{display:block;font-size:9.5px;line-height:1.45;color:var(--sp-muted);margin:-2px 0 7px}.projectContextField textarea,.projectContextField input,.projectContactField input{width:100%;border:1px solid #dfe3e8;border-radius:10px;background:#fff;padding:11px 12px;font:500 12px/1.45 "Instrument Sans",sans-serif;color:var(--sp-ink);outline:0}.projectContextField textarea{resize:vertical;min-height:105px}.projectContextField textarea:focus,.projectContextField input:focus,.projectContactField input:focus{border-color:#9b87e8;box-shadow:0 0 0 3px rgba(124,77,255,.08)}
+.projectContactIntro{font-size:11px;line-height:1.55;color:var(--sp-muted);margin:-5px 0 15px}.projectConsent{margin:0 24px 18px;padding:14px 15px;border-radius:11px;background:#f8f9fb;border:1px solid #e3e6eb;font-size:10px;line-height:1.55;color:#68717d}.projectConsent b{color:var(--sp-ink2)}.projectSubmitFooter{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px 22px;border-top:1px solid var(--sp-line)}.projectSubmitFooter p{font-size:10px;line-height:1.5;color:var(--sp-muted);margin:0;max-width:500px}.projectSubmissionReview{font:500 8px "IBM Plex Mono",monospace;letter-spacing:.06em;color:#8b93a0;margin-top:5px}.projectSubmitFooter .btn{flex:none}
+
+/* CONTACT BAND */
+.sp-contactBand{margin-top:28px;border-radius:16px;background:#0b0d12;color:#fff;padding:24px 26px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.sp-contactBand h3{font-size:20px;letter-spacing:-.025em;margin:0 0 5px}.sp-contactBand p{font-size:11.5px;line-height:1.55;color:#a7afba;margin:0}.sp-contactLinks{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.sp-contactLinks a{border:1px solid #323741;border-radius:9px;padding:10px 12px;color:#d7dbe2;font-size:11px}.sp-contactLinks a:hover{border-color:#655a86;color:#fff}
+
+@media(max-width:1020px){.startProjectHeroGrid,.sp-formShell{grid-template-columns:1fr}.startProjectHeroGrid{gap:38px}.sp-formIntro{position:static}.projectStageGrid{grid-template-columns:1fr 1fr}.sp-contactBand{grid-template-columns:1fr}.sp-contactLinks{justify-content:flex-start}}
+@media(max-width:700px){.sp-wrap{width:calc(100% - 32px)}.startProjectHeroGrid{padding:52px 0 44px}.startProjectHero h1{font-size:43px}.projectChoiceGrid,.projectStageGrid,.projectHelpGrid,.projectTimingGrid,.sp-contextGrid,.projectContactGrid,.sp-promiseGrid{grid-template-columns:1fr}.projectChoice:has(input[value="not-sure"]),.projectHelpChoice.wide,.projectContextField.wide,.projectContactField.wide{grid-column:auto}.projectContactSection{padding:56px 0}.sp-formBody{padding:19px}.projectConsent{margin:0 19px 16px}.projectSubmitFooter{align-items:stretch;flex-direction:column;padding:17px 19px 20px}.projectSubmitFooter .btn{width:100%}.sp-contactRow{align-items:flex-start;flex-direction:column;gap:7px}.sp-contactBand{padding:22px}.sp-brand{width:144px}.sp-footerLogo{width:160px}}
+</style>
 </head>
 <body class="v10-refined">
 <header class="siteHeader" id="top">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Aloden home"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aloden home"><img class="sp-brand" src="assets/aloden-cube-logo.svg" alt="Aloden"></a>
     <nav class="navLinks" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="built-by-aloden.html">Built by Aloden</a>
+      <a href="built-by-aloden.html">Our Work</a>
       <a href="capabilities.html">Capabilities</a>
-      <a href="insights.html">Insights</a>
       <a href="company.html">Company</a>
     </nav>
     <a class="btn primary navCta" href="#project-start" aria-current="page">Start a Project →</a>
@@ -34,190 +59,108 @@
 
 <main>
 <section class="startProjectHero" id="project-start">
-  <div class="container startProjectHeroGrid">
+  <div class="sp-wrap startProjectHeroGrid">
     <div class="startProjectHeroCopy">
-      <div class="eyebrow">START A PROJECT</div>
-      <h1>Start with what needs to become better.</h1>
-      <p class="startProjectHeroSupport">New product. AI capability. Modernization. Complex workflow. We’ll help define the right path.</p>
-      <p class="startProjectHeroDesc">You do not need a finished specification to start a useful conversation. Tell us what you are trying to create, improve, automate, or modernize. We’ll use a few focused questions to understand the product, where it stands today, and what kind of engineering help may make sense.</p>
-
-      <div class="startProjectSignals" aria-label="What to expect">
-        <article><b>Focused, not generic</b><span>A FEW QUESTIONS ABOUT THE PRODUCT AND OUTCOME</span></article>
-        <article><b>Product-first</b><span>TECHNOLOGY FOLLOWS WHAT THE PRODUCT NEEDS</span></article>
-        <article><b>Useful even if early</b><span>IDEA · EXISTING PRODUCT · ACTIVE MODERNIZATION</span></article>
-      </div>
-
-      <div class="startProjectContactHint"><span>Prefer to start directly by email?</span><a href="mailto:hello@aloden.com?subject=Start%20a%20Project">hello@aloden.com →</a></div>
+      <div class="sp-ey">START A PROJECT · CONTACT ALODEN</div>
+      <h1>Tell us what you’re trying to build or improve.</h1>
+      <p class="startProjectHeroDesc">You do not need a finished specification or a long RFP. Tell us about the product, workflow, or system you want to create, modernize, automate, or make more intelligent. We’ll use the context to determine the most useful next conversation.</p>
+      <div class="sp-heroActions"><a class="btn primary" href="#project-contact">Start the brief ↓</a><a class="btn secondary" href="mailto:hello@aloden.com?subject=Start%20a%20Project">Email Aloden</a></div>
+      <div class="sp-contactRow"><span>GENERAL &amp; PROJECT INQUIRIES</span><a href="mailto:hello@aloden.com">hello@aloden.com →</a><a href="https://www.linkedin.com/company/alodenllc" target="_blank" rel="noopener noreferrer">LinkedIn →</a></div>
     </div>
 
-    <div class="projectQualifier" aria-label="Start a project qualification flow">
-      <div class="projectQualifierTop"><div><span class="projectQualifierDot"></span><b>Project brief</b></div><span>ABOUT 2–3 MINUTES</span></div>
+    <div class="projectQualifier" aria-label="Choose the closest project type">
+      <div class="projectQualifierTop"><div><span class="projectQualifierDot"></span><b>Start with the outcome</b></div><span>NO RFP REQUIRED</span></div>
       <div class="projectQualifierBody">
-        <div class="projectStepMeta"><div><span>STEP 01 · WHAT</span><div class="projectProgress" aria-hidden="true"><i></i></div></div><b>1 OF 5</b></div>
-
         <fieldset>
           <legend>What are you building or changing?</legend>
-          <p class="projectQuestionHelp">Choose the option closest to where you are now. We can refine the scope together later.</p>
-
+          <p class="projectQuestionHelp">Choose the closest fit. We can refine the scope together later.</p>
           <div class="projectChoiceGrid">
-            <label class="projectChoice"><input type="radio" name="project-type" value="new-product"><span><strong>New intelligent product</strong><small>Build a new digital product from an idea, workflow, or market opportunity.</small></span></label>
-            <label class="projectChoice"><input type="radio" name="project-type" value="ai-capability"><span><strong>AI inside an existing product</strong><small>Add useful intelligence to a real workflow, decision, or user experience.</small></span></label>
-            <label class="projectChoice"><input type="radio" name="project-type" value="modernization"><span><strong>Product modernization</strong><small>Improve architecture, experience, integrations, data, or AI readiness without unnecessary rewrite.</small></span></label>
-            <label class="projectChoice"><input type="radio" name="project-type" value="agentic-workflow"><span><strong>Agentic workflow / automation</strong><small>Turn multi-step operational work into a controlled intelligent workflow.</small></span></label>
-            <label class="projectChoice"><input type="radio" name="project-type" value="voice-ai"><span><strong>Voice AI experience</strong><small>Connect natural conversation to context, tools, workflows, and verified system action.</small></span></label>
-            <label class="projectChoice"><input type="radio" name="project-type" value="healthcare-ai"><span><strong>Healthcare AI platform / workflow</strong><small>Apply AI to workforce, care, credentialing, scheduling, documentation, or operating workflows.</small></span></label>
-            <label class="projectChoice"><input type="radio" name="project-type" value="not-sure"><span><strong>Not sure yet</strong><small>Start with the problem. We’ll help determine which product path fits.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="new-product"><span><strong>Build a new product</strong><small>Turn an idea, workflow, or market opportunity into production-ready software.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="modernization"><span><strong>Modernize existing software</strong><small>Improve architecture, experience, integrations, data, or AI readiness.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="ai-capability"><span><strong>Add AI to a product</strong><small>Connect intelligence to a real decision, workflow, or user experience.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="agentic-workflow"><span><strong>Automate a workflow</strong><small>Connect agents, tools, systems, approvals, and people around real work.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="voice-ai"><span><strong>Voice & conversational AI</strong><small>Turn natural conversation into safe, connected system action.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="healthcare-ai"><span><strong>Healthcare AI</strong><small>Apply AI and product engineering to complex healthcare workflows.</small></span></label>
+            <label class="projectChoice"><input type="radio" name="project-type" value="not-sure"><span><strong>Not sure yet</strong><small>Start with the business problem. We’ll help determine the right product path.</small></span></label>
           </div>
         </fieldset>
-
-        <div class="projectQualifierFooter">
-          <p>No long RFP required. We are trying to understand the product problem before discussing a solution.</p>
-          <a class="btn primary" href="#project-stage">Continue →</a>
-        </div>
+        <div class="projectQualifierFooter"><p>The goal is to understand the problem before prescribing the solution.</p><a href="#project-contact">Continue to the brief →</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="startProjectPrinciples">
-  <div class="container startProjectPrinciplesGrid">
-    <article><b>Bring the problem</b><p>You do not need to translate the business need into a technology specification first.</p></article>
-    <article><b>We’ll clarify the product path</b><p>New build, AI capability, modernization, voice, agentic workflow, or a combination.</p></article>
-    <article><b>Scope follows understanding</b><p>We want enough context to define the right next step before forcing a delivery model.</p></article>
-  </div>
-</section>
-
-<section class="projectStageSection" id="project-stage">
-  <div class="container">
-    <div class="projectStageHead">
-      <div class="eyebrow">STEP 02 · CURRENT STATE</div>
-      <h2 class="h2">Where is the product today?</h2>
-      <p class="lead">The right next step depends on what already exists. Tell us whether this is still an idea, a validated concept, an operating product, or an initiative already in motion.</p>
-    </div>
-
-    <div class="projectStagePanel">
-      <div class="projectStagePanelTop"><span>PROJECT BRIEF</span><b>CURRENT STATE → BETTER NEXT STEP</b></div>
-      <div class="projectStageMeta"><div><span>STEP 02 · WHERE</span><div class="projectStageProgress" aria-hidden="true"><i></i></div></div><b>2 OF 5</b></div>
-      <fieldset class="projectStageField">
-        <legend>Where are you now?</legend>
-        <p class="projectStageHelp">Choose the closest description. This helps us understand whether the work is primarily definition, productization, modernization, integration, or production engineering.</p>
-        <div class="projectStageGrid">
-          <label class="projectStageChoice"><input type="radio" name="project-stage" value="early-idea"><span><strong>Early idea</strong><small>We understand the problem or opportunity, but the product is not yet defined.</small></span></label>
-          <label class="projectStageChoice"><input type="radio" name="project-stage" value="validated-concept"><span><strong>Validated concept / prototype</strong><small>We have tested the idea or built an initial prototype and now need to turn it into a real product.</small></span></label>
-          <label class="projectStageChoice"><input type="radio" name="project-stage" value="production-product"><span><strong>Existing product in production</strong><small>The product works today and needs new capability, AI, UX, integrations, scale, or architecture improvements.</small></span></label>
-          <label class="projectStageChoice"><input type="radio" name="project-stage" value="active-modernization"><span><strong>Active modernization</strong><small>We already know parts of the product need to change and need help defining or executing the modernization path.</small></span></label>
-          <label class="projectStageChoice"><input type="radio" name="project-stage" value="ai-underway"><span><strong>AI initiative already underway</strong><small>We have models, prompts, agents, or experiments but need stronger product architecture, workflow integration, controls, or production readiness.</small></span></label>
-          <label class="projectStageChoice"><input type="radio" name="project-stage" value="diagnose"><span><strong>Need help diagnosing the problem</strong><small>We know something is limiting the product, but we need help determining the right starting point.</small></span></label>
-        </div>
-      </fieldset>
-      <div class="projectStageNote"><b>Why we ask:</b> the same business goal can require very different work depending on whether we are defining a product, productizing a prototype, changing a live platform, or making an AI initiative production-ready.</div>
-      <div class="projectStageFooter"><p>We are not using this step to force you into a fixed delivery package. It helps us understand what kind of product decision should come next.</p><a class="btn primary" href="#project-help">Continue →</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="projectHelpSection" id="project-help">
-  <div class="container">
-    <div class="projectHelpHead">
-      <div class="eyebrow">STEP 03 · NEEDED HELP</div>
-      <h2 class="h2">What do you need help with?</h2>
-      <p class="lead">Choose all that apply. You do not need to know the technical solution—we are trying to understand the outcomes, product changes, or operating problems that matter most.</p>
-    </div>
-
-    <div class="projectHelpPanel">
-      <div class="projectHelpPanelTop"><span>PROJECT BRIEF</span><b>OUTCOMES FIRST → SOLUTION SECOND</b></div>
-      <div class="projectHelpMeta"><div><span>STEP 03 · HELP</span><div class="projectHelpProgress" aria-hidden="true"><i></i></div></div><b>3 OF 5</b></div>
-      <fieldset class="projectHelpField">
-        <legend>What should become better?</legend>
-        <p class="projectHelpIntro">Select one or several. The right engagement may combine product strategy, design, AI, engineering, modernization, and integration rather than fit a single service label.</p>
-        <div class="projectHelpGrid">
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="define-product"><span><strong>Define or productize the idea</strong><small>Clarify the product, workflow, users, priorities, architecture, and path from concept or prototype to a production-ready system.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="ai-capability"><span><strong>Add AI where it creates real value</strong><small>Identify the decisions, interactions, or workflows where intelligence can materially improve the product—and engineer the system around it.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="agentic-workflow"><span><strong>Automate a complex workflow</strong><small>Coordinate multi-step work across context, tools, approvals, workflow state, verification, exceptions, and human escalation.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="voice-experience"><span><strong>Create a voice or conversational experience</strong><small>Connect natural conversation to product context, permissions, tools, system actions, confirmation, and human handoff.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="modernize-product"><span><strong>Modernize an existing product</strong><small>Improve architecture, experience, data, integrations, delivery, or AI readiness while preserving what already creates value.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="systems-data"><span><strong>Connect systems, data, and workflows</strong><small>Reduce fragmented experiences by improving APIs, interoperability, data flow, workflow state, and system boundaries.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="production"><span><strong>Make the product more production-ready</strong><small>Strengthen reliability, security, evaluation, observability, performance, accessibility, controls, and operating readiness.</small></span></label>
-          <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="healthcare"><span><strong>Apply healthcare workflow expertise</strong><small>Work across workforce, referrals, credentialing, scheduling, care operations, documentation, financial workflows, or connected healthcare systems.</small></span></label>
-          <label class="projectHelpChoice wide"><input type="checkbox" name="project-help" value="not-sure"><span><strong>Not sure which path fits</strong><small>Describe the problem in your own words. We can help diagnose whether the next step is product definition, modernization, AI, workflow engineering, integration, or a combination.</small></span></label>
-        </div>
-      </fieldset>
-      <div class="projectHelpNote"><b>Why we ask:</b> strong product work often crosses disciplines. Knowing the outcome you need is more useful than forcing you to choose a technical solution before we understand the system.</div>
-      <div class="projectHelpFooter"><p>This step helps Aloden understand where the product needs to move—not prescribe how it must be built.</p><a class="btn primary" href="#project-context">Continue →</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="projectContextSection" id="project-context">
-  <div class="container">
-    <div class="projectContextHead">
-      <div class="eyebrow">STEP 04 · PROJECT CONTEXT</div>
-      <h2 class="h2">What should we know about the project?</h2>
-      <p class="lead">A little context helps us understand the right next conversation. Keep it high level—what outcome matters, what constraints are real, when timing matters, and which systems or product environment already exist.</p>
-    </div>
-
-    <div class="projectContextPanel">
-      <div class="projectContextPanelTop"><span>PROJECT BRIEF</span><b>ENOUGH CONTEXT TO DEFINE THE NEXT STEP</b></div>
-      <div class="projectContextMeta"><div><span>STEP 04 · CONTEXT</span><div class="projectContextProgress" aria-hidden="true"><i></i></div></div><b>4 OF 5</b></div>
-
-      <div class="projectContextBody">
-        <h3>Give us the useful context—not a full RFP.</h3>
-        <p class="projectContextIntro">Short answers are fine. We are looking for the product reality that will shape the next decision, not a complete specification.</p>
-
-        <div class="projectContextGrid">
-          <div class="projectContextField wide">
-            <label for="project-outcome">What outcome are you trying to achieve?</label>
-            <small>Describe what should become better for the user, workflow, operation, or business.</small>
-            <textarea id="project-outcome" name="project-outcome" rows="4" placeholder="Example: Reduce manual work in a multi-step workflow, make an existing product AI-ready, or turn a validated prototype into a dependable production product."></textarea>
-          </div>
-
-          <div class="projectContextField">
-            <label for="project-constraints">What constraints should we know about?</label>
-            <small>Optional. Existing architecture, security, compliance, integration, team, migration, or operating constraints.</small>
-            <textarea id="project-constraints" name="project-constraints" rows="4" placeholder="Example: Must integrate with existing systems, preserve a live workflow, meet healthcare privacy requirements, or avoid a full rewrite."></textarea>
-          </div>
-
-          <fieldset class="projectContextField">
-            <legend>When does timing matter?</legend>
-            <small>Choose the closest answer. We can discuss milestones and delivery approach later.</small>
-            <div class="projectTimingGrid">
-              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="exploring"><span>Exploring / no fixed date</span></label>
-              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="quarter"><span>Within the next quarter</span></label>
-              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="six-months"><span>Within 3–6 months</span></label>
-              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="urgent"><span>Active / time-sensitive initiative</span></label>
-            </div>
-          </fieldset>
-
-          <div class="projectContextField wide">
-            <label for="project-systems">What product, systems, or data environment already exists?</label>
-            <small>Optional. Name the current product, platforms, APIs, data sources, vendors, or systems that materially shape the work.</small>
-            <input id="project-systems" name="project-systems" type="text" placeholder="Example: Existing SaaS platform, EHR / VMS / CRM, internal APIs, cloud environment, data warehouse, or current AI prototype">
-          </div>
-        </div>
-      </div>
-
-      <div class="projectContextNote"><b>Keep sensitive information out of this first brief.</b> We only need enough context to determine the right next conversation; confidential technical or business details can be handled later through the appropriate process.</div>
-      <div class="projectContextFooter"><p>This step should help Aloden understand the operating context without making the visitor complete a long procurement questionnaire.</p><a class="btn primary" href="#project-contact">Continue →</a></div>
-    </div>
+<section class="sp-promise">
+  <div class="sp-wrap sp-promiseGrid">
+    <article><span>01</span><b>Start early</b><p>An idea, prototype, live product, or active AI initiative is enough context to begin.</p></article>
+    <article><span>02</span><b>Keep it high level</b><p>No confidential technical detail is needed in the first brief.</p></article>
+    <article><span>03</span><b>Get a useful next step</b><p>The first conversation should clarify the product decision—not create another questionnaire.</p></article>
   </div>
 </section>
 
 <section class="projectContactSection" id="project-contact">
-  <div class="container">
-    <div class="projectContactHead">
-      <div class="eyebrow">STEP 05 · CONTACT &amp; SUBMIT</div>
-      <h2 class="h2">Who should we contact about the project?</h2>
-      <p class="lead">Finish the brief with the essentials. We only need enough information to connect the project context to the right follow-up conversation.</p>
-    </div>
+  <div class="sp-wrap sp-formShell">
+    <aside class="sp-formIntro">
+      <div class="sp-ey">PROJECT BRIEF</div>
+      <h2>A few focused questions. One useful conversation.</h2>
+      <p>Share enough context for us to understand what you are trying to accomplish, what already exists, and where the product needs help.</p>
+      <div class="sp-next"><span>WHAT HAPPENS NEXT</span>
+        <article><span>01</span><div><b>We review the context</b><small>Product, current state, priorities, constraints, and timing.</small></div></article>
+        <article><span>02</span><div><b>We follow up</b><small>We use your work email to schedule the right first conversation.</small></div></article>
+        <article><span>03</span><div><b>We define the next step</b><small>Discovery, build, modernization, AI workflow pilot, or another path based on the actual problem.</small></div></article>
+      </div>
+      <div class="sp-direct">Prefer email? <a href="mailto:hello@aloden.com?subject=Start%20a%20Project">hello@aloden.com →</a></div>
+    </aside>
 
     <div class="projectContactPanel">
-      <div class="projectContactPanelTop"><span>PROJECT BRIEF</span><b>5 OF 5 · READY FOR REVIEW</b></div>
-      <div class="projectContactMeta"><div><span>STEP 05 · CONTACT</span><div class="projectContactProgress" aria-hidden="true"><i></i></div></div><b>5 OF 5</b></div>
+      <div class="sp-panelTop"><b>Initial project brief</b><span>HIGH-LEVEL CONTEXT ONLY</span></div>
+      <div class="sp-formBody">
 
-      <div class="projectContactBody">
-        <div class="projectContactForm">
-          <h3>Tell us who to follow up with.</h3>
-          <p class="projectContactIntro">No phone number is required for the first conversation. We’ll start with your work email and the context already captured in the brief.</p>
+        <fieldset class="sp-formBlock projectStageField">
+          <div class="sp-blockHead"><span class="sp-step">02</span><div><b>Where is the product today?</b><p>Choose the closest description.</p></div></div>
+          <div class="projectStageGrid">
+            <label class="projectStageChoice"><input type="radio" name="project-stage" value="early-idea"><span><strong>Early idea</strong><small>The problem or opportunity is clear, but the product is not yet defined.</small></span></label>
+            <label class="projectStageChoice"><input type="radio" name="project-stage" value="validated-concept"><span><strong>Prototype / validated concept</strong><small>Something works already and now needs to become a real product.</small></span></label>
+            <label class="projectStageChoice"><input type="radio" name="project-stage" value="production-product"><span><strong>Live product</strong><small>The product is in use and needs new capability, stronger UX, integrations, or scale.</small></span></label>
+            <label class="projectStageChoice"><input type="radio" name="project-stage" value="active-modernization"><span><strong>Modernization underway</strong><small>We know parts need to change and need help defining or executing the path.</small></span></label>
+            <label class="projectStageChoice"><input type="radio" name="project-stage" value="ai-underway"><span><strong>AI initiative underway</strong><small>Models, prompts, agents, or experiments exist but need stronger product engineering.</small></span></label>
+            <label class="projectStageChoice"><input type="radio" name="project-stage" value="diagnose"><span><strong>Need help diagnosing</strong><small>We know something is limiting the product but need help finding the right starting point.</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="sp-formBlock projectHelpField">
+          <div class="sp-blockHead"><span class="sp-step">03</span><div><b>What should become better?</b><p>Select all that apply.</p></div></div>
+          <div class="projectHelpGrid">
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="define-product"><span><strong>Define or productize the idea</strong><small>Clarify users, workflow, product direction, architecture, and path to production.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="ai-capability"><span><strong>Add AI where it creates value</strong><small>Improve a decision, workflow, or interaction with useful intelligence.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="agentic-workflow"><span><strong>Automate a complex workflow</strong><small>Connect context, tools, systems, approvals, verification, and people.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="voice-experience"><span><strong>Build a voice experience</strong><small>Connect conversation to context, actions, confirmation, and human handoff.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="modernize-product"><span><strong>Modernize an existing product</strong><small>Improve architecture, UX, data, integrations, delivery, or AI readiness.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="systems-data"><span><strong>Connect systems and data</strong><small>Improve APIs, interoperability, data flow, and system boundaries.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="production"><span><strong>Strengthen production readiness</strong><small>Reliability, security, evaluation, observability, performance, and controls.</small></span></label>
+            <label class="projectHelpChoice"><input type="checkbox" name="project-help" value="healthcare"><span><strong>Healthcare workflow expertise</strong><small>Workforce, credentialing, scheduling, care operations, or connected systems.</small></span></label>
+            <label class="projectHelpChoice wide"><input type="checkbox" name="project-help" value="not-sure"><span><strong>Not sure which path fits</strong><small>Describe the problem below and we’ll help determine the right starting point.</small></span></label>
+          </div>
+        </fieldset>
+
+        <div class="sp-formBlock">
+          <div class="sp-blockHead"><span class="sp-step">04</span><div><b>What should we know about the project?</b><p>Keep it high level. No confidential information is needed here.</p></div></div>
+          <div class="sp-contextGrid">
+            <div class="projectContextField wide"><label for="project-outcome">What outcome are you trying to achieve?</label><small>What should become better for the user, workflow, operation, or business?</small><textarea id="project-outcome" name="project-outcome" rows="4" placeholder="Example: Turn an AI prototype into a dependable product, modernize a live platform, or reduce manual work in a multi-step workflow."></textarea></div>
+            <div class="projectContextField"><label for="project-constraints">Important constraints <small>optional</small></label><small>Architecture, security, compliance, integration, migration, team, or operating constraints.</small><textarea id="project-constraints" name="project-constraints" rows="4" placeholder="What must the solution work with or preserve?"></textarea></div>
+            <fieldset class="projectContextField"><legend>When does timing matter?</legend><small>Choose the closest answer.</small><div class="projectTimingGrid">
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="exploring"><span>Exploring / no fixed date</span></label>
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="quarter"><span>Within the next quarter</span></label>
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="six-months"><span>Within 3–6 months</span></label>
+              <label class="projectTimingChoice"><input type="radio" name="project-timing" value="urgent"><span>Active / time-sensitive</span></label>
+            </div></fieldset>
+            <div class="projectContextField wide"><label for="project-systems">Existing product, systems, or data environment <small>optional</small></label><small>Name only what materially shapes the work.</small><input id="project-systems" name="project-systems" type="text" placeholder="Existing SaaS platform, APIs, cloud environment, data warehouse, CRM, EHR, VMS, or current AI prototype"></div>
+          </div>
+        </div>
+
+        <div class="sp-formBlock projectContactForm">
+          <div class="sp-blockHead"><span class="sp-step">05</span><div><b>Who should we contact?</b><p>We’ll use your work email for the first follow-up.</p></div></div>
+          <p class="projectContactIntro">No phone number is required.</p>
           <div class="projectContactGrid">
             <div class="projectContactField"><label for="project-name">Your name</label><input id="project-name" name="project-name" type="text" autocomplete="name" placeholder="Full name"></div>
             <div class="projectContactField"><label for="project-email">Work email</label><input id="project-email" name="project-email" type="email" autocomplete="email" placeholder="name@company.com"></div>
@@ -225,29 +168,31 @@
             <div class="projectContactField"><label for="project-role">Role / title <small>optional</small></label><input id="project-role" name="project-role" type="text" autocomplete="organization-title" placeholder="Your role"></div>
           </div>
         </div>
-
-        <aside class="projectContactNext">
-          <span>WHAT HAPPENS NEXT</span>
-          <h3>A useful follow-up, not another form.</h3>
-          <p>The brief gives Aloden enough context to understand the product problem before the first conversation.</p>
-          <div class="projectContactSteps">
-            <article><span>01</span><div><b>We review the product context</b><small>What you are building, where it stands, what needs help, and the operating constraints.</small></div></article>
-            <article><span>02</span><div><b>We connect with you</b><small>The first follow-up can clarify the product decision, unknowns, and the most useful next step.</small></div></article>
-            <article><span>03</span><div><b>We define the right path</b><small>Discovery, productization, modernization, AI engineering, integration, or a combination—based on the actual problem.</small></div></article>
-          </div>
-        </aside>
       </div>
 
       <div class="projectConsent"><b>By submitting this brief, you are asking Aloden to contact you about this project.</b> Please do not include confidential, sensitive, regulated, or proprietary information in this initial inquiry.</div>
-      <div class="projectSubmitFooter"><div><p>Submit the brief when the information is ready. Detailed technical or commercial information can be handled later through the appropriate process.</p><div class="projectSubmissionReview">FORM CONTENT FINAL · SUBMISSION FUNCTIONALITY REVIEW NEXT.</div></div><button class="btn primary" id="submit-project-brief" type="button">Submit Project Brief →</button></div>
+      <div class="projectSubmitFooter"><div><p>We only need enough context to determine the right next conversation.</p><div class="projectSubmissionReview">INITIAL PROJECT BRIEF · HIGH-LEVEL CONTEXT ONLY.</div></div><button class="btn primary" id="submit-project-brief" type="button">Submit Project Brief →</button></div>
     </div>
+  </div>
 
-    <div class="projectDirectContact">Prefer email? <a href="mailto:hello@aloden.com?subject=Start%20a%20Project">hello@aloden.com →</a></div>
+  <div class="sp-wrap sp-contactBand">
+    <div><h3>Not ready for a project brief?</h3><p>For partnerships, general questions, or an early conversation, contact Aloden directly.</p></div>
+    <div class="sp-contactLinks"><a href="mailto:hello@aloden.com">hello@aloden.com →</a><a href="https://www.linkedin.com/company/alodenllc" target="_blank" rel="noopener noreferrer">LinkedIn →</a></div>
   </div>
 </section>
 </main>
 
-<footer class="footer startProjectFooter"><div class="container contentReviewFooter"><div class="contentReviewFooterGrid"><div class="contentReviewFooterBrand"><span class="alodenLockup"><span class="alodenMark"><i></i><i></i><i></i><i></i></span><span class="alodenWord">aloden</span></span><p>AI product engineering and digital modernization for intelligent products built for real-world use.</p></div><div class="contentReviewFooterCol"><h4>Explore</h4><a href="built-by-aloden.html">Built by Aloden</a><a href="capabilities.html">Capabilities</a><a href="insights.html">Insights</a><a href="company.html">Company</a></div><div class="contentReviewFooterCol contentReviewFooterCapabilities"><h4>Capabilities</h4><a href="ai-product-engineering.html">AI Product Engineering</a><a href="voice-ai-engineering.html">Voice AI Engineering</a><a href="agentic-ai.html">Intelligent Workflow &amp; Agentic Systems</a><a href="product-modernization.html">Product Modernization</a><a href="healthcare-ai.html">Healthcare AI</a></div><div class="contentReviewFooterCol"><h4>Connect</h4><a class="contentReviewFooterPrimary" href="#project-start">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="#">LinkedIn →</a></div></div><div class="contentReviewFooterBottom"><div class="contentReviewFooterLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="#">Privacy</a><a href="#">Terms</a></div><span class="contentReviewFooterTagline">Built around your vision.</span></div></div></footer>
+<footer class="footer startProjectFooter">
+  <div class="container footerFinal">
+    <div class="footerFinalGrid">
+      <div class="footerFinalBrand"><img class="sp-footerLogo" src="assets/aloden-cube-logo-dark.svg" alt="Aloden"><p>AI-native product engineering and digital modernization for intelligent products built for real-world use.</p></div>
+      <div class="footerFinalCol"><h4>Explore</h4><a href="index.html">Home</a><a href="built-by-aloden.html">Our Work</a><a href="capabilities.html">Capabilities</a><a href="company.html">Company</a></div>
+      <div class="footerFinalCol"><h4>Capabilities</h4><a href="capabilities.html#ai-product-engineering">AI Product Engineering</a><a href="capabilities.html#product-modernization">AI-Native Modernization</a><a href="capabilities.html#agentic-systems">Agentic Workflow Engineering</a><a href="capabilities.html#voice-ai-engineering">Voice &amp; Conversational AI</a></div>
+      <div class="footerFinalCol"><h4>Connect</h4><a class="footerPrimary" href="#project-start">Start a Project →</a><a href="mailto:hello@aloden.com">hello@aloden.com</a><a href="https://www.linkedin.com/company/alodenllc" target="_blank" rel="noopener noreferrer">LinkedIn →</a></div>
+    </div>
+    <div class="footerFinalBottom"><div class="footerLegal"><span>© 2026 Aloden LLC. All rights reserved.</span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><span class="footerTagline">Built around your vision.</span></div>
+  </div>
+</footer>
 <script defer src="app.js"></script>
 </body>
 </html>
