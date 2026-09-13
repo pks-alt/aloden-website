@@ -1,0 +1,12 @@
+# Private runtime data must never be committed.
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+credentials.json
+token.json
+node_modules/
+qa-artifacts/

@@ -1,0 +1,54 @@
+/* Resume upload: contained in the approved Careers candidate area. */
+.careersPage .cr-candidateHelp{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:36px}
+.cr-applicationPanel{border:1px solid #dedee7;border-radius:18px;background:#fff;overflow:hidden;min-width:0}
+.cr-formHeading{padding:24px 24px 18px;background:linear-gradient(145deg,#fff,#faf8ff);border-bottom:1px solid var(--cr-line)}
+.cr-formHeading h3{margin:10px 0!important;font-size:27px!important;letter-spacing:-.035em!important}
+.cr-formHeading p{font-size:13px;line-height:1.6;margin:0;color:var(--cr-body)}
+.cr-uploadMode{margin:18px 24px 0;border:1px solid #ded8eb;border-radius:9px;padding:11px 13px;background:#f7f4fc;font-size:12px;line-height:1.55;color:#544667}
+.cr-uploadMode[data-live="true"]{background:#f2f8f5;border-color:#d4e4da;color:#32533e}
+#careers-application{padding:22px 24px 20px}
+.cr-formFields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 14px}
+.cr-formField{min-width:0}
+.cr-formWide{grid-column:1/-1}
+.cr-formField>label{display:block;margin:0 0 7px;font-size:12px;font-weight:600;line-height:1.5;color:#242834}
+.cr-optional{font-size:10px;color:#707580;font-weight:400;margin-left:4px}
+.cr-formField>input,.cr-formField>select,.cr-formField>textarea{display:block;width:100%;min-width:0;min-height:46px;border:1px solid #d5d9e0;border-radius:9px;padding:11px 12px;font:400 14px/1.5 "Instrument Sans",sans-serif;color:#20242d;background:#fff}
+.cr-formField>textarea{resize:vertical;min-height:92px}
+.cr-formField>small{font-size:11px;line-height:1.5;color:#606978;display:block;margin-top:4px}
+.cr-dropzone{display:flex;flex-direction:column;align-items:center;gap:7px;padding:20px 14px;background:#fbfaff;border:1px dashed #bfb2df;border-radius:12px;text-align:center;transition:background .15s,border-color .15s}
+.cr-dropzone.is-dragging{background:#eee8fb;border-color:#704de7}
+.cr-uploadGlyph{width:32px;height:32px;border-radius:9px;background:#eee7ff;color:#5134bd;font-size:22px;line-height:30px}
+.cr-dropzone>b{font-size:14px;color:#282234}
+.cr-dropzone>span,.cr-dropzone>small{font-size:12px;color:#626575}
+.cr-dropzone input{max-width:100%;width:100%;font:400 12px "Instrument Sans",sans-serif;color:#56606c;margin:6px 0}
+.cr-dropzone input::file-selector-button{font:600 12px "Instrument Sans",sans-serif;border:1px solid #c6bcdf;background:#fff;color:#5134bd;border-radius:8px;padding:10px 13px;margin-right:10px;cursor:pointer;min-height:40px}
+.cr-fileSelected{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #d9e4dd;border-radius:10px;background:#f6faf7;margin-top:9px;padding:11px 12px}
+.cr-fileSelected>div{min-width:0}
+.cr-fileSelected b{display:block;font-size:13px;overflow-wrap:anywhere;color:#244630}
+.cr-fileSelected span{display:block;font-size:11px;margin-top:3px;color:#506456}
+.cr-fileSelected button{flex:none;cursor:pointer;border:0;background:transparent;font:600 12px "Instrument Sans",sans-serif;color:#5134bd;min-height:40px;padding:8px}
+.cr-fieldError{font-size:12px;line-height:1.5;color:#a02632;margin:8px 0 0}
+.cr-fieldError:empty{display:none}
+.cr-uploadPrivacy{margin-top:20px;padding:14px;border:1px solid #e3e4e9;border-radius:10px;background:#f9fafb}
+.cr-uploadPrivacy>b{font-size:12px;color:#303641}
+.cr-uploadPrivacy p{font-size:12px;line-height:1.6;color:#56606c;margin:5px 0}
+.cr-uploadPrivacy a{font-size:12px}
+.cr-applicationConsent{display:flex;align-items:flex-start;gap:10px;margin:15px 0;font-size:12px;line-height:1.65;color:#505966;cursor:pointer}
+.cr-applicationConsent input{flex:none;width:17px;height:17px;margin:2px 0;accent-color:#704de7}
+.cr-honeypot{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+.cr-submitRow{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:14px}
+.cr-submitRow>span{font-size:11px;color:#666c78}
+#career-submit{gap:10px}
+#career-submit:disabled{opacity:.55;cursor:not-allowed;transform:none!important}
+.cr-submitStatus{margin:12px 0 0;font-size:13px;line-height:1.6;overflow-wrap:anywhere;color:#5134bd}
+.cr-submitStatus[data-state="error"]{color:#9d2834}
+.cr-submitStatus[data-state="success"]{color:#24633f;background:#f2f8f4;border:1px solid #d4e7db;padding:13px;border-radius:9px}
+.cr-submitStatus:empty{display:none}
+.cr-emailFallback{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:15px 24px;background:#fbfafc;border-top:1px solid var(--cr-line);font-size:12px;color:#636775}
+.cr-emailFallback .cr-copyEmail{margin-left:auto;min-height:38px;font-size:12px;padding:0 11px}
+.cr-emailFallback .cr-copyStatus{flex-basis:100%}
+.careersPage .cr-faq{padding-top:5px}
+.cr-fileSelected[hidden],#career-applicant-notice[hidden]{display:none}
+@media(max-width:1000px){.careersPage .cr-candidateHelp{grid-template-columns:minmax(0,1fr);gap:28px}}
+@media(max-width:600px){.cr-formHeading{padding:20px 18px 16px}#careers-application{padding:18px}.cr-uploadMode{margin:16px 18px 0}.cr-emailFallback{padding:14px 18px}.cr-formFields{grid-template-columns:minmax(0,1fr);gap:14px}.cr-formHeading h3{font-size:25px!important}.cr-formField>input,.cr-formField>select,.cr-formField>textarea{font-size:16px}.cr-submitRow .btn{width:100%;justify-content:center}.cr-dropzone{padding:18px 10px}.cr-emailFallback .cr-copyEmail{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.cr-dropzone{transition:none}}
