@@ -76,9 +76,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           test "$(git ls-remote origin refs/heads/feature/careers-page | cut -f1)" = "$GITHUB_SHA"
-          rm scripts/careers-completion.b64 .github/workflows/careers-complete-review.yml
+          rm scripts/careers-completion.b64
+          # Workflow maintenance is performed separately through the authorized connector.
+          # The Actions token commits application source only, within contents permission.
+          git restore --source=HEAD --worktree .github
           git add -A
           git diff --cached --check
+          git diff --cached --exit-code -- .github
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Finish Careers with the five image roles, job-linked applications, and verified HR publishing'
