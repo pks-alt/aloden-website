@@ -1,118 +1,74 @@
-# Aloden V1 — Final Design Handoff
+# Aloden — current website handoff
 
-Status: **FINAL DESIGN / CONTENT DIRECTION — READY FOR VISUAL APPROVAL**  
-Branch: `feature/homepage-design-rework`  
-Production merge/deployment: **NOT performed**
+This is the authoritative release scope and content direction. It supersedes conflicting navigation, page-scope, history, and naming instructions in earlier design documents. Content-consistency baseline: `2a75456f481d381e8e4ebbb89ce3191fd54c20c8` on `feature/careers-page`. The content edit is reviewed separately before any merge. Production deployment and live form activation remain the developer's responsibility.
 
-## Locked global system
+## Preserve the approved design
 
-- Max content width: 1260px.
-- Instrument Sans + IBM Plex Mono.
-- Graphite / warm white / soft lavender / Aloden violet.
-- Dark treatment concentrated in the homepage hero and conversion moments.
-- One primary button, one secondary button, one text-link behavior.
-- Official cube + wordmark SVG used across site chrome.
-- Shared header, footer, spacing, focus and responsive standards supplied through `preview/site-final-system.css`.
-- Shared controller `preview/app.js` normalizes navigation, links, accessibility and metadata.
+Keep the existing layouts, section order, spacing system, typography, colors, responsive behavior, and official Aloden logo assets. No redesign is part of the wording pass. The shared controller is `preview/app.js`; Home content is also supplied by `homepage-section1-review.js`, `homepage-section1.js`, and `homepage-final.js`. Do not add another competing runtime copy layer.
 
-## Navigation naming
+Use the official `aloden-cube-logo.svg` and `aloden-cube-logo-dark.svg` treatments selected for their backgrounds. Voice AI is not a separately invented Aloden-branded product logo.
 
-Rendered primary navigation:
+## Navigation and page scope
 
-1. Home
-2. **Our Work**
-3. Capabilities
-4. Insights
-5. Company
-6. Start a Project
+Primary navigation: Home, Our Work, Capabilities, Company, Start a Project. Careers is accessible through the shared footer. “Our Work” is the public page name; its existing URL remains `built-by-aloden.html`.
 
-The destination remains `built-by-aloden.html` and the page identity remains **Built by Aloden**. “Our Work” is the familiar navigation label; “Built by Aloden” is the branded portfolio-page title.
+Public pages: Home; Our Work; Capabilities; AI Product Engineering; AI-Native Modernization; Agentic Workflow Engineering; Voice & Conversational AI; Healthcare AI; Company; Careers; Start a Project; Privacy; Terms; 404.
 
-## Homepage final flow
+Contact is an alias to Start a Project, not a separate general-contact design. The page also supplies `hello@aloden.com` for general inquiries. Insights is excluded from the launch navigation and sitemap and stays noindex. Do not restore it from an older handoff.
 
-1. Hero / positioning — locked dark treatment.
-2. What Aloden Does / enterprise positioning.
+Careers includes Current Openings, five role-detail reviews, job-linked résumé upload, general introductions, and an authenticated HR job manager. The interactive HR demonstration is separate, in-memory, and not a live sign-in substitute. This is a scoped job-publishing tool, not a new sitewide CMS.
+
+## Home flow — locked
+
+1. Hero and engineering illustration.
+2. What Aloden Does.
 3. Core Capabilities.
 4. Build New / Modernize Existing.
 5. Who We Work With.
 6. Why Aloden.
-7. Featured Insight.
-8. Trust & Production Readiness.
-9. Final CTA.
-10. Footer.
+7. Trust & Production Readiness.
+8. Final project call to action.
+9. Footer.
 
-Detailed Medlivo / StartupFair / Aloden Voice proof is intentionally NOT a homepage section. It belongs on Our Work / Built by Aloden.
+No Selected Work gallery or Featured Insight section on Home. The hero uses generic Healthcare, Innovation, and Voice examples; named Medlivo/StartupFair showcases belong on Our Work.
 
-## Homepage hero wording
+Locked headline: **We build and modernize intelligent digital products.**
+Locked supporting line: **Built around your vision. Engineered for real-world impact.**
+Engineering illustration labels: **ALODEN PRODUCT ENGINEERING** and **ENGINEERED FOR PRODUCTION**. Do not imply a separately named proprietary “Product Engineering System.”
 
-Primary message: **We build and modernize intelligent digital products.**
+## One service vocabulary
 
-Supporting line: **Built around your vision. Engineered for real-world impact.**
+- AI Product Engineering → `ai-product-engineering.html`
+- AI-Native Modernization → `product-modernization.html`
+- Agentic Workflow Engineering → `agentic-ai.html`
+- Voice & Conversational AI → `voice-ai-engineering.html`
 
-The engineering visual uses **ALODEN PRODUCT ENGINEERING** and **ENGINEERED FOR PRODUCTION** rather than language that implies a separate proprietary product called “Aloden Product Engineering System.”
+Healthcare AI is domain depth with its own page, not a fifth equal core capability. Keep technical search synonyms where useful, but do not rename the same service between Home, cards, page labels, footers, metadata, and inquiry descriptions.
 
-## Core capability model
+## Company history and delivery
 
-1. AI Product Engineering
-2. Voice AI Engineering
-3. Intelligent Workflow & Agentic Systems
-4. Product Modernization
+Aloden was founded in 2024. Today it helps companies build intelligent digital products and modernize the software they depend on. AI product engineering was not confirmed as its original focus: do not use “AI-native from day one” or claim that no legacy delivery model was ever adapted.
 
-Healthcare AI remains domain depth, not a fifth equal capability.
+PK confirmed one accountable delivery lead per client, direct access to the engineers for technical conversations, and regular updates and demonstrations of working software. Do not invent a fixed cadence, response SLA, delivery guarantee, or unsupported staffing/leadership claim.
 
-## Pages in V1
+## Product evidence
 
-- Home
-- Built by Aloden / Our Work
-- Capabilities
-- AI Product Engineering
-- Voice AI Engineering
-- Intelligent Workflow & Agentic Systems
-- Product Modernization
-- Healthcare AI
-- Insights
-- Company
-- Start a Project
-- Privacy
-- Terms
-- 404
+Owner-confirmed status: Medlivo software is in use; StartupFair is fully functional; voice AI is deployed and in use. The displayed operating figures are real snapshots according to PK. They are not a live feed, a guaranteed customer result, or newly measured performance statistics. Do not invent dates or change their values during cosmetic/copy edits.
 
-## Sitewide finalization applied
+## Writing direction
 
-- “Our Work” rendered consistently in primary navigation and footer navigation.
-- Official logo treatment standardized.
-- Header and footer proportions standardized.
-- 1260px site grid and responsive gutters standardized.
-- Secondary-page title scale and hero spacing standardized.
-- Secondary-page system canvases use consistent radius / shadow discipline.
-- Section spacing tightened to remove unnecessary vertical length.
-- Legacy multi-color variables normalized toward the Aloden violet palette.
-- CTA bands standardized.
-- Accessible focus treatment, skip link, responsive menu behavior and reduced-motion support retained.
-- Canonical / Open Graph / Twitter / Organization JSON-LD baseline retained.
-- Start a Project functionality/security architecture retained.
+Home explains the business. Capabilities helps a buyer choose. Service pages describe relevant problems and deliverables. Our Work provides product evidence. Company explains Aloden and the working relationship. Start a Project makes inquiry straightforward. Careers speaks to candidates.
 
-## Deliberate non-changes
+Use clear tasks and specific explanations. Avoid repeated slogans, long strings of abstract nouns, internal planning notes, and unsupported superlatives. Technical detail belongs after the customer problem, not instead of it. Keep the approved section structure; change the purpose and wording within it where repetition was found.
 
-- No fake client logos, metrics or testimonials.
-- No Careers or Industries section in V1.
-- No CMS in V1.
-- No detailed product gallery on Home.
-- No merge to `main` before explicit visual approval.
-- No production hosting claims.
+## Production handoff
 
-## Remaining launch-only items
+- Deploy the approved code using the developer's selected hosting platform and final HTTPS origin.
+- Configure and live-test Start a Project delivery, Careers résumé delivery, job storage, protected HR sign-in, anti-abuse checks, and file scanning.
+- HR approves actual employment terms before publishing the five draft roles. See `CAREERS-JOB-MANAGEMENT.md`.
+- HR and the appropriate reviewer approve applicant-data handling and notice. General website Privacy and Terms are not a completed recruitment-data policy.
+- Verify metadata, the public and job sitemaps, actual indexed pages, social previews, responsive behavior, keyboard interactions, and form delivery on the deployed site.
+- Keep secrets out of source control and browser code. Do not show delivery success without backend acceptance.
+- No production deployment or merge into `main` is authorized by this document.
 
-These require production environment choices or external approvals, not more page design:
-
-- hosting/runtime selection and production deployment
-- live project-brief delivery adapter and secrets
-- rate-limit/bot-verification production services
-- production monitoring
-- final legal review of Privacy and Terms
-- production Core Web Vitals and cross-browser acceptance
-- one real end-to-end Start a Project submission
-
-## Morning review
-
-Review the feature branch visually across desktop, tablet and mobile. If approved, the next step is production wiring and controlled promotion toward `develop` / `main`.
+Reference: `CONTENT-CONSISTENCY-REVIEW.md`, `CAREERS-JOB-MANAGEMENT.md`, `CAREERS-RESUME-UPLOAD.md`, `CAREERS-LAUNCH-CHECKLIST.md`, `SEO-KEYWORD-MAP.md`.
