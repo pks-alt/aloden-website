@@ -44,6 +44,15 @@ jobs:
           git apply --check --unidiff-zero scripts/careers-integration-a.patch scripts/careers-integration-b.patch
           git apply --unidiff-zero scripts/careers-integration-a.patch scripts/careers-integration-b.patch
           python3 /tmp/aloden-completion.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/careers-job-previews.mjs')
+          s=p.read_text()
+          old="renderRole(template,job,'https://www.aloden.com',{review:true,base:'../../'}));"
+          new="renderRole(template,job,'https://www.aloden.com',{review:true,base:'../../'}).replace(/[\\t ]+$/gm,''));"
+          assert old in s
+          p.write_text(s.replace(old,new))
+          PY
           node scripts/careers-job-previews.mjs
           node scripts/site-qa.mjs
           node --check preview/careers-jobs.js
