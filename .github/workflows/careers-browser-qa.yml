@@ -11,10 +11,19 @@ on:
   pull_request:
     paths:
       - 'preview/careers*'
+      - 'preview/career-role.html'
+      - 'preview/hr-jobs*'
+      - 'preview/reviews/hr-jobs.html'
+      - 'preview/reviews/jobs/**'
+      - 'preview/data/careers-openings.json'
       - 'scripts/careers*'
       - 'server/careers/**'
       - '.github/workflows/careers-browser-qa.yml'
   workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
 
 permissions:
   contents: read
@@ -37,10 +46,15 @@ jobs:
           node-version: '22'
       - name: Validate launch source
         run: |
+          mkdir -p qa-artifacts
+          node scripts/careers-job-previews.mjs
+          git diff --exit-code -- preview/careers.html preview/reviews/
           node --check preview/careers-application.js
+          node --check preview/hr-jobs.js
+          node --check preview/careers-jobs.js
           node scripts/site-qa.mjs
-          node --test server/careers/careers.test.mjs
-          node --test server/project-brief-handler.test.mjs
+          node --test server/careers/careers.test.mjs server/careers/jobs.test.mjs | tee qa-artifacts/backend-tests.txt
+          node --test server/project-brief-handler.test.mjs | tee qa-artifacts/project-tests.txt
       - name: Install isolated browser tooling
         run: |
           npm install --prefix /tmp/aloden-browser --no-audit --no-fund playwright@1.56.1
@@ -53,9 +67,11 @@ jobs:
           trap 'kill "$SERVER_PID"' EXIT
           for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8765/careers.html >/dev/null && break || sleep 1; done
           node scripts/careers-browser-qa.mjs
+          node scripts/careers-jobs-browser-qa.mjs
       - name: Package exact reviewed source
         if: always()
         run: |
+          mkdir -p qa-artifacts
           git rev-parse HEAD > qa-artifacts/COMMIT.txt
           git archive --format=zip --output=qa-artifacts/reviewed-source.zip HEAD
       - uses: actions/upload-artifact@v4
