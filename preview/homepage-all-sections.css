@@ -210,3 +210,11 @@
   .homepageRework #built .productCard{transition:none!important}
   .homepageRework #built .productCard:hover{transform:none}
 }
+
+/* Footer tracks must shrink on tablets/phones; never retain desktop minimums. */
+@media(max-width:1020px){
+  body.siteFinalSystem.homepageRework .footerFinalGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px!important}
+}
+@media(max-width:680px){
+  body.siteFinalSystem.homepageRework .footerFinalGrid{grid-template-columns:minmax(0,1fr);gap:26px!important}
+}

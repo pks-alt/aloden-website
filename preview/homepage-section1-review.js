@@ -61,7 +61,7 @@
 
           <article class="heroOneCore">
             <div class="heroOneCoreHead">
-              <span class="heroOneCoreMark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <img class="heroOneCoreMark" src="assets/aloden-cube-symbol.svg" alt="" width="28" height="28" aria-hidden="true" decoding="async">
               <div><small>ALODEN PRODUCT ENGINEERING</small><h2>From context to production.</h2></div>
             </div>
             <div class="heroOneStages" aria-label="Aloden product engineering stages">

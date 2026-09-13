@@ -80,7 +80,7 @@
   }
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!ready) { setStatus('Online submissions are not connected here. Your résumé has not been sent. Email hr@aloden.com instead.', 'error'); return; }
+    if (!ready) { setStatus('Online applications are currently unavailable. Your résumé has not been sent. Email hr@aloden.com to apply.', 'error'); return; }
     if (busy || completed || uncertain || !jobReady) return;
     if (!form.reportValidity() || !file) return;
     if (!token) { setStatus('Please complete the verification before submitting.', 'error'); return; }
@@ -154,7 +154,7 @@
       const noticeLink = form.querySelector('#career-applicant-notice');
       noticeLink.href = notice.href;
       noticeLink.hidden = false;
-      mode.textContent = 'Online applications · One résumé, sent with your details to Aloden HR after verification.';
+      mode.textContent = 'Complete the form and upload one résumé. Your application will be sent to hr@aloden.com after verification.';
       mode.dataset.live = 'true';
       const script = document.createElement('script');
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
@@ -168,6 +168,9 @@
           'error-callback': () => { token = ''; buttonState(); setStatus('Verification is unavailable. Please retry later or email HR.', 'error'); }
         });
         ready = true;
+        submit.textContent = 'Submit application →';
+        const faq = document.querySelector('#careers-upload-faq');
+        if (faq) faq.textContent = 'Select one PDF or DOCX up to 5 MB, complete the required fields, and submit. Selecting a file alone does not send it. A confirmation appears after your application is accepted. You may also email your résumé to hr@aloden.com.';
         buttonState();
       };
       script.onerror = () => { mode.textContent = 'Verification could not load. Please email hr@aloden.com to apply.'; };

@@ -31,13 +31,13 @@ if(form){
       else {const response=await fetch(`/api/careers/jobs/${id}`,{cache:'no-store',signal:AbortSignal.timeout(8000)});if(!response.ok)throw Error();job=(await response.json()).job;}
       if(!job||job.id!==id)throw Error();
       context.replaceChildren();
-      const label=document.createElement('span');label.textContent=review?'SELECTED ROLE · REVIEW MODE':'APPLYING FOR';
+      const label=document.createElement('span');label.textContent='APPLYING FOR';
       const title=document.createElement('b');title.textContent=job.title;
       const ref=document.createElement('span');ref.textContent=`Reference: ${job.id}`;
       const change=document.createElement('a');change.href='careers.html#how-to-apply';change.textContent='Send a general introduction instead';
       context.append(label,title,ref,document.createElement('br'),change);
       form.querySelector('#career-interest').value=job.department;
-      document.querySelector('[data-careers-email]').href=`mailto:hr@aloden.com?${new URLSearchParams({subject:`Application | ${job.title} | ${job.id}`,body:`Hello Aloden HR,\n\nI am applying for ${job.title} (${job.id}).\n\nMy name:\nLocation:\nAvailability:\n\nI will attach my résumé before sending.`})}`;
+      document.querySelectorAll('[data-careers-email],[data-careers-delivery-email]').forEach(link=>link.href=`mailto:hr@aloden.com?${new URLSearchParams({subject:`Application | ${job.title} | ${job.id}`,body:`Hello Aloden HR,\n\nI am applying for ${job.title} (${job.id}).\n\nMy name:\nLocation:\nAvailability:\n\nI will attach my résumé before sending.`})}`);
       notify(review?'preview':'active');
     }catch{
       context.innerHTML='<b>This role cannot be confirmed as open.</b>Please check current openings before applying. Your application has not been switched to another role.<br><a href="careers.html#opportunities">View current openings</a> · <a href="careers.html#how-to-apply">Choose general introduction</a>';

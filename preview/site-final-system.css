@@ -174,3 +174,12 @@ body.siteFinalSystem .legalPage main{max-width:var(--site-max);margin-inline:aut
 @media(prefers-reduced-motion:reduce){
   body.siteFinalSystem *,body.siteFinalSystem *:before,body.siteFinalSystem *:after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
 }
+/* Public contact paths use the two approved company mailboxes. */
+body.siteFinalSystem .siteContactLine{font-size:13px!important;line-height:1.65!important;margin:12px 0 0!important}
+body.siteFinalSystem .siteContactLine a{color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+body.siteFinalSystem footer .siteContactLabel{display:block;font-size:10px;color:#9aa3b1;margin-bottom:2px}
+body.siteFinalSystem footer .siteContactLink{display:block;line-height:1.55;margin-bottom:10px;overflow-wrap:anywhere}
+body.siteFinalSystem :is(.footerFinalGrid,.contentReviewFooterGrid)>*{min-width:0}
+body.siteFinalSystem :is(.footerFinalCol,.contentReviewFooterCol) a{white-space:normal;overflow-wrap:anywhere}
+body.siteFinalSystem .cr-uploadMode a,body.siteFinalSystem .jr-email{color:#5134bd;text-decoration:underline;text-underline-offset:3px}
+body.siteFinalSystem .jr-applyCard .jr-email{display:block;font-size:13px;margin-top:15px;line-height:1.6}
