@@ -4,10 +4,14 @@ on:
     paths:
       - 'preview/**'
       - 'scripts/content-consistency-qa.mjs'
+      - 'scripts/public-polish-qa.mjs'
       - '.github/workflows/content-consistency-qa.yml'
   workflow_dispatch:
 permissions:
   contents: read
+defaults:
+  run:
+    shell: bash
 concurrency:
   group: content-consistency-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
@@ -15,7 +19,7 @@ jobs:
   compare:
     if: github.head_ref == 'feature/content-consistency-review' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,15 +29,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify protected design and application source
+      - name: Verify protected artwork, hiring data and delivery code
         run: |
           mkdir -p qa-artifacts /tmp/aloden-content-baseline
           git archive 2a75456f481d381e8e4ebbb89ce3191fd54c20c8 | tar -x -C /tmp/aloden-content-baseline
-          git diff --exit-code 2a75456f481d381e8e4ebbb89ce3191fd54c20c8 -- 'preview/*.css' preview/assets preview/app.js preview/data server preview/careers-application.js preview/start-project-form.js
+          git diff --exit-code 2a75456f481d381e8e4ebbb89ce3191fd54c20c8 -- preview/assets preview/data server 'preview/*.css' ':(exclude)preview/final.css' ':(exclude)preview/homepage-all-sections.css' ':(exclude)preview/homepage-section1.css' ':(exclude)preview/site-final-system.css' ':(exclude)server/careers/jobs-api.mjs'
           node scripts/site-qa.mjs
           node --test server/careers/careers.test.mjs server/careers/jobs.test.mjs | tee qa-artifacts/backend-tests.txt
           node --test server/project-brief-handler.test.mjs | tee qa-artifacts/project-tests.txt
-      - name: Compare fourteen pages at five widths
+      - name: Compare content, layout and public contact routes
         run: |
           npm install --prefix /tmp/aloden-browser --no-audit --no-fund playwright@1.56.1
           /tmp/aloden-browser/node_modules/.bin/playwright install --with-deps chromium
@@ -44,6 +48,7 @@ jobs:
           trap 'kill "$A" "$B"' EXIT
           for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && curl -fsS http://127.0.0.1:8766/index.html >/dev/null && break || sleep 1; done
           node scripts/content-consistency-qa.mjs
+          node scripts/public-polish-qa.mjs
       - name: Package the exact tested source
         if: always()
         run: |
