@@ -5,12 +5,16 @@
 import http from 'node:http';
 import net from 'node:net';
 import { Readable } from 'node:stream';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
+import { createJobStore } from './jobs-store.mjs';
+import { createHrAuth } from './hr-auth.mjs';
+import { createJobsRouter } from './jobs-api.mjs';
 import { createCareersHandler, publicCareersConfig, json } from './handler.mjs';
 import { createGmailDelivery } from './gmail.mjs';
 import { createSqliteServices, createClamScanner, createBotVerifier } from './services.mjs';
 export function createCareersServer({services={},trustedProxyIps=[],host='127.0.0.1'}={}) {
   const handle=createCareersHandler(services);
+  const jobsRouter=services.jobs ? createJobsRouter({store:services.jobs,auth:services.hrAuth,origin:services.siteOrigin,templatePath:fileURLToPath(new URL('../../preview/career-role.html',import.meta.url)),careersPath:fileURLToPath(new URL('../../preview/careers.html',import.meta.url))}) : null;
   let inFlight = 0;
   const server=http.createServer({requestTimeout:70000,headersTimeout:10000,maxHeaderSize:16384},async(req,res)=>{
     let response;
@@ -18,7 +22,12 @@ export function createCareersServer({services={},trustedProxyIps=[],host='127.0.
     inFlight++;
     try {
       const path=(req.url||'').split('?')[0];
-      if(req.method==='GET'&&path==='/api/careers/config') response=publicCareersConfig(services);
+      if(jobsRouter && (path==='/careers.html' || path.startsWith('/jobs/') || path==='/jobs-sitemap.xml' || path.startsWith('/api/careers/jobs') || path.startsWith('/api/hr/') || path.startsWith('/auth/careers/'))) {
+        const opts={method:req.method,headers:req.headers};
+        if(!['GET','HEAD'].includes(req.method)){opts.body=Readable.toWeb(req);opts.duplex='half';}
+        response=await jobsRouter(new Request(`http://${host}${req.url}`,opts),{clientKey:req.socket.remoteAddress});
+        response ||= json({ok:false,error:'not_found'},404);
+      } else if(req.method==='GET'&&path==='/api/careers/config') response=publicCareersConfig(services);
       else if(path==='/api/careers/applications') {
         let ip=req.socket.remoteAddress||'';
         if(ip.startsWith('::ffff:')) ip=ip.slice(7);
@@ -54,7 +63,20 @@ function servicesFromEnv(env){
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   try {
-    const {services,close}=servicesFromEnv(process.env);
+    const base=servicesFromEnv(process.env);
+    const {services}=base;
+    let jobs=null,hrAuth=null;
+    if(process.env.CAREERS_JOBS_ENABLED==='true'){
+      const origin=process.env.CAREERS_SITE_ORIGIN;
+      if(!origin||new URL(origin).origin!==origin||!origin.startsWith('https://')||!process.env.CAREERS_JOBS_DB)throw Error('Jobs require a canonical HTTPS origin and a private persistent database.');
+      jobs=createJobStore(process.env.CAREERS_JOBS_DB);
+      services.jobs=jobs;services.siteOrigin=origin;
+      if(process.env.CAREERS_HR_ENABLED==='true'){
+        hrAuth=createHrAuth({filename:process.env.CAREERS_JOBS_DB,origin,clientId:process.env.CAREERS_HR_CLIENT_ID,clientSecret:process.env.CAREERS_HR_CLIENT_SECRET,users:JSON.parse(process.env.CAREERS_HR_USERS_JSON||'{}')});
+        services.hrAuth=hrAuth;
+      }
+    }
+    const close=()=>{base.close();jobs?.closeDb();hrAuth?.close();};
     const trustedProxyIps=(process.env.CAREERS_TRUSTED_PROXY_IPS||'').split(',').filter(Boolean);
     if(trustedProxyIps.some(ip=>!net.isIP(ip)))throw new Error('Trusted proxies must be exact IP addresses.');
     const host=process.env.CAREERS_BIND_HOST||'127.0.0.1';

@@ -2,21 +2,25 @@
 
 ## Review scope
 
-PK explicitly confirmed these five hiring needs in the current conversation:
+PK asked to add the **five active roles in the supplied staffing-plan image**:
 
-| Stable job ID | Title | Source / missing details |
-|---|---|---|
-| ald-202600000001 | Senior QA Automation Engineer | Title confirmed; new draft description, original QA DOCX not available |
-| ald-202600000002 | Senior Full-Stack Developer | Original Aloden_Senior_Full_Stack_Developer_JD.docx; 6+ years, remote, Full-Time / Contract, immediate joiners preferred |
-| ald-202600000003 | Senior AI/ML Developer | Original Aloden_Senior_AI_ML_Developer_JD.docx; 5+ years, remote, Full-Time / Contract, immediate joiners preferred |
-| ald-202600000004 | DevOps Cloud Engineer | Title confirmed; new draft description, original DevOps DOCX not available |
-| ald-202600000005 | UI/UX Product Designer | Title confirmed; new draft description, original UI/UX DOCX not available |
+| Stable job ID | Current role | Commitment in the source | Scope in the source |
+|---|---|---|---|
+| ald-202600000001 | Lead Full-Stack Architect | Core team | Next.js, PostgreSQL, RBAC, Hostinger deployment |
+| ald-202600000002 | Backend / Data Engineer | Core team | Unified schema, migrations, audit, consent |
+| ald-202600000003 | Frontend Engineer | Core team | Wireframes to screens, forms, visibility UI |
+| ald-202600000004 | Security / DevOps | Part-time | Secrets, staging, backups, abuse limits |
+| ald-202600000005 | QA / Journey Tester | Part-time | Three journeys, failure cases, deadline cases |
 
-**The screenshot supplied names, not document contents.** Full-Stack and AI/ML text was retrieved from Library. The three other descriptions were newly drafted for review, not represented as transcriptions of the missing originals. No salary, benefits, eligible countries, closing date, or missing experience minimum has been invented.
+The source's **AI/ML engineer** is labeled **Phase 2, optional** and is NOT one of the five current openings. The earlier unfinished implementation incorrectly substituted other Library job descriptions; this version supersedes that list with the actual supplied image.
 
-`preview/data/careers-openings.json` records the source status of each entry. It is a review snapshot, NOT the runtime job database. Five positions appear in the static HTML/browser review with working role links and job-selected application previews. Live public data is always read from the database, not silently replaced by preview data if the API fails.
+Descriptions have been expanded from the image's short role briefs for review. No salary, benefits, country, start date, closing date, remote-work entitlement, or minimum years of experience was supplied or invented. "Core team" describes team composition, not an assertion of full-time employment. Part-time was explicitly supplied for Security / DevOps and QA / Journey Tester.
 
-The original Careers design and section order are retained; only the Opportunities placeholder and role selection are extended. No changes to the Home design, logo assets, other service pages, or Start a Project flow are included.
+The 55/45/40/20/15-day figures are **development-effort estimates**, not hiring deadlines, time-to-fill promises, or employment/contract durations. They are intentionally omitted from public job descriptions. Hostinger is retained only as a skill/deployment context in the architect brief, not as a decision about the Aloden website hosting provider.
+
+`preview/data/careers-openings.json` is a review snapshot, NOT the runtime job database. All five positions appear in the static HTML review, with individual static role-detail previews and job-specific résumé links. Live public data is rendered from the published database records. If the live API fails, it does not silently show review data as current vacancies.
+
+The original Careers design and section order are retained. Only the Opportunities placeholder and role selection are extended. Home, approved logos, other service pages, and Start a Project are unchanged.
 
 ## What HR can do
 
@@ -64,10 +68,10 @@ umask 077
 node --env-file=/private/path/careers.env scripts/careers-import-jobs.mjs
 ```
 
-The import is create-only: it does not overwrite existing HR edits, reopen a job or publish it. Fill missing original descriptions/terms and publish through the workspace. All five hiring needs are present; missing original documents and compensation/location details must be completed before live publication.
+The import is create-only: it does not overwrite existing HR edits, reopen a job or publish it. Confirm the expanded descriptions and enter the actual employment terms before publishing through the workspace. The five roles are present without fabricated compensation or location details. If someone imported the earlier unfinished list, review and correct those unpublished drafts in HR; the importer intentionally does not overwrite existing edits.
 
 7. This implementation conservatively requires compensation range, currency, pay period, benefits, eligible location(s), full description and a valid closing date before publishing. This is a product guardrail, not a claim of universal legal requirements or legal compliance. HR must check the disclosures applicable to each hiring location. Do not insert artificial values to bypass validation.
-8. Do not publish `/reviews/` or the review data snapshot as the live job feed. Generic `career-role.html?job=...` is a noindex static-review route; canonical live jobs are served at `/jobs/:id`.
+8. Do not publish `/reviews/` or the review data snapshot as the live job feed. The individual files under `reviews/jobs/` and generic `career-role.html?job=...` are noindex static-review routes; canonical live jobs are served at `/jobs/:id`.
 9. Test Google login with an authorized editor and publisher, an unauthorized user, state replay, sign-out, stale edits, closing, expiry and application job references on the real deployment. The included tests mock Google and Gmail; no live email or job was published during development.
 10. Submit the live job sitemap and validate actual detail pages with Google Rich Results Test. Closing must remove JobPosting data and the active sitemap URL; do not emit JobPosting for general talent interest or unpublished drafts.
 
@@ -84,9 +88,15 @@ node scripts/careers-jobs-browser-qa.mjs
 
 Tests use only synthetic applicants, mocked Google/Gmail services, and private temporary databases. The browser review covers all five jobs and their application links, filtering, desktop/tablet/mobile, the protected shell, job-manager interactions and no-preview transmission. Backend tests exercise publication, drafts vs live data, stale-write protection, expiry, closure, audit entries, SSR/schema, injection escaping, role-linked email, OIDC and CSRF.
 
-Technical sources checked for this implementation:
+Technical implementation references:
 - Google OIDC: https://developers.google.com/identity/openid-connect/openid-connect
 - Google JobPosting: https://developers.google.com/search/docs/appearance/structured-data/job-posting
 - OWASP CSRF: https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html
 
 No main merge or production deployment is authorized by this handoff.
+
+## Review completion
+
+The failed integration was a premature assertion about a lazy-loaded footer logo. The browser check now scrolls each image into view and waits for decoding before asserting success; it does not bypass or remove image-loading assertions. All related source is integrated directly; the old staging patch files and self-editing integration workflow are removed. Normal read-only QA covers the committed source.
+
+Run `node scripts/careers-job-previews.mjs` after editing review data or the shared role renderer. It regenerates the HTML snapshot, five noindex role previews, and isolated HR demo deterministically. Production jobs never use this review generator as their database.

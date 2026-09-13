@@ -62,6 +62,6 @@ export function createJobsRouter({store,auth,origin,templatePath,careersPath}){
 }
 
 export function renderBoardSnapshot(jobs,review=true){
-  const list=jobs.length?jobs.map(j=>jobRow(j,review?`career-role.html?job=${j.id}`:`/jobs/${j.id}`)).join(''):'<div class="jobs-empty"><h3>No openings published right now.</h3><p>You can still send a general introduction to HR.</p></div>';
+  const list=jobs.length?jobs.map(j=>jobRow(j,review?`reviews/jobs/${j.id}.html`:`/jobs/${j.id}`)).join(''):'<div class="jobs-empty"><h3>No openings published right now.</h3><p>You can still send a general introduction to HR.</p></div>';
   return `<!-- JOBS_SNAPSHOT_START -->${review?'<p class="jobs-reviewNotice">REVIEW SNAPSHOT · Five hiring needs confirmed by PK. This is not the live job feed; HR publishing and résumé delivery still require activation.</p>':''}<div class="jobs-count"><span data-jobs-count role="status" aria-live="polite">${jobs.length} openings</span><span>Aloden careers</span></div><div class="jobs-list" data-jobs-list>${list}</div><script type="application/json" id="careers-initial-jobs">${JSON.stringify(review?{reviewOnly:true}:{reviewOnly:false,jobs}).replaceAll('<','\\u003c')}</script><!-- JOBS_SNAPSHOT_END -->`;
 }

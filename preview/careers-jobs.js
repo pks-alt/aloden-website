@@ -8,11 +8,11 @@ try {initial=JSON.parse(snapshot?.textContent||'{"jobs":[]}');}catch{}
 const review=reviewHost&&initial.reviewOnly===true;
 if(review&&!initial.jobs?.length){try{const response=await fetch('data/careers-openings.json');if(!response.ok)throw Error();initial.jobs=(await response.json()).jobs;}catch{initial.jobs=[];}}
 let jobs=[];
-const urlFor=j=>review?`career-role.html?job=${j.id}`:`/jobs/${j.id}`;
+const urlFor=j=>review?`reviews/jobs/${j.id}.html`:`/jobs/${j.id}`;
 if(board){
   const list=board.querySelector('[data-jobs-list]'),counter=board.querySelector('[data-jobs-count]');
   const search=board.querySelector('[data-jobs-search]'),dept=board.querySelector('[data-jobs-department]'),model=board.querySelector('[data-jobs-model]');
-  function render(){const q=search.value.trim().toLowerCase();const shown=jobs.filter(j=>(!dept.value||j.department===dept.value)&&(!model.value||j.workModel===model.value)&&`${j.title} ${j.summary} ${j.city} ${DEPTS[j.department]}`.toLowerCase().includes(q));counter.textContent=`${shown.length} ${shown.length===1?'opening':'openings'}`;list.innerHTML=shown.length?shown.map(j=>jobRow(j,urlFor(j))).join(''):'<div class="jobs-empty"><h3>No matching openings.</h3><p>Try another search or share a general introduction.</p><a href="#how-to-apply">Join our talent network →</a></div>';}
+  function render(){const q=search.value.trim().toLowerCase();const shown=jobs.filter(j=>(!dept.value||j.department===dept.value)&&(!model.value||j.workModel===model.value)&&`${j.title} ${j.summary} ${j.city} ${DEPTS[j.department]} ${j.teamType}`.toLowerCase().includes(q));counter.textContent=`${shown.length} ${shown.length===1?'opening':'openings'}`;list.innerHTML=shown.length?shown.map(j=>jobRow(j,urlFor(j))).join(''):'<div class="jobs-empty"><h3>No matching openings.</h3><p>Try another search or share a general introduction.</p><a href="#how-to-apply">Join our talent network →</a></div>';}
   [search,dept,model].forEach(n=>n.addEventListener('input',render));
   if(review){jobs=initial.jobs;render();}
   else {try{const r=await fetch('/api/careers/jobs',{cache:'no-store',signal:AbortSignal.timeout(8000)});if(!r.ok)throw Error();const data=await r.json();if(!Array.isArray(data.jobs))throw Error();jobs=data.jobs;render();}catch{counter.textContent='Unable to load openings';list.innerHTML='<div class="jobs-empty"><h3>Openings are temporarily unavailable.</h3><p>Please contact HR about current roles or send a general introduction.</p><a href="mailto:hr@aloden.com">Contact hr@aloden.com ↗</a></div>';}}

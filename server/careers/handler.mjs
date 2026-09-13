@@ -1,9 +1,9 @@
 import { createHash } from 'node:crypto';
 import { MAX_RESUME_BYTES, validateResume } from './resume.mjs';
 export const MAX_REQUEST_BYTES = MAX_RESUME_BYTES + 64 * 1024;
-export const INTERESTS = Object.freeze({ software:'Software Engineering', ai:'AI & Agentic Engineering', product:'Product & Experience', platform:'Platform, Data & Cloud', delivery:'Delivery & Product Operations', 'early-career':'Early-Career Builders', general:'General introduction' });
+export const INTERESTS = Object.freeze({ quality:'Quality Engineering', software:'Software Engineering', ai:'AI & Agentic Engineering', product:'Product & Experience', platform:'Platform, Data & Cloud', delivery:'Delivery & Product Operations', 'early-career':'Early-Career Builders', general:'General introduction' });
 export const AVAILABILITY = Object.freeze({ immediate:'Available now', 'two-weeks':'Within 2 weeks', 'one-month':'Within 1 month', 'two-months':'Within 2 months', later:'Later / exploring' });
-const fields = new Set(['name','email','interest','location','availability','portfolio','introduction','consent','website','turnstileToken','resume']);
+const fields = new Set(['name','email','interest','location','availability','portfolio','introduction','consent','website','turnstileToken','resume','jobId']);
 export const json = (body,status=200,headers={}) => new Response(JSON.stringify(body), { status, headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...headers} });
 const validId = id => typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);
 const emailPattern = /^[a-zA-Z0-9.!#$%&'*+\/= ?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9.-]*[a-zA-Z0-9])?\.[a-zA-Z]{2,63}$/;
@@ -78,10 +78,19 @@ export function createCareersHandler(services={}) {
       const verified=await services.verifyBot({token:data.turnstileToken||'',hostname:new URL(origin).hostname,action:'careers_application'});
       if(verified!==true) return json({ok:false,error:'bot_verification_failed'},400);
     } catch { return json({ok:false,error:'security_check_unavailable'},503); }
+    let job = null, jobIsOpen = true;
+    if (data.jobId && data.jobId !== 'general') {
+      try {
+        const selected = services.jobs?.applicationReference ? services.jobs.applicationReference(data.jobId) : services.jobs?.publicGet(data.jobId);
+        if (![200,410].includes(selected?.status) || !selected?.job?.version) return json({ok:false,error:'job_unavailable'},409);
+        jobIsOpen = selected.status === 200;
+        job = {id:selected.job.id,title:selected.job.title,version:selected.job.version,department:selected.job.department};
+      } catch { return json({ok:false,error:'job_unavailable'},409); }
+    }
     let resume;
     try { resume=validateResume(Buffer.from(await data.resume.arrayBuffer()),data.resume.name,data.resume.type); }
     catch { return json({ok:false,error:'invalid_resume'},400); }
-    const candidate={name:data.name,email:data.email,interest:INTERESTS[data.interest],location:data.location,availability:AVAILABILITY[data.availability],portfolio:data.portfolio||'',introduction:data.introduction||'',consent:true};
+    const candidate={job:job ? {id:job.id,title:job.title,version:job.version} : null,name:data.name,email:data.email,interest:INTERESTS[job?.department || data.interest],location:data.location,availability:AVAILABILITY[data.availability],portfolio:data.portfolio||'',introduction:data.introduction||'',consent:true};
     const fingerprint=createHash('sha256').update(JSON.stringify(candidate)).update(resume.bytes).digest('hex');
     let reservation;
     try { reservation=await services.ledger.reserve(applicationId,fingerprint); }
@@ -93,10 +102,17 @@ export function createCareersHandler(services={}) {
     if(reservation.status!=='reserved') return json({ok:false,error:'application_processing',applicationId},409);
     const mark=async (state,providerId=null) => services.ledger.mark(applicationId,state,providerId);
     try {
+      if (!jobIsOpen) {await mark('failed');return json({ok:false,error:'job_unavailable'},409);}
       let verdict;
       try { verdict=await services.scanResume(resume.bytes); }
       catch { await mark('failed'); return json({ok:false,error:'security_check_unavailable'},503); }
       if(verdict?.clean!==true) { await mark('rejected'); return json({ok:false,error:'unsafe_resume'},422); }
+      if (job) {
+        const current = services.jobs?.publicGet(job.id);
+        if (current?.status !== 200 || current.job.version !== job.version) {
+          await mark('failed'); return json({ok:false,error:'job_unavailable'},409);
+        }
+      }
       // Record the ambiguity boundary BEFORE the outbound send, so a crash never auto-resends.
       await mark('unknown');
       let receipt;

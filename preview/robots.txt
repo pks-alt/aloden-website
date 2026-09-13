@@ -6,3 +6,9 @@ Disallow: /live-review.html
 Disallow: /homepage-section1.html
 
 Sitemap: https://www.aloden.com/sitemap.xml
+
+# Job manager and sign-in are private; public /jobs/:id pages are served by the runtime.
+Disallow: /hr-jobs.html
+Disallow: /api/hr/
+Disallow: /auth/careers/
+Sitemap: https://www.aloden.com/jobs-sitemap.xml

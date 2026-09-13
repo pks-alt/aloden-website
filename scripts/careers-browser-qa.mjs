@@ -1,3 +1,4 @@
+import {waitForImages} from './careers-browser-helpers.mjs';
 /* Run with PLAYWRIGHT_PACKAGE pointing to the isolated test package.json.
    Tests never send an email or transmit candidate data. */
 import assert from 'node:assert/strict';
@@ -16,7 +17,7 @@ assert(/accept="\.pdf,\.docx/.test(html), 'PDF and DOCX are accepted');
 assert(html.includes('Online delivery is not connected'), 'Offline preview must be explicit');
 const reports = [];
 const failures = [];
-const browser = await chromium.launch();
+const browser = await chromium.launch(process.env.CAREERS_CHROMIUM_PATH ? {executablePath:process.env.CAREERS_CHROMIUM_PATH} : {});
 try {
   for (const width of [1440, 1024, 768, 390, 320]) {
     const page = await browser.newPage({ viewport: { width, height: 960 }, reducedMotion: 'reduce' });
@@ -27,6 +28,7 @@ try {
     });
     await page.goto(`${origin}/careers.html`, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
+    await waitForImages(page);
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: `${out}/careers-${width}.png`, fullPage: true });
     await page.locator('.cr-candidateHelp').screenshot({ path: `${out}/candidate-help-${width}.png` });

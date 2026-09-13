@@ -12,11 +12,13 @@
   const remove = form.querySelector('#career-file-remove');
   const LIMIT = 5 * 1024 * 1024;
   const preview = /(^|\.)(githack\.com|shipstatic\.com)$/.test(location.hostname) || location.protocol === 'file:';
+  let jobReady = !new URL(location.href).searchParams.has('job') || ['general','active'].includes(form.dataset.jobState);
   let ready = false, busy = false, completed = false, uncertain = false;
   let token = '', widget = null, file = null, requestKey = null;
   const makeKey = () => crypto.randomUUID();
   const setStatus = (text, state = '') => { status.textContent = text; status.dataset.state = state; };
-  const buttonState = () => { submit.disabled = !ready || !token || busy || completed || uncertain; };
+  const buttonState = () => { submit.disabled = !ready || !jobReady || !token || busy || completed || uncertain; };
+  form.addEventListener('careers-job-state', () => { jobReady = ['general','active'].includes(form.dataset.jobState); buttonState(); });
   function choose(files) {
     error.textContent = '';
     fileInput.setCustomValidity('');
@@ -79,7 +81,7 @@
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!ready) { setStatus('Online submissions are not connected here. Your résumé has not been sent. Email hr@aloden.com instead.', 'error'); return; }
-    if (busy || completed || uncertain) return;
+    if (busy || completed || uncertain || !jobReady) return;
     if (!form.reportValidity() || !file) return;
     if (!token) { setStatus('Please complete the verification before submitting.', 'error'); return; }
     requestKey ||= makeKey();
@@ -110,6 +112,7 @@
         setStatus(`Delivery has not been confirmed. Please contact hr@aloden.com before submitting again. Reference: ${requestKey}.`, 'error');
       } else {
         const messages = {
+          job_unavailable: 'This role is no longer accepting applications. Please check Current Openings. Your submission was not converted to a general introduction.',
           validation_failed: 'Check the required fields, valid email, and portfolio URL.',
           invalid_resume: 'The résumé could not be verified. Please use a standard, unencrypted PDF or DOCX.',
           unsafe_resume: 'This file could not pass the upload checks. Please export a fresh PDF or DOCX.',
@@ -124,6 +127,7 @@
         };
         setStatus(messages[result.error] || 'Your application was not accepted. Please email HR for help.', 'error');
         if (result.error === 'service_not_configured') ready = false;
+        if (result.error === 'job_unavailable') jobReady = false;
         if (['invalid_resume', 'unsafe_resume'].includes(result.error)) requestKey = null;
       }
     } catch {

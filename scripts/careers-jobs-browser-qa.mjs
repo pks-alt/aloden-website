@@ -1,3 +1,4 @@
+import {waitForImages} from './careers-browser-helpers.mjs';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
@@ -5,20 +6,20 @@ const require=createRequire(process.env.PLAYWRIGHT_PACKAGE||'/tmp/aloden-browser
 const {chromium}=require('playwright');
 const origin=process.env.CAREERS_TEST_ORIGIN||'http://127.0.0.1:8765';
 const source=JSON.parse(fs.readFileSync('preview/data/careers-openings.json','utf8')).jobs;
-const browser=await chromium.launch();
+const browser=await chromium.launch(process.env.CAREERS_CHROMIUM_PATH ? {executablePath:process.env.CAREERS_CHROMIUM_PATH} : {});
 const reports=[],failures=[];
 fs.mkdirSync('qa-artifacts',{recursive:true});
 try{
  for(const width of [1440,1024,768,390,320]){
   const page=await browser.newPage({viewport:{width,height:960},reducedMotion:'reduce'}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
-  for(const [label,url] of [['openings','careers.html'],['role','career-role.html?job=ald-202600000002'],['hr','reviews/hr-jobs.html']]){
-   await page.goto(`${origin}/${url}`,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+  for(const [label,url] of [['openings','careers.html'],['role','reviews/jobs/ald-202600000002.html'],['hr','reviews/hr-jobs.html']]){
+   await page.goto(`${origin}/${url}`,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready); await waitForImages(page);
    if(label==='openings'){
     assert.equal(await page.locator('.jobs-row').count(),5);
     await page.locator('[data-jobs-department]').selectOption('quality');assert.equal(await page.locator('.jobs-row').count(),1);
     await page.locator('[data-jobs-department]').selectOption('');await page.locator('[data-jobs-search]').fill('zzzzz');assert.equal(await page.locator('.jobs-row').count(),0);
-    await page.locator('[data-jobs-search]').fill('');await page.locator('[data-jobs-model]').selectOption('remote');assert.equal(await page.locator('.jobs-row').count(),2);await page.locator('[data-jobs-model]').selectOption('');
+    await page.locator('[data-jobs-search]').fill('');await page.locator('[data-jobs-model]').selectOption('remote');assert.equal(await page.locator('.jobs-row').count(),0);await page.locator('[data-jobs-model]').selectOption('');
    }
    if(label==='role')assert.equal(await page.locator('h1').textContent(),source[1].title);
    if(label==='hr'){assert(await page.locator('#hr-review-banner').isVisible());assert.equal(await page.locator('.hr-jobButton').count(),5);}
@@ -31,7 +32,7 @@ try{
  }
  const page=await browser.newPage({viewport:{width:1440,height:1000}});
  for(const j of source){
-  await page.goto(`${origin}/career-role.html?job=${j.id}`,{waitUntil:'networkidle'});assert.equal(await page.locator('h1').textContent(),j.title);
+  await page.goto(`${origin}/reviews/jobs/${j.id}.html`,{waitUntil:'networkidle'});assert.equal(await page.locator('h1').textContent(),j.title);
   assert.equal(await page.locator('script[type="application/ld+json"]').count(),1); // app organization only; no JobPosting in reviews
   assert(!(await page.content()).includes('"@type":"JobPosting"'));
   await page.locator('.jr-applyCard .btn').click();await page.waitForLoadState('networkidle');

@@ -24,3 +24,9 @@
 - Do not publish placeholder salaries, promise remote work everywhere, or imply an application guarantees an interview or employment.
 
 See **docs/CAREERS-RESUME-UPLOAD.md** for implementation, security, deployment, and test details. The Gmail connection in ChatGPT is not the website's OAuth credential. No live applicant or test email was sent during this update.
+
+## Five-role publishing extension
+
+Current Openings, five individual role previews, job-specific résumé application IDs, and the authenticated HR job manager are implemented. The current list follows PK's image: Lead Full-Stack Architect; Backend / Data Engineer; Frontend Engineer; Security / DevOps; QA / Journey Tester. The Phase 2 optional AI/ML role is excluded. Development-effort days are not advertised as employment durations.
+
+See `CAREERS-JOB-MANAGEMENT.md` for source interpretation, create-only draft import, the private HR workflow, and deployment routes. HR must complete actual location/compensation/benefit terms before live publication. This does not activate Google sign-in, résumé delivery, or merge main.

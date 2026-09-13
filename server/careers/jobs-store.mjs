@@ -5,8 +5,8 @@ export const JOB_ID = /^ald-[a-f0-9]{12}$/;
 export const DEPARTMENTS = ['quality','software','ai','product','platform','delivery','early-career'];
 export const WORK_MODELS = ['remote','hybrid','onsite'];
 export const EMPLOYMENT_TYPES = ['FULL_TIME','FULL_TIME_OR_CONTRACT','PART_TIME','CONTRACTOR','INTERN'];
-export const JOB_FIELDS = ['title','department','entity','workModel','employmentType','city','region','country','eligibleCountries','summary','responsibilities','requirements','preferred','benefits','currency','salaryMin','salaryMax','salaryUnit','expiresAt','experience','joining','focus','workOn','profile'];
-const limits = {title:100,department:30,entity:150,workModel:20,employmentType:20,city:100,region:100,country:2,eligibleCountries:150,summary:1000,responsibilities:6000,requirements:6000,preferred:4000,benefits:2500,currency:3,salaryMin:20,salaryMax:20,salaryUnit:10,expiresAt:24,experience:120,joining:150,focus:200,workOn:4000,profile:2000};
+export const JOB_FIELDS = ['title','department','entity','workModel','employmentType','city','region','country','eligibleCountries','summary','responsibilities','requirements','preferred','benefits','currency','salaryMin','salaryMax','salaryUnit','expiresAt','experience','joining','focus','workOn','profile','teamType'];
+const limits = {title:100,department:30,entity:150,workModel:20,employmentType:20,city:100,region:100,country:2,eligibleCountries:150,summary:1000,responsibilities:6000,requirements:6000,preferred:4000,benefits:2500,currency:3,salaryMin:20,salaryMax:20,salaryUnit:10,expiresAt:24,experience:120,joining:150,focus:200,workOn:4000,profile:2000,teamType:20};
 export function problem(code,status=400,details=[]) {return Object.assign(new Error(code),{status,details});}
 export function countryName(code) {try {return new Intl.DisplayNames(['en'],{type:'region'}).of(code);}catch{return code;}}
 export function cleanJob(input) {
@@ -18,7 +18,7 @@ export function cleanJob(input) {
     value[key]=text.trim();
   }
   if(!value.title)throw problem('invalid_job',400,['title']);
-  for(const [key,allowed] of [['department',DEPARTMENTS],['workModel',WORK_MODELS],['employmentType',EMPLOYMENT_TYPES],['salaryUnit',['HOUR','MONTH','YEAR']]])if(value[key]&&!allowed.includes(value[key]))throw problem('invalid_job',400,[key]);
+  for(const [key,allowed] of [['department',DEPARTMENTS],['workModel',WORK_MODELS],['employmentType',EMPLOYMENT_TYPES],['salaryUnit',['HOUR','MONTH','YEAR']],['teamType',['core','part-time']]])if(value[key]&&!allowed.includes(value[key]))throw problem('invalid_job',400,[key]);
   value.country=value.country.toUpperCase();value.currency=value.currency.toUpperCase();
   value.eligibleCountries=[...new Set(value.eligibleCountries.toUpperCase().split(',').map(s=>s.trim()).filter(Boolean))].join(',');
   for(const code of [value.country,...value.eligibleCountries.split(',')].filter(Boolean))if(!/^[A-Z]{2}$/.test(code)||countryName(code)===code)throw problem('invalid_job',400,['country']);

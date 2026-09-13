@@ -34,7 +34,8 @@ export function buildMime({applicationId,candidate,resume,receivedAt},sender) {
   if(!/^[a-f0-9-]{36}$/i.test(applicationId)||!validEmail(candidate.email)||!validEmail(sender)||!['resume.pdf','resume.docx'].includes(resume.filename)) throw error(true);
   const boundary=`aloden-careers-${applicationId}`;
   const text=[
-    'New Aloden career introduction (not an application to an advertised vacancy).',
+    candidate.job ? 'Application to an advertised Aloden vacancy.' : 'General Aloden career introduction.',
+    ...(candidate.job ? [`Job: ${candidate.job.title}`, `Job reference: ${candidate.job.id}`, `Published record version: ${candidate.job.version}`] : []),
     `Reference: ${applicationId}`,`Received: ${receivedAt}`,'',
     `Name: ${candidate.name}`,`Email: ${candidate.email}`,`Area of interest: ${candidate.interest}`,`Location: ${candidate.location}`,`Availability: ${candidate.availability}`,`Portfolio: ${candidate.portfolio || 'Not supplied'}`,'',
     'Introduction:',candidate.introduction || 'Not supplied','',
