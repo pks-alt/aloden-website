@@ -1,0 +1,103 @@
+diff --git a/preview/robots.txt b/preview/robots.txt
+index 80068cb..7aec16c 100644
+--- a/preview/robots.txt
++++ b/preview/robots.txt
+@@ -8,0 +9,6 @@ Sitemap: https://www.aloden.com/sitemap.xml
++
++# Job manager and sign-in are private; public /jobs/:id pages are served by the runtime.
++Disallow: /hr-jobs.html
++Disallow: /api/hr/
++Disallow: /auth/careers/
++Sitemap: https://www.aloden.com/jobs-sitemap.xml
+diff --git a/server/careers/.env.example b/server/careers/.env.example
+index 277e038..1f3fbf0 100644
+--- a/server/careers/.env.example
++++ b/server/careers/.env.example
+@@ -19,0 +20,11 @@ CAREERS_TRUSTED_PROXY_IPS=
++
++# Jobs publishing is separate from resume delivery; both remain off until deployment.
++CAREERS_JOBS_ENABLED=false
++CAREERS_JOBS_DB=/var/lib/aloden-private/jobs.sqlite
++CAREERS_SITE_ORIGIN=https://www.aloden.com
++CAREERS_HR_ENABLED=false
++# Website-owned OAuth client for openid/email sign-in, separate from Gmail sending.
++CAREERS_HR_CLIENT_ID=
++CAREERS_HR_CLIENT_SECRET=
++# Exact lowercase account emails only, assigned editor or publisher. No defaults.
++CAREERS_HR_USERS_JSON={}
+diff --git a/server/careers/gmail.mjs b/server/careers/gmail.mjs
+index f4b24f0..b5d84c5 100644
+--- a/server/careers/gmail.mjs
++++ b/server/careers/gmail.mjs
+@@ -37 +37,2 @@ export function buildMime({applicationId,candidate,resume,receivedAt},sender) {
+-    'New Aloden career introduction (not an application to an advertised vacancy).',
++    candidate.job ? 'Application to an advertised Aloden vacancy.' : 'General Aloden career introduction.',
++    ...(candidate.job ? [`Job: ${candidate.job.title}`, `Job reference: ${candidate.job.id}`, `Published record version: ${candidate.job.version}`] : []),
+diff --git a/server/careers/handler.mjs b/server/careers/handler.mjs
+index f948e34..40211c3 100644
+--- a/server/careers/handler.mjs
++++ b/server/careers/handler.mjs
+@@ -4 +4 @@ export const MAX_REQUEST_BYTES = MAX_RESUME_BYTES + 64 * 1024;
+-export const INTERESTS = Object.freeze({ software:'Software Engineering', ai:'AI & Agentic Engineering', product:'Product & Experience', platform:'Platform, Data & Cloud', delivery:'Delivery & Product Operations', 'early-career':'Early-Career Builders', general:'General introduction' });
++export const INTERESTS = Object.freeze({ quality:'Quality Engineering', software:'Software Engineering', ai:'AI & Agentic Engineering', product:'Product & Experience', platform:'Platform, Data & Cloud', delivery:'Delivery & Product Operations', 'early-career':'Early-Career Builders', general:'General introduction' });
+@@ -6 +6 @@ export const AVAILABILITY = Object.freeze({ immediate:'Available now', 'two-week
+-const fields = new Set(['name','email','interest','location','availability','portfolio','introduction','consent','website','turnstileToken','resume']);
++const fields = new Set(['name','email','interest','location','availability','portfolio','introduction','consent','website','turnstileToken','resume','jobId']);
+@@ -80,0 +81,9 @@ export function createCareersHandler(services={}) {
++    let job = null, jobIsOpen = true;
++    if (data.jobId && data.jobId !== 'general') {
++      try {
++        const selected = services.jobs?.applicationReference ? services.jobs.applicationReference(data.jobId) : services.jobs?.publicGet(data.jobId);
++        if (![200,410].includes(selected?.status) || !selected?.job?.version) return json({ok:false,error:'job_unavailable'},409);
++        jobIsOpen = selected.status === 200;
++        job = {id:selected.job.id,title:selected.job.title,version:selected.job.version,department:selected.job.department};
++      } catch { return json({ok:false,error:'job_unavailable'},409); }
++    }
+@@ -84 +93 @@ export function createCareersHandler(services={}) {
+-    const candidate={name:data.name,email:data.email,interest:INTERESTS[data.interest],location:data.location,availability:AVAILABILITY[data.availability],portfolio:data.portfolio||'',introduction:data.introduction||'',consent:true};
++    const candidate={job:job ? {id:job.id,title:job.title,version:job.version} : null,name:data.name,email:data.email,interest:INTERESTS[job?.department || data.interest],location:data.location,availability:AVAILABILITY[data.availability],portfolio:data.portfolio||'',introduction:data.introduction||'',consent:true};
+@@ -95,0 +105 @@ export function createCareersHandler(services={}) {
++      if (!jobIsOpen) {await mark('failed');return json({ok:false,error:'job_unavailable'},409);}
+@@ -99,0 +110,6 @@ export function createCareersHandler(services={}) {
++      if (job) {
++        const current = services.jobs?.publicGet(job.id);
++        if (current?.status !== 200 || current.job.version !== job.version) {
++          await mark('failed'); return json({ok:false,error:'job_unavailable'},409);
++        }
++      }
+diff --git a/server/careers/runtime.mjs b/server/careers/runtime.mjs
+index a864b0b..5e13fff 100644
+--- a/server/careers/runtime.mjs
++++ b/server/careers/runtime.mjs
+@@ -8 +8,4 @@ import { Readable } from 'node:stream';
+-import { pathToFileURL } from 'node:url';
++import { pathToFileURL, fileURLToPath } from 'node:url';
++import { createJobStore } from './jobs-store.mjs';
++import { createHrAuth } from './hr-auth.mjs';
++import { createJobsRouter } from './jobs-api.mjs';
+@@ -13,0 +17 @@ export function createCareersServer({services={},trustedProxyIps=[],host='127.0.
++  const jobsRouter=services.jobs ? createJobsRouter({store:services.jobs,auth:services.hrAuth,origin:services.siteOrigin,templatePath:fileURLToPath(new URL('../../preview/career-role.html',import.meta.url)),careersPath:fileURLToPath(new URL('../../preview/careers.html',import.meta.url))}) : null;
+@@ -21 +25,6 @@ export function createCareersServer({services={},trustedProxyIps=[],host='127.0.
+-      if(req.method==='GET'&&path==='/api/careers/config') response=publicCareersConfig(services);
++      if(jobsRouter && (path==='/careers.html' || path.startsWith('/jobs/') || path==='/jobs-sitemap.xml' || path.startsWith('/api/careers/jobs') || path.startsWith('/api/hr/') || path.startsWith('/auth/careers/'))) {
++        const opts={method:req.method,headers:req.headers};
++        if(!['GET','HEAD'].includes(req.method)){opts.body=Readable.toWeb(req);opts.duplex='half';}
++        response=await jobsRouter(new Request(`http://${host}${req.url}`,opts),{clientKey:req.socket.remoteAddress});
++        response ||= json({ok:false,error:'not_found'},404);
++      } else if(req.method==='GET'&&path==='/api/careers/config') response=publicCareersConfig(services);
+@@ -57 +66,14 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
+-    const {services,close}=servicesFromEnv(process.env);
++    const base=servicesFromEnv(process.env);
++    const {services}=base;
++    let jobs=null,hrAuth=null;
++    if(process.env.CAREERS_JOBS_ENABLED==='true'){
++      const origin=process.env.CAREERS_SITE_ORIGIN;
++      if(!origin||new URL(origin).origin!==origin||!origin.startsWith('https://')||!process.env.CAREERS_JOBS_DB)throw Error('Jobs require a canonical HTTPS origin and a private persistent database.');
++      jobs=createJobStore(process.env.CAREERS_JOBS_DB);
++      services.jobs=jobs;services.siteOrigin=origin;
++      if(process.env.CAREERS_HR_ENABLED==='true'){
++        hrAuth=createHrAuth({filename:process.env.CAREERS_JOBS_DB,origin,clientId:process.env.CAREERS_HR_CLIENT_ID,clientSecret:process.env.CAREERS_HR_CLIENT_SECRET,users:JSON.parse(process.env.CAREERS_HR_USERS_JSON||'{}')});
++        services.hrAuth=hrAuth;
++      }
++    }
++    const close=()=>{base.close();jobs?.closeDb();hrAuth?.close();};

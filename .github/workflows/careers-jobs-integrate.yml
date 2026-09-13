@@ -1,0 +1,74 @@
+name: Integrate reviewed Careers jobs
+on:
+  push:
+    branches: [feature/careers-page]
+    paths: ['scripts/careers-integration-*.patch', '.github/workflows/careers-jobs-integrate.yml']
+permissions:
+  contents: write
+concurrency:
+  group: integrate-reviewed-careers-jobs
+  cancel-in-progress: false
+jobs:
+  integrate:
+    if: github.ref == 'refs/heads/feature/careers-page'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply exact reviewed integration
+        run: |
+          mkdir -p qa-artifacts
+          echo '26c774902292ae3359e85ab2c801e975a20bfdd1539c352ac567bbaf88d3e736  scripts/careers-integration-a.patch' | sha256sum -c -
+          echo '2c0bbc32fd4b63ec2964e8b3e8a1317992a970c5b169c5490bd36426a1e15a4f  scripts/careers-integration-b.patch' | sha256sum -c -
+          git apply --check --unidiff-zero scripts/careers-integration-a.patch scripts/careers-integration-b.patch
+          git apply --unidiff-zero scripts/careers-integration-a.patch scripts/careers-integration-b.patch
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('preview/hr-jobs.html').read_text()
+          demo = source.replace('<head>', '<head><base href="../">', 1).replace('<body class="hr-page">', '<body class="hr-page" data-review-demo="true">', 1)
+          Path('preview/reviews/hr-jobs.html').write_text(demo)
+          PY
+          node --check preview/careers-application.js
+          node --check preview/hr-jobs.js
+          node scripts/site-qa.mjs
+          node --test server/careers/careers.test.mjs server/careers/jobs.test.mjs | tee qa-artifacts/backend-tests.txt
+          node --test server/project-brief-handler.test.mjs | tee qa-artifacts/project-tests.txt
+      - name: Browser integration and screenshots
+        run: |
+          npm install --prefix /tmp/aloden-browser --no-audit --no-fund playwright@1.56.1
+          /tmp/aloden-browser/node_modules/.bin/playwright install --with-deps chromium
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory preview >/tmp/aloden-jobs-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8765/careers.html >/dev/null && break || sleep 1; done
+          node scripts/careers-browser-qa.mjs
+          node scripts/careers-jobs-browser-qa.mjs
+      - name: Commit tested integration to review branch only
+        run: |
+          test "$(git ls-remote origin refs/heads/feature/careers-page | cut -f1)" = "$GITHUB_SHA"
+          git rm scripts/careers-integration-a.patch scripts/careers-integration-b.patch .github/workflows/careers-jobs-integrate.yml
+          git add .github/workflows/careers-browser-qa.yml docs/CAREERS-LAUNCH-CHECKLIST.md preview/careers-application.js preview/careers.html preview/reviews/hr-jobs.html preview/robots.txt server/careers/.env.example server/careers/gmail.mjs server/careers/handler.mjs server/careers/runtime.mjs
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Integrate five Careers openings and tested HR publishing workflow'
+          git push origin HEAD:refs/heads/feature/careers-page
+      - name: Package exact source and reports
+        if: always()
+        run: |
+          mkdir -p qa-artifacts
+          git rev-parse HEAD > qa-artifacts/COMMIT.txt
+          git status --short > qa-artifacts/WORKTREE.txt
+          git archive --format=zip --output=qa-artifacts/reviewed-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: careers-jobs-integration-${{ github.sha }}
+          path: qa-artifacts/
+          retention-days: 7

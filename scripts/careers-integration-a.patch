@@ -1,0 +1,73 @@
+diff --git a/.github/workflows/careers-browser-qa.yml b/.github/workflows/careers-browser-qa.yml
+index 359bbc6..ff4bab1 100644
+--- a/.github/workflows/careers-browser-qa.yml
++++ b/.github/workflows/careers-browser-qa.yml
+@@ -13,0 +14,4 @@ on:
++      - 'preview/career-role.html'
++      - 'preview/hr-jobs*'
++      - 'preview/reviews/hr-jobs.html'
++      - 'preview/data/careers-openings.json'
+@@ -42 +46 @@ jobs:
+-          node --test server/careers/careers.test.mjs
++          node --test server/careers/careers.test.mjs server/careers/jobs.test.mjs
+@@ -55,0 +60 @@ jobs:
++          node scripts/careers-jobs-browser-qa.mjs
+diff --git a/docs/CAREERS-LAUNCH-CHECKLIST.md b/docs/CAREERS-LAUNCH-CHECKLIST.md
+index c249e0f..cc758b4 100644
+--- a/docs/CAREERS-LAUNCH-CHECKLIST.md
++++ b/docs/CAREERS-LAUNCH-CHECKLIST.md
+@@ -26,0 +27,4 @@ See **docs/CAREERS-RESUME-UPLOAD.md** for implementation, security, deployment,
++
++## Five-role publishing extension
++
++Current Openings, role details, job-specific application IDs, and an authenticated HR job manager are implemented on the review branch. Five hiring needs have been confirmed by PK; see `CAREERS-JOB-MANAGEMENT.md` for exact source status and the create-only draft import. Full-Stack and AI/ML use original descriptions; QA, DevOps, and UI/UX copy remains newly drafted pending their original documents. The preview shows all five, but runtime publication requires complete HR-approved terms and authenticated publishing. This extends the earlier general-introduction-only scope without activating delivery or merging main.
+diff --git a/preview/careers-application.js b/preview/careers-application.js
+index 90d77e2..d11b29e 100644
+--- a/preview/careers-application.js
++++ b/preview/careers-application.js
+@@ -14,0 +15 @@
++  let jobReady = !new URL(location.href).searchParams.has('job');
+@@ -19 +20,2 @@
+-  const buttonState = () => { submit.disabled = !ready || !token || busy || completed || uncertain; };
++  const buttonState = () => { submit.disabled = !ready || !jobReady || !token || busy || completed || uncertain; };
++  form.addEventListener('careers-job-state', () => { jobReady = ['general','active'].includes(form.dataset.jobState); buttonState(); });
+@@ -82 +84 @@
+-    if (busy || completed || uncertain) return;
++    if (busy || completed || uncertain || !jobReady) return;
+@@ -112,0 +115 @@
++          job_unavailable: 'This role is no longer accepting applications. Please check Current Openings. Your submission was not converted to a general introduction.',
+@@ -126,0 +130 @@
++        if (result.error === 'job_unavailable') jobReady = false;
+diff --git a/preview/careers.html b/preview/careers.html
+index d830bf4..796f03e 100644
+--- a/preview/careers.html
++++ b/preview/careers.html
+@@ -17,0 +18 @@
++<link rel="stylesheet" href="careers-jobs.css">
+@@ -162,4 +163,4 @@
+-      <div class="cr-head"><div><div class="cr-ey">OPPORTUNITIES</div><h2>Find your way into the work.</h2></div><p>Explore a specific role with HR or introduce yourself for future consideration. The talent areas above describe our work; they are not advertised vacancies.</p></div>
+-      <div class="cr-opportunityGrid">
+-        <article class="cr-opportunity"><div class="cr-opportunityTop"><span>ROLE ENQUIRIES</span><span class="cr-status">CONTACT HR FOR AVAILABILITY</span></div><h3>Ask about current openings.</h3><p>This page does not currently publish individual vacancies. HR can confirm the roles available, their requirements, eligible locations, and the right application route.</p><a href="mailto:hr@aloden.com?subject=Career%20Opportunities%20at%20Aloden">Contact Aloden HR →</a></article>
+-        <article class="cr-opportunity dark"><div class="cr-opportunityTop"><span>TALENT NETWORK</span><span class="cr-status">GENERAL INTRODUCTIONS</span></div><h3>Don’t see your role? Introduce yourself.</h3><p>Share your résumé, the kind of problems you want to work on, and a link to work that shows how you think and build.</p><a href="#how-to-apply">Share your résumé →</a></article>
++      <div class="cr-head"><div><div class="cr-ey">CURRENT OPENINGS</div><h2>Find your next role.</h2></div><p>Explore approved opportunities at Aloden. Find a role that fits, read the details, and apply with your résumé.</p></div>
++      <div class="jobs-board" data-jobs-board>
++        <div class="jobs-toolbar"><label>Search roles<input type="search" data-jobs-search placeholder="Job title or keyword" aria-label="Search current openings"></label><label>Discipline<select data-jobs-department><option value="">All disciplines</option><option value="quality">Quality Engineering</option><option value="software">Software Engineering</option><option value="ai">AI &amp; Agentic Engineering</option><option value="product">Product &amp; Experience</option><option value="platform">Platform, Data &amp; Cloud</option><option value="delivery">Delivery &amp; Operations</option><option value="early-career">Early Career</option></select></label><label>Work arrangement<select data-jobs-model><option value="">All arrangements</option><option value="remote">Remote</option><option value="hybrid">Hybrid</option><option value="onsite">On-site</option></select></label></div>
++        <!-- JOBS_SNAPSHOT_START --><p class="jobs-reviewNotice">REVIEW SNAPSHOT · Five hiring needs confirmed by PK. This is not the live job feed; HR publishing and résumé delivery still require activation.</p><div class="jobs-count"><span data-jobs-count role="status" aria-live="polite">5 openings</span><span>Aloden careers</span></div><div class="jobs-list" data-jobs-list><article class="jobs-row"><div><span class="jobs-dept">Quality Engineering</span><h3><a href="career-role.html?job=ald-202600000001">Senior QA Automation Engineer</a></h3><p>Location to be confirmed by HR</p></div><div class="jobs-rowActions"><a class="jobs-rowLink" href="career-role.html?job=ald-202600000001" aria-label="View Senior QA Automation Engineer">View role <span aria-hidden="true">↗</span></a><a class="jobs-applyLink" href="careers.html?job=ald-202600000001#how-to-apply" aria-label="Apply for Senior QA Automation Engineer">Apply →</a></div></article><article class="jobs-row"><div><span class="jobs-dept">Software Engineering</span><h3><a href="career-role.html?job=ald-202600000002">Senior Full-Stack Developer</a></h3><p>Remote · Eligibility confirmed by HR<span aria-hidden="true"> · </span>Full-time / Contract<span aria-hidden="true"> · </span>6+ years</p></div><div class="jobs-rowActions"><a class="jobs-rowLink" href="career-role.html?job=ald-202600000002" aria-label="View Senior Full-Stack Developer">View role <span aria-hidden="true">↗</span></a><a class="jobs-applyLink" href="careers.html?job=ald-202600000002#how-to-apply" aria-label="Apply for Senior Full-Stack Developer">Apply →</a></div></article><article class="jobs-row"><div><span class="jobs-dept">AI &amp; Agentic Engineering</span><h3><a href="career-role.html?job=ald-202600000003">Senior AI/ML Developer</a></h3><p>Remote · Eligibility confirmed by HR<span aria-hidden="true"> · </span>Full-time / Contract<span aria-hidden="true"> · </span>5+ years</p></div><div class="jobs-rowActions"><a class="jobs-rowLink" href="career-role.html?job=ald-202600000003" aria-label="View Senior AI/ML Developer">View role <span aria-hidden="true">↗</span></a><a class="jobs-applyLink" href="careers.html?job=ald-202600000003#how-to-apply" aria-label="Apply for Senior AI/ML Developer">Apply →</a></div></article><article class="jobs-row"><div><span class="jobs-dept">Platform, Data &amp; Cloud</span><h3><a href="career-role.html?job=ald-202600000004">DevOps Cloud Engineer</a></h3><p>Location to be confirmed by HR</p></div><div class="jobs-rowActions"><a class="jobs-rowLink" href="career-role.html?job=ald-202600000004" aria-label="View DevOps Cloud Engineer">View role <span aria-hidden="true">↗</span></a><a class="jobs-applyLink" href="careers.html?job=ald-202600000004#how-to-apply" aria-label="Apply for DevOps Cloud Engineer">Apply →</a></div></article><article class="jobs-row"><div><span class="jobs-dept">Product &amp; Experience</span><h3><a href="career-role.html?job=ald-202600000005">UI/UX Product Designer</a></h3><p>Location to be confirmed by HR</p></div><div class="jobs-rowActions"><a class="jobs-rowLink" href="career-role.html?job=ald-202600000005" aria-label="View UI/UX Product Designer">View role <span aria-hidden="true">↗</span></a><a class="jobs-applyLink" href="careers.html?job=ald-202600000005#how-to-apply" aria-label="Apply for UI/UX Product Designer">Apply →</a></div></article></div><script type="application/json" id="careers-initial-jobs">{"reviewOnly":true}</script><!-- JOBS_SNAPSHOT_END -->
+@@ -166,0 +168 @@
++      <div class="jobs-talent"><span><strong>Not seeing your next role?</strong> We would still like to hear about your work.</span><a href="careers.html#how-to-apply">Send a general introduction →</a></div>
+@@ -169 +171 @@
+-          <div class="cr-formHeading"><div class="cr-ey">YOUR NEXT STEP</div><h3>Tell us about yourself.<br>Show us your work.</h3><p>Share your background and résumé with Aloden HR. A general introduction is not an application to an advertised vacancy.</p></div>
++          <div class="cr-formHeading"><div class="cr-ey">YOUR NEXT STEP</div><h3>Tell us about yourself.<br>Show us your work.</h3><p>Share your background and résumé with Aloden HR. Choose a specific opening above, or introduce yourself for future opportunities.</p></div>
+@@ -171 +173,3 @@
+-          <form id="careers-application" action="/api/careers/applications" method="post" enctype="multipart/form-data" aria-describedby="careers-upload-mode careers-upload-privacy">
++          <form data-job-state="pending" id="careers-application" action="/api/careers/applications" method="post" enctype="multipart/form-data" aria-describedby="careers-upload-mode careers-upload-privacy">
++            <input type="hidden" name="jobId" value="general">
++            <div class="jobs-selected" data-job-context hidden></div>
+@@ -175 +179 @@
+-              <div class="cr-formField"><label for="career-interest">Area of interest <span aria-hidden="true">*</span></label><select id="career-interest" name="interest" required><option value="">Select an area</option><option value="software">Software Engineering</option><option value="ai">AI &amp; Agentic Engineering</option><option value="product">Product &amp; Experience</option><option value="platform">Platform, Data &amp; Cloud</option><option value="delivery">Delivery &amp; Product Operations</option><option value="early-career">Early-Career Builders</option><option value="general">General introduction</option></select></div>
++              <div class="cr-formField"><label for="career-interest">Area of interest <span aria-hidden="true">*</span></label><select id="career-interest" name="interest" required><option value="">Select an area</option><option value="quality">Quality Engineering</option><option value="software">Software Engineering</option><option value="ai">AI &amp; Agentic Engineering</option><option value="product">Product &amp; Experience</option><option value="platform">Platform, Data &amp; Cloud</option><option value="delivery">Delivery &amp; Product Operations</option><option value="early-career">Early-Career Builders</option><option value="general">General introduction</option></select></div>
+@@ -206 +210 @@
+-          <details><summary>Are the talent areas current job openings?</summary><p>No. The disciplines above describe our work, not a list of vacancies. Contact HR about currently available roles; a general introduction is for consideration, not an application to an advertised opening.</p></details>
++          <details><summary>Are the talent areas current job openings?</summary><p>The talent areas describe our work. Only the roles listed under Current Openings are published vacancies. Select View role and Apply for this role to attach that job reference to your application. You can also submit a separate general introduction.</p></details>
+@@ -235,0 +240 @@
++<script type="module" src="careers-jobs.js"></script>
