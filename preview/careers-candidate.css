@@ -1,0 +1,30 @@
+/* Candidate essentials — same Careers palette, typography, and card system. */
+.cr-workLink{display:inline-block;margin-top:14px;color:#c9baff;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.cr-programNote{margin-top:14px!important;font-size:12px!important;line-height:1.6!important;color:#586170!important}
+.cr-candidateHelp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:32px;padding-top:28px;border-top:1px solid var(--cr-line);align-items:start;scroll-margin-top:110px}
+.cr-candidateHelp h3{font-size:25px;line-height:1.15;letter-spacing:-.03em;margin:10px 0 14px;color:var(--cr-ink)}
+.cr-applicationGuide>p{font-size:14px;line-height:1.65;color:var(--cr-body);margin:0}
+.cr-candidateHelp a:not(.btn){color:#5134bd;text-decoration:underline;text-underline-offset:3px}
+.cr-applySteps{counter-reset:application;list-style:none;margin:18px 0 22px;padding:0;border-top:1px solid var(--cr-line)}
+.cr-applySteps li{counter-increment:application;display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:12px;padding:13px 0;border-bottom:1px solid var(--cr-line)}
+.cr-applySteps li:before{content:counter(application,decimal-leading-zero);grid-row:1/3;display:grid;place-items:center;align-self:start;width:28px;height:28px;border-radius:8px;background:#f0ebff;font:500 10px/1 "IBM Plex Mono",monospace;color:#5134bd}
+.cr-applySteps b{font-size:14px;line-height:1.4;color:var(--cr-ink)}
+.cr-applySteps span{font-size:13px;line-height:1.6;color:var(--cr-body);margin-top:3px}
+.cr-applyActions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.cr-copyEmail{appearance:none;font:600 13px "Instrument Sans",sans-serif;color:#5134bd;background:#fff;border:1px solid #d9d3e8;border-radius:10px;min-height:48px;padding:0 16px;cursor:pointer}
+.cr-copyEmail[hidden]{display:none}
+.cr-copyEmail:disabled{cursor:wait;opacity:.65}
+.cr-emailHelp{font-size:12px!important;line-height:1.6!important;margin-top:12px!important;max-width:52ch}
+.cr-copyStatus{font-size:12px!important;color:#5134bd!important;margin-top:8px!important}
+.cr-copyStatus:empty{display:none}
+.cr-faq{scroll-margin-top:110px;min-width:0}
+.cr-faq details{border-bottom:1px solid var(--cr-line);padding:0}
+.cr-faq details:first-of-type{border-top:1px solid var(--cr-line)}
+.cr-faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;padding:15px 2px;font-size:14px;line-height:1.5;font-weight:600;color:var(--cr-ink);cursor:pointer;min-height:52px}
+.cr-faq summary::-webkit-details-marker{display:none}
+.cr-faq summary:after{content:'+';flex:none;color:#5134bd;font-size:21px;font-weight:400}
+.cr-faq details[open] summary:after{content:'−'}
+.cr-faq details p{margin:0;padding:0 22px 16px 2px;font-size:13px;line-height:1.65;color:var(--cr-body)}
+.cr-faq summary:focus-visible,.cr-copyEmail:focus-visible{outline:3px solid #704de7;outline-offset:3px;border-radius:4px}
+@media(max-width:900px){.cr-candidateHelp{grid-template-columns:1fr;gap:28px}}
+@media(max-width:600px){.cr-candidateHelp{margin-top:26px;padding-top:24px}.cr-applyActions{align-items:stretch}.cr-applyActions .btn,.cr-copyEmail{flex:1 1 auto}.cr-faq summary{padding-block:14px}.cr-faq details p{padding-right:8px}}

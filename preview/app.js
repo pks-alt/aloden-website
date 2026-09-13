@@ -78,6 +78,12 @@ function standardizeFooterNavigation() {
       home.textContent = 'Home';
       column.querySelector('h4')?.insertAdjacentElement('afterend', home);
     }
+    if (heading === 'Explore' && !links.some(link => normalizedText(link) === 'Careers')) {
+      const careers = document.createElement('a');
+      careers.href = 'careers.html';
+      careers.textContent = 'Careers';
+      column.appendChild(careers);
+    }
     if (heading === 'Connect' && !links.some(link => normalizedText(link) === 'LinkedIn' || normalizedText(link) === 'LinkedIn →')) {
       const linkedIn = document.createElement('a');
       linkedIn.href = 'https://www.linkedin.com/company/alodenllc';
@@ -112,6 +118,7 @@ function normalizeSiteLinks() {
     ['Built by Aloden', 'built-by-aloden.html'],
     ['Capabilities', 'capabilities.html'],
     ['Company', 'company.html'],
+    ['Careers', 'careers.html'],
     ['AI Product Engineering', 'ai-product-engineering.html'],
     ['Voice AI Engineering', 'voice-ai-engineering.html'],
     ['Voice & Conversational AI', 'voice-ai-engineering.html'],

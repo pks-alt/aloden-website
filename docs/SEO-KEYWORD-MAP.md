@@ -13,6 +13,7 @@ This map assigns one primary commercial search theme to each public page so Alod
 | `/healthcare-ai.html` | healthcare AI development | healthcare AI solutions; healthcare workflow automation; healthcare workforce technology; credentialing automation | Industry/service |
 | `/built-by-aloden.html` | AI product engineering portfolio | AI product examples; healthcare AI platform; innovation platform; voice AI product | Proof / evaluation |
 | `/company.html` | AI-native product engineering company | AI engineering company; product engineering company; Aloden | Brand / company evaluation |
+| `/careers.html` | careers at Aloden | AI engineering jobs; product engineering careers; AI software engineering jobs; early career technology roles | Employment / employer evaluation |
 | `/start-project.html` | AI product engineering partner | hire AI product engineering company; AI development project; AI modernization partner | Conversion |
 | `/privacy.html` | Aloden privacy notice | privacy policy | Navigational |
 | `/terms.html` | Aloden website terms | terms of use | Navigational |
@@ -25,13 +26,14 @@ This map assigns one primary commercial search theme to each public page so Alod
 - Healthcare AI should link to Medlivo proof on Our Work.
 - Our Work should link to the relevant capability pages where appropriate, without turning the proof page into a services catalog.
 - Company should support brand/entity understanding rather than compete with service pages for detailed service queries.
+- Careers should be discoverable from the site footer and Company context, while specific job-detail pages should only be created when an approved role exists.
 
 ## Search indexing launch checklist
 
 1. Deploy the final branch to `https://www.aloden.com` with HTTPS and one canonical hostname.
 2. Verify the domain property in Google Search Console.
 3. Submit `https://www.aloden.com/sitemap.xml` in Search Console.
-4. Inspect and request indexing for Home, Capabilities, the five service/domain pages, Our Work, Company, and Start a Project.
+4. Inspect and request indexing for Home, Capabilities, the five service/domain pages, Our Work, Company, Careers, and Start a Project.
 5. Verify the site in Bing Webmaster Tools and submit the same sitemap.
 6. Confirm `robots.txt`, canonicals, social image, and structured data return correctly from the live domain.
 7. Test LinkedIn Post Inspector and other social-card debuggers after deployment.

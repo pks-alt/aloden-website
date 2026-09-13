@@ -1,0 +1,60 @@
+name: Careers Browser QA
+
+on:
+  push:
+    branches: [feature/careers-page]
+    paths:
+      - 'preview/**'
+      - 'scripts/careers*'
+      - '.github/workflows/careers-browser-qa.yml'
+  pull_request:
+    paths:
+      - 'preview/careers*'
+      - 'scripts/careers*'
+      - '.github/workflows/careers-browser-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: careers-browser-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  browser-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate launch source
+        run: node scripts/site-qa.mjs
+      - name: Install isolated browser tooling
+        run: |
+          npm install --prefix /tmp/aloden-browser --no-audit --no-fund playwright@1.56.1
+          /tmp/aloden-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Capture Careers at desktop, tablet, and mobile widths
+        run: |
+          mkdir -p qa-artifacts
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory preview >/tmp/aloden-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8765/careers.html >/dev/null && break || sleep 1; done
+          node scripts/careers-browser-qa.mjs
+      - name: Package exact reviewed source
+        if: always()
+        run: |
+          git rev-parse HEAD > qa-artifacts/COMMIT.txt
+          git archive --format=zip --output=qa-artifacts/reviewed-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: careers-browser-${{ github.sha }}
+          path: qa-artifacts/
+          retention-days: 7
