@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: careers-browser-${{ github.ref }}
+  group: careers-browser-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -29,6 +29,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -45,42 +46,7 @@ jobs:
           SERVER_PID=$!
           trap 'kill "$SERVER_PID"' EXIT
           for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8765/careers.html >/dev/null && break || sleep 1; done
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import { createRequire } from 'node:module';
-          const require = createRequire('/tmp/aloden-browser/package.json');
-          const { chromium } = require('playwright');
-          const browser = await chromium.launch();
-          const reports = [];
-          for (const width of [1440, 768, 390, 320]) {
-            const page = await browser.newPage({ viewport: { width, height: 960 }, reducedMotion: 'reduce' });
-            const errors = [];
-            const missingResources = [];
-            page.on('pageerror', error => errors.push(error.message));
-            page.on('response', response => {
-              if (response.url().startsWith('http://127.0.0.1:8765/') && response.status() >= 400) missingResources.push(response.url());
-            });
-            await page.goto('http://127.0.0.1:8765/careers.html', { waitUntil: 'networkidle' });
-            await page.evaluate(() => document.fonts.ready);
-            await page.screenshot({ path: `qa-artifacts/careers-${width}.png`, fullPage: true });
-            const metrics = await page.evaluate(() => ({
-              viewport: innerWidth,
-              scrollWidth: document.documentElement.scrollWidth,
-              height: document.documentElement.scrollHeight,
-              h1: [...document.querySelectorAll('h1')].map(n => n.textContent),
-              sections: [...document.querySelectorAll('main > section')].map(n => ({ id: n.id, className: n.className, height: Math.round(n.getBoundingClientRect().height) })),
-              overflow: [...document.querySelectorAll('main *')].filter(n => { const r = n.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 1 || r.left < -1); }).slice(0, 16).map(n => ({ tag: n.tagName, className: n.className, text: n.textContent.trim().slice(0, 80) })),
-              mailto: [...document.querySelectorAll('a[href^="mailto:"]')].map(n => n.getAttribute('href')),
-              images: [...document.images].map(n => ({ src: n.getAttribute('src'), loaded: n.complete && n.naturalWidth > 0 }))
-            }));
-            reports.push({ width, errors, missingResources, ...metrics });
-            await page.close();
-          }
-          await browser.close();
-          fs.writeFileSync('qa-artifacts/careers-browser-report.json', JSON.stringify(reports, null, 2));
-          console.log(JSON.stringify(reports, null, 2));
-          if (reports.some(r => r.errors.length || r.missingResources.length)) process.exitCode = 1;
-          NODE
+          node scripts/careers-browser-qa.mjs
       - name: Package exact reviewed source
         if: always()
         run: |
