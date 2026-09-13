@@ -1,0 +1,59 @@
+name: Content Consistency QA
+on:
+  pull_request:
+    paths:
+      - 'preview/**'
+      - 'scripts/content-consistency-qa.mjs'
+      - '.github/workflows/content-consistency-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: content-consistency-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  compare:
+    if: github.head_ref == 'feature/content-consistency-review' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify protected design and application source
+        run: |
+          mkdir -p qa-artifacts /tmp/aloden-content-baseline
+          git archive 2a75456f481d381e8e4ebbb89ce3191fd54c20c8 | tar -x -C /tmp/aloden-content-baseline
+          git diff --exit-code 2a75456f481d381e8e4ebbb89ce3191fd54c20c8 -- 'preview/*.css' preview/assets preview/app.js preview/data server preview/careers-application.js preview/start-project-form.js
+          node scripts/site-qa.mjs
+          node --test server/careers/careers.test.mjs server/careers/jobs.test.mjs | tee qa-artifacts/backend-tests.txt
+          node --test server/project-brief-handler.test.mjs | tee qa-artifacts/project-tests.txt
+      - name: Compare fourteen pages at five widths
+        run: |
+          npm install --prefix /tmp/aloden-browser --no-audit --no-fund playwright@1.56.1
+          /tmp/aloden-browser/node_modules/.bin/playwright install --with-deps chromium
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory preview >/tmp/content-current.log 2>&1 &
+          A=$!
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory /tmp/aloden-content-baseline/preview >/tmp/content-baseline.log 2>&1 &
+          B=$!
+          trap 'kill "$A" "$B"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && curl -fsS http://127.0.0.1:8766/index.html >/dev/null && break || sleep 1; done
+          node scripts/content-consistency-qa.mjs
+      - name: Package the exact tested source
+        if: always()
+        run: |
+          mkdir -p qa-artifacts
+          git rev-parse HEAD > qa-artifacts/COMMIT.txt
+          git status --short > qa-artifacts/WORKTREE.txt
+          git archive --format=zip --output=qa-artifacts/reviewed-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: content-consistency-${{ github.event.pull_request.head.sha || github.sha }}
+          path: qa-artifacts/
+          retention-days: 7
