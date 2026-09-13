@@ -13,8 +13,8 @@
       signalKey3: 'Context',
       signalValue3: 'Facility / care setting',
       outcomeTitle: 'Operationally ready match',
-      outcomeText: 'Context, readiness, and workflow state are connected before action.',
-      productName: 'Medlivo',
+      outcomeText: 'Check the requirement, clinician availability, and credential readiness before assignment.',
+      productName: 'Healthcare Operations',
       miniBadge: 'WORKFLOW READY',
       miniTitle: 'Best-fit path identified',
       miniAction: 'Review next step →'
@@ -28,8 +28,8 @@
       signalKey3: 'Evidence',
       signalValue3: 'Structured evaluation',
       outcomeTitle: 'Evaluated opportunity',
-      outcomeText: 'Challenge, builder evidence, evaluation, and selection stay connected.',
-      productName: 'StartupFair',
+      outcomeText: 'Keep the challenge, submitted work, judging, and next steps together.',
+      productName: 'Innovation Platform',
       miniBadge: 'EVALUATION READY',
       miniTitle: 'Evidence organized for review',
       miniAction: 'Review opportunity →'
@@ -44,7 +44,7 @@
       signalValue3: 'Permission boundary',
       outcomeTitle: 'Verified system action',
       outcomeText: 'The product confirms the result—or escalates with context when human judgment is needed.',
-      productName: 'Aloden Voice AI',
+      productName: 'Conversational AI',
       miniBadge: 'ACTION VERIFIED',
       miniTitle: 'Outcome confirmed',
       miniAction: 'Continue workflow →'

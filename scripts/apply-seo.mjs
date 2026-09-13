@@ -11,7 +11,7 @@ const pages = {
   'index.html': {
     path: '/',
     title: 'AI Product Engineering Company | Aloden',
-    description: 'Aloden builds AI-native products, modernizes existing software, and engineers agentic and voice workflows for production-ready real-world use.',
+    description: 'Aloden helps companies build intelligent digital products, modernize existing software, and connect business workflows with practical AI.',
     schemaType: 'WebPage'
   },
   'built-by-aloden.html': {
@@ -21,7 +21,7 @@ const pages = {
   },
   'capabilities.html': {
     title: 'AI Engineering Services & Capabilities | Aloden',
-    description: 'Explore Aloden’s AI product engineering, AI-native modernization, agentic workflow engineering, voice AI, and healthcare AI capabilities.',
+    description: 'Explore four Aloden services: AI Product Engineering, AI-Native Modernization, Agentic Workflow Engineering, and Voice & Conversational AI.',
     schemaType: 'WebPage'
   },
   'ai-product-engineering.html': {
@@ -40,7 +40,7 @@ const pages = {
   },
   'agentic-ai.html': {
     title: 'Agentic Workflow Engineering & AI Agents | Aloden',
-    description: 'Aloden engineers agentic workflows that connect AI agents to tools, systems, approvals, verification, observability, and human control.',
+    description: 'Automate multi-step work across business systems with Aloden. Build AI agents with clear permissions, approvals, and verified outcomes.',
     schemaType: 'Service',
     serviceName: 'Agentic Workflow Engineering',
     serviceType: 'Agentic workflow and AI agent engineering services'
@@ -61,7 +61,7 @@ const pages = {
   },
   'company.html': {
     title: 'About Aloden | AI-Native Product Engineering Company',
-    description: 'Aloden is an AI-native product engineering company founded in 2024, combining product thinking, engineering depth, practical AI, and production discipline.',
+    description: 'Founded in 2024, Aloden helps companies build intelligent products and modernize software, with one delivery lead and direct access to engineers.',
     schemaType: 'AboutPage'
   },
   'careers.html': {
@@ -140,7 +140,7 @@ function graphFor(file, config) {
       url: `${siteOrigin}/`,
       logo: `${siteOrigin}/assets/aloden-cube-logo.svg`,
       foundingDate: '2024',
-      description: 'AI-native product engineering and digital modernization company building intelligent software for real-world use.',
+      description: 'Aloden builds intelligent digital products and modernizes existing software.',
       email: 'hello@aloden.com',
       sameAs: ['https://www.linkedin.com/company/alodenllc']
     },
