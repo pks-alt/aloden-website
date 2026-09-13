@@ -2,7 +2,7 @@ name: Review content consistency
 on:
   push:
     branches: [feature/content-consistency-review]
-    paths: ['.github/workflows/content-copy-integrate.yml']
+    paths: ['.github/workflows/content-copy-integrate.yml', 'scripts/apply-work-copy-review.py']
 permissions:
   contents: write
 defaults:
