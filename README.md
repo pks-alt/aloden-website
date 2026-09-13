@@ -2,7 +2,7 @@
 
 Official website repository for **Aloden LLC**.
 
-Aloden is positioned as an **AI Product Engineering and Digital Modernization** company. This repository contains the custom-built public website used to present Aloden's capabilities, products, insights, company story, and project engagement experience.
+Aloden is positioned as an **AI Product Engineering and Digital Modernization** company. This repository contains the custom-built public website used to present Aloden's capabilities, products, company story, careers, and project inquiry experience.
 
 ## V1 Website Direction
 
@@ -15,18 +15,17 @@ The Version 1 website is built around the following approved principles:
 - Performance-first engineering and strong Core Web Vitals
 - SEO-ready architecture, metadata, structured data, sitemap, and internal linking
 - English-only launch
-- Developer-controlled content for V1; no CMS initially
+- Developer-controlled marketing content; a separate, authenticated HR job manager for approved vacancies
 
 ## V1 Navigation
 
 - Home
-- Built by Aloden
+- Our Work
 - Capabilities
-- Insights
 - Company
 - Start a Project
 
-Supporting pages include Privacy, Terms, and a branded 404 page.
+Careers is linked from the footer and includes job details and résumé upload. Contact redirects to Start a Project. Supporting pages include Privacy, Terms, and 404. Insights is not included in this release.
 
 ## Product Proof
 
@@ -34,7 +33,7 @@ The site uses real Aloden-built products and initiatives as proof of product-eng
 
 - Medlivo
 - StartupFair
-- Aloden Voice AI
+- Voice & Conversational AI
 
 ## Development Workflow
 
@@ -67,6 +66,6 @@ The repository includes an automated GitHub Actions QA gate for page structure, 
 
 The Start a Project form is intentionally fail-closed until a production hosting adapter supplies allowed origins, durable rate limiting, bot verification, and secure delivery to `hello@aloden.com`. No production credentials are committed to the repository.
 
-See `docs/SITE-QA-OVERNIGHT.md` for the latest launch-readiness handoff.
+See `docs/SITE-FINAL-HANDOFF.md` for the authoritative current scope. Older design documents are historical where they conflict. `docs/CONTENT-CONSISTENCY-REVIEW.md` records the confirmed facts and copy-edit boundaries. Careers job publishing, HR sign-in, applicant privacy, and résumé delivery also require production activation; see the dedicated Careers handoffs.
 
 © Aloden LLC. All rights reserved.

@@ -39,7 +39,9 @@
 
 .heroOneCore{padding:17px 15px;border-color:#266c86;background:radial-gradient(circle at 78% 25%,rgba(53,204,191,.09),transparent 35%),linear-gradient(145deg,#0b1b2a,#0b1825)}
 .heroOneCoreHead{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid #1f3c4f}
-.heroOneCoreMark{display:grid;grid-template-columns:7px 10px;grid-template-rows:7px 7px;gap:3px;align-items:center;flex:none}.heroOneCoreMark i{display:block;border-radius:50%;background:#e7eef5;width:7px;height:7px}.heroOneCoreMark i:nth-child(2){width:10px;height:10px;background:#7b5cff;margin-top:-2px}
+.heroOneCoreMark{display:block;width:28px;height:28px;flex:0 0 28px;object-fit:contain;margin-top:2px}
+.heroOneCoreHead{align-items:flex-start}
+.heroOneCoreHead>div{min-width:0}
 .heroOneCoreHead small{display:block;font-family:'IBM Plex Mono',monospace;font-size:7.2px;letter-spacing:.13em;color:#66bfe8}.heroOneCoreHead h2{font-size:18px;letter-spacing:-.028em;margin:2px 0 0;color:#f1f6fa}
 .heroOneStages{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:17px;position:relative}
 .heroOneStages:before{content:"";position:absolute;left:9%;right:9%;top:22px;height:1px;background:linear-gradient(90deg,#275875,#389ed7,#47c8b1);z-index:0}

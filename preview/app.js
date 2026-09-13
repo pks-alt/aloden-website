@@ -159,7 +159,7 @@ function normalizeSiteLinks() {
       text = 'Our Work';
     }
     if (text === 'Start a Project →' || text === 'Start a Project') {
-      anchor.href = onStartProject ? '#project-start' : 'start-project.html';
+      anchor.href = onStartProject ? '#project-contact' : 'start-project.html';
     } else if (text === 'LinkedIn →' || text === 'LinkedIn') {
       anchor.href = 'https://www.linkedin.com/company/alodenllc';
       anchor.target = '_blank';
@@ -215,13 +215,49 @@ function standardizeSiteChrome() {
   });
 }
 
+// Approved public contacts. Do not invent department-specific mailboxes.
+const ALODEN_CONTACTS = Object.freeze({projects:'hello@aloden.com',careers:'hr@aloden.com'});
+function installPublicContacts() {
+  const file=(location.pathname.split('/').pop()||'index.html');
+  const topics={'index.html':'New project','capabilities.html':'Services inquiry','ai-product-engineering.html':'AI Product Engineering','product-modernization.html':'AI-Native Modernization','agentic-ai.html':'Agentic Workflow Engineering','voice-ai-engineering.html':'Voice & Conversational AI','healthcare-ai.html':'Healthcare technology project','built-by-aloden.html':'Product engineering inquiry','company.html':'Business inquiry','privacy.html':'Privacy request','terms.html':'Website terms question'};
+  const mail=(address,subject)=>`mailto:${address}?${new URLSearchParams({subject})}`;
+  function contactLine(host,address,subject,label) {
+    if(!host||host.querySelector('[data-contact-line]'))return;
+    const p=document.createElement('p');p.className='siteContactLine';p.dataset.contactLine='true';
+    p.append(`${label}: `);const a=document.createElement('a');a.href=mail(address,subject);a.textContent=address;p.append(a);host.append(p);
+  }
+  const hiring=file==='careers.html';
+  document.querySelectorAll('.ctaBand>div,.w9-ctaBand>div').forEach(n=>contactLine(n,hiring?ALODEN_CONTACTS.careers:ALODEN_CONTACTS.projects,hiring?'Career introduction':topics[file]||'Project inquiry',hiring?'Careers':'Project inquiries'));
+  for(const [id,subject] of [['medlivo','Healthcare workforce project'],['startupfair','Innovation platform project'],['voice','Voice & Conversational AI project']]) {
+    const section=file==='built-by-aloden.html'?document.getElementById(id):null;
+    contactLine(section?.querySelector('.w9-intro>div'),ALODEN_CONTACTS.projects,subject,'Discuss a similar project');
+  }
+  document.querySelectorAll('footer .footerFinalCol,footer .contentReviewFooterCol').forEach(column=>{
+    if(column.querySelector('h4')?.textContent.trim()!=='Connect')return;
+    for(const [purpose,label,subject] of [['projects','Project inquiries','New project'],['careers','Careers & recruitment','Career inquiry']]) {
+      const address=ALODEN_CONTACTS[purpose];
+      const existing=[...column.querySelectorAll('a')].filter(a=>a.getAttribute('href')?.startsWith(`mailto:${address}`));
+      const a=existing.shift()||document.createElement('a');existing.forEach(n=>n.remove());
+      a.href=mail(address,subject);a.classList.add('siteContactLink');a.setAttribute('aria-label',`${label}: ${address}`);
+      a.replaceChildren();const small=document.createElement('span');small.className='siteContactLabel';small.textContent=label;a.append(small,document.createTextNode(address));
+      if(!a.parentElement){const linkedin=[...column.querySelectorAll('a')].find(n=>n.href.includes('linkedin.com'));linkedin?column.insertBefore(a,linkedin):column.append(a);}
+    }
+  });
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+    const uri=new URL(a.getAttribute('href'));
+    if(!Object.values(ALODEN_CONTACTS).includes(uri.pathname)||uri.searchParams.has('subject'))return;
+    uri.searchParams.set('subject',uri.pathname===ALODEN_CONTACTS.careers?'Career inquiry':topics[file]||'Project inquiry');
+    a.href=uri.toString();
+  });
+}
+
 function installAccessibilityBaseline() {
   const main = document.querySelector('main');
   if (main && !main.id) main.id = 'main-content';
   if (main && !document.querySelector('.siteSkipLink')) {
     const skip = document.createElement('a');
     skip.className = 'siteSkipLink';
-    skip.href = '#main-content';
+    skip.href = `#${main.id}`;
     skip.textContent = 'Skip to main content';
     skip.addEventListener('click', () => {
       if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
@@ -301,6 +337,7 @@ standardizeSiteChrome();
 standardizeFooterNavigation();
 normalizeSiteLinks();
 removeInsightsFromLaunch();
+installPublicContacts();
 installAccessibilityBaseline();
 installMetadataBaseline();
 
@@ -325,8 +362,7 @@ if (document.querySelector('.startProjectHero')) {
   projectFormScript.src = 'start-project-form.js?v=1';
   projectFormScript.async = false;
   projectFormScript.addEventListener('load', () => {
-    const note = document.querySelector('.projectSubmissionReview');
-    if (note) note.textContent = 'INITIAL PROJECT BRIEF · HIGH-LEVEL CONTEXT ONLY.';
+    installPublicContacts();
   });
   document.body.appendChild(projectFormScript);
 }

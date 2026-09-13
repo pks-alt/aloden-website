@@ -37,10 +37,16 @@
   submitButton.removeAttribute('aria-disabled');
 
   const reviewNote = document.querySelector('.projectSubmissionReview');
-  if (reviewNote) reviewNote.textContent = 'FUNCTIONALITY PREVIEW · SECURE DELIVERY ACTIVATES AFTER DEPLOYMENT CONFIGURATION.';
+  if (reviewNote) reviewNote.textContent = 'You can also email hello@aloden.com.';
 
   const turnstileSiteKey = document.querySelector('meta[name="aloden-turnstile-site-key"]')?.content?.trim();
-  if (turnstileSiteKey) {
+  const offline=/^file:$/.test(location.protocol)||/(^|\.)(githack\.com|shipstatic\.com)$/.test(location.hostname)||!turnstileSiteKey;
+  if(offline){
+    submitButton.disabled=true;
+    submitButton.textContent='Online inquiries unavailable';
+    if(reviewNote) reviewNote.innerHTML='To discuss your project, email <a href="mailto:hello@aloden.com?subject=Start%20a%20Project">hello@aloden.com</a>. Online inquiries are currently unavailable.';
+  }
+  if (turnstileSiteKey && !offline) {
     const consent = document.querySelector('.projectConsent');
     const mount = document.createElement('div');
     mount.className = 'projectBotCheck';

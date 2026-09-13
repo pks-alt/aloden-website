@@ -19,7 +19,7 @@
         <div class="eyebrow heroOneEyebrow">AI PRODUCT ENGINEERING · DIGITAL MODERNIZATION</div>
         <h1>We build and modernize intelligent digital products.</h1>
         <p class="heroOneSub">Built around your vision. Engineered for real-world impact.</p>
-        <p class="heroOneDesc">Aloden brings together AI, product strategy, experience design, engineering, and modernization to turn ideas and existing software into production-ready digital products.</p>
+        <p class="heroOneDesc">We help companies launch new software and improve the systems they already rely on, combining product strategy, design, engineering, and practical AI.</p>
         <div class="heroOneActions">
           <a class="btn heroOnePrimary" href="start-project.html">Start a Project →</a>
           <a class="btn heroOneSecondary" href="built-by-aloden.html">See What We’ve Built</a>
@@ -33,10 +33,10 @@
         <div class="heroOneDemoTop">
           <div class="heroOneTabs" role="tablist" aria-label="Product examples">
             <button class="heroOneTab isActive" type="button" role="tab" aria-selected="true" data-demo="medlivo">
-              <span class="tabGlyph">M</span><span><b>Medlivo</b><small>Healthcare</small></span>
+              <span class="tabGlyph">H</span><span><b>Healthcare</b><small>Operations</small></span>
             </button>
             <button class="heroOneTab" type="button" role="tab" aria-selected="false" data-demo="startupfair">
-              <span class="tabGlyph">S</span><span><b>StartupFair</b><small>Innovation</small></span>
+              <span class="tabGlyph">I</span><span><b>Innovation</b><small>Platform</small></span>
             </button>
             <button class="heroOneTab" type="button" role="tab" aria-selected="false" data-demo="voice">
               <span class="tabGlyph">V</span><span><b>Voice AI</b><small>Conversation</small></span>
@@ -61,8 +61,8 @@
 
           <article class="heroOneCore">
             <div class="heroOneCoreHead">
-              <span class="heroOneCoreMark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <div><small>ALODEN PRODUCT SYSTEM</small><h2>From context to production.</h2></div>
+              <img class="heroOneCoreMark" src="assets/aloden-cube-symbol.svg" alt="" width="28" height="28" aria-hidden="true" decoding="async">
+              <div><small>ALODEN PRODUCT ENGINEERING</small><h2>From context to production.</h2></div>
             </div>
             <div class="heroOneStages" aria-label="Aloden product engineering stages">
               <div class="heroOneStage"><span>01</span><b>Understand</b><small>Context &amp; goals</small></div>
@@ -79,11 +79,11 @@
           <div class="heroOneConnector" aria-hidden="true"><span></span><b>→</b></div>
 
           <article class="heroOneOutcome">
-            <div class="heroOneOutcomeStatus"><i aria-hidden="true">✓</i><span>PRODUCTION READY</span></div>
+            <div class="heroOneOutcomeStatus"><i aria-hidden="true">✓</i><span>ENGINEERED FOR PRODUCTION</span></div>
             <h2 data-bind="outcomeTitle">Operationally ready match</h2>
             <p data-bind="outcomeText">Context, readiness, and workflow state are connected before action.</p>
             <div class="heroOneMiniProduct">
-              <div class="heroOneMiniTop"><span data-bind="productName">Medlivo</span><i>•••</i></div>
+              <div class="heroOneMiniTop"><span data-bind="productName">Healthcare Operations</span><i>•••</i></div>
               <div class="heroOneMiniBadge" data-bind="miniBadge">WORKFLOW READY</div>
               <strong data-bind="miniTitle">Best-fit path identified</strong>
               <div class="heroOneMiniLines"><span></span><span></span><span></span></div>
@@ -106,7 +106,7 @@
         </article>
         <article class="heroOneProof">
           <div class="heroOneProofIcon modernize" aria-hidden="true">↻</div>
-          <div><span>02 · EVOLVE</span><h2>Modernization at Scale</h2><p>Modernize products, platforms, and workflows without losing what already works.</p></div>
+          <div><span>02 · EVOLVE</span><h2>AI-Native Modernization</h2><p>Modernize products, platforms, and workflows without losing what already works.</p></div>
         </article>
         <article class="heroOneProof">
           <div class="heroOneProofIcon realUse" aria-hidden="true">✓</div>

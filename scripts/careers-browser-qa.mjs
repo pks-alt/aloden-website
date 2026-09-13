@@ -14,7 +14,8 @@ assert(!/"@type"\s*:\s*"JobPosting"/.test(html), 'Do not represent talent areas 
 assert(/id="careers-application"/.test(html), 'Resume application form is present');
 assert(/enctype="multipart\/form-data"/.test(html), 'Upload uses multipart form data');
 assert(/accept="\.pdf,\.docx/.test(html), 'PDF and DOCX are accepted');
-assert(html.includes('Online delivery is not connected'), 'Offline preview must be explicit');
+assert(html.includes('Online applications are currently unavailable.'), 'Inactive delivery must be explicit');
+assert(html.includes('data-careers-delivery-email'), 'Applicants must have an email route when online submissions are unavailable');
 const reports = [];
 const failures = [];
 const browser = await chromium.launch(process.env.CAREERS_CHROMIUM_PATH ? {executablePath:process.env.CAREERS_CHROMIUM_PATH} : {});

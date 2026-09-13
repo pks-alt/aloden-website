@@ -1,33 +1,12 @@
-# Aloden Official Logo — SOURCE OF TRUTH
+# Aloden approved logo — current source of truth
 
-Status: APPROVED BRAND ASSET
+Use the existing violet cube logo approved for the current website:
+- Light backgrounds: `preview/assets/aloden-cube-logo.svg`.
+- Dark backgrounds (Home header and all public footers): `preview/assets/aloden-cube-logo-dark.svg`.
+- Small brand mark and favicon: `preview/assets/aloden-cube-symbol.svg`.
 
-Branch introduced: `feature/product-modernization-content-review`
+The header/footer controller is `preview/app.js`. The Home process-card mark is in `preview/homepage-section1-review.js` and uses the same approved cube symbol. It sits to the left of the process heading, not as another company lockup below it.
 
-Canonical web asset: `preview/assets/aloden-logo-official.svg`
+Do not reintroduce the retired four-dot logo, CSS-drawn dots, or `aloden-logo-official.svg` on current pages. Those assets may remain in historical archives but are not the current brand source. Do not use the Aloden lockup as a separate Voice AI product logo.
 
-## Source
-
-This asset is derived directly from the official Aloden logo artwork supplied by PK on September 9, 2026. The supplied visual is the source of truth for the Aloden company lockup: four-dot mark with the enlarged violet upper-right dot and the lowercase `aloden` wordmark.
-
-## Usage
-
-- Use the official asset for the primary website header brand lockup.
-- Use the official asset for the website footer brand lockup.
-- Preserve the logo proportions and spacing; do not redraw or reinterpret the wordmark.
-- Do not revert the primary website brand to the previous CSS-generated approximation.
-- Product UI mockups may use simplified marks only when they are intentionally part of a dark product interface treatment and are not presented as the primary Aloden company logo.
-
-## Current rollout
-
-The shared `preview/final.css` brand layer applies the official artwork across the current site pages, including:
-
-- Homepage
-- Built by Aloden
-- Capabilities
-- AI Product Engineering
-- Voice AI Engineering
-- Intelligent Workflow & Agentic Systems
-- Product Modernization
-
-Future pages should inherit this shared brand treatment.
+Preserve the approved cube artwork and wordmark proportions. This repair changes usage, not the artwork itself.
