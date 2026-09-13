@@ -1,37 +1,26 @@
-# Careers page: completion and launch checklist
+# Careers page — review and activation checklist
 
-## Implemented in the review branch
+## Implemented
 
-- Original Careers layout, logo assets, section order, and visual language retained.
-- The opportunities area clearly separates role inquiries from general introductions.
-- Application guidance covers a resume, relevant work/contribution, broad location/time zone, and availability.
-- Introduction links prepare an email draft to hr@aloden.com. They do not transmit an application or imply delivery.
-- Copy-email control reports success only after the clipboard call succeeds, with a visible-address fallback on denial.
-- Six native FAQ disclosures cover vacancies vs talent areas, early career, work arrangements, AI-assisted work, safe sharing, and accessibility/verification contact.
-- Early-career language does not promise dates, prizes, certificates, or employment. Participation is not an employment guarantee.
-- An Our Work link lets applicants inspect product evidence without duplicating the portfolio.
-- Footer legal links use the site's existing footerLegal style. Current-page semantics no longer incorrectly identify Company as the current page.
-- Existing Careers metadata, canonical, social card, sitemap entry, and keyword-map entry retained. No JobPosting markup is emitted for the talent-network page.
-- Browser QA captures the exact commit at 1440, 1024, 768, 390, and 320 pixels and checks local resources, overflow, keyboard interactions, email-draft content, clipboard outcomes, and the no-JavaScript application path.
+- Approved Careers composition, logo assets, existing section order, SEO, sitemap and footer links retained. Home and all other existing page designs are untouched by the resume-upload update.
+- Candidate FAQs, practical hiring information, honest distinction between disciplines and actual vacancies, and early-career language without an employment guarantee.
+- Native PDF/DOCX resume upload with drag/drop, file selection/removal, 5 MB limit, required contact/interest/location/availability fields, optional portfolio/introduction, and permission acknowledgment.
+- Clear offline preview state. File selection alone stays in the browser; the static preview cannot send an application.
+- Server-side multipart validation, bounded file structure checks, mandatory private malware-scan adapter, Turnstile hostname/action verification, durable rate limits and duplicate protection.
+- Gmail MIME attachment delivery adapter with fixed HR recipient, candidate Reply-To, and server-held OAuth credentials. Success requires a provider receipt; uncertain sends are not automatically retried.
+- Runnable Node API reference adapter, environment-variable template, and backend/browser tests using synthetic data and mocked external services only.
 
-## Needs HR/business confirmation before publishing individual openings
+## Still requires activation, not another page redesign
 
-1. Which existing Aloden role descriptions are still active; hiring approval, title, responsibilities, qualifications, location eligibility, work model, and employment type.
-2. Approved compensation/benefits information and any disclosures required for each hiring location. Do not assume a universal remote-work, benefits, or sponsorship policy.
-3. Confirm hr@aloden.com is monitored and test receipt/ownership of a real candidate introduction. No applicant email was sent by the page tests.
-4. Applicant-specific privacy/retention/access/deletion procedures and the appropriate notice for each hiring entity/location. The current link is to the website privacy notice, not an invented applicant-data policy.
-5. For a campus or hackathon event: approved dates, venue/format, eligibility, registration route, selection process, and final public terms. Previously drafted program plans are not live event announcements.
+1. Developer: choose/deploy the production hosting adapter and same-origin API routes; provision private persistent state, scanner, bot keys, and website-owned Gmail sender authorization.
+2. HR: approve the applicant-data notice and actual retention, access, and deletion processes, including the sender and HR mailboxes. Do not invent these policies in website copy.
+3. Owner/developer: authorize a synthetic live submission, then verify the real attachment arrives at HR and that security, duplicate, and failure cases behave as intended.
+4. Owner: approve the reviewed branch before merge/deployment. Draft PR #8 targets feature/site-cosmetic-pass; no main merge has been performed.
 
-## Developer launch tasks
+## Publishing individual vacancies or programs
 
-- Deploy the reviewed branch only after approval; maintain the already-approved homepage and other page designs.
-- Verify Careers is discoverable from the shared footer, its canonical and sitemap use the final host, and mobile navigation works on the deployed URL.
-- Test the mailto draft with the actual supported email clients. Clipboard enhancement requires a secure context and permission; the visible address remains usable without it.
-- A web application form, resume upload, ATS integration, and automated receipt are optional later work, not part of the current email-based page. Add them only with validated delivery, access controls, upload safeguards, privacy notice, retention policy, and anti-abuse controls. Do not show a submission-success message without confirmed delivery.
-- Add a dedicated, truthful detail page and valid JobPosting data only for an approved, active job. Remove/expire closed postings promptly.
+- Confirm active roles, employment entity, title, requirements, eligible locations, work arrangement, and approved compensation/benefit disclosures before publishing specific jobs. Talent areas are not JobPosting entries.
+- Confirm campus/hackathon dates, venue/format, eligibility, registration route, selection process, and final public terms. Existing planning documents do not establish a live event.
+- Do not publish placeholder salaries, promise remote work everywhere, or imply an application guarantees an interview or employment.
 
-## Review status
-
-Draft PR #8 targets feature/site-cosmetic-pass. No merge to main or production deployment is authorized by this checklist.
-
-Technical references: Google Search Central JobPosting documentation (https://developers.google.com/search/docs/appearance/structured-data/job-posting); MDN details element (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details).
+See **docs/CAREERS-RESUME-UPLOAD.md** for implementation, security, deployment, and test details. The Gmail connection in ChatGPT is not the website's OAuth credential. No live applicant or test email was sent during this update.
