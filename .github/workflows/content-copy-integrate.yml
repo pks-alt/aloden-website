@@ -27,6 +27,7 @@ jobs:
           mkdir -p qa-artifacts /tmp/aloden-content-baseline
           git archive 2a75456f481d381e8e4ebbb89ce3191fd54c20c8 | tar -x -C /tmp/aloden-content-baseline
           python3 scripts/apply-content-review.py
+          python3 scripts/apply-work-copy-review.py
           node scripts/careers-job-previews.mjs
           node scripts/site-qa.mjs
           node --check preview/homepage-final.js
@@ -54,7 +55,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           test "$(git ls-remote origin refs/heads/feature/content-consistency-review | cut -f1)" = "$GITHUB_SHA"
-          git rm scripts/apply-content-review.py
+          git rm scripts/apply-content-review.py scripts/apply-work-copy-review.py
           git add preview README.md scripts/apply-seo.mjs
           git diff --cached --check
           git config user.name 'github-actions[bot]'
