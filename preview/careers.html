@@ -169,7 +169,7 @@
       <div class="cr-candidateHelp" id="how-to-apply">
         <div class="cr-applicationGuide cr-applicationPanel">
           <div class="cr-formHeading"><div class="cr-ey">YOUR NEXT STEP</div><h3>Tell us about yourself.<br>Show us your work.</h3><p>Share your background and résumé with Aloden HR. Choose a specific opening above, or introduce yourself for future opportunities.</p></div>
-          <div class="cr-uploadMode" id="careers-upload-mode" role="status" aria-live="polite">Online applications are currently unavailable. Email your résumé to <a data-careers-delivery-email href="mailto:hr@aloden.com?subject=Career%20introduction%20%7C%20Aloden">hr@aloden.com</a>, with the role title and reference.</div>
+          <div class="cr-uploadMode" id="careers-upload-mode" role="status" aria-live="polite">Apply to a specific role above, or email your résumé to <a data-careers-delivery-email href="mailto:hr@aloden.com?subject=Career%20introduction%20%7C%20Aloden">hr@aloden.com</a> with the role title and reference.</div>
           <form data-job-state="pending" id="careers-application" action="/api/careers/applications" method="post" enctype="multipart/form-data" aria-describedby="careers-upload-mode careers-upload-privacy">
             <input type="hidden" name="jobId" value="general">
             <div class="jobs-selected" data-job-context hidden></div>
@@ -197,16 +197,16 @@
             <label class="cr-applicationConsent"><input type="checkbox" name="consent" id="career-consent" value="yes" required><span>I confirm the information is mine to share and understand it will be sent to Aloden HR for recruitment consideration.</span></label>
             <div class="cr-honeypot" aria-hidden="true"><label for="career-website">Leave this field empty</label><input id="career-website" name="website" tabindex="-1" autocomplete="off"></div>
             <div id="career-bot-check"></div>
-            <div class="cr-submitRow"><button type="submit" class="btn primary" id="career-submit" disabled>Online applications unavailable</button><span>Fields marked * are required.</span></div>
+            <div class="cr-submitRow"><button type="submit" class="btn primary" id="career-submit" disabled hidden>Submit application →</button><span>Fields marked * are required.</span></div>
             <p class="cr-submitStatus" id="career-submit-status" role="status" aria-live="polite" tabindex="-1"></p>
-            <noscript><p class="cr-emailHelp">JavaScript is needed for online upload. Please email your résumé to <a href="mailto:hr@aloden.com">hr@aloden.com</a> instead.</p></noscript>
+            <noscript><p class="cr-emailHelp">Email your résumé to <a href="mailto:hr@aloden.com">hr@aloden.com</a>.</p></noscript>
           </form>
           <div class="cr-emailFallback"><span>Prefer email?</span><a data-careers-email href="mailto:hr@aloden.com?subject=Career%20introduction%20%7C%20Aloden&amp;body=Hello%20Aloden%20HR%2C%0A%0AMy%20name%3A%0AArea%20of%20interest%3A%0ACity%20%2F%20country%3A%0AAvailability%3A%0APortfolio%20%2F%20GitHub%20%2F%20project%20summary%3A%0A%0AI%20will%20attach%20my%20resume%20before%20sending.%0A">hr@aloden.com <span aria-hidden="true">↗</span></a><button class="cr-copyEmail" type="button" data-copy-careers-email hidden>Copy email</button><p class="cr-copyStatus" data-copy-careers-status role="status" aria-live="polite"></p></div>
         </div>
         <div class="cr-faq" id="candidate-faq">
           <div class="cr-ey">BEFORE YOU REACH OUT</div>
           <h3>A few practical answers.</h3>
-          <details><summary>How do I send my résumé?</summary><p id="careers-upload-faq">Email a PDF or DOCX résumé to <a href="mailto:hr@aloden.com?subject=Career%20application">hr@aloden.com</a>, including the role title and reference. Selecting a file in the form does not send it; online applications are currently unavailable.</p></details>
+          <details><summary>How do I send my résumé?</summary><p id="careers-upload-faq">For a specific opening, choose Apply for this role so the job reference is included. You can also email a PDF or DOCX résumé to <a href="mailto:hr@aloden.com?subject=Career%20application">hr@aloden.com</a> with the role title and reference.</p></details>
           <details><summary>Are the talent areas current job openings?</summary><p>The talent areas describe our work. Only the roles listed under Current Openings are published vacancies. Select View role and Apply for this role to attach that job reference to your application. You can also submit a separate general introduction.</p></details>
           <details><summary>Can students and recent graduates get in touch?</summary><p>Yes. Ask about early-career or university opportunities and share a course project, personal build, or hackathon contribution. HR will confirm any available program, its dates, eligibility, and selection steps. Participation does not guarantee employment.</p></details>
           <details><summary>Are roles remote, hybrid, or office-based?</summary><p>Working arrangements, eligible locations, employment type, compensation, and benefits depend on the specific opportunity. Ask HR for the details of the role you are discussing; this page does not promise a company-wide arrangement.</p></details>

@@ -80,7 +80,7 @@
   }
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!ready) { setStatus('Online applications are currently unavailable. Your résumé has not been sent. Email hr@aloden.com to apply.', 'error'); return; }
+    if (!ready) { setStatus('Please email your résumé to hr@aloden.com to apply.', 'error'); return; }
     if (busy || completed || uncertain || !jobReady) return;
     if (!form.reportValidity() || !file) return;
     if (!token) { setStatus('Please complete the verification before submitting.', 'error'); return; }
@@ -120,8 +120,8 @@
           rate_limited: 'Too many attempts. Please wait before trying again, or email HR.',
           bot_verification_failed: 'Verification expired or failed. Complete the check and try again.',
           origin_not_allowed: 'Please apply from the official Aloden website.',
-          service_not_configured: 'Online applications are not available yet. Please email hr@aloden.com.',
-          security_check_unavailable: 'The file-checking service is temporarily unavailable. No application was sent.',
+          service_not_configured: 'Please email your résumé to hr@aloden.com to apply.',
+          security_check_unavailable: 'We could not complete the upload check. Please email your résumé to hr@aloden.com.',
           delivery_failed: 'Delivery could not be completed. Please try again later or email HR.',
           request_conflict: 'This submission reference is already in use. Contact HR before submitting again.'
         };
@@ -142,7 +142,10 @@
       status.focus();
     }
   });
-  if (preview) return;
+  if (preview) {
+    submit.hidden = true;
+    return;
+  }
   (async () => {
     try {
       const response = await fetch('/api/careers/config', { cache: 'no-store', credentials: 'omit', signal: AbortSignal.timeout(8000) });
@@ -154,7 +157,8 @@
       const noticeLink = form.querySelector('#career-applicant-notice');
       noticeLink.href = notice.href;
       noticeLink.hidden = false;
-      mode.textContent = 'Complete the form and upload one résumé. Your application will be sent to hr@aloden.com after verification.';
+      mode.textContent = 'Complete the form and upload one résumé. Your application will be sent to Aloden HR after verification.';
+      submit.hidden = false;
       mode.dataset.live = 'true';
       const script = document.createElement('script');
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
@@ -165,7 +169,7 @@
           sitekey: config.turnstileSiteKey, action: 'careers_application', theme: 'light', size: 'flexible',
           callback: value => { token = value; buttonState(); },
           'expired-callback': () => { token = ''; buttonState(); },
-          'error-callback': () => { token = ''; buttonState(); setStatus('Verification is unavailable. Please retry later or email HR.', 'error'); }
+          'error-callback': () => { token = ''; buttonState(); setStatus('Verification could not be completed. Please email your résumé to hr@aloden.com.', 'error'); }
         });
         ready = true;
         submit.textContent = 'Submit application →';
@@ -173,7 +177,7 @@
         if (faq) faq.textContent = 'Select one PDF or DOCX up to 5 MB, complete the required fields, and submit. Selecting a file alone does not send it. A confirmation appears after your application is accepted. You may also email your résumé to hr@aloden.com.';
         buttonState();
       };
-      script.onerror = () => { mode.textContent = 'Verification could not load. Please email hr@aloden.com to apply.'; };
+      script.onerror = () => { mode.textContent = 'Please email your résumé to hr@aloden.com to apply.'; submit.hidden = true; };
       document.head.appendChild(script);
     } catch { /* Static previews retain the explicit offline message and email fallback. */ }
   })();
