@@ -1,0 +1,50 @@
+name: Final Public Content Cleanup
+on:
+  push:
+    branches: [feature/final-public-content-cleanup]
+    paths:
+      - 'scripts/apply-final-public-content-cleanup.mjs'
+      - '.github/workflows/final-content-cleanup-integrate.yml'
+permissions:
+  contents: write
+defaults:
+  run:
+    shell: bash
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply final public copy cleanup
+        run: node scripts/apply-final-public-content-cleanup.mjs
+      - name: Verify public site and forms
+        run: |
+          node scripts/site-qa.mjs
+          node --check preview/start-project-form.js
+          node --check preview/careers-application.js
+          node --check preview/careers-jobs.js
+          node --test server/project-brief-handler.test.mjs
+          if [ -f server/careers/careers.test.mjs ]; then node --test server/careers/careers.test.mjs server/careers/jobs.test.mjs; fi
+          ! grep -RniE 'Online inquiries unavailable|Online inquiries are currently unavailable|Online applications unavailable|Online applications are currently unavailable|online applications are currently unavailable|Openings are temporarily unavailable' preview/index.html preview/careers.html preview/start-project.html preview/start-project-form.js preview/careers-application.js preview/careers-jobs.js
+          git diff --check
+      - name: Commit only verified public cleanup
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(git ls-remote origin refs/heads/feature/final-public-content-cleanup | cut -f1)" = "$GITHUB_SHA"
+          git rm .github/workflows/final-copy-audit.yml .github/workflows/final-content-cleanup-integrate.yml scripts/final-copy-audit.mjs scripts/apply-final-public-content-cleanup.mjs
+          git add preview/start-project-form.js preview/careers.html preview/careers-application.js preview/careers-jobs.js
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Clean public form and careers fallback copy'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feature/final-public-content-cleanup
